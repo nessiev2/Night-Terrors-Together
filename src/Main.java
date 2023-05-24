@@ -9,6 +9,8 @@ public class Main extends JPanel {
     Player p2 = new Player2();
     Teacher t = new Teacher();
 
+    Desk d1 = new Desk(500, 500);
+
     public Main() {
 
         addKeyListener(new KeyListener() {
@@ -44,6 +46,11 @@ public class Main extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.BLACK);
+
+        // IRENE IS MAKING A CLASSROOM DESK TRIAL
+        d1.paint(g2d);
+        // END
+
         p1.paint(g2d);
         p2.paint(g2d);
         t.paint(g2d);
