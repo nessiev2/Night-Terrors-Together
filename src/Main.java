@@ -4,6 +4,7 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 
 public class Main extends JPanel {
+    final static int screenWidth = 1920, screenHeight = 1080;
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();

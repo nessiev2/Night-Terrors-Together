@@ -5,12 +5,12 @@ public class Object {
     private int x;
     private int y;
     private int width;
-    private int length;
+    private int height;
 
-    public Object(int x, int y, int width, int length) {
+    public Object(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
-        this.length = length;
+        this.height = height;
     }
 }
