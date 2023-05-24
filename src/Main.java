@@ -10,6 +10,7 @@ public class Main extends JPanel {
     Teacher t = new Teacher();
 
     Desk d1 = new Desk(500, 500);
+    Wall w1 = new Wall(0, 0);
 
     public Main() {
 
@@ -50,6 +51,10 @@ public class Main extends JPanel {
         // IRENE IS MAKING A CLASSROOM DESK TRIAL
         d1.paint(g2d);
         // END
+
+        //JOYI WALL
+        w1.paint(g2d);
+        //TESTING END
 
         p1.paint(g2d);
         p2.paint(g2d);
