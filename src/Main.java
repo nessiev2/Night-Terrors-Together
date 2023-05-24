@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class Main extends JPanel {
     Player p1 = new Player1();
-    Player p6 = new Player2();
+    Player p2 = new Player2();
     Teacher t = new Teacher();
 
     public Main() {
