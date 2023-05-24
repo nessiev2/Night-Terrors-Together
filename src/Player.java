@@ -6,6 +6,8 @@ public abstract class Player {
     private int speed = 10;
     private int x;
     private int y;
+    private int width = 100;
+    private int height = 150;
     private int playern;
 
     public int getX() {
@@ -30,13 +32,13 @@ public abstract class Player {
 
     public void move() {
 
-        if (right && (x + speed < 1920)) {
+        if (right && (x + width + speed < 1920)) {
             x += speed;
         }
         if (left && (x - speed >= 0)) {
             x -= speed;
         }
-        if (down && (y + speed < 1080)) {
+        if (down && (y + height + speed < 1080)) {
             y += speed;
         }
         if (up && (y - speed >= 0)) {
@@ -49,7 +51,7 @@ public abstract class Player {
             g2d.setColor(Color.magenta);
         else
             g2d.setColor(Color.green);
-        g2d.fillRect(x, y, 100, 150);
+        g2d.fillRect(x, y, width, height);
     }
 
 
