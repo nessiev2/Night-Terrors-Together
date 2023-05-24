@@ -61,7 +61,7 @@ public class Main extends JPanel {
 
         Main c = new Main();
         frame.add(c);
-        frame.setSize(1920, 1080);
+        frame.setSize(screenWidth, screenHeight);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
