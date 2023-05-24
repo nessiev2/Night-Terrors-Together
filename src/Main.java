@@ -11,6 +11,7 @@ public class Main extends JPanel {
 
     Desk d1 = new Desk(500, 500);
     Wall w1 = new Wall(0, 0);
+    TrashCan tc1 = new TrashCan(200, 500);
 
     public Main() {
 
@@ -50,6 +51,7 @@ public class Main extends JPanel {
 
         // IRENE IS MAKING A CLASSROOM DESK TRIAL
         d1.paint(g2d);
+        tc1.paint(g2d);
         // END
 
         //JOYI WALL
