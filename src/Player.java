@@ -8,7 +8,7 @@ public abstract class Player {
     private int y;
     private int width = 100;
     private int height = 150;
-    private int playern;
+    private int playerN;
 
     public int getX() {
         return x;
@@ -16,10 +16,10 @@ public abstract class Player {
 
     public int getY() {return y; }
 
-    public Player(int playern) {
+    public Player(int playerN) {
         x = 500;
         y = 500;
-        this.playern = playern;
+        this.playerN = playerN;
     }
 
     public void keyPressed(KeyEvent e) {
@@ -31,14 +31,13 @@ public abstract class Player {
     }
 
     public void move(Thing t) {
-
-        if (right && (x + width + speed < Main.screenWidth) && checkRight(t)) {
+        if (right && (x + width + speed < Main.screenWidth)) {
             x += speed;
         }
-        if (left && (x - speed >= 0) && checkLeft(t)) {
+        if (left && (x - speed >= 0)) {
             x -= speed;
         }
-        if (down && (y + height + speed < Main.screenHeight) && checkDown(t)) {
+        if (down && (y + height + speed < Main.screenHeight)) {
             y += speed;
         }
         if (up && (y - speed >= 0)) {
@@ -67,10 +66,8 @@ public abstract class Player {
         return true;
     }
 
-
-
     public void paint(Graphics2D g2d) {
-        if (playern == 1)
+        if (playerN == 1)
             g2d.setColor(Color.magenta);
         else
             g2d.setColor(Color.green);
