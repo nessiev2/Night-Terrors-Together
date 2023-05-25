@@ -35,10 +35,10 @@ public abstract class Player {
         if (right && (x + width + speed < Main.screenWidth) && checkRight(t)) {
             x += speed;
         }
-        if (left && (x - speed >= 0)) {
+        if (left && (x - speed >= 0) && checkLeft(t)) {
             x -= speed;
         }
-        if (down && (y + height + speed < Main.screenHeight)) {
+        if (down && (y + height + speed < Main.screenHeight) && checkDown(t)) {
             y += speed;
         }
         if (up && (y - speed >= 0)) {
@@ -47,12 +47,27 @@ public abstract class Player {
     }
 
     public boolean checkRight(Thing t) {
-        System.out.println("yes, this is running");
         if (x + width + speed >= t.getX() && y + height >= t.getY() && y <= t.getY() + t.getHeight()) {
             return false;
         }
         return true;
     }
+
+    public boolean checkLeft(Thing t) {
+        if (x - speed <= t.getX() + t.getWidth() && y + height >= t.getY() && y <= t.getY() + t.getHeight()) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkDown(Thing t) {
+        if (y + height + speed >= t.getY() && x + width >= t.getX() && x <= t.getX() + t.getWidth()) {
+            return false;
+        }
+        return true;
+    }
+
+
 
     public void paint(Graphics2D g2d) {
         if (playern == 1)
