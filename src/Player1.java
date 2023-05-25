@@ -18,6 +18,9 @@ public class Player1 extends Player {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             down = true;
         }
+        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+
+        }
     }
 
     public void keyReleased(KeyEvent e) {

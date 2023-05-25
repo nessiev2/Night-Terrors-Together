@@ -9,7 +9,7 @@ public class Main extends JPanel {
     Player p2 = new Player2();
     Teacher t = new Teacher();
 
-    Desk d1 = new Desk(500, 500);
+    Desk d1 = new Desk(800, 500);
     Wall w1 = new Wall(0, 0);
     TrashCan tc1 = new TrashCan(200, 500);
     Door door1 = new Door(0, w1.getWallHeight()-200);
