@@ -32,13 +32,13 @@ public abstract class Player {
 
     public void move() {
 
-        if (right && (x + width + speed < 1920)) {
+        if (right && (x + width + speed < Main.screenWidth)) {
             x += speed;
         }
         if (left && (x - speed >= 0)) {
             x -= speed;
         }
-        if (down && (y + height + speed < 1080)) {
+        if (down && (y + height + speed < Main.screenHeight)) {
             y += speed;
         }
         if (up && (y - speed >= 0)) {
