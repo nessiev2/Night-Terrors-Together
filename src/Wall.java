@@ -6,6 +6,10 @@ public class Wall extends Thing{
         super(x, y, wallWidth, wallHeight);
     }
 
+    public int getWallHeight(){
+        return wallHeight;
+    }
+
     public void paint (Graphics2D g2d){
         g2d.setColor(Color.lightGray);
         g2d.fillRect(getX(), getY(), wallWidth, wallHeight);
