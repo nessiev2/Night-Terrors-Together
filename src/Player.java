@@ -30,9 +30,9 @@ public abstract class Player {
 
     }
 
-    public void move() {
+    public void move(Thing t) {
 
-        if (right && (x + width + speed < Main.screenWidth)) {
+        if (right && (x + width + speed < Main.screenWidth) && checkRight(t)) {
             x += speed;
         }
         if (left && (x - speed >= 0)) {
@@ -44,6 +44,14 @@ public abstract class Player {
         if (up && (y - speed >= 0)) {
             y -= speed;
         }
+    }
+
+    public boolean checkRight(Thing t) {
+        System.out.println("yes, this is running");
+        if (x + width + speed >= t.getX() && y + height >= t.getY() && y <= t.getY() + t.getHeight()) {
+            return false;
+        }
+        return true;
     }
 
     public void paint(Graphics2D g2d) {

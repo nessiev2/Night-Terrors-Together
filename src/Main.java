@@ -36,8 +36,8 @@ public class Main extends JPanel {
     }
 
     private void move() {
-        p1.move();
-        p2.move();
+        p1.move(d1);
+        p2.move(d1);
         t.move(p1.getX(), p1.getY(), p2.getX(), p2.getY());
     }
 
