@@ -9,7 +9,10 @@ public class Main extends JPanel {
     Player p2 = new Player2();
     Teacher t = new Teacher();
 
-    Desk d1 = new Desk(800, 500);
+    //Desk d1 = new Desk(800, 500);
+
+    Desk[] desks = {new Desk(200, 400), new Desk(500, 400), new Desk(200, 700), new Desk(500, 400)};
+
     Wall w1 = new Wall(0, 0);
     TrashCan tc1 = new TrashCan(200, 500);
     Door door1 = new Door(0, w1.getWallHeight()-200);
@@ -37,8 +40,8 @@ public class Main extends JPanel {
     }
 
     private void move() {
-        p1.move(d1);
-        p2.move(d1);
+        p1.move(desks);
+        p2.move(desks);
         t.move(p1.getX(), p1.getY(), p2.getX(), p2.getY());
     }
 
@@ -50,7 +53,9 @@ public class Main extends JPanel {
         g2d.setColor(Color.BLACK);
 
         // IRENE IS MAKING A CLASSROOM DESK TRIAL
-        d1.paint(g2d);
+        for (Desk d:desks) {
+            d.paint(g2d);
+        }
         tc1.paint(g2d);
         // END
 
