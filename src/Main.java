@@ -12,6 +12,7 @@ public class Main extends JPanel {
     Desk d1 = new Desk(500, 500);
     Wall w1 = new Wall(0, 0);
     TrashCan tc1 = new TrashCan(200, 500);
+    Door door1 = new Door(0, w1.getWallHeight()-200);
 
     public Main() {
 
@@ -55,7 +56,9 @@ public class Main extends JPanel {
 
         //JOYI WALL
         w1.paint(g2d);
-        //TESTING END
+        //testing door
+        door1.paint(g2d);
+        // mmmm
 
         p1.paint(g2d);
         p2.paint(g2d);
