@@ -40,27 +40,34 @@ public abstract class Player {
         if (down && (y + height + speed < Main.screenHeight)) {
             y += speed;
         }
-        if (up && (y - speed >= 0)) {
+        if (up && (y - speed >= 0) && checkUp(t)) {
             y -= speed;
         }
     }
 
     public boolean checkRight(Thing t) {
-        if (x + width + speed >= t.getX() && y + height >= t.getY() && y <= t.getY() + t.getHeight()) {
+        if (x <= t.getX() && x + width + speed >= t.getX() && y + height >= t.getY() && y <= t.getY() + t.getHeight()) {
             return false;
         }
         return true;
     }
 
     public boolean checkLeft(Thing t) {
-        if (x - speed <= t.getX() + t.getWidth() && y + height >= t.getY() && y <= t.getY() + t.getHeight()) {
+        if (x >= t.getX() && x - speed <= t.getX() + t.getWidth() && y + height >= t.getY() && y <= t.getY() + t.getHeight()) {
             return false;
         }
         return true;
     }
 
     public boolean checkDown(Thing t) {
-        if (y + height + speed >= t.getY() && x + width >= t.getX() && x <= t.getX() + t.getWidth()) {
+        if (y <= t.getY() && y + height + speed >= t.getY() && x + width >= t.getX() && x <= t.getX() + t.getWidth()) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkUp(Thing t) {
+        if (y >= t.getY() && y - speed <= t.getY() + t.getHeight() && x + width >= t.getX() && x <= t.getX() + t.getWidth()) {
             return false;
         }
         return true;
