@@ -25,15 +25,13 @@ public class Main extends JPanel {
 
         addKeyListener(new KeyListener() {
             @Override
-            public void keyTyped(KeyEvent e) {
-                p1.keyTyped(e);
-                p2.keyTyped(e);
-            }
+            public void keyTyped(KeyEvent e) {}
+
             @Override
             public void keyReleased(KeyEvent e) {
 //Passes the KeyEvent e to the ball instance
-                p1.keyReleased(e);
-                p2.keyReleased(e);
+                p1.keyReleased(e, arson1);
+                p2.keyReleased(e, arson1);
             }
             @Override
             public void keyPressed(KeyEvent e) {
@@ -51,7 +49,7 @@ public class Main extends JPanel {
         t.move(p1.getX(), p1.getY(), p2.getX(), p2.getY());
 
         //ARSON1 TESTING
-        // arson1.doTask(trashy, p1, p2);
+        arson1.doTask(trashy, p1, p2);
         //
     }
 

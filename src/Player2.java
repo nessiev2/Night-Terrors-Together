@@ -27,7 +27,7 @@ public class Player2 extends Player {
         }
     }
 
-    public void keyReleased(KeyEvent e) {
+    public void keyReleased(KeyEvent e, Arson arson1) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             left = false;
         }
@@ -41,7 +41,7 @@ public class Player2 extends Player {
             down = false;
         }
         if (e.getKeyCode() == KeyEvent.VK_Q) {
-            interact = false;
+            interact = true;
         }
     }
 }

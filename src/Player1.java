@@ -4,10 +4,6 @@ public class Player1 extends Player {
     public Player1() {
         super(1);
     }
-    public void keyTyped(KeyEvent e){
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-        }
-    }
 
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -24,7 +20,7 @@ public class Player1 extends Player {
         }
     }
 
-    public void keyReleased(KeyEvent e) {
+    public void keyReleased(KeyEvent e, Arson arson1) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             left = false;
         }
@@ -37,8 +33,8 @@ public class Player1 extends Player {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             down = false;
         }
-        /*if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            interact = false;
-        }*/
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            interact = true;
+        }
     }
 }
