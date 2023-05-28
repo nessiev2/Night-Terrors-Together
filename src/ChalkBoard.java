@@ -19,11 +19,7 @@ public class ChalkBoard extends Thing{
     }
 
     public boolean isPlayerClose(Player p1, Player p2) {
-        int centerX = (int)((2*getX() + BOARD_WIDTH)/2), centerY = (int)((2*getY() + BOARD_HEIGHT)/2);
-        double dist1 = Math.sqrt(Math.pow(centerX-p1.getCenterX(), 2));
-        double dist2 = Math.sqrt(Math.pow(centerX-p2.getCenterX(), 2));
-
-        if ((p1.getCenterX() >= getX() - RADIUS && p1.getCenterX() <= getX() + getWidth() + RADIUS && p1.getY() - getY() - getHeight() <= RADIUS) || (dist2 <= RADIUS)) {
+        if ((p1.getCenterX() >= getX() - RADIUS && p1.getCenterX() <= getX() + getWidth() + RADIUS && p1.getY() - getY() - getHeight() <= RADIUS) || (p2.getCenterX() >= getX() - RADIUS && p2.getCenterX() <= getX() + getWidth() + RADIUS && p2.getY() - getY() - getHeight() <= RADIUS)) {
             playerIsClose = true;
             System.out.println("real");
 
