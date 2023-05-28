@@ -78,6 +78,10 @@ public class Main extends JPanel {
         d1.paint(g2d);
         // mmmm
 
+        g2d.setColor(Color.black);
+        g.setFont(new Font("TimesRoman", Font.BOLD, 50));
+        g2d.drawString("PHYSICS", 500, 200);
+
         p1.paint(g2d);
         p2.paint(g2d);
         t.paint(g2d);
