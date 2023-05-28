@@ -24,7 +24,16 @@ public class CountDown {
     }
 
     public void paint(Graphics g2d) {
-        g2d.drawString(elapsedMinutes + ":" + secondsDisplay, 0, 50);
+        g2d.setColor(Color.black);
+        if (elapsedSeconds <= 10) {
+            g2d.setColor(Color.red);
+        }
+
+        if (secondsDisplay < 10) {
+            g2d.drawString(elapsedMinutes + ":0" + secondsDisplay, 0, 50);
+        } else {
+            g2d.drawString(elapsedMinutes + ":" + secondsDisplay, 0, 50);
+        }
     }
 
     public long getTime() {
