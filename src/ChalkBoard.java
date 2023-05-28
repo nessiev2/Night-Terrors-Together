@@ -5,7 +5,7 @@ public class ChalkBoard extends Thing{
     private static final int BOARD_WIDTH = Main.SCREEN_WIDTH/2, BOARD_HEIGHT = (Main.SCREEN_WIDTH/4) - 230;
     private final int maxX = BOARD_WIDTH, minX = 300;
     private final int maxY = 10 + BOARD_HEIGHT, minY = 10;
-    private final int RADIUS = 200;
+    private final int RADIUS = 50;
     private boolean scribble = false, playerIsClose = false;
 
     public boolean getScribble() {
@@ -18,10 +18,10 @@ public class ChalkBoard extends Thing{
 
     public boolean isPlayerClose(Player p1, Player p2) {
         int centerX = (int)((2*getX() + BOARD_WIDTH)/2), centerY = (int)((2*getY() + BOARD_HEIGHT)/2);
-        double dist1 = Math.sqrt(Math.pow(centerX-p1.getCenterX(), 2) + Math.pow(centerY-p1.getCenterY(), 2));
-        double dist2 = Math.sqrt(Math.pow(centerX-p2.getCenterX(), 2) + Math.pow(centerY-p2.getCenterY(), 2));
+        double dist1 = Math.sqrt(Math.pow(centerX-p1.getCenterX(), 2));
+        double dist2 = Math.sqrt(Math.pow(centerX-p2.getCenterX(), 2));
 
-        if (dist1 <= RADIUS || dist2 <= RADIUS) {
+        if ((p1.getCenterX() >= getX() - RADIUS && p1.getCenterX() <= getX() + getWidth() + RADIUS && p1.getY() - getY() - getHeight() <= RADIUS) || (dist2 <= RADIUS)) {
             playerIsClose = true;
             System.out.println("real");
 
