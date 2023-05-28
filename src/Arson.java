@@ -1,5 +1,5 @@
 public class Arson extends Task {
-    public Arson(boolean isTask){
+    public Arson(boolean isTask) {
         super(isTask);
     }
 
