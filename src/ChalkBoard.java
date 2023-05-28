@@ -6,22 +6,27 @@ public class ChalkBoard extends Thing{
     private final int maxX = BOARD_WIDTH, minX = 300;
     private final int maxY = 10 + BOARD_HEIGHT, minY = 10;
     private final int RADIUS = 50;
+    private String[] scribbleArray = new String[20];
+    private int[] xs = new int[20];
+    private int[] ys = new int[20];
     private boolean scribble = false, playerIsClose = false;
     private String classroom;
-
-    public boolean getScribble() {
-        return scribble;
-    }
 
     public ChalkBoard(int x, int y, String classroom){
         super(x, y, BOARD_WIDTH, BOARD_HEIGHT);
         this.classroom = classroom;
+
+        for (int i = 0; i < 20; i++){
+            String c = randomChar();
+            scribbleArray[i] = c;
+            xs[i] = (int)(Math.random() * maxX + minX);
+            ys[i] = (int)(Math.random() * maxY + minY);
+        }
     }
 
     public boolean isPlayerClose(Player p1, Player p2) {
         if ((p1.getCenterX() >= getX() - RADIUS && p1.getCenterX() <= getX() + getWidth() + RADIUS && p1.getY() - getY() - getHeight() <= RADIUS) || (p2.getCenterX() >= getX() - RADIUS && p2.getCenterX() <= getX() + getWidth() + RADIUS && p2.getY() - getY() - getHeight() <= RADIUS)) {
             playerIsClose = true;
-            System.out.println("real");
 
             return true;
         } else {
@@ -61,10 +66,8 @@ public class ChalkBoard extends Thing{
         if (scribble) {
             g2d.setColor(Color.pink);
             for (int j = 0; j < 20; j++){
-                String c = randomChar();
-                g2d.drawString(c, (int)(Math.random() * maxX + minX), (int)(Math.random() * maxY + minY));
+                g2d.drawString(scribbleArray[j], xs[j], ys[j]);
             }
-            scribble = false;
         }
     }
 
