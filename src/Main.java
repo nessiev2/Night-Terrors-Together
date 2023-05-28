@@ -9,7 +9,7 @@ public class Main extends JPanel {
     Transition transition1 = new Transition();
     //ARSON TASK TESTING
     Arson arson1 = new Arson(true);
-    TrashCan[] trashy = {new TrashCan(200, 500)};
+    TrashCan[] trashy = {new TrashCan(1000, 500)};
     //
     Player p1 = new Player1();
     Player p2 = new Player2();
