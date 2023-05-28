@@ -5,6 +5,7 @@ import javax.swing.*;
 
 public class Main extends JPanel {
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
+    boolean gameOver = false;
 
     CountDown cd = new CountDown();
 
@@ -52,6 +53,9 @@ public class Main extends JPanel {
         p2.move(desks);
         t.move(p1.getX(), p1.getY(), p2.getX(), p2.getY());
         cd.move();
+        if (cd.getTime() <= 0) {
+            gameOver = true;
+        }
 
         //ARSON1 TESTING
         arson1.doTask(trashCans, p1, p2);
@@ -94,7 +98,7 @@ public class Main extends JPanel {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        JFrame frame = new JFrame("UI Testing");
+        JFrame frame = new JFrame("Physics");
 
         Main c = new Main();
         frame.add(c);
@@ -102,7 +106,7 @@ public class Main extends JPanel {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        while (true)
+        while (!c.gameOver)
         {
             c.move(); //Updates the coordinates
             c.repaint(); //Calls the paint method
