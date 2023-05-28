@@ -4,10 +4,6 @@ public class Player2 extends Player {
     public Player2() {
         super(2);
     }
-    public void keyTyped(KeyEvent e){
-        if (e.getKeyCode() == KeyEvent.VK_Q) {
-        }
-    }
 
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
