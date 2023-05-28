@@ -91,7 +91,7 @@ public class Main extends JPanel {
 
         cd.paint(g2d);
 
-        if (d1.containsPlayer(p1, p2)) {// || d1.containsPlayer(p2)) {
+        if (d1.containsPlayer(p1, p2)) {
             System.out.println("transition black screen worked");
             transition1.paint(g2d);
         }

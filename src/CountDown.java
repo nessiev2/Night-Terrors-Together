@@ -15,7 +15,7 @@ public class CountDown {
     public void move() {
         currentTime = System.currentTimeMillis();
         elapsedTime = System.currentTimeMillis() - startTime;
-        backwardsTime = 15000 - elapsedTime;
+        backwardsTime = 90000 - elapsedTime;
         //backwardsTime = 120000 - elapsedTime;
 
         elapsedSeconds = backwardsTime / 1000;
@@ -30,9 +30,9 @@ public class CountDown {
         }
 
         if (secondsDisplay < 10) {
-            g2d.drawString(elapsedMinutes + ":0" + secondsDisplay, 0, 50);
+            g2d.drawString(elapsedMinutes + ":0" + secondsDisplay, 10, 50);
         } else {
-            g2d.drawString(elapsedMinutes + ":" + secondsDisplay, 0, 50);
+            g2d.drawString(elapsedMinutes + ":" + secondsDisplay, 10, 50);
         }
     }
 
