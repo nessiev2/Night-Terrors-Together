@@ -4,8 +4,8 @@ import java.awt.event.KeyEvent;
 public abstract class Player {
     protected boolean right = false, left = false, up = false, down = false, interact = false;
     private int speed = 10;
-    private int x;
-    private int y;
+    private int x, centerX;
+    private int y, centerY;
     private int width = 100;
     private int height = 150;
     private int playerN;
@@ -15,6 +15,11 @@ public abstract class Player {
     }
 
     public int getY() { return y; }
+    public int getCenterX() {
+        return centerX;
+    }
+
+    public int getCenterY() { return centerY; }
 
     public int getWidth() { return width; }
 
@@ -43,6 +48,10 @@ public abstract class Player {
         if (up && checkUp(t) && (y - speed >= 0)) {
             y -= speed;
         }
+
+        centerX = (int)((2*x + width)/2);
+        centerY = (int)((2*y + height)/2);
+
     }
 
     public boolean checkRight(Thing[] things) {
