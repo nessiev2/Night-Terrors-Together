@@ -26,7 +26,7 @@ public abstract class Player {
         this.playerN = playerN;
     }
 
-    public void keyTyped(KeyEvent e) {}
+    //public void keyTyped(KeyEvent e) {}
     public void keyPressed(KeyEvent e) {}
     public void keyReleased(KeyEvent e, Arson arson1, TrashCan[] trashCans) {}
 

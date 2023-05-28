@@ -6,6 +6,8 @@ import javax.swing.*;
 public class Main extends JPanel {
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
 
+    CountDown cd = new CountDown();
+
     Transition transition1 = new Transition();
     //ARSON TASK TESTING
     Arson arson1 = new Arson(true);
@@ -49,6 +51,7 @@ public class Main extends JPanel {
         p1.move(desks);
         p2.move(desks);
         t.move(p1.getX(), p1.getY(), p2.getX(), p2.getY());
+        cd.move();
 
         //ARSON1 TESTING
         arson1.doTask(trashCans, p1, p2);
@@ -71,20 +74,17 @@ public class Main extends JPanel {
             tc.isPlayerClose(p1, p2);
             tc.paint(g2d);
         }
-        //tc1.paint(g2d);
-        // END
 
-        //JOYI WALL
-        w1.paint(g2d);
-        //testing door
-        d1.paint(g2d);
-        // mmmm
+        w1.paint(g2d); // wall
+        d1.paint(g2d); // door
 
-        cb.paint(g2d);
+        cb.paint(g2d); // chalkboard
 
         p1.paint(g2d);
         p2.paint(g2d);
         t.paint(g2d);
+
+        cd.paint(g2d);
 
         if (d1.containsPlayer(p1, p2)) {// || d1.containsPlayer(p2)) {
             System.out.println("transition black screen worked");
