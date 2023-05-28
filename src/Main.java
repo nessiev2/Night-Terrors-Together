@@ -9,13 +9,12 @@ public class Main extends JPanel {
     Player p2 = new Player2();
     Teacher t = new Teacher();
 
-    //Desk d1 = new Desk(800, 500);
 
-    //Wall w1 = new Wall(0, 0);
+    Wall w1 = new Wall(0, 0);
     Desk[] desks = {new Desk(200, 200), new Desk(600, 200), new Desk(200, 600), new Desk(600, 600)};
 
     TrashCan tc1 = new TrashCan(200, 500);
-    //Door door1 = new Door(0, w1.getWallHeight()-200);
+    Door d1 = new Door(0, w1.getWallHeight()-200);
 
     public Main() {
 
@@ -60,14 +59,18 @@ public class Main extends JPanel {
         // END
 
         //JOYI WALL
-        //w1.paint(g2d);
+        w1.paint(g2d);
         //testing door
-        //door1.paint(g2d);
+        d1.paint(g2d);
         // mmmm
 
         p1.paint(g2d);
         p2.paint(g2d);
         t.paint(g2d);
+
+        if (d1.containsPlayer(p1) || d1.containsPlayer(p2)) {
+
+        }
     }
 
     public static void main(String[] args) throws InterruptedException {

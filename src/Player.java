@@ -14,7 +14,11 @@ public abstract class Player {
         return x;
     }
 
-    public int getY() {return y; }
+    public int getY() { return y; }
+
+    public int getWidth() { return width; }
+
+    public int getHeight() { return height; }
 
     public Player(int playerN) {
         x = 500;

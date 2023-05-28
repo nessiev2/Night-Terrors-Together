@@ -1,4 +1,4 @@
-public class Arson extends Task{
+public class Arson extends Task {
     public Arson(boolean isTask){
         super(isTask);
     }
