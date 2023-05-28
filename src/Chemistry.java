@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Chemistry {
-    Arson arson1 = new Arson(true);
+    Arson arson6 = new Arson(true);
     TrashCan[] trashCans = {new TrashCan(1300, 400), new TrashCan(1300, 600), new TrashCan(1000, 600)};
 
     ChalkBoard cb = new ChalkBoard(300, 10, "CHEMISTRY");

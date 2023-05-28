@@ -7,9 +7,7 @@ public class Main extends JPanel {
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
     boolean gameOver = false;
     int currentClassroom = 5;
-
     CountDown cd = new CountDown();
-
     Transition transition1 = new Transition();
 
     Door d1 = new Door(800, SCREEN_HEIGHT/4-200);
@@ -17,7 +15,6 @@ public class Main extends JPanel {
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();
-
     Physics phys = new Physics();
     Chemistry chem = new Chemistry();
 
@@ -26,21 +23,21 @@ public class Main extends JPanel {
     }
 
     public Main() {
-
         addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
-
             @Override
             public void keyReleased(KeyEvent e) {
-//Passes the KeyEvent e to the ball instance
-                p1.keyReleased(e, phys.arson5, phys.trashCans, phys.cb);
-                p2.keyReleased(e, phys.arson5, phys.trashCans, phys.cb);
-
+                if (currentClassroom == 5){
+                    p1.keyReleased(e, phys.arson5, phys.trashCans, phys.cb);
+                    p2.keyReleased(e, phys.arson5, phys.trashCans, phys.cb);
+                } else if (currentClassroom == 6){
+                    p1.keyReleased(e, chem.arson6, chem.trashCans, chem.cb);
+                    p2.keyReleased(e, chem.arson6, chem.trashCans, chem.cb);
+                }
             }
             @Override
             public void keyPressed(KeyEvent e) {
-//Passes the KeyEvent e to the ball instance
                 p1.keyPressed(e);
                 p2.keyPressed(e);
             }
