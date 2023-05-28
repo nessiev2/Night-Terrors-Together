@@ -4,7 +4,7 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 
 public class Main extends JPanel {
-    final static int screenWidth = 1920, screenHeight = 1080;
+    final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
 
     Transition transition1 = new Transition();
     //ARSON TASK TESTING
@@ -97,7 +97,7 @@ public class Main extends JPanel {
 
         Main c = new Main();
         frame.add(c);
-        frame.setSize(screenWidth, screenHeight);
+        frame.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

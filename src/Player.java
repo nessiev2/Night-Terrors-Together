@@ -31,13 +31,13 @@ public abstract class Player {
     public void keyReleased(KeyEvent e, Arson arson1, TrashCan[] trashCans) {}
 
     public void move(Thing[] t) {
-        if (right && checkRight(t) && (x + width + speed < Main.screenWidth)) {
+        if (right && checkRight(t) && (x + width + speed < Main.SCREEN_WIDTH)) {
             x += speed;
         }
         if (left && checkLeft(t) && (x - speed >= 0)) {
             x -= speed;
         }
-        if (down && checkDown(t) && y + height + speed < Main.screenHeight) {
+        if (down && checkDown(t) && y + height + speed < Main.SCREEN_HEIGHT) {
             y += speed;
         }
         if (up && checkUp(t) && (y - speed >= 0)) {

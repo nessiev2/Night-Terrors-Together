@@ -1,17 +1,17 @@
 import java.awt.*;
 
 public class Wall extends Thing{
-    private final static int wallWidth = Main.screenWidth, wallHeight = 270;
+    private final static int WALL_WIDTH = Main.SCREEN_WIDTH, WALL_HEIGHT = Main.SCREEN_HEIGHT/4;
     public Wall(int x, int y){
-        super(x, y, wallWidth, wallHeight);
+        super(x, y, WALL_WIDTH, WALL_HEIGHT);
     }
 
     public int getWallHeight(){
-        return wallHeight;
+        return WALL_HEIGHT;
     }
 
     public void paint (Graphics2D g2d){
         g2d.setColor(Color.lightGray);
-        g2d.fillRect(getX(), getY(), wallWidth, wallHeight);
+        g2d.fillRect(getX(), getY(), WALL_WIDTH, WALL_HEIGHT);
     }
 }
