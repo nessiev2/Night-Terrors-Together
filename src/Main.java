@@ -16,7 +16,7 @@ public class Main extends JPanel {
     Teacher t = new Teacher();
 
     Wall w1 = new Wall(0, 0);
-    Desk[] desks = {new Desk(200, 200), new Desk(600, 200), new Desk(200, 600), new Desk(600, 600)};
+    Desk[] desks = {new Desk(200, 300), new Desk(600, 300), new Desk(200, 700), new Desk(600, 700)};
 
     //TrashCan tc1 = new TrashCan(200, 500);
     Door d1 = new Door(0, w1.getWallHeight()-200);
