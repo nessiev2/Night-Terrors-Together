@@ -34,8 +34,9 @@ public class Main extends JPanel {
             @Override
             public void keyReleased(KeyEvent e) {
 //Passes the KeyEvent e to the ball instance
-                p1.keyReleased(e, phys.arson1, phys.trashCans, phys.cb);
-                p2.keyReleased(e, phys.arson1, phys.trashCans, phys.cb);
+                p1.keyReleased(e, phys.arson5, phys.trashCans, phys.cb);
+                p2.keyReleased(e, phys.arson5, phys.trashCans, phys.cb);
+
             }
             @Override
             public void keyPressed(KeyEvent e) {
@@ -57,7 +58,7 @@ public class Main extends JPanel {
         }
 
         //ARSON1 TESTING
-        phys.arson1.doTask(phys.trashCans, p1, p2);
+        phys.arson5.doTask(phys.trashCans, p1, p2);
         //
     }
 
