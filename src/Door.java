@@ -14,14 +14,6 @@ public class Door extends Thing {
     }
 
     public boolean containsPlayer(Player p1, Player p2) {
-        /*System.out.println("p right: " + (p.getX()+p.getWidth()));
-        System.out.println("door right: " + (getX() + width));
-
-        System.out.println("p bottom: " + (p.getY()+p.getHeight()));
-        System.out.println("door bottom: " + (getY() + height));
-*/
-
-
         if (p1.getX() >= getX() && p1.getY() >= getY() && p1.getX() + p1.getWidth() <= getX() + width && p1.getY() + p1.getHeight() <= getY() + height) {
             System.out.println("P1 is contained");
             return true;
