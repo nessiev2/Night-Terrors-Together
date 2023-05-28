@@ -18,6 +18,9 @@ public class Player2 extends Player {
         if (e.getKeyCode() == KeyEvent.VK_S) {
             down = true;
         }
+        if (e.getKeyCode() == KeyEvent.VK_Q) {
+            interact = true;
+        }
     }
 
     public void keyReleased(KeyEvent e) {
@@ -32,6 +35,9 @@ public class Player2 extends Player {
         }
         if (e.getKeyCode() == KeyEvent.VK_S) {
             down = false;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_Q) {
+            interact = false;
         }
     }
 }

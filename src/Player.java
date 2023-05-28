@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public abstract class Player {
-    protected boolean right = false, left = false, up = false, down = false;
+    protected boolean right = false, left = false, up = false, down = false, interact = false;
     private int speed = 10;
     private int x;
     private int y;
