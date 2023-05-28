@@ -15,6 +15,8 @@ public class Main extends JPanel {
     Player p2 = new Player2();
     Teacher t = new Teacher();
 
+    ChalkBoard cb = new ChalkBoard(300, 10);
+
     Wall w1 = new Wall(0, 0);
     Desk[] desks = {new Desk(200, 300), new Desk(600, 300), new Desk(200, 700), new Desk(600, 700)};
 
@@ -78,9 +80,7 @@ public class Main extends JPanel {
         d1.paint(g2d);
         // mmmm
 
-        g2d.setColor(Color.black);
-        g.setFont(new Font("TimesRoman", Font.BOLD, 50));
-        g2d.drawString("PHYSICS", 500, 200);
+        cb.paint(g2d);
 
         p1.paint(g2d);
         p2.paint(g2d);
