@@ -4,6 +4,10 @@ public class Player1 extends Player {
     public Player1() {
         super(1);
     }
+    public void keyTyped(KeyEvent e){
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        }
+    }
 
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -18,9 +22,6 @@ public class Player1 extends Player {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             down = true;
         }
-        /*if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            interact = true;
-        }*/
     }
 
     public void keyReleased(KeyEvent e) {
