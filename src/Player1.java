@@ -20,7 +20,7 @@ public class Player1 extends Player {
         }
     }
 
-    public void keyReleased(KeyEvent e, Arson arson1) {
+    public void keyReleased(KeyEvent e, Arson arson1, TrashCan[] trashCans) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             left = false;
         }
@@ -34,7 +34,11 @@ public class Player1 extends Player {
             down = false;
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            interact = true;
+            for (TrashCan tc : trashCans) {
+                if (tc.isPlayerClose(this, this)) {
+                    tc.setOnFire();
+                }
+            }
         }
     }
 }

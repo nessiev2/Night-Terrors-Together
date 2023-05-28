@@ -9,7 +9,7 @@ public class Main extends JPanel {
     Transition transition1 = new Transition();
     //ARSON TASK TESTING
     Arson arson1 = new Arson(true);
-    TrashCan[] trashy = {new TrashCan(1000, 500)};
+    TrashCan[] trashCans = {new TrashCan(1000, 500)};
     //
     Player p1 = new Player1();
     Player p2 = new Player2();
@@ -30,8 +30,8 @@ public class Main extends JPanel {
             @Override
             public void keyReleased(KeyEvent e) {
 //Passes the KeyEvent e to the ball instance
-                p1.keyReleased(e, arson1);
-                p2.keyReleased(e, arson1);
+                p1.keyReleased(e, arson1, trashCans);
+                p2.keyReleased(e, arson1, trashCans);
             }
             @Override
             public void keyPressed(KeyEvent e) {
@@ -49,7 +49,7 @@ public class Main extends JPanel {
         t.move(p1.getX(), p1.getY(), p2.getX(), p2.getY());
 
         //ARSON1 TESTING
-        arson1.doTask(trashy, p1, p2);
+        arson1.doTask(trashCans, p1, p2);
         //
     }
 
@@ -65,7 +65,7 @@ public class Main extends JPanel {
             d.paint(g2d);
         }
 
-        for (TrashCan tc: trashy){
+        for (TrashCan tc: trashCans){
             tc.isPlayerClose(p1, p2);
             tc.paint(g2d);
         }

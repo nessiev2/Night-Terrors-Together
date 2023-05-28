@@ -28,7 +28,7 @@ public abstract class Player {
 
     public void keyTyped(KeyEvent e) {}
     public void keyPressed(KeyEvent e) {}
-    public void keyReleased(KeyEvent e, Arson arson1) {}
+    public void keyReleased(KeyEvent e, Arson arson1, TrashCan[] trashCans) {}
 
     public void move(Thing[] t) {
         if (right && checkRight(t) && (x + width + speed < Main.screenWidth)) {

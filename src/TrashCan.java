@@ -7,6 +7,10 @@ public class TrashCan extends Thing {
     private boolean isOnFire = false;
     private boolean playerIsClose = false;
 
+    public boolean getIsOnFire() {
+        return false;
+    }
+
     public TrashCan(int x, int y) {
         super(x, y, width, height);
     }
@@ -32,19 +36,21 @@ public class TrashCan extends Thing {
         }
     }
 
-    public void isPlayerClose(Player p1, Player p2) {
+    public boolean isPlayerClose(Player p1, Player p2) {
         double dist1 = Math.sqrt(Math.pow(getX()-p1.getX(), 2) + Math.pow(getY()-p1.getY(), 2));
         double dist2 = Math.sqrt(Math.pow(getX()-p2.getX(), 2) + Math.pow(getY()-p2.getY(), 2));
 
         if (dist1 <= 200 || dist2 <= 200) {
             playerIsClose = true;
+            return true;
         } else {
             playerIsClose = false;
+            return false;
         }
     }
 
 
-    private void setOnFire() {
+    public void setOnFire() {
         isOnFire = true;
     }
 
