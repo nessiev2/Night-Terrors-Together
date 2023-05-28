@@ -22,10 +22,10 @@ public class Door extends Thing {
 */
 
 
-        if (p1.getX() + p1.getWidth() <= getX() + width && p1.getY() + p1.getHeight() <= getY() + height) {
+        if (p1.getX() >= getX() && p1.getY() >= getY() && p1.getX() + p1.getWidth() <= getX() + width && p1.getY() + p1.getHeight() <= getY() + height) {
             System.out.println("P1 is contained");
             return true;
-        } else if (p2.getX() + p2.getWidth() <= getX() + width && p2.getY() + p2.getHeight() <= getY() + height) {
+        } else if (p2.getX() >= getX() && p2.getY() >= getY() && p2.getX() + p2.getWidth() <= getX() + width && p2.getY() + p2.getHeight() <= getY() + height) {
             System.out.println("P2 is contained");
             return true;
         }
