@@ -18,7 +18,7 @@ public class Arson extends Task{
                 counter++;
             }
 
-            System.out.println(counter);
+            //System.out.println(counter);
         }
         if (counter >= 3){
             isComplete = true;

@@ -26,13 +26,16 @@ public abstract class Player {
         this.playerN = playerN;
     }
 
-    public void keyPressed(KeyEvent e) {
-
+    public boolean keyTyped(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            return true;
+        }
+        return false;
     }
 
-    public void keyReleased(KeyEvent e) {
+    public void keyPressed(KeyEvent e) {}
 
-    }
+    public void keyReleased(KeyEvent e) {}
 
     public void move(Thing[] t) {
         if (right && checkRight(t) && (x + width + speed < Main.screenWidth)) {

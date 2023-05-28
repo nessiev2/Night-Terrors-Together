@@ -6,6 +6,7 @@ import javax.swing.*;
 public class Main extends JPanel {
     final static int screenWidth = 1920, screenHeight = 1080;
 
+    Transition transition1 = new Transition();
     //ARSON TASK TESTING
     Arson arson1 = new Arson(true);
     TrashCan[] trashy = {new TrashCan(200, 500)};
@@ -13,7 +14,6 @@ public class Main extends JPanel {
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();
-
 
     Wall w1 = new Wall(0, 0);
     Desk[] desks = {new Desk(200, 200), new Desk(600, 200), new Desk(200, 600), new Desk(600, 600)};
@@ -26,6 +26,8 @@ public class Main extends JPanel {
         addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
+                p1.keyTyped(e);
+                p2.keyTyped(e);
             }
             @Override
             public void keyReleased(KeyEvent e) {
@@ -49,7 +51,7 @@ public class Main extends JPanel {
         t.move(p1.getX(), p1.getY(), p2.getX(), p2.getY());
 
         //ARSON1 TESTING
-        arson1.doTask(trashy, p1, p2);
+        // arson1.doTask(trashy, p1, p2);
         //
     }
 
@@ -81,8 +83,9 @@ public class Main extends JPanel {
         p2.paint(g2d);
         t.paint(g2d);
 
-        if (d1.containsPlayer(p1) || d1.containsPlayer(p2)) {
-
+        if (d1.containsPlayer(p1, p2)) {// || d1.containsPlayer(p2)) {
+            System.out.println("transition black screen worked");
+            transition1.paint(g2d);
         }
     }
 

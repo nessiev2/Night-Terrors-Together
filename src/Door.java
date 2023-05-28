@@ -13,11 +13,21 @@ public class Door extends Thing {
         g2d.fillRect(getX(), getY(), width, height);
     }
 
-    public boolean containsPlayer(Player p) {
-        if (p.getX() >= getX() && p.getY() >= getY()) {
-            if (p.getX() + p.getWidth() <= getX() + width && p.getY() + p.getHeight() <= getY()) {
-                return true;
-            }
+    public boolean containsPlayer(Player p1, Player p2) {
+        /*System.out.println("p right: " + (p.getX()+p.getWidth()));
+        System.out.println("door right: " + (getX() + width));
+
+        System.out.println("p bottom: " + (p.getY()+p.getHeight()));
+        System.out.println("door bottom: " + (getY() + height));
+*/
+
+
+        if (p1.getX() + p1.getWidth() <= getX() + width && p1.getY() + p1.getHeight() <= getY() + height) {
+            System.out.println("P1 is contained");
+            return true;
+        } else if (p2.getX() + p2.getWidth() <= getX() + width && p2.getY() + p2.getHeight() <= getY() + height) {
+            System.out.println("P2 is contained");
+            return true;
         }
         return false;
     }
