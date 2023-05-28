@@ -34,13 +34,6 @@ public class Physics {
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard
 
-        /*
-        p1.paint(g2d);
-        p2.paint(g2d);
-        t.paint(g2d);
-        */
-        //cd.paint(g2d);
-
     }
 
 

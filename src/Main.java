@@ -12,7 +12,8 @@ public class Main extends JPanel {
 
     Transition transition1 = new Transition();
 
-    Door d1 = new Door(0, SCREEN_HEIGHT/4-200);
+    Door d1 = new Door(800, SCREEN_HEIGHT/4-200);
+    Door d2 = new Door(0, SCREEN_HEIGHT/4-200);
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();
@@ -73,13 +74,19 @@ public class Main extends JPanel {
                 d1.paint(g2d);
 
                 if (d1.containsPlayer(p1, p2)) {
-                    System.out.println("transition black screen worked");
+                    System.out.println("physics to chem");
                     transition1.paint(g2d);
                     changeCurrentClassroom(6);
                 }
                 break;
             case 6:
                 chem.paint(g, p1, p2, transition1);
+                d2.paint(g2d);
+                if (d2.containsPlayer(p1, p2)) {
+                    System.out.println("chem to physics");
+                    transition1.paint(g2d);
+                    changeCurrentClassroom(5);
+                }
                 break;
         }
 
