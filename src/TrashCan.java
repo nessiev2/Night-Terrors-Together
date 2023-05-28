@@ -3,6 +3,7 @@ import java.awt.*;
 public class TrashCan extends Thing {
     private final static int width = 100;
     private final static int height = 100;
+    private final static int RADIUS = 50;
 
     private boolean isOnFire = false;
     private boolean playerIsClose = false;
@@ -37,10 +38,11 @@ public class TrashCan extends Thing {
     }
 
     public boolean isPlayerClose(Player p1, Player p2) {
-        double dist1 = Math.sqrt(Math.pow(getX()-p1.getX(), 2) + Math.pow(getY()-p1.getY(), 2));
-        double dist2 = Math.sqrt(Math.pow(getX()-p2.getX(), 2) + Math.pow(getY()-p2.getY(), 2));
+        int centerX = (int)((2*getX() + getWidth())/2), centerY = (int)((2*getY() + getHeight())/2);
+        double dist1 = Math.sqrt(Math.pow(centerX-p1.getCenterX(), 2) + Math.pow(centerY-p1.getCenterY(), 2));
+        double dist2 = Math.sqrt(Math.pow(centerX-p2.getCenterX(), 2) + Math.pow(centerY-p2.getCenterY(), 2));
 
-        if (dist1 <= 200 || dist2 <= 200) {
+        if (dist1 <= RADIUS || dist2 <= RADIUS) {
             playerIsClose = true;
             return true;
         } else {
