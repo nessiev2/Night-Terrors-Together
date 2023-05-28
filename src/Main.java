@@ -68,6 +68,7 @@ public class Main extends JPanel {
         }
 
         for (TrashCan tc: trashy){
+            tc.isPlayerClose(p1, p2);
             tc.paint(g2d);
         }
         //tc1.paint(g2d);

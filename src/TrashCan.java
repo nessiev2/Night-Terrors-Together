@@ -4,8 +4,8 @@ public class TrashCan extends Thing {
     private final static int width = 100;
     private final static int height = 100;
 
-    private boolean isOnFire = true;
-    private boolean playerIsClose = true;
+    private boolean isOnFire = false;
+    private boolean playerIsClose = false;
 
     public TrashCan(int x, int y) {
         super(x, y, width, height);
@@ -31,6 +31,19 @@ public class TrashCan extends Thing {
             g2d.fillRect(getX()+2*i, getY()+2*i, width-4*i, height-4*i);
         }
     }
+
+    public void isPlayerClose(Player p1, Player p2) {
+        double dist1 = Math.sqrt(Math.pow(getX()-p1.getX(), 2) + Math.pow(getY()-p1.getY(), 2));
+        double dist2 = Math.sqrt(Math.pow(getX()-p2.getX(), 2) + Math.pow(getY()-p2.getY(), 2));
+
+        System.out.println("dist: " + dist1 + "   " + dist2);
+        if (dist1 <= 200 || dist2 <= 200) {
+            playerIsClose = true;
+        } else {
+            playerIsClose = false;
+        }
+    }
+
 
     private void setOnFire() {
         isOnFire = true;
