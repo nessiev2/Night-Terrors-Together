@@ -5,6 +5,11 @@ import javax.swing.*;
 
 public class Main extends JPanel {
     final static int screenWidth = 1920, screenHeight = 1080;
+
+    //ARSON TASK TESTING
+    Arson arson1 = new Arson(true);
+    TrashCan[] trashy = {new TrashCan(200, 500)};
+    //
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();
@@ -13,7 +18,7 @@ public class Main extends JPanel {
     Wall w1 = new Wall(0, 0);
     Desk[] desks = {new Desk(200, 200), new Desk(600, 200), new Desk(200, 600), new Desk(600, 600)};
 
-    TrashCan tc1 = new TrashCan(200, 500);
+    //TrashCan tc1 = new TrashCan(200, 500);
     Door d1 = new Door(0, w1.getWallHeight()-200);
 
     public Main() {
@@ -42,6 +47,10 @@ public class Main extends JPanel {
         p1.move(desks);
         p2.move(desks);
         t.move(p1.getX(), p1.getY(), p2.getX(), p2.getY());
+
+        //ARSON1 TESTING
+        arson1.doTask(trashy, p1, p2);
+        //
     }
 
     @Override
@@ -55,7 +64,11 @@ public class Main extends JPanel {
         for (Desk d:desks) {
             d.paint(g2d);
         }
-        tc1.paint(g2d);
+
+        for (TrashCan tc: trashy){
+            tc.paint(g2d);
+        }
+        //tc1.paint(g2d);
         // END
 
         //JOYI WALL
