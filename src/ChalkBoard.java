@@ -59,11 +59,12 @@ public class ChalkBoard extends Thing{
 
         //we skribl
         if (scribble) {
-            g2d.setColor(Color.white);
-            for (int j = 0; j < 5; j++){
+            g2d.setColor(Color.pink);
+            for (int j = 0; j < 20; j++){
                 String c = randomChar();
                 g2d.drawString(c, (int)(Math.random() * maxX + minX), (int)(Math.random() * maxY + minY));
             }
+            scribble = false;
         }
     }
 

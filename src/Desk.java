@@ -10,7 +10,7 @@ public class Desk extends Thing {
     }
 
     public void paint(Graphics g2d) {
-        g2d.setColor(Color.getHSBColor(283, 100, 74));
+        g2d.setColor(new Color(150, 75, 0));
         g2d.fillRect(getX(), getY(), width, height);
     }
 
