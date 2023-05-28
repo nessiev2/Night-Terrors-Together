@@ -8,8 +8,11 @@ public class Arson extends Task{
 
     public int doTask(TrashCan[] trash, Player p1, Player p2) {
         for (TrashCan t: trash){
-            // if (t.)
+            if (t.getIsOnFire()) {
+                counter++;
+            }
         }
+
         if (counter >= 3){
             isComplete = true;
             System.out.println("mmm finish");

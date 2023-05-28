@@ -8,7 +8,7 @@ public class TrashCan extends Thing {
     private boolean playerIsClose = false;
 
     public boolean getIsOnFire() {
-        return false;
+        return isOnFire;
     }
 
     public TrashCan(int x, int y) {
