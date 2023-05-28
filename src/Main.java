@@ -77,7 +77,6 @@ public class Main extends JPanel {
                     System.out.println("physics to chem");
                     transition1.paint(g2d);
                     changeCurrentClassroom(6);
-                    break;
                 }
                 break;
             case 6:
@@ -87,7 +86,6 @@ public class Main extends JPanel {
                     System.out.println("chem to physics");
                     transition1.paint(g2d);
                     changeCurrentClassroom(5);
-                    break;
                 }
                 break;
         }
