@@ -23,7 +23,7 @@ public class Player2 extends Player {
         }
     }
 
-    public void keyReleased(KeyEvent e, Arson arson1, TrashCan[] trashCans) {
+    public void keyReleased(KeyEvent e, Arson arson1, TrashCan[] trashCans, ChalkBoard cb) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             left = false;
         }
@@ -41,6 +41,9 @@ public class Player2 extends Player {
                 if (tc.isPlayerClose(this, this)) {
                     tc.setOnFire();
                 }
+            }
+            if (cb.isPlayerClose(this, this)) {
+                cb.scribble();
             }
         }
     }

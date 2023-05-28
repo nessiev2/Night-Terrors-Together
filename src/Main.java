@@ -34,8 +34,8 @@ public class Main extends JPanel {
             @Override
             public void keyReleased(KeyEvent e) {
 //Passes the KeyEvent e to the ball instance
-                p1.keyReleased(e, arson1, trashCans);
-                p2.keyReleased(e, arson1, trashCans);
+                p1.keyReleased(e, arson1, trashCans, cb);
+                p2.keyReleased(e, arson1, trashCans, cb);
             }
             @Override
             public void keyPressed(KeyEvent e) {
@@ -78,6 +78,7 @@ public class Main extends JPanel {
         w1.paint(g2d); // wall
         d1.paint(g2d); // door
 
+        cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard
 
         p1.paint(g2d);

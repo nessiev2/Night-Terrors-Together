@@ -15,7 +15,6 @@ public class Arson extends Task{
 
         if (counter >= 3){
             isComplete = true;
-            System.out.println("mmm finish");
             return 1;
         }
 
