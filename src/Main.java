@@ -10,21 +10,12 @@ public class Main extends JPanel {
     CountDown cd = new CountDown();
 
     Transition transition1 = new Transition();
-    //ARSON TASK TESTING
-    Arson arson1 = new Arson(true);
-    TrashCan[] trashCans = {new TrashCan(1000, 400), new TrashCan(1300, 400), new TrashCan(1000, 600)};
-    //
+
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();
 
-    ChalkBoard cb = new ChalkBoard(300, 10);
-
-    Wall w1 = new Wall(0, 0);
-    Desk[] desks = {new Desk(200, 300), new Desk(600, 300), new Desk(200, 700), new Desk(600, 700)};
-
-    //TrashCan tc1 = new TrashCan(200, 500);
-    Door d1 = new Door(0, w1.getWallHeight()-200);
+    Physics phys = new Physics();
 
     public Main() {
 
@@ -35,8 +26,8 @@ public class Main extends JPanel {
             @Override
             public void keyReleased(KeyEvent e) {
 //Passes the KeyEvent e to the ball instance
-                p1.keyReleased(e, arson1, trashCans, cb);
-                p2.keyReleased(e, arson1, trashCans, cb);
+                p1.keyReleased(e, phys.arson1, phys.trashCans, phys.cb);
+                p2.keyReleased(e, phys.arson1, phys.trashCans, phys.cb);
             }
             @Override
             public void keyPressed(KeyEvent e) {
@@ -49,8 +40,8 @@ public class Main extends JPanel {
     }
 
     private void move() {
-        p1.move(desks);
-        p2.move(desks);
+        p1.move(phys.desks);
+        p2.move(phys.desks);
         t.move(p1.getX(), p1.getY(), p2.getX(), p2.getY());
         cd.move();
         if (cd.getTime() <= 0) {
@@ -58,7 +49,7 @@ public class Main extends JPanel {
         }
 
         //ARSON1 TESTING
-        arson1.doTask(trashCans, p1, p2);
+        phys.arson1.doTask(phys.trashCans, p1, p2);
         //
     }
 
@@ -69,32 +60,13 @@ public class Main extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.BLACK);
 
-        // IRENE IS MAKING A CLASSROOM DESK TRIAL
-        for (Desk d:desks) {
-            d.paint(g2d);
-        }
-
-        for (TrashCan tc: trashCans){
-            tc.isPlayerClose(p1, p2);
-            tc.paint(g2d);
-        }
-
-        w1.paint(g2d); // wall
-        d1.paint(g2d); // door
-
-        cb.isPlayerClose(p1, p2);
-        cb.paint(g2d); // chalkboard
+        phys.paint(g, p1, p2, transition1);
 
         p1.paint(g2d);
         p2.paint(g2d);
         t.paint(g2d);
 
         cd.paint(g2d);
-
-        if (d1.containsPlayer(p1, p2)) {
-            System.out.println("transition black screen worked");
-            transition1.paint(g2d);
-        }
     }
 
     public static void main(String[] args) throws InterruptedException {
