@@ -6,16 +6,23 @@ import javax.swing.*;
 public class Main extends JPanel {
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
     boolean gameOver = false;
+    int currentClassroom = 5;
 
     CountDown cd = new CountDown();
 
     Transition transition1 = new Transition();
 
+    Door d1 = new Door(0, SCREEN_HEIGHT/4-200);
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();
 
     Physics phys = new Physics();
+    Chemistry chem = new Chemistry();
+
+    public void changeCurrentClassroom(int i) {
+        currentClassroom = i;
+    }
 
     public Main() {
 
@@ -60,7 +67,21 @@ public class Main extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.BLACK);
 
-        phys.paint(g, p1, p2, transition1);
+        switch(currentClassroom) {
+            case 5:
+                phys.paint(g, p1, p2, transition1);
+                d1.paint(g2d);
+
+                if (d1.containsPlayer(p1, p2)) {
+                    System.out.println("transition black screen worked");
+                    transition1.paint(g2d);
+                    changeCurrentClassroom(6);
+                }
+                break;
+            case 6:
+                chem.paint(g, p1, p2, transition1);
+                break;
+        }
 
         p1.paint(g2d);
         p2.paint(g2d);
@@ -77,6 +98,7 @@ public class Main extends JPanel {
         frame.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
         while (!c.gameOver)
         {

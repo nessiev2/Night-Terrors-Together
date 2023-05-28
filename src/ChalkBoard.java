@@ -7,13 +7,15 @@ public class ChalkBoard extends Thing{
     private final int maxY = 10 + BOARD_HEIGHT, minY = 10;
     private final int RADIUS = 50;
     private boolean scribble = false, playerIsClose = false;
+    private String classroom;
 
     public boolean getScribble() {
         return scribble;
     }
 
-    public ChalkBoard(int x, int y){
+    public ChalkBoard(int x, int y, String classroom){
         super(x, y, BOARD_WIDTH, BOARD_HEIGHT);
+        this.classroom = classroom;
     }
 
     public boolean isPlayerClose(Player p1, Player p2) {
@@ -57,7 +59,7 @@ public class ChalkBoard extends Thing{
 
         g2d.setColor(Color.white);
         g2d.setFont(new Font("TimesRoman", Font.BOLD, 50));
-        g2d.drawString("PHYSICS", 500, 200);
+        g2d.drawString(classroom, 500, 200);
 
         //we skribl
         if (scribble) {

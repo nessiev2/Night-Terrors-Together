@@ -1,15 +1,16 @@
 import java.awt.*;
 
-public class Physics {
+public class Chemistry {
     Arson arson1 = new Arson(true);
     TrashCan[] trashCans = {new TrashCan(1000, 400), new TrashCan(1300, 400), new TrashCan(1000, 600)};
 
-    ChalkBoard cb = new ChalkBoard(300, 10, "PHYSICS");
+    ChalkBoard cb = new ChalkBoard(300, 10, "CHEMISTRY");
 
     Wall w1 = new Wall(0, 0);
     Desk[] desks = {new Desk(200, 300), new Desk(600, 300), new Desk(200, 700), new Desk(600, 700)};
+    Door d1 = new Door(0, w1.getWallHeight()-200);
 
-    public Physics() {
+    public Chemistry() {
 
     }
 
@@ -30,6 +31,7 @@ public class Physics {
         }
 
         w1.paint(g2d); // wall
+        d1.paint(g2d); // door
 
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard
@@ -41,6 +43,10 @@ public class Physics {
         */
         //cd.paint(g2d);
 
+        if (d1.containsPlayer(p1, p2)) {
+            System.out.println("transition black screen worked");
+            transition1.paint(g2d);
+        }
     }
 
 
