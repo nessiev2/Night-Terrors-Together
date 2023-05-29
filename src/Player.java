@@ -31,6 +31,11 @@ public abstract class Player {
         this.playerN = playerN;
     }
 
+    public void spawnPlayer(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
     //public void keyTyped(KeyEvent e) {}
     public void keyPressed(KeyEvent e) {}
     public void keyReleased(KeyEvent e, Arson arson1, TrashCan[] trashCans, ChalkBoard cb) {}
