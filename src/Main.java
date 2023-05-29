@@ -15,6 +15,7 @@ public class Main extends JPanel {
     Door physToChem = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/4-200);
     Door chemToPhys = new Door(0, SCREEN_HEIGHT/4-200);
     Door physToBio = new Door(0, SCREEN_HEIGHT/4-200);
+    Door bioToPhys = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/4-200);
 
     Player p1 = new Player1();
     Player p2 = new Player2();
@@ -22,6 +23,7 @@ public class Main extends JPanel {
     Physics phys = new Physics();
     Chemistry chem = new Chemistry();
     Biology bio = new Biology();
+
 
     public void changeCurrentClassroom(int i) {
         currentClassroom = i;
@@ -77,8 +79,15 @@ public class Main extends JPanel {
         switch(currentClassroom) {
             case 4:
                 bio.paint(g, p1, p2, transition1);
+                bioToPhys.paint(g2d);
+                if (bioToPhys.containsPlayer(p1, p2)) {
+                    System.out.println("bio to physics");
+                    transition1.paint(g2d);
+                    p1.spawnPlayer(physToBio.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
+                    p2.spawnPlayer(physToBio.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
+                    changeCurrentClassroom(5);
+                }
                 break;
-
             case 5:
                 phys.paint(g, p1, p2, transition1);
                 physToChem.paint(g2d);
@@ -87,11 +96,15 @@ public class Main extends JPanel {
                 if (physToChem.containsPlayer(p1, p2)) {
                     System.out.println("physics to chem");
                     transition1.paint(g2d);
+                    p1.spawnPlayer(chemToPhys.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
+                    p2.spawnPlayer(chemToPhys.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
                     changeCurrentClassroom(6);
                 }
                 if (physToBio.containsPlayer(p1, p2)) {
                     System.out.println("physics to bio");
                     transition1.paint(g2d);
+                    p1.spawnPlayer(bioToPhys.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
+                    p2.spawnPlayer(bioToPhys.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
                     changeCurrentClassroom(4);
                 }
                 break;
@@ -101,6 +114,8 @@ public class Main extends JPanel {
                 if (chemToPhys.containsPlayer(p1, p2)) {
                     System.out.println("chem to physics");
                     transition1.paint(g2d);
+                    p1.spawnPlayer(physToChem.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
+                    p2.spawnPlayer(physToChem.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
                     changeCurrentClassroom(5);
                 }
                 break;
