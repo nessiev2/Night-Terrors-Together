@@ -18,6 +18,13 @@ public class Main extends JPanel {
     Physics phys = new Physics();
     Chemistry chem = new Chemistry();
 
+    //Desk d1 = new Desk(800, 500);
+
+    Desk[] desks = {new Desk(200, 400), new Desk(500, 400), new Desk(200, 700), new Desk(500, 400)};
+
+    Wall w1 = new Wall(0, 0);
+    TrashCan tc1 = new TrashCan(200, 500);
+    Door door1 = new Door(0, w1.getWallHeight()-200);
     public void changeCurrentClassroom(int i) {
         currentClassroom = i;
     }
@@ -46,8 +53,12 @@ public class Main extends JPanel {
     }
 
     private void move() {
+        p1.move(desks);
+        p2.move(desks);
+
         p1.move(phys.desks);
         p2.move(phys.desks);
+
         t.move(p1.getX(), p1.getY(), p2.getX(), p2.getY());
         cd.move();
         if (cd.getTime() <= 0) {
@@ -65,6 +76,13 @@ public class Main extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.BLACK);
+
+        // IRENE IS MAKING A CLASSROOM DESK TRIAL
+        for (Desk d:desks) {
+            d.paint(g2d);
+        }
+        tc1.paint(g2d);
+        // END
 
         switch(currentClassroom) {
             case 5:
