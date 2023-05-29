@@ -13,12 +13,16 @@ public class Main extends JPanel {
     Transition transition1 = new Transition();
 
     Door physToChem = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/4-200);
-    Door chemToPhys = new Door(0, SCREEN_HEIGHT/4-200);
+    Door chemToPhys = new Door(
+            0, SCREEN_HEIGHT/4-200);
+    Door physToBio = new Door(0, SCREEN_HEIGHT-400);
+
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();
     Physics phys = new Physics();
     Chemistry chem = new Chemistry();
+    Biology bio = new Biology();
 
     public void changeCurrentClassroom(int i) {
         currentClassroom = i;
@@ -69,14 +73,24 @@ public class Main extends JPanel {
         g2d.setColor(Color.BLACK);
 
         switch(currentClassroom) {
+            case 4:
+                bio.paint(g, p1, p2, transition1);
+                break;
+
             case 5:
                 phys.paint(g, p1, p2, transition1);
                 physToChem.paint(g2d);
+                physToBio.paint(g2d);
 
                 if (physToChem.containsPlayer(p1, p2)) {
                     System.out.println("physics to chem");
                     transition1.paint(g2d);
                     changeCurrentClassroom(6);
+                }
+                if (physToBio.containsPlayer(p1, p2)) {
+                    System.out.println("physics to bio");
+                    transition1.paint(g2d);
+                    changeCurrentClassroom(4);
                 }
                 break;
             case 6:
