@@ -40,7 +40,7 @@ public class Main extends JPanel {
                 } else if (currentClassroom == 6){
                     p1.keyReleased(e, chem.arson6, chem.trashCans, chem.cb);
                     p2.keyReleased(e, chem.arson6, chem.trashCans, chem.cb);
-                }
+                } 
             }
             @Override
             public void keyPressed(KeyEvent e) {
