@@ -4,27 +4,22 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 
 public class Main extends JPanel {
+
+
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
     boolean gameOver = false;
     int currentClassroom = 5;
     CountDown cd = new CountDown();
     Transition transition1 = new Transition();
 
-    Door d1 = new Door(800, SCREEN_HEIGHT/4-200);
-    Door d2 = new Door(0, SCREEN_HEIGHT/4-200);
+    Door physToChem = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/4-200);
+    Door chemToPhys = new Door(0, SCREEN_HEIGHT/4-200);
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();
     Physics phys = new Physics();
     Chemistry chem = new Chemistry();
 
-    //Desk d1 = new Desk(800, 500);
-
-    Desk[] desks = {new Desk(200, 400), new Desk(500, 400), new Desk(200, 700), new Desk(500, 400)};
-
-    Wall w1 = new Wall(0, 0);
-    TrashCan tc1 = new TrashCan(200, 500);
-    Door door1 = new Door(0, w1.getWallHeight()-200);
     public void changeCurrentClassroom(int i) {
         currentClassroom = i;
     }
@@ -53,12 +48,8 @@ public class Main extends JPanel {
     }
 
     private void move() {
-        p1.move(desks);
-        p2.move(desks);
-
         p1.move(phys.desks);
         p2.move(phys.desks);
-
         t.move(p1.getX(), p1.getY(), p2.getX(), p2.getY());
         cd.move();
         if (cd.getTime() <= 0) {
@@ -77,19 +68,12 @@ public class Main extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.BLACK);
 
-        // IRENE IS MAKING A CLASSROOM DESK TRIAL
-        for (Desk d:desks) {
-            d.paint(g2d);
-        }
-        tc1.paint(g2d);
-        // END
-
         switch(currentClassroom) {
             case 5:
                 phys.paint(g, p1, p2, transition1);
-                d1.paint(g2d);
+                physToChem.paint(g2d);
 
-                if (d1.containsPlayer(p1, p2)) {
+                if (physToChem.containsPlayer(p1, p2)) {
                     System.out.println("physics to chem");
                     transition1.paint(g2d);
                     changeCurrentClassroom(6);
@@ -97,8 +81,8 @@ public class Main extends JPanel {
                 break;
             case 6:
                 chem.paint(g, p1, p2, transition1);
-                d2.paint(g2d);
-                if (d2.containsPlayer(p1, p2)) {
+                chemToPhys.paint(g2d);
+                if (chemToPhys.containsPlayer(p1, p2)) {
                     System.out.println("chem to physics");
                     transition1.paint(g2d);
                     changeCurrentClassroom(5);
