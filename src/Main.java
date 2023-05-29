@@ -4,10 +4,19 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 
 public class Main extends JPanel {
-    final static int screenWidth = 1920, screenHeight = 1080;
+    final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
+    boolean gameOver = false;
+    int currentClassroom = 5;
+    CountDown cd = new CountDown();
+    Transition transition1 = new Transition();
+
+    Door d1 = new Door(800, SCREEN_HEIGHT/4-200);
+    Door d2 = new Door(0, SCREEN_HEIGHT/4-200);
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();
+    Physics phys = new Physics();
+    Chemistry chem = new Chemistry();
 
     //Desk d1 = new Desk(800, 500);
 
@@ -16,22 +25,26 @@ public class Main extends JPanel {
     Wall w1 = new Wall(0, 0);
     TrashCan tc1 = new TrashCan(200, 500);
     Door door1 = new Door(0, w1.getWallHeight()-200);
+    public void changeCurrentClassroom(int i) {
+        currentClassroom = i;
+    }
 
     public Main() {
-
         addKeyListener(new KeyListener() {
             @Override
-            public void keyTyped(KeyEvent e) {
-            }
+            public void keyTyped(KeyEvent e) {}
             @Override
             public void keyReleased(KeyEvent e) {
-//Passes the KeyEvent e to the ball instance
-                p1.keyReleased(e);
-                p2.keyReleased(e);
+                if (currentClassroom == 5){
+                    p1.keyReleased(e, phys.arson5, phys.trashCans, phys.cb);
+                    p2.keyReleased(e, phys.arson5, phys.trashCans, phys.cb);
+                } else if (currentClassroom == 6){
+                    p1.keyReleased(e, chem.arson6, chem.trashCans, chem.cb);
+                    p2.keyReleased(e, chem.arson6, chem.trashCans, chem.cb);
+                }
             }
             @Override
             public void keyPressed(KeyEvent e) {
-//Passes the KeyEvent e to the ball instance
                 p1.keyPressed(e);
                 p2.keyPressed(e);
             }
@@ -42,7 +55,19 @@ public class Main extends JPanel {
     private void move() {
         p1.move(desks);
         p2.move(desks);
+
+        p1.move(phys.desks);
+        p2.move(phys.desks);
+
         t.move(p1.getX(), p1.getY(), p2.getX(), p2.getY());
+        cd.move();
+        if (cd.getTime() <= 0) {
+            gameOver = true;
+        }
+
+        //ARSON1 TESTING
+        phys.arson5.doTask(phys.trashCans, p1, p2);
+        //
     }
 
     @Override
@@ -59,27 +84,46 @@ public class Main extends JPanel {
         tc1.paint(g2d);
         // END
 
-        //JOYI WALL
-        w1.paint(g2d);
-        //testing door
-        door1.paint(g2d);
-        // mmmm
+        switch(currentClassroom) {
+            case 5:
+                phys.paint(g, p1, p2, transition1);
+                d1.paint(g2d);
+
+                if (d1.containsPlayer(p1, p2)) {
+                    System.out.println("physics to chem");
+                    transition1.paint(g2d);
+                    changeCurrentClassroom(6);
+                }
+                break;
+            case 6:
+                chem.paint(g, p1, p2, transition1);
+                d2.paint(g2d);
+                if (d2.containsPlayer(p1, p2)) {
+                    System.out.println("chem to physics");
+                    transition1.paint(g2d);
+                    changeCurrentClassroom(5);
+                }
+                break;
+        }
 
         p1.paint(g2d);
         p2.paint(g2d);
         t.paint(g2d);
+
+        cd.paint(g2d);
     }
 
     public static void main(String[] args) throws InterruptedException {
-        JFrame frame = new JFrame("UI Testing");
+        JFrame frame = new JFrame("Physics");
 
         Main c = new Main();
         frame.add(c);
-        frame.setSize(screenWidth, screenHeight);
+        frame.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        while (true)
+
+        while (!c.gameOver)
         {
             c.move(); //Updates the coordinates
             c.repaint(); //Calls the paint method

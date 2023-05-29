@@ -3,9 +3,14 @@ import java.awt.*;
 public class TrashCan extends Thing {
     private final static int width = 100;
     private final static int height = 100;
+    private final static int RADIUS = 50;
 
-    private boolean isOnFire = true;
-    private boolean playerIsClose = true;
+    private boolean isOnFire = false;
+    private boolean playerIsClose = false;
+
+    public boolean getIsOnFire() {
+        return isOnFire;
+    }
 
     public TrashCan(int x, int y) {
         super(x, y, width, height);
@@ -32,7 +37,22 @@ public class TrashCan extends Thing {
         }
     }
 
-    private void setOnFire() {
+    public boolean isPlayerClose(Player p1, Player p2) {
+        int centerX = (int)((2*getX() + getWidth())/2), centerY = (int)((2*getY() + getHeight())/2);
+        double dist1 = Math.sqrt(Math.pow(centerX-p1.getCenterX(), 2) + Math.pow(centerY-p1.getCenterY(), 2));
+        double dist2 = Math.sqrt(Math.pow(centerX-p2.getCenterX(), 2) + Math.pow(centerY-p2.getCenterY(), 2));
+
+        if (dist1 <= RADIUS || dist2 <= RADIUS) {
+            playerIsClose = true;
+            return true;
+        } else {
+            playerIsClose = false;
+            return false;
+        }
+    }
+
+
+    public void setOnFire() {
         isOnFire = true;
     }
 
