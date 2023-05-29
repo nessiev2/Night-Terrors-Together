@@ -1,13 +1,13 @@
 import java.awt.*;
 
 public class Biology {
-    Arson arson6 = new Arson(true);
+    Arson arson4 = new Arson(true);
     TrashCan[] trashCans = {new TrashCan(1300, 400), new TrashCan(1300, 600), new TrashCan(1000, 600)};
 
     ChalkBoard cb = new ChalkBoard(300, 10, "BIOLOGY");
 
     Wall w1 = new Wall(0, 0);
-    Desk[] desks = {new Desk(200, 300), new Desk(600, 300), new Desk(200, 700), new Desk(600, 700)};
+    Desk[] desks = {new Desk(200, 500), new Desk(600, 500), new Desk(200, 800), new Desk(600, 800)};
 
     public Biology() {
 
