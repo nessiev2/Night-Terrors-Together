@@ -2,47 +2,56 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public abstract class Player {
-    protected boolean right = false, left = false, up = false, down = false;
+    protected boolean right = false, left = false, up = false, down = false, interact = false;
     private int speed = 10;
-    private int x;
-    private int y;
+    private int x, centerX;
+    private int y, centerY;
     private int width = 100;
     private int height = 150;
-    private int playern;
+    private int playerN;
 
     public int getX() {
         return x;
     }
 
-    public int getY() {return y; }
-
-    public Player(int playern) {
-        x = 0;
-        y = 0;
-        this.playern = playern;
+    public int getY() { return y; }
+    public int getCenterX() {
+        return centerX;
     }
 
-    public void keyPressed(KeyEvent e) {
+    public int getCenterY() { return centerY; }
 
+    public int getWidth() { return width; }
+
+    public int getHeight() { return height; }
+
+    public Player(int playerN) {
+        x = 500;
+        y = 500;
+        this.playerN = playerN;
     }
 
-    public void keyReleased(KeyEvent e) {
-
-    }
+    //public void keyTyped(KeyEvent e) {}
+    public void keyPressed(KeyEvent e) {}
+    public void keyReleased(KeyEvent e, Arson arson1, TrashCan[] trashCans, ChalkBoard cb) {}
 
     public void move(Thing[] t) {
-        if (right && (x + width + speed < Main.screenWidth) && checkRight(t)) {
+        if (right && checkRight(t) && (x + width + speed < Main.SCREEN_WIDTH)) {
             x += speed;
         }
-        if (left && (x - speed >= 0) && checkLeft(t)) {
+        if (left && checkLeft(t) && (x - speed >= 0)) {
             x -= speed;
         }
-        if (down && (y + height + speed < Main.screenHeight) && checkDown(t)) {
+        if (down && checkDown(t) && y + height + speed < Main.SCREEN_HEIGHT) {
             y += speed;
         }
-        if (up && (y - speed >= 0) && checkUp(t)) {
+        if (up && checkUp(t) && (y - speed >= 0)) {
             y -= speed;
         }
+
+        centerX = (int)((2*x + width)/2);
+        centerY = (int)((2*y + height)/2);
+
     }
 
     public boolean checkRight(Thing[] things) {
@@ -77,10 +86,8 @@ public abstract class Player {
         return true;
     }
 
-
-
     public void paint(Graphics2D g2d) {
-        if (playern == 1)
+        if (playerN == 1)
             g2d.setColor(Color.magenta);
         else
             g2d.setColor(Color.green);
