@@ -6,8 +6,8 @@ public abstract class Player {
     private int speed = 10;
     private int x, centerX;
     private int y, centerY;
-    private int width = 100;
-    private int height = 150;
+    private int width = 80;
+    private int height = 120;
     private int playerN;
 
     public int getX() {
@@ -39,13 +39,13 @@ public abstract class Player {
         if (right && checkRight(t) && (x + width + speed < Main.SCREEN_WIDTH)) {
             x += speed;
         }
-        if (left && checkLeft(t) && (x - speed >= 0)) {
+        if (left && checkLeft(t) && (x - speed > 0)) {
             x -= speed;
         }
         if (down && checkDown(t) && y + height + speed < Main.SCREEN_HEIGHT) {
             y += speed;
         }
-        if (up && checkUp(t) && (y - speed >= 115)) {
+        if (up && checkUp(t) && (y - speed > 115)) {
             y -= speed;
         }
 
@@ -56,7 +56,7 @@ public abstract class Player {
 
     public boolean checkRight(Thing[] things) {
         for (Thing t:things)
-            if (x <= t.getX() && x + width + speed >= t.getX() && y + height >= t.getY() && y <= t.getY() + t.getHeight()) {
+            if (x < t.getX() && x + width + speed > t.getX() && y + height > t.getY() && y < t.getY() + t.getHeight()) {
                 return false;
             }
         return true;
@@ -64,7 +64,7 @@ public abstract class Player {
 
     public boolean checkLeft(Thing[] things) {
         for (Thing t:things)
-            if (x >= t.getX() && x - speed <= t.getX() + t.getWidth() && y + height >= t.getY() && y <= t.getY() + t.getHeight()) {
+            if (x > t.getX() && x - speed < t.getX() + t.getWidth() && y + height > t.getY() && y < t.getY() + t.getHeight()) {
                 return false;
             }
         return true;
@@ -72,7 +72,7 @@ public abstract class Player {
 
     public boolean checkDown(Thing[] things) {
         for (Thing t:things)
-            if (y <= t.getY() && y + height + speed >= t.getY() && x + width >= t.getX() && x <= t.getX() + t.getWidth()) {
+            if (y < t.getY() && y + height + speed > t.getY() && x + width > t.getX() && x < t.getX() + t.getWidth()) {
                 return false;
             }
         return true;
@@ -80,7 +80,7 @@ public abstract class Player {
 
     public boolean checkUp(Thing[] things) {
         for (Thing t:things)
-            if (y >= t.getY() && y - speed <= t.getY() + t.getHeight() && x + width >= t.getX() && x <= t.getX() + t.getWidth()) {
+            if (y > t.getY() && y - speed < t.getY() + t.getHeight() && x + width > t.getX() && x < t.getX() + t.getWidth()) {
                 return false;
             }
         return true;
