@@ -15,6 +15,7 @@ public class Main extends JPanel {
     Door physToChem = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/4-200);
     Door chemToPhys = new Door(0, SCREEN_HEIGHT/4-200);
     Door physToBio = new Door(0, SCREEN_HEIGHT/4-200);
+    Door bioToPhys = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/4-200);
 
     Player p1 = new Player1();
     Player p2 = new Player2();
@@ -74,8 +75,13 @@ public class Main extends JPanel {
         switch(currentClassroom) {
             case 4:
                 bio.paint(g, p1, p2, transition1);
+                bioToPhys.paint(g2d);
+                if (bioToPhys.containsPlayer(p1, p2)) {
+                    System.out.println("bio to physics");
+                    transition1.paint(g2d);
+                    changeCurrentClassroom(5);
+                }
                 break;
-
             case 5:
                 phys.paint(g, p1, p2, transition1);
                 physToChem.paint(g2d);
