@@ -12,10 +12,10 @@ public class Main extends JPanel {
     CountDown cd = new CountDown();
     Transition transition1 = new Transition();
 
-    Door physToChem = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/4-200);
-    Door chemToPhys = new Door(0, SCREEN_HEIGHT/4-200);
-    Door physToBio = new Door(0, SCREEN_HEIGHT/4-200);
-    Door bioToPhys = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/4-200);
+    Door physToChem = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
+    Door chemToPhys = new Door(0, SCREEN_HEIGHT/2-100);
+    Door physToBio = new Door(0, SCREEN_HEIGHT/2-100);
+    Door bioToPhys = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
 
     Player p1 = new Player1();
     Player p2 = new Player2();
