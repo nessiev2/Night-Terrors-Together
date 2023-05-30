@@ -9,6 +9,7 @@ public abstract class Player {
     private int width = 80;
     private int height = 120;
     private int playerN;
+    private boolean isCaught = false;
 
     public int getX() {
         return x;
@@ -24,6 +25,8 @@ public abstract class Player {
     public int getWidth() { return width; }
 
     public int getHeight() { return height; }
+
+    public boolean getIsCaught() { return isCaught; }
 
     public Player(int playerN) {
         x = 500;
@@ -42,22 +45,25 @@ public abstract class Player {
 
     public void checkTeacher(Teacher[] t) {
         if (!checkRight(t) || !checkLeft(t) || !checkDown(t) || !checkUp(t)) {
-            spawnPlayer(0,0);
+            isCaught = true;
+            //spawnPlayer(0,0);
         }
     }
 
     public void move(Thing[] t) {
-        if (right && checkRight(t) && (x + width + speed < Main.SCREEN_WIDTH)) {
-            x += speed;
-        }
-        if (left && checkLeft(t) && (x - speed > 0)) {
-            x -= speed;
-        }
-        if (down && checkDown(t) && y + height + speed < Main.SCREEN_HEIGHT) {
-            y += speed;
-        }
-        if (up && checkUp(t) && (y - speed > 145)) {
-            y -= speed;
+        if (!isCaught) {
+            if (right && checkRight(t) && (x + width + speed < Main.SCREEN_WIDTH)) {
+                x += speed;
+            }
+            if (left && checkLeft(t) && (x - speed > 0)) {
+                x -= speed;
+            }
+            if (down && checkDown(t) && y + height + speed < Main.SCREEN_HEIGHT) {
+                y += speed;
+            }
+            if (up && checkUp(t) && (y - speed > 145)) {
+                y -= speed;
+            }
         }
 
         centerX = (int)((2*x + width)/2);

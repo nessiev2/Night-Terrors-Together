@@ -31,6 +31,9 @@ public class Main extends JPanel {
     Biology bio = new Biology();
 
 
+    public void changeGameOver() {
+        gameOver = true;
+    }
 
     public void changeCurrentClassroom(int i) {
         currentClassroom = i;
@@ -90,7 +93,7 @@ public class Main extends JPanel {
                 break;
 
         }
-        t.move(p1.getX(), p1.getY(), p2.getX(), p2.getY());
+        t.move(p1, p2, p1.getX(), p1.getY(), p2.getX(), p2.getY());
         cd.move();
         if (cd.getTime() <= 0) {
             gameOver = true;
@@ -172,8 +175,10 @@ public class Main extends JPanel {
                 break;
         }
 
-        p1.paint(g2d);
-        p2.paint(g2d);
+        if (!p1.getIsCaught())
+            p1.paint(g2d);
+        if (!p2.getIsCaught())
+            p2.paint(g2d);
         t.paint(g2d);
 
         cd.paint(g2d);
