@@ -24,7 +24,7 @@ public class CountDown {
     }
 
     public void paint(Graphics g2d) {
-        g2d.setColor(Color.black);
+        g2d.setColor(Color.white);
         if (elapsedSeconds <= 10) {
             g2d.setColor(Color.red);
         }
