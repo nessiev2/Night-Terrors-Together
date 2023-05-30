@@ -7,7 +7,7 @@ public class Chemistry {
     ChalkBoard cb = new ChalkBoard(300, 10, "CHEMISTRY");
 
     Wall w1 = new Wall(0, 0);
-    Desk[] desks = {new Desk(200, 500), new Desk(600, 500), new Desk(200, 800), new Desk(600, 800)};
+    Desk[] desks = {new Desk(400, 500), new Desk(800, 500), new Desk(400, 800), new Desk(800, 800)};
 
     public Chemistry() {
 
