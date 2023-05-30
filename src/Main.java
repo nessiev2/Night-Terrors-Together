@@ -37,6 +37,9 @@ public class Main extends JPanel {
     }
 
     public Main() {
+        p1.spawnPlayer(SCREEN_WIDTH/2-p1.getWidth(), 200);
+        p2.spawnPlayer(SCREEN_WIDTH/2-2*p1.getWidth(), 200);
+
         addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
