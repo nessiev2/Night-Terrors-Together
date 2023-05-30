@@ -16,6 +16,10 @@ public class Thing {
 
     public int getHeight() { return height; }
 
+    public void changeX(int x) { this.x += x; }
+
+    public void changeY(int y) { this.y += y; }
+
     public Thing(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;

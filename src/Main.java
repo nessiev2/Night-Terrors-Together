@@ -23,6 +23,7 @@ public class Main extends JPanel {
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();
+    Teacher[] teacher = {t};
 
     Office office = new Office();
     Physics phys = new Physics();
@@ -65,6 +66,8 @@ public class Main extends JPanel {
     }
 
     private void move() {
+        p1.checkTeacher(teacher);
+        p2.checkTeacher(teacher);
         switch(currentClassroom) {
             case 1:
                 p1.move(office.desks);
