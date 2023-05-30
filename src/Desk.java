@@ -2,11 +2,19 @@ import java.awt.*;
 
 public class Desk extends Thing {
 
-    private final static int width = 200;
-    private final static int height = 150;
+    private int width;
+    private int height;
 
     public Desk(int x, int y) {
-        super(x, y, width, height);
+        super(x, y, 200, 150);
+        width = 200;
+        height = 150;
+    }
+
+    public Desk(int x, int y, int w, int h) {
+        super(x, y, w, h);
+        width = w;
+        height = h;
     }
 
     public void paint(Graphics g2d) {

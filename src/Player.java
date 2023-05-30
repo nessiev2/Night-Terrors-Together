@@ -40,6 +40,12 @@ public abstract class Player {
     public void keyPressed(KeyEvent e) {}
     public void keyReleased(KeyEvent e, Arson arson1, TrashCan[] trashCans, ChalkBoard cb) {}
 
+    public void checkTeacher(Teacher[] t) {
+        if (!checkRight(t) || !checkLeft(t) || !checkDown(t) || !checkUp(t)) {
+            spawnPlayer(0,0);
+        }
+    }
+
     public void move(Thing[] t) {
         if (right && checkRight(t) && (x + width + speed < Main.SCREEN_WIDTH)) {
             x += speed;
@@ -56,7 +62,6 @@ public abstract class Player {
 
         centerX = (int)((2*x + width)/2);
         centerY = (int)((2*y + height)/2);
-
     }
 
     public boolean checkRight(Thing[] things) {
