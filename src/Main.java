@@ -12,6 +12,9 @@ public class Main extends JPanel {
     CountDown cd = new CountDown();
     Transition transition1 = new Transition();
 
+
+    Door bioToOffice = new Door(800, 200);
+    Door officeToBio = new Door(800, 800);
     Door physToChem = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
     Door chemToPhys = new Door(0, SCREEN_HEIGHT/2-100);
     Door physToBio = new Door(0, SCREEN_HEIGHT/2-100);
@@ -20,9 +23,12 @@ public class Main extends JPanel {
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();
+
+    Office office = new Office();
     Physics phys = new Physics();
     Chemistry chem = new Chemistry();
     Biology bio = new Biology();
+
 
 
     public void changeCurrentClassroom(int i) {
@@ -35,7 +41,10 @@ public class Main extends JPanel {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyReleased(KeyEvent e) {
-                if (currentClassroom == 5){
+                if (currentClassroom == 1) {
+                    p1.keyReleased(e, office.arson1, office.trashCans, office.cb);
+                    p2.keyReleased(e, office.arson1, office.trashCans, office.cb);
+                } else if (currentClassroom == 5){
                     p1.keyReleased(e, phys.arson5, phys.trashCans, phys.cb);
                     p2.keyReleased(e, phys.arson5, phys.trashCans, phys.cb);
                 } else if (currentClassroom == 6){
@@ -56,8 +65,25 @@ public class Main extends JPanel {
     }
 
     private void move() {
-        p1.move(phys.desks);
-        p2.move(phys.desks);
+        switch(currentClassroom) {
+            case 1:
+                p1.move(office.desks);
+                p2.move(office.desks);
+                break;
+            case 4:
+                p1.move(bio.desks);
+                p2.move(bio.desks);
+                break;
+            case 5:
+                p1.move(phys.desks);
+                p2.move(phys.desks);
+                break;
+            case 6:
+                p1.move(chem.desks);
+                p2.move(chem.desks);
+                break;
+
+        }
         t.move(p1.getX(), p1.getY(), p2.getX(), p2.getY());
         cd.move();
         if (cd.getTime() <= 0) {
@@ -77,6 +103,17 @@ public class Main extends JPanel {
         g2d.setColor(Color.BLACK);
 
         switch(currentClassroom) {
+            case 1:
+                office.paint(g, p1, p2, transition1);
+                officeToBio.paint(g2d);
+                if (officeToBio.containsPlayer(p1, p2)) {
+                    System.out.println("bio to office");
+                    transition1.paint(g2d);
+                    p1.spawnPlayer(bioToOffice.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
+                    p2.spawnPlayer(bioToOffice.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
+                    changeCurrentClassroom(4);
+                }
+                break;
             case 4:
                 bio.paint(g, p1, p2, transition1);
                 bioToPhys.paint(g2d);
@@ -86,6 +123,14 @@ public class Main extends JPanel {
                     p1.spawnPlayer(physToBio.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
                     p2.spawnPlayer(physToBio.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
                     changeCurrentClassroom(5);
+                }
+                bioToOffice.paint(g2d);
+                if (bioToOffice.containsPlayer(p1, p2)) {
+                    System.out.println("bio to office");
+                    transition1.paint(g2d);
+                    p1.spawnPlayer(bioToOffice.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
+                    p2.spawnPlayer(bioToOffice.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
+                    changeCurrentClassroom(1);
                 }
                 break;
             case 5:
