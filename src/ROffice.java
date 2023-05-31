@@ -7,6 +7,8 @@ public class ROffice {
     ChalkBoard cb = new ChalkBoard(900, 10, "OFFICE");
     Desk[] desks = {new Desk(0, 500, 500, 250), new Desk(500, 300, 150, 250+200)};
     Wall w1 = new Wall(0, 0);
+    PressurePlate pp = new PressurePlate(200, 300);
+
     public ROffice() {
 
     }
@@ -35,6 +37,8 @@ public class ROffice {
             g2d.setColor(Color.BLACK);
             g2d.fillRect(i, 0, 25, 270);
         }
+
+        pp.paint(g2d);
 
     }
 

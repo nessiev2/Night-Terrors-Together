@@ -72,7 +72,7 @@ public class Main extends JPanel {
         setFocusable(true);
     }
 
-    private void move() {
+    private void move(Main c) {
         p1.checkTeacher(teacher);
         p2.checkTeacher(teacher);
         switch(currentClassroom) {
@@ -94,7 +94,7 @@ public class Main extends JPanel {
                 break;
 
         }
-        t.move(p1, p2, p1.getX(), p1.getY(), p2.getX(), p2.getY());
+        t.move(c, p1, p2, p1.getX(), p1.getY(), p2.getX(), p2.getY());
         cd.move();
         if (cd.getTime() <= 0) {
             gameOver = true;
@@ -116,6 +116,13 @@ public class Main extends JPanel {
             case 1:
                 office.paint(g, p1, p2, transition1);
                 officeToBio.paint(g2d);
+                if (p1.getIsCaught()) {
+                    p1.spawnPlayer(0, 0);
+                }
+                if (p2.getIsCaught()) {
+                    p2.spawnPlayer(0, 0);
+                }
+
                 if (officeToBio.containsPlayer(p1, p2)) {
                     System.out.println("bio to office");
                     transition1.paint(g2d);
@@ -176,9 +183,9 @@ public class Main extends JPanel {
                 break;
         }
 
-        if (!p1.getIsCaught())
+        if (!p1.getIsCaught() || currentClassroom == 1)
             p1.paint(g2d);
-        if (!p2.getIsCaught())
+        if (!p2.getIsCaught() || currentClassroom == 1)
             p2.paint(g2d);
         t.paint(g2d);
 
@@ -197,7 +204,7 @@ public class Main extends JPanel {
 
         while (!c.gameOver)
         {
-            c.move(); //Updates the coordinates
+            c.move(c); //Updates the coordinates
             c.repaint(); //Calls the paint method
             Thread.sleep(10); //Pauses for a moment
         }

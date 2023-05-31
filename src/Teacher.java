@@ -1,13 +1,13 @@
 import java.awt.*;
 
 public class Teacher extends Thing {
-    private int speed = 5;
+    private int speed = 1;
 
     public Teacher() {
         super(0, 0, 120, 180);
     }
 
-    public void move(Player p1, Player p2, int x1, int y1, int x2, int y2) {
+    public void move(Main c, Player p1, Player p2, int x1, int y1, int x2, int y2) {
         int tmp = distance(p1, p2, x1, y1, x2, y2);
         if (tmp == 1) {
             if (x1 > getX()) {
@@ -22,8 +22,9 @@ public class Teacher extends Thing {
             if (y1 < getY()) {
                 changeY(-speed);
             }
-        } else if (tmp == -1){
-            System.out.println("GAMEOVER LMAO U LOST LOSER");
+        } else if (tmp == -1) {
+            c.changeGameOver();
+            System.out.println("GAME OVER LMAO U LOST LOSER");
         } else {
             if (x2 > getX()) {
                 changeX(speed);
@@ -46,7 +47,9 @@ public class Teacher extends Thing {
         double dist1 = Math.sqrt(Math.pow(getX()-x1, 2) + Math.pow(getY()-y1, 2));
         double dist2 = Math.sqrt(Math.pow(getX()-x2, 2) + Math.pow(getY()-y2, 2));
 
-        if (p2.getIsCaught() || (!p1.getIsCaught() && !p2.getIsCaught()) && dist1 < dist2)
+        if (p1.getIsCaught() && p2.getIsCaught())
+            return -1;
+        else if (p2.getIsCaught() || (!p1.getIsCaught() && !p2.getIsCaught()) && dist1 < dist2)
             return 1;
         if (p1.getIsCaught() && p2.getIsCaught())
             return -1;
