@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.Random;
 
-public class Biology {
+public class RBiology {
     Arson arson4 = new Arson(true);
     TrashCan[] trashCans = new TrashCan[3];
 
@@ -10,7 +10,7 @@ public class Biology {
     Wall w1 = new Wall(0, 0);
     Desk[] desks = {new Desk(400, 500), new Desk(800, 500), new Desk(400, 800), new Desk(800, 800)};
 
-    public Biology() {
+    public RBiology() {
         Random r = new Random();
 
         trashCans[0] = new TrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall

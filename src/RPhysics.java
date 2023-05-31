@@ -1,14 +1,14 @@
 import java.awt.*;
 import java.util.Random;
 
-public class Physics {
+public class RPhysics {
     Arson arson5 = new Arson(true);
     TrashCan[] trashCans = new TrashCan[3];
     ChalkBoard cb = new ChalkBoard(300, 10, "PHYSICS");
     Wall w1 = new Wall(0, 0);
     Desk[] desks = new Desk[6];
 
-    public Physics() {
+    public RPhysics() {
         Random r = new Random();
         int counter = 0;
 

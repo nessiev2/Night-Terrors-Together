@@ -25,10 +25,10 @@ public class Main extends JPanel {
     Teacher t = new Teacher();
     Teacher[] teacher = {t};
 
-    Office office = new Office();
-    Physics phys = new Physics();
-    Chemistry chem = new Chemistry();
-    Biology bio = new Biology();
+    ROffice office = new ROffice();
+    RPhysics phys = new RPhysics();
+    RChemistry chem = new RChemistry();
+    RBiology bio = new RBiology();
 
     public void changeGameOver() {
         gameOver = true;

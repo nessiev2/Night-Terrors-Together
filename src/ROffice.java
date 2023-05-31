@@ -1,13 +1,13 @@
 import java.awt.*;
 
-public class Office {
+public class ROffice {
     Arson arson1 = new Arson(true);
     TrashCan[] trashCans = {new TrashCan(1300, 400), new TrashCan(1300, 600), new TrashCan(1000, 600)};
 
     ChalkBoard cb = new ChalkBoard(900, 10, "OFFICE");
     Desk[] desks = {new Desk(0, 500, 500, 250), new Desk(500, 300, 150, 250+200)};
     Wall w1 = new Wall(0, 0);
-    public Office() {
+    public ROffice() {
 
     }
 
