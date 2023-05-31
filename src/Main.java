@@ -17,8 +17,8 @@ public class Main extends JPanel {
     Door chemToPhys = new Door(0, SCREEN_HEIGHT/2-100);
     Door physToBio = new Door(0, SCREEN_HEIGHT/2-100);
     Door bioToPhys = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
-    Door physToCaf = new Door(800, 200);
-    Door cafToPhys = new Door(800, 800);
+    Door physToCaf = new Door(1300, 70);
+    Door cafToPhys = new Door(1300, 810);
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();
@@ -39,8 +39,8 @@ public class Main extends JPanel {
     }
 
     public Main() {
-        p1.spawnPlayer(SCREEN_WIDTH/2-p1.getWidth(), 200);
-        p2.spawnPlayer(SCREEN_WIDTH/2-2*p1.getWidth(), 200);
+        p1.spawnPlayer(SCREEN_WIDTH/2-p1.getWidth(), 660);
+        p2.spawnPlayer(SCREEN_WIDTH/2-2*p1.getWidth(), 660);
 
         addKeyListener(new KeyListener() {
             @Override
@@ -188,8 +188,8 @@ public class Main extends JPanel {
                 if (physToCaf.containsPlayer(p1, p2)) {
                     System.out.println("physics to caf");
                     transition1.paint(g2d);
-                    p1.spawnPlayer(cafToPhys.getX(), cafToPhys.getY() + cafToPhys.getHeight() + 50);
-                    p2.spawnPlayer(cafToPhys.getX(), cafToPhys.getY() + cafToPhys.getHeight() + 50);
+                    p1.spawnPlayer(cafToPhys.getX(), cafToPhys.getY() - 150);
+                    p2.spawnPlayer(cafToPhys.getX(), cafToPhys.getY() - 150);
                     changeCurrentClassroom(2);
                 }
                 break;
