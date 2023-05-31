@@ -30,7 +30,6 @@ public class Main extends JPanel {
     Chemistry chem = new Chemistry();
     Biology bio = new Biology();
 
-
     public void changeGameOver() {
         gameOver = true;
     }

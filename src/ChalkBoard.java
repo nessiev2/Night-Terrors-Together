@@ -3,8 +3,8 @@ import java.util.Random;
 
 public class ChalkBoard extends Thing{
     private static final int BOARD_WIDTH = Main.SCREEN_WIDTH/2, BOARD_HEIGHT = (Main.SCREEN_WIDTH/4) - 230;
-    private final int maxX = BOARD_WIDTH, minX = 300;
-    private final int maxY = 10 + BOARD_HEIGHT, minY = 10;
+    private final int maxX = BOARD_WIDTH-80, minX = 320;
+    private final int maxY = BOARD_HEIGHT-30, minY = 50;
     private final int RADIUS = 50;
     private String[] scribbleArray = new String[20];
     private int[] xs = new int[20];
