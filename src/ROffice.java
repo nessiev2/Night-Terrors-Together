@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class ROffice {
-    Arson arson1 = new Arson(true);
+    Arson arson1 = new Arson(false);
     TrashCan[] trashCans = {new TrashCan(1300, 400), new TrashCan(1300, 600), new TrashCan(1000, 600)};
 
     ChalkBoard cb = new ChalkBoard(900, 10, "OFFICE");
