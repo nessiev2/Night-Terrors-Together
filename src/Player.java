@@ -28,6 +28,10 @@ public abstract class Player {
 
     public boolean getIsCaught() { return isCaught; }
 
+    public void changeIsCaught(boolean c) {
+        isCaught = c;
+    }
+
     public Player(int playerN) {
         x = 500;
         y = 500;
@@ -41,7 +45,7 @@ public abstract class Player {
 
     //public void keyTyped(KeyEvent e) {}
     public void keyPressed(KeyEvent e) {}
-    public void keyReleased(KeyEvent e, Arson arson1, TrashCan[] trashCans, ChalkBoard cb) {}
+    public void keyReleased(Player p2, KeyEvent e, Arson arson1, TrashCan[] trashCans, ChalkBoard cb, PressurePlate pp) {}
 
     public void checkTeacher(Teacher[] t) {
         if (!checkRight(t) || !checkLeft(t) || !checkDown(t) || !checkUp(t)) {

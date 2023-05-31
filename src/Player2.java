@@ -23,7 +23,7 @@ public class Player2 extends Player {
         }
     }
 
-    public void keyReleased(KeyEvent e, Arson arson1, TrashCan[] trashCans, ChalkBoard cb) {
+    public void keyReleased(Player p1, KeyEvent e, Arson arson1, TrashCan[] trashCans, ChalkBoard cb, PressurePlate pp) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             left = false;
         }
@@ -44,6 +44,11 @@ public class Player2 extends Player {
             }
             if (cb.isPlayerClose(this, this)) {
                 cb.scribble();
+            }
+            if (pp.isPlayerClose(this, this)) {
+                System.out.println("PRESSURE PLATE PRESSED");
+                p1.changeIsCaught(false);
+                p1.spawnPlayer(getX(), getY());
             }
         }
     }

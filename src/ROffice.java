@@ -38,6 +38,7 @@ public class ROffice {
             g2d.fillRect(i, 0, 25, 270);
         }
 
+        pp.isPlayerClose(p1, p2);
         pp.paint(g2d);
 
     }

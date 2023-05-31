@@ -50,17 +50,17 @@ public class Main extends JPanel {
             @Override
             public void keyReleased(KeyEvent e) {
                 if (currentClassroom == 1) {
-                    p1.keyReleased(e, office.arson1, office.trashCans, office.cb);
-                    p2.keyReleased(e, office.arson1, office.trashCans, office.cb);
-                }  else if (currentClassroom == 4){
-                    p1.keyReleased(e, bio.arson4, bio.trashCans, bio.cb);
-                    p2.keyReleased(e, bio.arson4, bio.trashCans, bio.cb);
-                } else if (currentClassroom == 5){
-                    p1.keyReleased(e, phys.arson5, phys.trashCans, phys.cb);
-                    p2.keyReleased(e, phys.arson5, phys.trashCans, phys.cb);
-                } else if (currentClassroom == 6){
-                    p1.keyReleased(e, chem.arson6, chem.trashCans, chem.cb);
-                    p2.keyReleased(e, chem.arson6, chem.trashCans, chem.cb);
+                    p1.keyReleased(p2, e, office.arson1, office.trashCans, office.cb, office.pp);
+                    p2.keyReleased(p1, e, office.arson1, office.trashCans, office.cb, office.pp);
+                }  else if (currentClassroom == 4) {
+                    p1.keyReleased(p2, e, bio.arson4, bio.trashCans, bio.cb, office.pp);
+                    p2.keyReleased(p1, e, bio.arson4, bio.trashCans, bio.cb, office.pp);
+                } else if (currentClassroom == 5) {
+                    p1.keyReleased(p2, e, phys.arson5, phys.trashCans, phys.cb, office.pp);
+                    p2.keyReleased(p1, e, phys.arson5, phys.trashCans, phys.cb, office.pp);
+                } else if (currentClassroom == 6) {
+                    p1.keyReleased(p2, e, chem.arson6, chem.trashCans, chem.cb, office.pp);
+                    p2.keyReleased(p1, e, chem.arson6, chem.trashCans, chem.cb, office.pp);
                 }
             }
             @Override
