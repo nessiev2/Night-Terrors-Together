@@ -33,6 +33,7 @@ public class ROffice {
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard
 
+        //jail
         for (int i = 0; i <= 400; i+=50) {
             g2d.setColor(Color.BLACK);
             g2d.fillRect(i, 0, 25, 270);
