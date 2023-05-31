@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class RCaf {
-    Arson arson1 = new Arson(true);
+    Arson arson2 = new Arson(true);
     TrashCan[] trashCans = {};
 
     ChalkBoard cb = new ChalkBoard(900, 10, "CAFETERIA");

@@ -19,7 +19,8 @@ public class Main extends JPanel {
     Door chemToPhys = new Door(0, SCREEN_HEIGHT/2-100);
     Door physToBio = new Door(0, SCREEN_HEIGHT/2-100);
     Door bioToPhys = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
-
+    Door physToCaf = new Door(800, 200);
+    Door cafToPhys = new Door(800, 800);
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();
@@ -29,6 +30,7 @@ public class Main extends JPanel {
     RPhysics phys = new RPhysics();
     RChemistry chem = new RChemistry();
     RBiology bio = new RBiology();
+    RCaf caf = new RCaf();
 
     public void changeGameOver() {
         gameOver = true;
@@ -50,15 +52,15 @@ public class Main extends JPanel {
                 if (currentClassroom == 1) {
                     p1.keyReleased(e, office.arson1, office.trashCans, office.cb);
                     p2.keyReleased(e, office.arson1, office.trashCans, office.cb);
+                }  else if (currentClassroom == 4){
+                    p1.keyReleased(e, bio.arson4, bio.trashCans, bio.cb);
+                    p2.keyReleased(e, bio.arson4, bio.trashCans, bio.cb);
                 } else if (currentClassroom == 5){
                     p1.keyReleased(e, phys.arson5, phys.trashCans, phys.cb);
                     p2.keyReleased(e, phys.arson5, phys.trashCans, phys.cb);
                 } else if (currentClassroom == 6){
                     p1.keyReleased(e, chem.arson6, chem.trashCans, chem.cb);
                     p2.keyReleased(e, chem.arson6, chem.trashCans, chem.cb);
-                } else if (currentClassroom == 4){
-                    p1.keyReleased(e, bio.arson4, bio.trashCans, bio.cb);
-                    p2.keyReleased(e, bio.arson4, bio.trashCans, bio.cb);
                 }
             }
             @Override
