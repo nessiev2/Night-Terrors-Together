@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Teacher extends Thing {
-    private int speed = 2;
+    private int speed = 1;
 
     public Teacher() {
         super(0, 0, 120, 180);
