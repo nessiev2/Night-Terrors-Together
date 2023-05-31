@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Teacher extends Thing {
-    private int speed = 5;
+    private int speed = 2;
 
     public Teacher() {
         super(0, 0, 120, 180);
@@ -43,7 +43,9 @@ public class Teacher extends Thing {
         double dist1 = Math.sqrt(Math.pow(getX()-x1, 2) + Math.pow(getY()-y1, 2));
         double dist2 = Math.sqrt(Math.pow(getX()-x2, 2) + Math.pow(getY()-y2, 2));
 
-        if (p2.getIsCaught() || (!p1.getIsCaught() && !p2.getIsCaught()) && dist1 < dist2)
+        if (p1.getIsCaught() && p2.getIsCaught())
+            return -1;
+        else if (p2.getIsCaught() || (!p1.getIsCaught() && !p2.getIsCaught()) && dist1 < dist2)
             return 1;
         return 2;
     }
