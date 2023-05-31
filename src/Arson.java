@@ -7,15 +7,17 @@ public class Arson extends Task{
     }
 
     public int doTask(TrashCan[] trash, Player p1, Player p2) {
-        for (TrashCan t: trash){
-            if (t.getIsOnFire()) {
-                counter++;
+        if (isTask){
+            for (TrashCan t: trash){
+                if (t.getIsOnFire()) {
+                    counter++;
+                }
             }
-        }
 
-        if (counter >= 3){
-            isComplete = true;
-            return 1;
+            if (counter >= 3){
+                isComplete = true;
+                return 1;
+            }
         }
 
         return 0;
