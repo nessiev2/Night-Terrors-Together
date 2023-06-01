@@ -138,10 +138,10 @@ public class Main extends JPanel {
                 office.paint(g, p1, p2, transition1);
                 officeToBio.paint(g2d);
                 if (p1.getIsCaught()) {
-                    p1.spawnPlayer(0, 0);
+                    p1.spawnPlayer(170, 150);
                 }
                 if (p2.getIsCaught()) {
-                    p2.spawnPlayer(0, 0);
+                    p2.spawnPlayer(170, 150);
                 }
 
                 if (officeToBio.containsPlayer(p1, p2)) {
