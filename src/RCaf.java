@@ -4,8 +4,8 @@ public class RCaf {
     Arson arson2 = new Arson(true);
     TrashCan[] trashCans = {};
 
-    ChalkBoard cb = new ChalkBoard(900, 10, "CAFETERIA");
-    Desk[] desks = {new Desk(0, 500, 500, 250), new Desk(500, 300, 150, 250+200)};
+    ChalkBoard cb = new ChalkBoard(500, 10, "CAFETERIA");
+    Desk[] desks = {new Desk(70, 500, 400, 200)};
     Wall w1 = new Wall(0, 0);
     public RCaf() {
 
@@ -30,12 +30,6 @@ public class RCaf {
 
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard
-
-        for (int i = 0; i <= 400; i+=50) {
-            g2d.setColor(Color.BLACK);
-            g2d.fillRect(i, 0, 25, 270);
-        }
-
     }
 
 

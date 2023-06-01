@@ -59,6 +59,12 @@ public class Main extends JPanel {
                 } else if (currentClassroom == 6) {
                     p1.keyReleased(p2, e, chem.arson6, chem.trashCans, chem.cb, office.pp);
                     p2.keyReleased(p1, e, chem.arson6, chem.trashCans, chem.cb, office.pp);
+                } else if (currentClassroom == 7){
+
+                } else if (currentClassroom == 8){
+
+                } else {
+
                 }
             }
             @Override
@@ -81,6 +87,9 @@ public class Main extends JPanel {
             case 2:
                 p1.move(caf.desks);
                 p2.move(caf.desks);
+                break;
+            case 3:
+                break;
             case 4:
                 p1.move(bio.desks);
                 p2.move(bio.desks);
@@ -92,6 +101,12 @@ public class Main extends JPanel {
             case 6:
                 p1.move(chem.desks);
                 p2.move(chem.desks);
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            default:
                 break;
 
         }
@@ -142,6 +157,8 @@ public class Main extends JPanel {
                     p2.spawnPlayer(physToCaf.getX(), physToCaf.getY() + physToCaf.getHeight() + 50);
                     changeCurrentClassroom(5);
                 }
+                break;
+            case 3:
                 break;
             case 4:
                 bio.paint(g, p1, p2, transition1);
@@ -200,6 +217,12 @@ public class Main extends JPanel {
                     p2.spawnPlayer(physToChem.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
                     changeCurrentClassroom(5);
                 }
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            default:
                 break;
         }
 
