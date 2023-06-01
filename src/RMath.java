@@ -1,14 +1,14 @@
 import java.awt.*;
 import java.util.Random;
 
-public class RCompSci {
-    Arson arson8 = new Arson(true);
+public class RMath {
+    Arson arson7 = new Arson(true);
     TrashCan[] trashCans = new TrashCan[3];
-    ChalkBoard cb = new ChalkBoard(300, 10, "COMPUTER SCIENCE :P");
+    ChalkBoard cb = new ChalkBoard(300, 10, "MATH");
     Wall w1 = new Wall(0, 0);
     Desk[] desks = new Desk[6];
 
-    public RCompSci() {
+    public RMath() {
         Random r = new Random();
         int counter = 0;
 

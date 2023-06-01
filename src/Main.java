@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.management.relation.RelationNotFoundException;
 import javax.swing.*;
 
 public class Main extends JPanel {
@@ -19,6 +20,14 @@ public class Main extends JPanel {
     Door bioToPhys = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
     Door physToCaf = new Door(1300, 70);
     Door cafToPhys = new Door(1300, 810);
+    Door gymToCaf = new Door(0, SCREEN_HEIGHT/2-100);
+    Door cafToGym = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
+    Door gymToChem = new Door(1300, 810);
+    Door chemToGym = new Door(1300, 70);
+    Door mathToBio = new Door(1300, 70);
+    Door bioToMath = new Door(1300, 810);
+    Door compSciToMath = new Door(0, SCREEN_HEIGHT/2-100);
+    Door mathToCompSci = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();
@@ -29,6 +38,10 @@ public class Main extends JPanel {
     RChemistry chem = new RChemistry();
     RBiology bio = new RBiology();
     RCaf caf = new RCaf();
+    RGym gym = new RGym();
+    RMath mathematics = new RMath();
+    RCompSci compsci = new RCompSci();
+    REng eng = new REng();
 
     public void changeGameOver() {
         gameOver = true;
@@ -50,7 +63,13 @@ public class Main extends JPanel {
                 if (currentClassroom == 1) {
                     p1.keyReleased(p2, e, office.arson1, office.trashCans, office.cb, office.pp);
                     p2.keyReleased(p1, e, office.arson1, office.trashCans, office.cb, office.pp);
-                }  else if (currentClassroom == 4) {
+                } else if (currentClassroom == 2){
+                    p1.keyReleased(p2, e, caf.arson2, caf.trashCans, caf.cb, office.pp);
+                    p2.keyReleased(p1, e, caf.arson2, caf.trashCans, caf.cb, office.pp);
+                } else if (currentClassroom == 3){
+                    p1.keyReleased(p2, e, gym.arson3, gym.trashCans, gym.cb, office.pp);
+                    p2.keyReleased(p1, e, gym.arson3, gym.trashCans, gym.cb, office.pp);
+                } else if (currentClassroom == 4) {
                     p1.keyReleased(p2, e, bio.arson4, bio.trashCans, bio.cb, office.pp);
                     p2.keyReleased(p1, e, bio.arson4, bio.trashCans, bio.cb, office.pp);
                 } else if (currentClassroom == 5) {
@@ -60,11 +79,14 @@ public class Main extends JPanel {
                     p1.keyReleased(p2, e, chem.arson6, chem.trashCans, chem.cb, office.pp);
                     p2.keyReleased(p1, e, chem.arson6, chem.trashCans, chem.cb, office.pp);
                 } else if (currentClassroom == 7){
-
+                    p1.keyReleased(p2, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp);
+                    p2.keyReleased(p1, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp);
                 } else if (currentClassroom == 8){
-
+                    p1.keyReleased(p2, e, compsci.arson8, compsci.trashCans, compsci.cb, office.pp);
+                    p2.keyReleased(p1, e, compsci.arson8, compsci.trashCans, compsci.cb, office.pp);
                 } else {
-
+                    p1.keyReleased(p2, e, eng.arson9, eng.trashCans, eng.cb, office.pp);
+                    p2.keyReleased(p1, e, eng.arson9, eng.trashCans, eng.cb, office.pp);
                 }
             }
             @Override
@@ -89,6 +111,8 @@ public class Main extends JPanel {
                 p2.move(caf.desks);
                 break;
             case 3:
+                p1.move(gym.desks);
+                p2.move(gym.desks);
                 break;
             case 4:
                 p1.move(bio.desks);
@@ -103,10 +127,16 @@ public class Main extends JPanel {
                 p2.move(chem.desks);
                 break;
             case 7:
+                p1.move(mathematics.desks);
+                p2.move(mathematics.desks);
                 break;
             case 8:
+                p1.move(compsci.desks);
+                p2.move(compsci.desks);
                 break;
             default:
+                p1.move(eng.desks);
+                p2.move(eng.desks);
                 break;
 
         }
@@ -159,6 +189,23 @@ public class Main extends JPanel {
                 }
                 break;
             case 3:
+                gym.paint(g, p1, p2, transition1);
+                gymToCaf.paint(g2d);
+                gymToChem.paint(g2d);
+                if (gymToCaf.containsPlayer(p1, p2)) {
+                    System.out.println("gym to caf");
+                    transition1.paint(g2d);
+                    p1.spawnPlayer(cafToGym.getX(), cafToGym.getY() + cafToGym.getHeight() + 50);
+                    p2.spawnPlayer(cafToGym.getX(), cafToGym.getY() + cafToGym.getHeight() + 50);
+                    changeCurrentClassroom(2);
+                }
+                if (gymToChem.containsPlayer(p1, p2)) {
+                    System.out.println("caf to gym");
+                    transition1.paint(g2d);
+                    p1.spawnPlayer(chemToGym.getX(), chemToGym.getY() + chemToGym.getHeight() + 50);
+                    p2.spawnPlayer(chemToGym.getX(), chemToGym.getY() + chemToGym.getHeight() + 50);
+                    changeCurrentClassroom(6);
+                }
                 break;
             case 4:
                 bio.paint(g, p1, p2, transition1);
@@ -219,10 +266,13 @@ public class Main extends JPanel {
                 }
                 break;
             case 7:
+
                 break;
             case 8:
+
                 break;
             default:
+
                 break;
         }
 
