@@ -7,6 +7,7 @@ import javax.swing.*;
 public class Main extends JPanel {
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
     boolean gameOver = false;
+    boolean pauseGame = false;
     int currentClassroom = 5;
     CountDown cd = new CountDown();
     Transition transition1 = new Transition();
@@ -60,6 +61,12 @@ public class Main extends JPanel {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyReleased(KeyEvent e) {
+                if (pauseGame == false && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    pauseGame = true;
+                } else if (pauseGame == true && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    pauseGame = false;
+                }
+
                 if (currentClassroom == 1) {
                     p1.keyReleased(p2, e, office.arson1, office.trashCans, office.cb, office.pp);
                     p2.keyReleased(p1, e, office.arson1, office.trashCans, office.cb, office.pp);
@@ -99,6 +106,9 @@ public class Main extends JPanel {
     }
 
     private void move(Main c) {
+        if (!pauseGame) {
+            p1.checkTeacher(teacher);
+            p2.checkTeacher(teacher);
         p1.checkTeacher(teacher);
         p2.checkTeacher(teacher);
         switch(currentClassroom) {
@@ -138,17 +148,15 @@ public class Main extends JPanel {
                 p1.move(eng.desks);
                 p2.move(eng.desks);
                 break;
+            }
+            t.move(c, p1, p2, p1.getX(), p1.getY(), p2.getX(), p2.getY());
+            cd.move();
+            if (cd.getTime() <= 0) {
+                gameOver = true;
+            }
 
+            phys.arson5.doTask(phys.trashCans, p1, p2);
         }
-        t.move(c, p1, p2, p1.getX(), p1.getY(), p2.getX(), p2.getY());
-        cd.move();
-        if (cd.getTime() <= 0) {
-            gameOver = true;
-        }
-
-        //ARSON1 TESTING
-        phys.arson5.doTask(phys.trashCans, p1, p2);
-        //
     }
 
     @Override
