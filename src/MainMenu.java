@@ -10,7 +10,7 @@ public class MainMenu {
 
     public MainMenu() {}
 
-    public void paint (Graphics2D g2d){
+    public void paintMainMenu(Graphics2D g2d){
         if (isOpen){
             g2d.setColor(Color.black);
             g2d.fillRect(0, 0, 1920, 1080);
@@ -23,4 +23,5 @@ public class MainMenu {
             g2d.drawString("press enter to start", 400, 650);
         }
     }
+
 }
