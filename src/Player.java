@@ -79,7 +79,6 @@ public abstract class Player {
     public void checkTeacher(Teacher[] t) {
         if (!checkRight(t) || !checkLeft(t) || !checkDown(t) || !checkUp(t)) {
             isCaught = true;
-            //spawnPlayer(0,0);
         }
     }
 

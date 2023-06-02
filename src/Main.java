@@ -4,15 +4,17 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 
 public class Main extends JPanel {
+    //ATTRIBUTES
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
     boolean startGame = false;
     boolean gameOver = false;
     boolean pauseGame = false;
     int currentClassroom = 5;
+    int tCurrentClassroom = 1;
     CountDown cd = new CountDown();
     Transition transition1 = new Transition();
 
-
+    //DOORS
     Door bioToOffice = new Door(800, 200);
     Door officeToBio = new Door(800, 800);
     Door physToChem = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
@@ -37,11 +39,14 @@ public class Main extends JPanel {
     Door chemToEng = new Door(1300, 810);
     Door cafToOffice = new Door(0, SCREEN_HEIGHT/2-100);
     Door officeToCaf = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
+
+    //PLAYERS AND TEACHER
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();
     Teacher[] teacher = {t};
 
+    //ROOMS
     ROffice office = new ROffice();
     RPhysics phys = new RPhysics();
     RChemistry chem = new RChemistry();
@@ -122,6 +127,7 @@ public class Main extends JPanel {
         if (!pauseGame) {
             p1.checkTeacher(teacher);
             p2.checkTeacher(teacher);
+
         p1.checkTeacher(teacher);
         p2.checkTeacher(teacher);
         switch(currentClassroom) {
@@ -279,7 +285,10 @@ public class Main extends JPanel {
                 p1.paint(g2d);
             if (!p2.getIsCaught() || currentClassroom == 1)
                 p2.paint(g2d);
-            t.paint(g2d);
+
+            if (currentClassroom == tCurrentClassroom){
+                t.paint(g2d);
+            }
 
             cd.paint(g2d);
         }

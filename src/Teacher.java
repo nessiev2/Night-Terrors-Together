@@ -42,7 +42,6 @@ public class Teacher extends Thing {
 
     }
 
-
     private int distance(Player p1, Player p2, int x1, int y1, int x2, int y2) {
         double dist1 = Math.sqrt(Math.pow(getX()-x1, 2) + Math.pow(getY()-y1, 2));
         double dist2 = Math.sqrt(Math.pow(getX()-x2, 2) + Math.pow(getY()-y2, 2));
