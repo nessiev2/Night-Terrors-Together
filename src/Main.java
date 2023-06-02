@@ -29,6 +29,12 @@ public class Main extends JPanel {
     Door bioToMath = new Door(1300, 810);
     Door compSciToMath = new Door(0, SCREEN_HEIGHT/2-100);
     Door mathToCompSci = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
+    Door physToCompSci = new Door(1300, 810);
+    Door compSciToPhys = new Door(1300, 70);
+    Door compSciToEng = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
+    Door engToCompSci = new Door(0, SCREEN_HEIGHT/2-100);
+    Door engToChem = new Door(1300, 70);
+    Door chemToEng = new Door(1300, 810);
     Player p1 = new Player1();
     Player p2 = new Player2();
     Teacher t = new Teacher();
@@ -279,13 +285,61 @@ public class Main extends JPanel {
                 }
                 break;
             case 7:
-
+                mathematics.paint(g, p1, p2, transition1);
+                chemToPhys.paint(g2d);
+                if (chemToPhys.containsPlayer(p1, p2)) {
+                    System.out.println("chem to physics");
+                    transition1.paintBlack(g2d);
+                    p1.spawnPlayer(physToChem.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
+                    p2.spawnPlayer(physToChem.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
+                    changeCurrentClassroom(5);
+                }
                 break;
             case 8:
-
+                compSci.paint(g, p1, p2, transition1);
+                compSciToEng.paint(g2d);
+                compSciToMath.paint(g2d);
+                compSciToPhys.paint(g2d);
+                if (compSciToEng.containsPlayer(p1, p2)) {
+                    System.out.println("compsci to eng");
+                    transition1.paintBlack(g2d);
+                    p1.spawnPlayer(engToCompSci.getX(), engToCompSci.getY() + engToCompSci.getHeight() + 50);
+                    p2.spawnPlayer(engToCompSci.getX(), engToCompSci.getY() + engToCompSci.getHeight() + 50);
+                    changeCurrentClassroom(9);
+                }
+                if (compSciToMath.containsPlayer(p1, p2)) {
+                    System.out.println("compsci to math");
+                    transition1.paintBlack(g2d);
+                    p1.spawnPlayer(mathToCompSci.getX(), mathToCompSci.getY() + mathToCompSci.getHeight() + 50);
+                    p2.spawnPlayer(mathToCompSci.getX(), mathToCompSci.getY() + mathToCompSci.getHeight() + 50);
+                    changeCurrentClassroom(7);
+                }
+                if (compSciToPhys.containsPlayer(p1, p2)) {
+                    System.out.println("compsci to physics");
+                    transition1.paintBlack(g2d);
+                    p1.spawnPlayer(physToCompSci.getX(), physToCompSci.getY() + physToCompSci.getHeight() + 50);
+                    p2.spawnPlayer(physToCompSci.getX(), physToCompSci.getY() + physToCompSci.getHeight() + 50);
+                    changeCurrentClassroom(5);
+                }
                 break;
             default:
-
+                eng.paint(g, p1, p2, transition1);
+                engToChem.paint(g2d);
+                engToCompSci.paint(g2d);
+                if (chemToPhys.containsPlayer(p1, p2)) {
+                    System.out.println("chem to physics");
+                    transition1.paintBlack(g2d);
+                    p1.spawnPlayer(physToChem.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
+                    p2.spawnPlayer(physToChem.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
+                    changeCurrentClassroom(5);
+                }
+                if (chemToPhys.containsPlayer(p1, p2)) {
+                    System.out.println("chem to physics");
+                    transition1.paintBlack(g2d);
+                    p1.spawnPlayer(physToChem.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
+                    p2.spawnPlayer(physToChem.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
+                    changeCurrentClassroom(5);
+                }
                 break;
         }
 

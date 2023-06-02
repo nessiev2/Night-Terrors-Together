@@ -5,14 +5,23 @@ public class Menuu {
     boolean isOpen = false;
 
     public Menuu(){
+
+    }
+
+    public boolean getIsOpen(){
+        return isOpen;
+    }
+
+    public void updateIsOpen(boolean isOpen){
+        this.isOpen = isOpen;
     }
 
     public void paint (Graphics2D g2d){
+        g2d.setColor(Color.white);
         if (!isOpen){
-            g2d.setColor(Color.white);
             g2d.fillRect(x, y, width, height);
         } else {
-
+            g2d.fillRect(openX, openY, openWidth, openHeight);
         }
     }
 }
