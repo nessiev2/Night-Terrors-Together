@@ -8,7 +8,7 @@ public class Main extends JPanel {
     boolean startGame = false;
     boolean gameOver = false;
     boolean pauseGame = false;
-    int currentClassroom = 0;
+    int currentClassroom = 5;
     CountDown cd = new CountDown();
     Transition transition1 = new Transition();
 
@@ -51,7 +51,7 @@ public class Main extends JPanel {
     RMath mathematics = new RMath();
     RCompSci compSci = new RCompSci();
     REng eng = new REng();
-    MainMenu menuu = new MainMenu();
+    MainMenu mainMenu = new MainMenu();
 
     public void changeGameOver() {
         gameOver = true;
@@ -70,6 +70,10 @@ public class Main extends JPanel {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyReleased(KeyEvent e) {
+                if (mainMenu.getIsMenuOpen() && e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    mainMenu.changeMenu(false);
+                }
+
                 if (pauseGame == false && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     pauseGame = true;
                 } else if (pauseGame == true && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
@@ -301,7 +305,7 @@ public class Main extends JPanel {
                     p2.spawnPlayer(compSciToPhys.getX(), compSciToPhys.getY() - 150);
                     changeCurrentClassroom(8);
                 }
-                menuu.paint(g2d);
+                mainMenu.paint(g2d);
                 break;
             case 6:
                 chem.paint(g, p1, p2, transition1);
@@ -397,15 +401,14 @@ public class Main extends JPanel {
                 break;
         }
 
-        if (menuu.getIsMenuOpen()) {
-            menuu.paint(g2d);
+        if (mainMenu.getIsMenuOpen()) {
+            mainMenu.paint(g2d);
         } else {
             if (!p1.getIsCaught() || currentClassroom == 1)
                 p1.paint(g2d);
             if (!p2.getIsCaught() || currentClassroom == 1)
                 p2.paint(g2d);
             t.paint(g2d);
-
             cd.paint(g2d);
         }
     }

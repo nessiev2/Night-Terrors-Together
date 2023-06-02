@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class MainMenu {
     int x = 1835, y = 20, width = 50, height = 50, openX = Main.SCREEN_WIDTH/2 - 400, openY = 20, openWidth = 800, openHeight = 800;
-    boolean isOpen = true;
+    private boolean isOpen = true;
 
     public boolean getIsMenuOpen() { return isOpen; }
 
