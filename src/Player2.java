@@ -8,9 +8,11 @@ public class Player2 extends Player {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             left = true;
+            changeFaceDirection(true);
         }
         if (e.getKeyCode() == KeyEvent.VK_D) {
             right = true;
+            changeFaceDirection(false);
         }
         if (e.getKeyCode() == KeyEvent.VK_W) {
             up = true;
