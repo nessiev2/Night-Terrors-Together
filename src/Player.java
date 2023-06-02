@@ -15,6 +15,8 @@ public abstract class Player {
     private int width = 80;
     private int height = 120;
     private int playerN;
+    private boolean isFacingLeft = false;
+    public void changeFaceDirection(boolean b) { isFacingLeft = b; }
     private boolean isCaught = false;
 
     public int getX() {
@@ -56,12 +58,12 @@ public abstract class Player {
     }
 
     public void paint(Graphics2D g2d) {
-        if (left) {
+        if (left || isFacingLeft) {
             //g2d.drawImage(img, getX(), getY(), width, height, null);
-            g2d.drawImage(gif, getX(), getY(), width, height, null);
+            g2d.drawImage(gif, getX()+width, getY(), -width, height, null);
         } else {
             //g2d.drawImage(img, getX() + getWidth(), getY(), -width, height, null);
-            g2d.drawImage(gif, getX()+width, getY(), -width, height, null);
+            g2d.drawImage(gif, getX(), getY(), width, height, null);
         }
     }
 
