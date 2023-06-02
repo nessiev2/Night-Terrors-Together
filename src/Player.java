@@ -7,6 +7,7 @@ import java.io.IOException;
 
 public abstract class Player {
     private BufferedImage img = null;
+    private Image gif = null;
     protected boolean right = false, left = false, up = false, down = false, interact = false;
     private int speed = 10;
     private int x, centerX;
@@ -43,20 +44,25 @@ public abstract class Player {
         this.playerN = playerN;
         if (playerN == 1) {
             try {
-                img = ImageIO.read(new File("Night-Terrors-Together\\res\\P1WalkR.png"));
+                img = ImageIO.read(new File("res\\P1WalkR.png"));
+                gif = Toolkit.getDefaultToolkit().createImage("res\\P1WalkGif.gif");
             } catch (IOException e) { System.out.println("p1 no image"); }
         } else { // player == 2
             try {
-                img = ImageIO.read(new File("Night-Terrors-Together\\res\\P2WalkR.png"));
+                img = ImageIO.read(new File("res\\P2WalkR.png"));
+                gif = Toolkit.getDefaultToolkit().createImage("res\\P2WalkGif.gif");
             } catch (IOException e) { System.out.println("p2 no image"); }
         }
     }
 
     public void paint(Graphics2D g2d) {
-        if (left)
-            g2d.drawImage(img, getX(), getY() , width, height, null);
-        else
-            g2d.drawImage(img, getX() + getWidth(), getY(), -width, height, null);
+        if (left) {
+            //g2d.drawImage(img, getX(), getY(), width, height, null);
+            g2d.drawImage(gif, getX(), getY(), width, height, null);
+        } else {
+            //g2d.drawImage(img, getX() + getWidth(), getY(), -width, height, null);
+            g2d.drawImage(gif, getX()+width, getY(), -width, height, null);
+        }
     }
 
     public void spawnPlayer(int x, int y) {
