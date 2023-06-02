@@ -51,7 +51,7 @@ public class Main extends JPanel {
     RMath mathematics = new RMath();
     RCompSci compSci = new RCompSci();
     REng eng = new REng();
-    Menuu menuu = new Menuu();
+    MainMenu menuu = new MainMenu();
 
     public void changeGameOver() {
         gameOver = true;
@@ -176,9 +176,6 @@ public class Main extends JPanel {
         g2d.setColor(Color.BLACK);
 
         switch(currentClassroom) {
-            case 0:
-                //transition1.paintStart(g2d);
-                currentClassroom = 5;
             case 1:
                 office.paint(g, p1, p2, transition1);
                 officeToBio.paint(g2d);
@@ -400,13 +397,17 @@ public class Main extends JPanel {
                 break;
         }
 
-        if (!p1.getIsCaught() || currentClassroom == 1)
-            p1.paint(g2d);
-        if (!p2.getIsCaught() || currentClassroom == 1)
-            p2.paint(g2d);
-        t.paint(g2d);
+        if (menuu.getIsMenuOpen()) {
+            menuu.paint(g2d);
+        } else {
+            if (!p1.getIsCaught() || currentClassroom == 1)
+                p1.paint(g2d);
+            if (!p2.getIsCaught() || currentClassroom == 1)
+                p2.paint(g2d);
+            t.paint(g2d);
 
-        cd.paint(g2d);
+            cd.paint(g2d);
+        }
     }
 
     public static void main(String[] args) throws InterruptedException {
