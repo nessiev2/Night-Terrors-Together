@@ -1,7 +1,12 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public abstract class Player {
+    private BufferedImage img = null;
     protected boolean right = false, left = false, up = false, down = false, interact = false;
     private int speed = 10;
     private int x, centerX;
@@ -36,6 +41,22 @@ public abstract class Player {
         x = 500;
         y = 500;
         this.playerN = playerN;
+        if (playerN == 1) {
+            try {
+                img = ImageIO.read(new File("Night-Terrors-Together\\res\\P1WalkR.png"));
+            } catch (IOException e) { System.out.println("p1 no image"); }
+        } else { // player == 2
+            try {
+                img = ImageIO.read(new File("Night-Terrors-Together\\res\\P2WalkR.png"));
+            } catch (IOException e) { System.out.println("p2 no image"); }
+        }
+    }
+
+    public void paint(Graphics2D g2d) {
+        if (left)
+            g2d.drawImage(img, getX(), getY() , width, height, null);
+        else
+            g2d.drawImage(img, getX() + getWidth(), getY(), -width, height, null);
     }
 
     public void spawnPlayer(int x, int y) {
@@ -105,14 +126,5 @@ public abstract class Player {
             }
         return true;
     }
-
-    public void paint(Graphics2D g2d) {
-        if (playerN == 1)
-            g2d.setColor(Color.magenta);
-        else
-            g2d.setColor(Color.green);
-        g2d.fillRect(x, y, width, height);
-    }
-
 
 }
