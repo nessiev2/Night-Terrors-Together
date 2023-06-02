@@ -183,222 +183,92 @@ public class Main extends JPanel {
             case 1:
                 office.paint(g, p1, p2, transition1);
                 officeToBio.paint(g2d);
+                officeToCaf.paint(g2d);
+
                 if (p1.getIsCaught()) {
                     p1.spawnPlayer(170, 150);
                 }
                 if (p2.getIsCaught()) {
                     p2.spawnPlayer(170, 150);
                 }
-
-                if (officeToBio.containsPlayer(p1, p2)) {
-                    System.out.println("bio to office");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(bioToOffice.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
-                    p2.spawnPlayer(bioToOffice.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
-                    changeCurrentClassroom(4);
-                }
+                changeRooms(officeToBio, bioToOffice, 4, p1, p2, transition1, g2d);
+                changeRooms(officeToCaf, cafToOffice, 2, p1, p2, transition1, g2d);
                 break;
+
             case 2:
                 caf.paint(g, p1, p2, transition1);
                 cafToPhys.paint(g2d);
                 cafToGym.paint(g2d);
                 cafToOffice.paint(g2d);
-                if (cafToPhys.containsPlayer(p1, p2)) {
-                    System.out.println("caf to physics");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(physToCaf.getX(), physToCaf.getY() + physToCaf.getHeight() + 50);
-                    p2.spawnPlayer(physToCaf.getX(), physToCaf.getY() + physToCaf.getHeight() + 50);
-                    changeCurrentClassroom(5);
-                }
-                if (cafToGym.containsPlayer(p1, p2)) {
-                    System.out.println("caf to gym");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(gymToCaf.getX(), gymToCaf.getY() + gymToCaf.getHeight() + 50);
-                    p2.spawnPlayer(gymToCaf.getX(), gymToCaf.getY() + gymToCaf.getHeight() + 50);
-                    changeCurrentClassroom(3);
-                }
-                if (cafToOffice.containsPlayer(p1, p2)) {
-                    System.out.println("caf to office");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(officeToCaf.getX(), officeToCaf.getY() + officeToCaf.getHeight() + 50);
-                    p2.spawnPlayer(officeToCaf.getX(), officeToCaf.getY() + officeToCaf.getHeight() + 50);
-                    changeCurrentClassroom(1);
-                }
+                changeRooms(cafToPhys, physToCaf, 5, p1, p2, transition1, g2d);
+                changeRooms(cafToGym, gymToCaf, 3, p1, p2, transition1, g2d);
+                changeRooms(cafToOffice, officeToCaf, 1, p1, p2, transition1, g2d);
                 break;
+
             case 3:
                 gym.paint(g, p1, p2, transition1);
                 gymToCaf.paint(g2d);
                 gymToChem.paint(g2d);
-                if (gymToCaf.containsPlayer(p1, p2)) {
-                    System.out.println("gym to caf");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(cafToGym.getX(), cafToGym.getY() + cafToGym.getHeight() + 50);
-                    p2.spawnPlayer(cafToGym.getX(), cafToGym.getY() + cafToGym.getHeight() + 50);
-                    changeCurrentClassroom(2);
-                }
-                if (gymToChem.containsPlayer(p1, p2)) {
-                    System.out.println("caf to gym");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(chemToGym.getX(), chemToGym.getY() + chemToGym.getHeight() + 50);
-                    p2.spawnPlayer(chemToGym.getX(), chemToGym.getY() + chemToGym.getHeight() + 50);
-                    changeCurrentClassroom(6);
-                }
+                changeRooms(gymToCaf, cafToGym, 2, p1, p2, transition1, g2d);
+                changeRooms(gymToChem, chemToGym, 6, p1, p2, transition1, g2d);
                 break;
+
             case 4:
                 bio.paint(g, p1, p2, transition1);
                 bioToPhys.paint(g2d);
                 bioToOffice.paint(g2d);
                 bioToMath.paint(g2d);
-                if (bioToPhys.containsPlayer(p1, p2)) {
-                    System.out.println("bio to physics");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(physToBio.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
-                    p2.spawnPlayer(physToBio.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
-                    changeCurrentClassroom(5);
-                }
-                if (bioToOffice.containsPlayer(p1, p2)) {
-                    System.out.println("bio to office");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(bioToOffice.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
-                    p2.spawnPlayer(bioToOffice.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
-                    changeCurrentClassroom(1);
-                }
-                if (bioToMath.containsPlayer(p1, p2)) {
-                    System.out.println("bio to math");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(mathToBio.getX(), mathToBio.getY() + mathToBio.getHeight() + 50);
-                    p2.spawnPlayer(mathToBio.getX(), mathToBio.getY() + mathToBio.getHeight() + 50);
-                    changeCurrentClassroom(7);
-                }
+                changeRooms(bioToPhys, physToBio, 5, p1, p2, transition1, g2d);
+                changeRooms(bioToOffice, bioToOffice, 1, p1, p2, transition1, g2d);
+                changeRooms(bioToMath, mathToBio, 7, p1, p2, transition1, g2d);
                 break;
+
             case 5:
                 phys.paint(g, p1, p2, transition1);
                 physToChem.paint(g2d);
                 physToBio.paint(g2d);
                 physToCaf.paint(g2d);
                 physToCompSci.paint(g2d);
-                if (physToChem.containsPlayer(p1, p2)) {
-                    System.out.println("physics to chem");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(chemToPhys.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
-                    p2.spawnPlayer(chemToPhys.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
-                    changeCurrentClassroom(6);
-                }
-                if (physToBio.containsPlayer(p1, p2)) {
-                    System.out.println("physics to bio");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(bioToPhys.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
-                    p2.spawnPlayer(bioToPhys.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
-                    changeCurrentClassroom(4);
-                }
-                if (physToCaf.containsPlayer(p1, p2)) {
-                    System.out.println("physics to caf");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(cafToPhys.getX(), cafToPhys.getY() - 150);
-                    p2.spawnPlayer(cafToPhys.getX(), cafToPhys.getY() - 150);
-                    changeCurrentClassroom(2);
-                }
-                if (physToCompSci.containsPlayer(p1, p2)) {
-                    System.out.println("physics to compsci");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(compSciToPhys.getX(), compSciToPhys.getY() - 150);
-                    p2.spawnPlayer(compSciToPhys.getX(), compSciToPhys.getY() - 150);
-                    changeCurrentClassroom(8);
-                }
-
-                mainMenu.paintMainMenu(g2d);
+                changeRooms(physToChem, chemToPhys, 6, p1, p2, transition1, g2d);
+                changeRooms(physToBio, bioToPhys, 4, p1, p2, transition1, g2d);
+                changeRooms(physToCaf, cafToPhys, 2, p1, p2, transition1, g2d);
+                changeRooms(physToCompSci, compSciToPhys, 8, p1, p2, transition1, g2d);
                 break;
+
             case 6:
                 chem.paint(g, p1, p2, transition1);
                 chemToPhys.paint(g2d);
                 chemToGym.paint(g2d);
                 chemToEng.paint(g2d);
-                if (chemToPhys.containsPlayer(p1, p2)) {
-                    System.out.println("chem to physics");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(physToChem.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
-                    p2.spawnPlayer(physToChem.getX(), bioToPhys.getY() + bioToPhys.getHeight() + 50);
-                    changeCurrentClassroom(5);
-                }
-                if (chemToGym.containsPlayer(p1, p2)) {
-                    System.out.println("chem to gym");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(gymToChem.getX(), gymToChem.getY() + gymToChem.getHeight() + 50);
-                    p2.spawnPlayer(gymToChem.getX(), gymToChem.getY() + gymToChem.getHeight() + 50);
-                    changeCurrentClassroom(3);
-                }
-                if (chemToEng.containsPlayer(p1, p2)) {
-                    System.out.println("chem to eng");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(engToChem.getX(), engToChem.getY() + engToChem.getHeight() + 50);
-                    p2.spawnPlayer(engToChem.getX(), engToChem.getY() + engToChem.getHeight() + 50);
-                    changeCurrentClassroom(9);
-                }
+                changeRooms(chemToPhys, physToChem, 5, p1, p2, transition1, g2d);
+                changeRooms(chemToGym, gymToChem, 3, p1, p2, transition1, g2d);
+                changeRooms(chemToEng, engToChem, 9, p1, p2, transition1, g2d);
                 break;
+
             case 7:
                 mathematics.paint(g, p1, p2, transition1);
                 mathToCompSci.paint(g2d);
                 mathToBio.paint(g2d);
-                if (mathToCompSci.containsPlayer(p1, p2)) {
-                    System.out.println("math to compsci");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(compSciToMath.getX(), compSciToMath.getY() + compSciToMath.getHeight() + 50);
-                    p2.spawnPlayer(compSciToMath.getX(), compSciToMath.getY() + compSciToMath.getHeight() + 50);
-                    changeCurrentClassroom(8);
-                }
-                if (mathToBio.containsPlayer(p1, p2)) {
-                    System.out.println("math to bio");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(bioToMath.getX(), bioToMath.getY() + bioToMath.getHeight() + 50);
-                    p2.spawnPlayer(bioToMath.getX(), bioToMath.getY() + bioToMath.getHeight() + 50);
-                    changeCurrentClassroom(4);
-                }
+                changeRooms(mathToCompSci, compSciToMath, 8, p1, p2, transition1, g2d);
+                changeRooms(mathToBio, bioToMath, 4, p1, p2, transition1, g2d);
                 break;
+
             case 8:
                 compSci.paint(g, p1, p2, transition1);
                 compSciToEng.paint(g2d);
                 compSciToMath.paint(g2d);
                 compSciToPhys.paint(g2d);
-                if (compSciToEng.containsPlayer(p1, p2)) {
-                    System.out.println("compsci to eng");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(engToCompSci.getX(), engToCompSci.getY() + engToCompSci.getHeight() + 50);
-                    p2.spawnPlayer(engToCompSci.getX(), engToCompSci.getY() + engToCompSci.getHeight() + 50);
-                    changeCurrentClassroom(9);
-                }
-                if (compSciToMath.containsPlayer(p1, p2)) {
-                    System.out.println("compsci to math");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(mathToCompSci.getX(), mathToCompSci.getY() + mathToCompSci.getHeight() + 50);
-                    p2.spawnPlayer(mathToCompSci.getX(), mathToCompSci.getY() + mathToCompSci.getHeight() + 50);
-                    changeCurrentClassroom(7);
-                }
-                if (compSciToPhys.containsPlayer(p1, p2)) {
-                    System.out.println("compsci to physics");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(physToCompSci.getX(), physToCompSci.getY() + physToCompSci.getHeight() + 50);
-                    p2.spawnPlayer(physToCompSci.getX(), physToCompSci.getY() + physToCompSci.getHeight() + 50);
-                    changeCurrentClassroom(5);
-                }
+                changeRooms(compSciToEng, engToCompSci, 9, p1, p2, transition1, g2d);
+                changeRooms(compSciToMath, mathToCompSci, 7, p1, p2, transition1, g2d);
+                changeRooms(compSciToPhys, physToCompSci, 5, p1, p2, transition1, g2d);
                 break;
+
             case 9:
                 eng.paint(g, p1, p2, transition1);
                 engToChem.paint(g2d);
                 engToCompSci.paint(g2d);
-                if (engToChem.containsPlayer(p1, p2)) {
-                    System.out.println("eng to chem");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(chemToEng.getX(), chemToEng.getY() + chemToEng.getHeight() + 50);
-                    p2.spawnPlayer(chemToEng.getX(), chemToEng.getY() + chemToEng.getHeight() + 50);
-                    changeCurrentClassroom(6);
-                }
-                if (engToCompSci.containsPlayer(p1, p2)) {
-                    System.out.println("eng to compsci");
-                    transition1.paintBlack(g2d);
-                    p1.spawnPlayer(compSciToEng.getX(), compSciToEng.getY() + compSciToEng.getHeight() + 50);
-                    p2.spawnPlayer(compSciToEng.getX(), compSciToEng.getY() + compSciToEng.getHeight() + 50);
-                    changeCurrentClassroom(8);
-                }
+                changeRooms(engToChem, chemToEng, 6, p1, p2, transition1, g2d);
+                changeRooms(engToCompSci, compSciToEng, 8, p1, p2, transition1, g2d);
                 break;
         }
 
@@ -430,6 +300,15 @@ public class Main extends JPanel {
             c.move(c); //Updates the coordinates
             c.repaint(); //Calls the paint method
             Thread.sleep(10); //Pauses for a moment
+        }
+    }
+
+    public void changeRooms(Door door1, Door door2, int nextClassroom, Player p1, Player p2, Transition transition1, Graphics2D g2d){
+        if (door1.containsPlayer(p1, p2)) {
+            transition1.paintBlack(g2d);
+            changeCurrentClassroom(nextClassroom);
+            p1.spawnPlayer(door2.getX(), door2.getY() + door2.getHeight() + 50);
+            p2.spawnPlayer(door2.getX(), door2.getY() + door2.getHeight() + 50);
         }
     }
 }
