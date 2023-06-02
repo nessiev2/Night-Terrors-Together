@@ -8,7 +8,7 @@ public class Main extends JPanel {
     boolean startGame = false;
     boolean gameOver = false;
     boolean pauseGame = false;
-    int currentClassroom = 0;
+    int currentClassroom = 5;
     CountDown cd = new CountDown();
     Transition transition1 = new Transition();
 
@@ -100,7 +100,7 @@ public class Main extends JPanel {
                 } else if (currentClassroom == 8){
                     p1.keyReleased(p2, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp);
                     p2.keyReleased(p1, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp);
-                } else {
+                } else if (currentClassroom == 9){
                     p1.keyReleased(p2, e, eng.arson9, eng.trashCans, eng.cb, office.pp);
                     p2.keyReleased(p1, e, eng.arson9, eng.trashCans, eng.cb, office.pp);
                 }
@@ -153,7 +153,7 @@ public class Main extends JPanel {
                 p1.move(compSci.desks);
                 p2.move(compSci.desks);
                 break;
-            default:
+            case 9:
                 p1.move(eng.desks);
                 p2.move(eng.desks);
                 break;
@@ -376,7 +376,7 @@ public class Main extends JPanel {
                     changeCurrentClassroom(5);
                 }
                 break;
-            default:
+            case 9:
                 eng.paint(g, p1, p2, transition1);
                 engToChem.paint(g2d);
                 engToCompSci.paint(g2d);
@@ -397,7 +397,7 @@ public class Main extends JPanel {
                 break;
         }
 
-        if (menuu.getIsMenuOpen()) {
+        if (!menuu.getIsMenuOpen()) {
             menuu.paint(g2d);
         } else {
             if (!p1.getIsCaught() || currentClassroom == 1)
