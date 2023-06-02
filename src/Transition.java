@@ -13,11 +13,4 @@ public class Transition {
         g2d.fillRect(0, 0, width, height);
     }
 
-    public void paintStart(Graphics g2d) {
-        g2d.setColor(Color.black);
-        g2d.fillRect(0, 0, width, height);
-        g2d.setColor(Color.white);
-        g2d.setFont(new Font("TimesRoman", Font.BOLD, 200));
-        g2d.drawString("MAIN MENU", width/2, height/2);
-    }
 }
