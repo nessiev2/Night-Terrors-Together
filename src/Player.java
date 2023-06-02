@@ -43,11 +43,11 @@ public abstract class Player {
         this.playerN = playerN;
         if (playerN == 1) {
             try {
-                img = ImageIO.read(new File("Night-Terrors-Together\\res\\P1WalkR.png"));
+                img = ImageIO.read(new File("res\\P1WalkR.png"));
             } catch (IOException e) { System.out.println("p1 no image"); }
         } else { // player == 2
             try {
-                img = ImageIO.read(new File("Night-Terrors-Together\\res\\P2WalkR.png"));
+                img = ImageIO.read(new File("res\\P2WalkR.png"));
             } catch (IOException e) { System.out.println("p2 no image"); }
         }
     }
