@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.management.relation.RelationNotFoundException;
 import javax.swing.*;
 
 public class Main extends JPanel {
@@ -41,8 +40,9 @@ public class Main extends JPanel {
     RCaf caf = new RCaf();
     RGym gym = new RGym();
     RMath mathematics = new RMath();
-    RCompSci compsci = new RCompSci();
+    RCompSci compSci = new RCompSci();
     REng eng = new REng();
+    Menuu menuu = new Menuu();
 
     public void changeGameOver() {
         gameOver = true;
@@ -89,8 +89,8 @@ public class Main extends JPanel {
                     p1.keyReleased(p2, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp);
                     p2.keyReleased(p1, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp);
                 } else if (currentClassroom == 8){
-                    p1.keyReleased(p2, e, compsci.arson8, compsci.trashCans, compsci.cb, office.pp);
-                    p2.keyReleased(p1, e, compsci.arson8, compsci.trashCans, compsci.cb, office.pp);
+                    p1.keyReleased(p2, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp);
+                    p2.keyReleased(p1, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp);
                 } else {
                     p1.keyReleased(p2, e, eng.arson9, eng.trashCans, eng.cb, office.pp);
                     p2.keyReleased(p1, e, eng.arson9, eng.trashCans, eng.cb, office.pp);
@@ -141,8 +141,8 @@ public class Main extends JPanel {
                 p2.move(mathematics.desks);
                 break;
             case 8:
-                p1.move(compsci.desks);
-                p2.move(compsci.desks);
+                p1.move(compSci.desks);
+                p2.move(compSci.desks);
                 break;
             default:
                 p1.move(eng.desks);
@@ -261,6 +261,7 @@ public class Main extends JPanel {
                     p2.spawnPlayer(cafToPhys.getX(), cafToPhys.getY() - 150);
                     changeCurrentClassroom(2);
                 }
+                menuu.paint(g2d);
                 break;
             case 6:
                 chem.paint(g, p1, p2, transition1);
