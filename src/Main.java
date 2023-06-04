@@ -125,51 +125,53 @@ public class Main extends JPanel {
 
     private void move(Main c) {
         if (!pauseGame) {
-            p1.checkTeacher(teacher);
-            p2.checkTeacher(teacher);
-
-        p1.checkTeacher(teacher);
-        p2.checkTeacher(teacher);
-        switch(currentClassroom) {
-            case 1:
-                p1.move(office.desks);
-                p2.move(office.desks);
-                break;
-            case 2:
-                p1.move(caf.desks);
-                p2.move(caf.desks);
-                break;
-            case 3:
-                p1.move(gym.desks);
-                p2.move(gym.desks);
-                break;
-            case 4:
-                p1.move(bio.desks);
-                p2.move(bio.desks);
-                break;
-            case 5:
-                p1.move(phys.desks);
-                p2.move(phys.desks);
-                break;
-            case 6:
-                p1.move(chem.desks);
-                p2.move(chem.desks);
-                break;
-            case 7:
-                p1.move(mathematics.desks);
-                p2.move(mathematics.desks);
-                break;
-            case 8:
-                p1.move(compSci.desks);
-                p2.move(compSci.desks);
-                break;
-            case 9:
-                p1.move(eng.desks);
-                p2.move(eng.desks);
-                break;
+            if (currentClassroom == tCurrentClassroom){
+                p1.checkTeacher(teacher);
+                p2.checkTeacher(teacher);
             }
+
+            switch(currentClassroom) {
+                case 1:
+                    p1.move(office.desks);
+                    p2.move(office.desks);
+                    break;
+                case 2:
+                    p1.move(caf.desks);
+                    p2.move(caf.desks);
+                    break;
+                case 3:
+                    p1.move(gym.desks);
+                    p2.move(gym.desks);
+                    break;
+                case 4:
+                    p1.move(bio.desks);
+                    p2.move(bio.desks);
+                    break;
+                case 5:
+                    p1.move(phys.desks);
+                    p2.move(phys.desks);
+                    break;
+                case 6:
+                    p1.move(chem.desks);
+                    p2.move(chem.desks);
+                    break;
+                case 7:
+                    p1.move(mathematics.desks);
+                    p2.move(mathematics.desks);
+                    break;
+                case 8:
+                    p1.move(compSci.desks);
+                    p2.move(compSci.desks);
+                    break;
+                case 9:
+                    p1.move(eng.desks);
+                    p2.move(eng.desks);
+                    break;
+            }
+
             t.move(c, p1, p2, p1.getX(), p1.getY(), p2.getX(), p2.getY());
             cd.move();
+
             if (cd.getTime() <= 0) {
                 gameOver = true;
             }
