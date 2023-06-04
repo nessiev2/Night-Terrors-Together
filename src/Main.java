@@ -19,17 +19,20 @@ BUGS/TO-DO/TO-FIX LIST
 PROBABLY SOLVED
 * doors suck and players are spawning in random places => doors do not suck and players are spawning normally
 
+GOLD PLATING
+* instead of pressing a button to open the menu, u click with a mouse
+* add music/sound
+* animations???
+
 */
 
 public class Main extends JPanel {
     //ATTRIBUTES
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
-    boolean gameOver = false;
-    boolean pauseGame = false;
-    int currentClassroom = 5;
-    int tCurrentClassroom = 1;
-    int clickClack = 0;
+    boolean gameOver = false, pauseGame = false;
+    int currentClassroom = 5, tCurrentClassroom = 1, clickClack = 0;
     int tobX = 1300, botY = 850, topY = 70, rightX = SCREEN_WIDTH-150, leftX = 0, sideY = SCREEN_HEIGHT/2-100;
+    SideMenu sideMenu = new SideMenu();
     CountDown cd = new CountDown();
     Transition transition1 = new Transition();
 
@@ -94,14 +97,21 @@ public class Main extends JPanel {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyReleased(KeyEvent e) {
+                // pausing game
                 if (mainMenu.getIsMenuOpen() && e.getKeyCode() == KeyEvent.VK_ENTER) {
                     mainMenu.changeMenu(false);
                 }
-
                 if (pauseGame == false && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     pauseGame = true;
                 } else if (pauseGame == true && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     pauseGame = false;
+                }
+
+                // opening side menu
+                if (!mainMenu.getIsMenuOpen() && !sideMenu.getIsOpen() && e.getKeyCode() == KeyEvent.VK_M) {
+                    sideMenu.updateIsOpen(true);
+                } else if (!mainMenu.getIsMenuOpen() && sideMenu.getIsOpen() && e.getKeyCode() == KeyEvent.VK_M) {
+                    sideMenu.updateIsOpen(false);
                 }
 
                 if (currentClassroom == 1) {
@@ -320,26 +330,8 @@ public class Main extends JPanel {
             if (currentClassroom == tCurrentClassroom){
                 t.paint(g2d);
             }
-
             cd.paint(g2d);
-        }
-    }
-
-    public static void main(String[] args) throws InterruptedException {
-        JFrame frame = new JFrame("Physics");
-
-        Main c = new Main();
-        frame.add(c);
-        frame.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-        while (!c.gameOver)
-        {
-            c.move(c); //Updates the coordinates
-            c.repaint(); //Calls the paint method
-            Thread.sleep(10); //Pauses for a moment
+            sideMenu.paint(g2d);
         }
     }
 
@@ -368,6 +360,23 @@ public class Main extends JPanel {
 
             }
 
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        JFrame frame = new JFrame("Physics");
+
+        Main c = new Main();
+        frame.add(c);
+        frame.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        while (!c.gameOver)
+        {
+            c.move(c); //Updates the coordinates
+            c.repaint(); //Calls the paint method
+            Thread.sleep(10); //Pauses for a moment
         }
     }
 }

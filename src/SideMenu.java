@@ -1,12 +1,8 @@
 import java.awt.*;
 
-public class Menuu {
+public class SideMenu {
     int x = 1835, y = 20, width = 50, height = 50, openX = Main.SCREEN_WIDTH/2 - 400, openY = 20, openWidth = 800, openHeight = 800;
     boolean isOpen = false;
-
-    public Menuu(){
-
-    }
 
     public boolean getIsOpen(){
         return isOpen;
@@ -22,6 +18,8 @@ public class Menuu {
             g2d.fillRect(x, y, width, height);
         } else {
             g2d.fillRect(openX, openY, openWidth, openHeight);
+            g2d.setColor(Color.black);
+            g2d.drawString("TASKS:", openX + openWidth - 500, openY + 70);
         }
     }
 }
