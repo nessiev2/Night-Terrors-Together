@@ -13,8 +13,8 @@ public class RPhysics {
         int counter = 0;
 
         //generating desks loop
-        for (int i = 400; i <= 1200; i += 400){
-            for (int j = 500; j <= 800; j += 300){
+        for (int i = 400; i <= 1000; i += 300){         // x
+            for (int j = 500; j <= 800; j += 300){      // y
                 desks[counter] = new Desk(i, j);
                 counter++;
             }

@@ -11,6 +11,8 @@ public class Door extends Thing {
     public void paint(Graphics g2d) {
         g2d.setColor(Color.yellow);
         g2d.fillRect(getX(), getY(), width, height);
+        g2d.setColor(new Color(205, 139, 77));
+        g2d.fillRect(getX() + 10, getY() + 10, width - 20, height - 10);
     }
 
     public boolean containsPlayer(Player p1, Player p2) {

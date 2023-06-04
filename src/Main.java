@@ -8,13 +8,16 @@ import java.util.Random;
 
 BUGS/TO-DO/TO-FIX LIST
 * countdown is running while players havent even interacted with main menu
-* doors suck and players are spawning in random places
 * rooms are ugly, why is a door on top of a table
 * teacher should not be able to spawn on top of players, must spawn at least certain distance away
 * choose 4 tasks at random
 * create little side menu
 * load rest of graphics
 * finish coding rest of tasks
+* if u leave physics thru door on right, then come back to physics, u cant go thru the up door bc the players are like 2 pixels too long (the boundaries got changed????? idk)
+
+PROBABLY SOLVED
+* doors suck and players are spawning in random places => doors do not suck and players are spawning normally
 
 */
 
@@ -26,34 +29,35 @@ public class Main extends JPanel {
     int currentClassroom = 5;
     int tCurrentClassroom = 1;
     int clickClack = 0;
+    int tobX = 1300, botY = 850, topY = 70, rightX = SCREEN_WIDTH-150, leftX = 0, sideY = SCREEN_HEIGHT/2-100;
     CountDown cd = new CountDown();
     Transition transition1 = new Transition();
 
     //DOORS
-    Door bioToOffice = new Door(800, 200);
-    Door officeToBio = new Door(800, 800);
-    Door physToChem = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
-    Door chemToPhys = new Door(0, SCREEN_HEIGHT/2-100);
-    Door physToBio = new Door(0, SCREEN_HEIGHT/2-100);
-    Door bioToPhys = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
-    Door physToCaf = new Door(1300, 70);
-    Door cafToPhys = new Door(1300, 810);
-    Door gymToCaf = new Door(0, SCREEN_HEIGHT/2-100);
-    Door cafToGym = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
-    Door gymToChem = new Door(1300, 810);
-    Door chemToGym = new Door(1300, 70);
-    Door mathToBio = new Door(1300, 70);
-    Door bioToMath = new Door(1300, 810);
-    Door compSciToMath = new Door(0, SCREEN_HEIGHT/2-100);
-    Door mathToCompSci = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
-    Door physToCompSci = new Door(1300, 810);
-    Door compSciToPhys = new Door(1300, 70);
-    Door compSciToEng = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
-    Door engToCompSci = new Door(0, SCREEN_HEIGHT/2-100);
-    Door engToChem = new Door(1300, 70);
-    Door chemToEng = new Door(1300, 810);
-    Door cafToOffice = new Door(0, SCREEN_HEIGHT/2-100);
-    Door officeToCaf = new Door(SCREEN_WIDTH-150, SCREEN_HEIGHT/2-100);
+    Door bioToOffice = new Door(tobX, topY);
+    Door officeToBio = new Door(tobX, botY);
+    Door physToChem = new Door(rightX, sideY);
+    Door chemToPhys = new Door(leftX, sideY);
+    Door physToBio = new Door(leftX, sideY);
+    Door bioToPhys = new Door(rightX, sideY);
+    Door physToCaf = new Door(tobX, topY);
+    Door cafToPhys = new Door(tobX, botY);
+    Door gymToCaf = new Door(leftX, sideY);
+    Door cafToGym = new Door(rightX, sideY);
+    Door gymToChem = new Door(tobX, botY);
+    Door chemToGym = new Door(tobX, topY);
+    Door mathToBio = new Door(tobX, topY);
+    Door bioToMath = new Door(tobX, botY);
+    Door compSciToMath = new Door(leftX, sideY);
+    Door mathToCompSci = new Door(rightX, sideY);
+    Door physToCompSci = new Door(tobX, botY);
+    Door compSciToPhys = new Door(tobX, topY);
+    Door compSciToEng = new Door(rightX, sideY);
+    Door engToCompSci = new Door(leftX, sideY);
+    Door engToChem = new Door(tobX, topY);
+    Door chemToEng = new Door(tobX, botY);
+    Door cafToOffice = new Door(leftX, sideY);
+    Door officeToCaf = new Door(rightX, sideY);
 
     //PLAYERS AND TEACHER
     Player p1 = new Player1();
@@ -202,8 +206,6 @@ public class Main extends JPanel {
             if (cd.getTime() <= 0) {
                 gameOver = true;
             }
-
-            //phys.arson5.doTask(phys.trashCans, p1, p2);
         }
     }
 
@@ -345,8 +347,27 @@ public class Main extends JPanel {
         if (door1.containsPlayer(p1, p2)) {
             transition1.paintBlack(g2d);
             changeCurrentClassroom(nextClassroom);
-            p1.spawnPlayer(door2.getX(), door2.getY() + door2.getHeight() + 50);
-            p2.spawnPlayer(door2.getX(), door2.getY() + door2.getHeight() + 50);
+
+            // i love hardcoding (brain doesmt function past 11pm, will fix tmr maybe)
+            if (door2.getX() == leftX){                                                                             // door is on left
+                p1.spawnPlayer(door2.getX() + door2.getWidth() + 50, door2.getY() + 15);
+                p2.spawnPlayer(door2.getX() + door2.getWidth() + 50, door2.getY() + 15);
+            } else if (door2.getY() == topY){                                                                       // door is on top
+                p1.spawnPlayer(door2.getX() + 15, door2.getY() + door2.getHeight() + 50);
+                p2.spawnPlayer(door2.getX() + 15, door2.getY() + door2.getHeight() + 50);
+            } else if (door2.getY() == botY){                                                                       // door is on bottom
+                p1.spawnPlayer(door2.getX() + 15, door2.getY() - 50);
+                p2.spawnPlayer(door2.getX() + 15, door2.getY() - 50);
+            } else if (door2.getX() == rightX){                                                                     // door is on right
+                p1.spawnPlayer(door2.getX() - 50, door2.getY() + 15);
+                p2.spawnPlayer(door2.getX() - 50, door2.getY() + 15);
+            } else {
+                System.out.println("ayo this door is kinda broken fix it asap :) ---> door1: " + door1 + "\t door2: " + door2);
+                p1.spawnPlayer(0, 0);
+                p2.spawnPlayer(0, 0);
+
+            }
+
         }
     }
 }
