@@ -79,6 +79,7 @@ public class Main extends JPanel {
     RCompSci compSci = new RCompSci();
     REng eng = new REng();
     MainMenu mainMenu = new MainMenu();
+    GameOver dead = new GameOver();
 
     public void changeGameOver() {
         gameOver = true;
@@ -112,6 +113,11 @@ public class Main extends JPanel {
                     sideMenu.updateIsOpen(true);
                 } else if (!mainMenu.getIsMenuOpen() && sideMenu.getIsOpen() && e.getKeyCode() == KeyEvent.VK_M) {
                     sideMenu.updateIsOpen(false);
+                }
+
+                if (gameOver && e.getKeyCode() == KeyEvent.VK_R) {
+                    gameOver = false;
+                    System.out.println("u pressed r");
                 }
 
                 if (currentClassroom == 1) {
@@ -224,114 +230,118 @@ public class Main extends JPanel {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setColor(Color.BLACK);
 
-        switch(currentClassroom) {
-            case 1:
-                office.paint(g, p1, p2, transition1);
-                officeToBio.paint(g2d);
-                officeToCaf.paint(g2d);
+        if (!gameOver){
+            //g2d.setColor(Color.BLACK);
+            switch(currentClassroom) {
+                case 1:
+                    office.paint(g, p1, p2, transition1);
+                    officeToBio.paint(g2d);
+                    officeToCaf.paint(g2d);
 
-                if (p1.getIsCaught()) {
-                    p1.spawnPlayer(170, 150);
-                }
-                if (p2.getIsCaught()) {
-                    p2.spawnPlayer(170, 150);
-                }
-                changeRooms(officeToBio, bioToOffice, 4, p1, p2, transition1, g2d);
-                changeRooms(officeToCaf, cafToOffice, 2, p1, p2, transition1, g2d);
-                break;
+                    if (p1.getIsCaught()) {
+                        p1.spawnPlayer(170, 150);
+                    }
+                    if (p2.getIsCaught()) {
+                        p2.spawnPlayer(170, 150);
+                    }
+                    changeRooms(officeToBio, bioToOffice, 4, p1, p2, transition1, g2d);
+                    changeRooms(officeToCaf, cafToOffice, 2, p1, p2, transition1, g2d);
+                    break;
 
-            case 2:
-                caf.paint(g, p1, p2, transition1);
-                cafToPhys.paint(g2d);
-                cafToGym.paint(g2d);
-                cafToOffice.paint(g2d);
-                changeRooms(cafToPhys, physToCaf, 5, p1, p2, transition1, g2d);
-                changeRooms(cafToGym, gymToCaf, 3, p1, p2, transition1, g2d);
-                changeRooms(cafToOffice, officeToCaf, 1, p1, p2, transition1, g2d);
-                break;
+                case 2:
+                    caf.paint(g, p1, p2, transition1);
+                    cafToPhys.paint(g2d);
+                    cafToGym.paint(g2d);
+                    cafToOffice.paint(g2d);
+                    changeRooms(cafToPhys, physToCaf, 5, p1, p2, transition1, g2d);
+                    changeRooms(cafToGym, gymToCaf, 3, p1, p2, transition1, g2d);
+                    changeRooms(cafToOffice, officeToCaf, 1, p1, p2, transition1, g2d);
+                    break;
 
-            case 3:
-                gym.paint(g, p1, p2, transition1);
-                gymToCaf.paint(g2d);
-                gymToChem.paint(g2d);
-                changeRooms(gymToCaf, cafToGym, 2, p1, p2, transition1, g2d);
-                changeRooms(gymToChem, chemToGym, 6, p1, p2, transition1, g2d);
-                break;
+                case 3:
+                    gym.paint(g, p1, p2, transition1);
+                    gymToCaf.paint(g2d);
+                    gymToChem.paint(g2d);
+                    changeRooms(gymToCaf, cafToGym, 2, p1, p2, transition1, g2d);
+                    changeRooms(gymToChem, chemToGym, 6, p1, p2, transition1, g2d);
+                    break;
 
-            case 4:
-                bio.paint(g, p1, p2, transition1);
-                bioToPhys.paint(g2d);
-                bioToOffice.paint(g2d);
-                bioToMath.paint(g2d);
-                changeRooms(bioToPhys, physToBio, 5, p1, p2, transition1, g2d);
-                changeRooms(bioToOffice, bioToOffice, 1, p1, p2, transition1, g2d);
-                changeRooms(bioToMath, mathToBio, 7, p1, p2, transition1, g2d);
-                break;
+                case 4:
+                    bio.paint(g, p1, p2, transition1);
+                    bioToPhys.paint(g2d);
+                    bioToOffice.paint(g2d);
+                    bioToMath.paint(g2d);
+                    changeRooms(bioToPhys, physToBio, 5, p1, p2, transition1, g2d);
+                    changeRooms(bioToOffice, bioToOffice, 1, p1, p2, transition1, g2d);
+                    changeRooms(bioToMath, mathToBio, 7, p1, p2, transition1, g2d);
+                    break;
 
-            case 5:
-                phys.paint(g, p1, p2, transition1);
-                physToChem.paint(g2d);
-                physToBio.paint(g2d);
-                physToCaf.paint(g2d);
-                physToCompSci.paint(g2d);
-                changeRooms(physToChem, chemToPhys, 6, p1, p2, transition1, g2d);
-                changeRooms(physToBio, bioToPhys, 4, p1, p2, transition1, g2d);
-                changeRooms(physToCaf, cafToPhys, 2, p1, p2, transition1, g2d);
-                changeRooms(physToCompSci, compSciToPhys, 8, p1, p2, transition1, g2d);
-                break;
+                case 5:
+                    phys.paint(g, p1, p2, transition1);
+                    physToChem.paint(g2d);
+                    physToBio.paint(g2d);
+                    physToCaf.paint(g2d);
+                    physToCompSci.paint(g2d);
+                    changeRooms(physToChem, chemToPhys, 6, p1, p2, transition1, g2d);
+                    changeRooms(physToBio, bioToPhys, 4, p1, p2, transition1, g2d);
+                    changeRooms(physToCaf, cafToPhys, 2, p1, p2, transition1, g2d);
+                    changeRooms(physToCompSci, compSciToPhys, 8, p1, p2, transition1, g2d);
+                    break;
 
-            case 6:
-                chem.paint(g, p1, p2, transition1);
-                chemToPhys.paint(g2d);
-                chemToGym.paint(g2d);
-                chemToEng.paint(g2d);
-                changeRooms(chemToPhys, physToChem, 5, p1, p2, transition1, g2d);
-                changeRooms(chemToGym, gymToChem, 3, p1, p2, transition1, g2d);
-                changeRooms(chemToEng, engToChem, 9, p1, p2, transition1, g2d);
-                break;
+                case 6:
+                    chem.paint(g, p1, p2, transition1);
+                    chemToPhys.paint(g2d);
+                    chemToGym.paint(g2d);
+                    chemToEng.paint(g2d);
+                    changeRooms(chemToPhys, physToChem, 5, p1, p2, transition1, g2d);
+                    changeRooms(chemToGym, gymToChem, 3, p1, p2, transition1, g2d);
+                    changeRooms(chemToEng, engToChem, 9, p1, p2, transition1, g2d);
+                    break;
 
-            case 7:
-                mathematics.paint(g, p1, p2, transition1);
-                mathToCompSci.paint(g2d);
-                mathToBio.paint(g2d);
-                changeRooms(mathToCompSci, compSciToMath, 8, p1, p2, transition1, g2d);
-                changeRooms(mathToBio, bioToMath, 4, p1, p2, transition1, g2d);
-                break;
+                case 7:
+                    mathematics.paint(g, p1, p2, transition1);
+                    mathToCompSci.paint(g2d);
+                    mathToBio.paint(g2d);
+                    changeRooms(mathToCompSci, compSciToMath, 8, p1, p2, transition1, g2d);
+                    changeRooms(mathToBio, bioToMath, 4, p1, p2, transition1, g2d);
+                    break;
 
-            case 8:
-                compSci.paint(g, p1, p2, transition1);
-                compSciToEng.paint(g2d);
-                compSciToMath.paint(g2d);
-                compSciToPhys.paint(g2d);
-                changeRooms(compSciToEng, engToCompSci, 9, p1, p2, transition1, g2d);
-                changeRooms(compSciToMath, mathToCompSci, 7, p1, p2, transition1, g2d);
-                changeRooms(compSciToPhys, physToCompSci, 5, p1, p2, transition1, g2d);
-                break;
+                case 8:
+                    compSci.paint(g, p1, p2, transition1);
+                    compSciToEng.paint(g2d);
+                    compSciToMath.paint(g2d);
+                    compSciToPhys.paint(g2d);
+                    changeRooms(compSciToEng, engToCompSci, 9, p1, p2, transition1, g2d);
+                    changeRooms(compSciToMath, mathToCompSci, 7, p1, p2, transition1, g2d);
+                    changeRooms(compSciToPhys, physToCompSci, 5, p1, p2, transition1, g2d);
+                    break;
 
-            case 9:
-                eng.paint(g, p1, p2, transition1);
-                engToChem.paint(g2d);
-                engToCompSci.paint(g2d);
-                changeRooms(engToChem, chemToEng, 6, p1, p2, transition1, g2d);
-                changeRooms(engToCompSci, compSciToEng, 8, p1, p2, transition1, g2d);
-                break;
-        }
-
-        if (mainMenu.getIsMenuOpen()) {
-            mainMenu.paintMainMenu(g2d);
-        } else {
-            if (!p1.getIsCaught() || currentClassroom == 1)
-                p1.paint(g2d);
-            if (!p2.getIsCaught() || currentClassroom == 1)
-                p2.paint(g2d);
-
-            if (currentClassroom == tCurrentClassroom){
-                t.paint(g2d);
+                case 9:
+                    eng.paint(g, p1, p2, transition1);
+                    engToChem.paint(g2d);
+                    engToCompSci.paint(g2d);
+                    changeRooms(engToChem, chemToEng, 6, p1, p2, transition1, g2d);
+                    changeRooms(engToCompSci, compSciToEng, 8, p1, p2, transition1, g2d);
+                    break;
             }
-            cd.paint(g2d);
-            sideMenu.paint(g2d);
+
+            if (mainMenu.getIsMenuOpen()) {
+                mainMenu.paintMainMenu(g2d);
+            } else {
+                if (!p1.getIsCaught() || currentClassroom == 1)
+                    p1.paint(g2d);
+                if (!p2.getIsCaught() || currentClassroom == 1)
+                    p2.paint(g2d);
+
+                if (currentClassroom == tCurrentClassroom){
+                    t.paint(g2d);
+                }
+                cd.paint(g2d);
+                sideMenu.paint(g2d);
+            }
+        } else {
+               dead.paintGameOver(g2d);
         }
     }
 

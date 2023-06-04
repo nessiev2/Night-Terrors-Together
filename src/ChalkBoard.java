@@ -61,7 +61,7 @@ public class ChalkBoard extends Thing {
 
         g2d.setColor(Color.white);
         g2d.setFont(new Font("TimesRoman", Font.BOLD, 50));
-        g2d.drawString(classroom, getX()+400, getY()+100);
+        g2d.drawString(classroom, getX()+200, getY()+100);
 
         //we skribl
         if (scribble && interactive) {
