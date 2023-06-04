@@ -2,15 +2,30 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.*;
+import java.util.Random;
+
+/*
+
+BUGS/TO-DO/TO-FIX LIST
+* countdown is running while players havent even interacted with main menu
+* doors suck and players are spawning in random places
+* rooms are ugly, why is a door on top of a table
+* teacher should not be able to spawn on top of players, must spawn at least certain distance away
+* choose 4 tasks at random
+* create little side menu
+* load rest of graphics
+* finish coding rest of tasks
+
+*/
 
 public class Main extends JPanel {
     //ATTRIBUTES
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
-    boolean startGame = false;
     boolean gameOver = false;
     boolean pauseGame = false;
     int currentClassroom = 5;
     int tCurrentClassroom = 1;
+    int clickClack = 0;
     CountDown cd = new CountDown();
     Transition transition1 = new Transition();
 
@@ -124,13 +139,24 @@ public class Main extends JPanel {
     }
 
     private void move(Main c) {
+        Random r = new Random();
+
         if (!pauseGame) {
+            clickClack++;
+
+            if (clickClack >= 500){
+                int[] tmp = {1, 2, 3, 4, 6, 7, 8, 9};
+                tCurrentClassroom = tmp[r.nextInt(8)];
+                System.out.println(tCurrentClassroom);
+                clickClack = 0;
+            }
+
             if (currentClassroom == tCurrentClassroom){
                 p1.checkTeacher(teacher);
                 p2.checkTeacher(teacher);
             }
 
-            switch(currentClassroom) {
+            switch (currentClassroom) {
                 case 1:
                     p1.move(office.desks);
                     p2.move(office.desks);
@@ -170,13 +196,14 @@ public class Main extends JPanel {
             }
 
             t.move(c, p1, p2, p1.getX(), p1.getY(), p2.getX(), p2.getY());
+
             cd.move();
 
             if (cd.getTime() <= 0) {
                 gameOver = true;
             }
 
-            phys.arson5.doTask(phys.trashCans, p1, p2);
+            //phys.arson5.doTask(phys.trashCans, p1, p2);
         }
     }
 
