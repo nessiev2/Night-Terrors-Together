@@ -4,7 +4,7 @@ public class RCaf {
     Arson arson2 = new Arson(true);
     TrashCan[] trashCans = {};
 
-    ChalkBoard cb = new ChalkBoard(500, 10, "CAFETERIA");
+    ChalkBoard cb = new ChalkBoard(500, 10, "CAFETERIA", true);
     Desk[] desks = {new Desk(700, 500, 400, 200)};
     Wall w1 = new Wall(0, 0);
     public RCaf() {

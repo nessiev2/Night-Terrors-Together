@@ -9,12 +9,13 @@ public class ChalkBoard extends Thing {
     private String[] scribbleArray = new String[20];
     private int[] xs = new int[20];
     private int[] ys = new int[20];
-    private boolean scribble = false, playerIsClose = false;
+    private boolean scribble = false, playerIsClose = false, interactive;
     private String classroom;
 
-    public ChalkBoard(int x, int y, String classroom){
+    public ChalkBoard(int x, int y, String classroom, boolean interactive){
         super(x, y, BOARD_WIDTH, BOARD_HEIGHT);
         this.classroom = classroom;
+        this.interactive = interactive;
 
         for (int i = 0; i < 20; i++){
             String c = randomChar();
@@ -50,7 +51,7 @@ public class ChalkBoard extends Thing {
         int i = 10;
 
         //interactive "glow"
-        if (playerIsClose) {
+        if (playerIsClose && interactive) {
             g2d.setColor(Color.yellow);
             g2d.fillRect(getX()-i, getY()-i, BOARD_WIDTH+2*i, BOARD_HEIGHT+2*i);
         }
@@ -63,7 +64,7 @@ public class ChalkBoard extends Thing {
         g2d.drawString(classroom, getX()+400, getY()+100);
 
         //we skribl
-        if (scribble) {
+        if (scribble && interactive) {
             g2d.setColor(Color.pink);
             for (int j = 0; j < 20; j++){
                 g2d.drawString(scribbleArray[j], xs[j], ys[j]);

@@ -4,7 +4,7 @@ public class RGym {
     Arson arson3 = new Arson(true);
     TrashCan[] trashCans = {};
 
-    ChalkBoard cb = new ChalkBoard(500, 10, "GYM");
+    ChalkBoard cb = new ChalkBoard(500, 10, "GYM", true);
     Desk[] desks = {};
     Wall w1 = new Wall(0, 0);
     public RGym() {
