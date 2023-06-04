@@ -8,10 +8,19 @@ public class RBiology {
     ChalkBoard cb = new ChalkBoard(300, 10, "BIOLOGY",true);
 
     Wall w1 = new Wall(0, 0);
-    Desk[] desks = {new Desk(400, 500), new Desk(800, 500), new Desk(400, 800), new Desk(800, 800)};
+    Desk[] desks = new Desk[6];
 
     public RBiology() {
         Random r = new Random();
+        int counter = 0;
+
+        //generating desks loop
+        for (int i = 400; i <= 1000; i += 300){         // x
+            for (int j = 500; j <= 800; j += 300){      // y
+                desks[counter] = new Desk(i, j);
+                counter++;
+            }
+        }
 
         trashCans[0] = new TrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
         trashCans[1] = new TrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall

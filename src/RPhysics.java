@@ -45,7 +45,6 @@ public class RPhysics {
 
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard
-
     }
 
 

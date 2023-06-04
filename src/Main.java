@@ -6,18 +6,27 @@ import java.util.Random;
 
 /*
 
-BUGS/TO-DO/TO-FIX LIST
-* countdown is running while players havent even interacted with main menu
-* rooms are ugly, why is a door on top of a table
-* teacher should not be able to spawn on top of players, must spawn at least certain distance away
-* choose 4 tasks at random
-* create little side menu
-* load rest of graphics
-* finish coding rest of tasks
+BUGS
 * if u leave physics thru door on right, then come back to physics, u cant go thru the up door bc the players are like 2 pixels too long (the boundaries got changed????? idk)
 
-PROBABLY SOLVED
-* doors suck and players are spawning in random places => doors do not suck and players are spawning normally
+TO-DO/TO-FIX LIST
+* teacher
+    * dont let the teacher phase thru desks and other stuff
+    * teacher should not be able to spawn on top of players, must spawn at least certain distance away
+* countdown
+    running while players havent even interacted with main menu
+* rooms
+    * ugly, why is a door on top of a table
+* tasks
+    * finish coding rest of tasks
+    * choose 4 tasks at random
+* side menu
+    * write random tasks
+    * write task in red after completion
+* graphics
+    * load rest of graphics
+* general
+    * make gameover work
 
 GOLD PLATING
 * instead of pressing a button to open the menu, u click with a mouse
