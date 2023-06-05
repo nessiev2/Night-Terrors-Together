@@ -1,7 +1,9 @@
+import java.awt.*;
 import java.util.Random;
 
 public class Sprint extends Task{
     int x, y, radius = 100;
+    Timer t = new Timer();
     public Sprint(boolean isTask) {
         super(isTask);
 
@@ -14,8 +16,21 @@ public class Sprint extends Task{
         y = randY[r.nextInt(3)];
     }
 
-    public void doTask(Player p1, Player p2) {
-        // if player is near point, allow player to sprint mmm yay 
-    }
+    public void paint(Graphics g2d, Player p1, Player p2) {
+        double dist1 = Math.sqrt(Math.pow(p1.getX()-x, 2) + Math.pow(p1.getY()-y, 2));
+        double dist2 = Math.sqrt(Math.pow(p2.getX()-x, 2) + Math.pow(p2.getY()-y, 2));
 
+        if (dist1 <= radius || dist2 <= radius){
+            g2d.setColor(Color.yellow);
+            g2d.fillOval(x, y, radius/2, radius/2);
+        }
+        if (dist1 <= radius){
+            t.start();
+            p1.changeSpeed(20);
+            //p1.changeSpeed(10);
+        }
+        if (dist2 <= radius){
+            p2.changeSpeed(20);
+        }
+    }
 }

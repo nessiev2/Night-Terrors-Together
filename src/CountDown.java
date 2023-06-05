@@ -55,6 +55,4 @@ public class CountDown {
     public long getTime() {
         return backwardsTime;
     }
-
-
 }

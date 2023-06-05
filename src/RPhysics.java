@@ -7,6 +7,7 @@ public class RPhysics {
     ChalkBoard cb = new ChalkBoard(300, 10, "PHYSICS", true);
     Wall w1 = new Wall(0, 0);
     Desk[] desks = new Desk[6];
+    Sprint sprint = new Sprint(true);
 
     public RPhysics() {
         Random r = new Random();
@@ -45,6 +46,8 @@ public class RPhysics {
 
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard
+
+        sprint.paint(g2d, p1, p2);
     }
 
 
