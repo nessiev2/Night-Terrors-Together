@@ -12,10 +12,14 @@ public class CountDown {
         startTime = System.currentTimeMillis();
     }
 
+    public void CDReset()  {
+        startTime = System.currentTimeMillis();
+    }
+
     public void move() {
         currentTime = System.currentTimeMillis();
         elapsedTime = System.currentTimeMillis() - startTime;
-        backwardsTime = 90000 - elapsedTime;
+        backwardsTime = 10000 - elapsedTime;
         //backwardsTime = 120000 - elapsedTime;
 
         elapsedSeconds = backwardsTime / 1000;
