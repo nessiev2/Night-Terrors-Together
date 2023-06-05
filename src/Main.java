@@ -13,6 +13,7 @@ TO-DO/TO-FIX LIST
 * teacher
     * dont let the teacher phase thru desks and other stuff
     * teacher should not be able to spawn on top of players, must spawn at least certain distance away
+    * if teacher in same room as u, do not spawn away
 * countdown
     running while players havent even interacted with main menu
 * rooms
@@ -23,10 +24,13 @@ TO-DO/TO-FIX LIST
 * side menu
     * write random tasks
     * write task in red after completion
-* graphics
-    * load rest of graphics
 * general
     * make gameover work
+* graphics
+    * load rest of graphics
+    * make minimap so players dont get lost???
+* doors
+    * make side doors mats
 
 GOLD PLATING
 * instead of pressing a button to open the menu, u click with a mouse
