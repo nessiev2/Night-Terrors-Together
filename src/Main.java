@@ -117,7 +117,8 @@ public class Main extends JPanel {
                 }
                 if (gameOver && e.getKeyCode() == KeyEvent.VK_R) {
                     gameOver = false;
-                    //cd.CDReset();
+                    mainMenu.changeMenu(true);
+                    cd.CDReset();
                 }
                 if (!pauseGame && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     pauseGame = true;
@@ -400,25 +401,29 @@ public class Main extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         while (true) {
-            while (!c.gameOver) //(!c.gameOver)
-            {
+            //while (!c.gameOver) {
                 c.move(c); //Updates the coordinates
                 c.repaint(); //Calls the paint method
                 Thread.sleep(10); //Pauses for a moment
 
+
                 if (c.gameOver) {
+
+                }
+                    /*
                     Thread.sleep(3000); //Pauses for a moment
 
                     c = new Main();
+                    c.gameOver = false;
                     frame.add(c);
                     frame.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
                     frame.setVisible(true);
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     Thread.sleep(10); //Pauses for a moment
-                }
+                } */
             }
 
             //Thread.sleep(10); //Pauses for a moment
-        }
+        //}
     }
 }
