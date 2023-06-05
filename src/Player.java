@@ -40,7 +40,7 @@ public abstract class Player {
         isCaught = c;
     }
     public int getPlayerSpeed() { return speed; }
-    public void changeSpeed(int speed) { this.speed = speed; }
+    public void changeSpeed(int x) {speed = x; }
 
 
     public Player(int playerN) {

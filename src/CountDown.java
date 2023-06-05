@@ -19,8 +19,8 @@ public class CountDown {
     public void move() {
         currentTime = System.currentTimeMillis();
         elapsedTime = System.currentTimeMillis() - startTime;
-        backwardsTime = 10000 - elapsedTime;
-        //backwardsTime = 120000 - elapsedTime;
+        //backwardsTime = 10000 - elapsedTime;
+        backwardsTime = 120000 - elapsedTime;
 
         elapsedSeconds = backwardsTime / 1000;
         secondsDisplay = elapsedSeconds % 60;
