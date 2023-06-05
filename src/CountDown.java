@@ -7,6 +7,10 @@ public class CountDown {
     long elapsedSeconds;
     long secondsDisplay;
     long elapsedMinutes;
+    long pausedTime;
+
+    long pause1 = 0;
+    long pause2 = 0;
 
     public CountDown() {
         startTime = System.currentTimeMillis();
@@ -16,10 +20,18 @@ public class CountDown {
         startTime = System.currentTimeMillis();
     }
 
+    public void startPause() { pause1 = System.currentTimeMillis(); }
+
+    public void stopPause() { pause2 = System.currentTimeMillis(); }
+
+
     public void move() {
         currentTime = System.currentTimeMillis();
         elapsedTime = System.currentTimeMillis() - startTime;
-        backwardsTime = 10000 - elapsedTime;
+        pausedTime += (pause2 - pause1);
+        pause1 = 0;
+        pause2 = 0;
+        backwardsTime = 30000 + 1000 + pausedTime - elapsedTime;
         //backwardsTime = 120000 - elapsedTime;
 
         elapsedSeconds = backwardsTime / 1000;

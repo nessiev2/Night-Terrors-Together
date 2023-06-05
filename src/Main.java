@@ -111,18 +111,25 @@ public class Main extends JPanel {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyReleased(KeyEvent e) {
-                // pausing game
+                // STARTING GAME - MAIN MENU
                 if (mainMenu.getIsMenuOpen() && e.getKeyCode() == KeyEvent.VK_ENTER) {
                     mainMenu.changeMenu(false);
+                    cd.CDReset();
                 }
+
+                // RESTART GAME - UISELSS
                 if (gameOver && e.getKeyCode() == KeyEvent.VK_R) {
                     gameOver = false;
                     mainMenu.changeMenu(true);
                     cd.CDReset();
                 }
+
+                // PAUSE GAME
                 if (!pauseGame && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    cd.startPause();
                     pauseGame = true;
                 } else if (pauseGame && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    cd.stopPause();
                     pauseGame = false;
                 }
 
