@@ -92,7 +92,7 @@ public class Main extends JPanel {
     RCompSci compSci = new RCompSci();
     REng eng = new REng();
     MainMenu mainMenu = new MainMenu();
-    GameOver dead = new GameOver();
+    GameOver gameOverScreen = new GameOver();
 
     public void changeGameOver() {
         gameOver = true;
@@ -115,9 +115,13 @@ public class Main extends JPanel {
                 if (mainMenu.getIsMenuOpen() && e.getKeyCode() == KeyEvent.VK_ENTER) {
                     mainMenu.changeMenu(false);
                 }
-                if (pauseGame == false && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                if (gameOver && e.getKeyCode() == KeyEvent.VK_R) {
+                    gameOver = false;
+                    //cd.CDReset();
+                }
+                if (!pauseGame && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     pauseGame = true;
-                } else if (pauseGame == true && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                } else if (pauseGame && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     pauseGame = false;
                 }
 
@@ -354,7 +358,7 @@ public class Main extends JPanel {
                 sideMenu.paint(g2d);
             }
         } else {
-               dead.paintGameOver(g2d);
+               gameOverScreen.paintGameOver(g2d);
         }
     }
 
@@ -395,11 +399,26 @@ public class Main extends JPanel {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        while (!c.gameOver)
-        {
-            c.move(c); //Updates the coordinates
-            c.repaint(); //Calls the paint method
-            Thread.sleep(10); //Pauses for a moment
+        while (true) {
+            while (!c.gameOver) //(!c.gameOver)
+            {
+                c.move(c); //Updates the coordinates
+                c.repaint(); //Calls the paint method
+                Thread.sleep(10); //Pauses for a moment
+
+                if (c.gameOver) {
+                    Thread.sleep(3000); //Pauses for a moment
+
+                    c = new Main();
+                    frame.add(c);
+                    frame.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+                    frame.setVisible(true);
+                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    Thread.sleep(10); //Pauses for a moment
+                }
+            }
+
+            //Thread.sleep(10); //Pauses for a moment
         }
     }
 }
