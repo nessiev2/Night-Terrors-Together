@@ -25,7 +25,7 @@ TO-DO/TO-FIX LIST
     * write random tasks
     * write task in red after completion
 * general
-    * make gameover work
+    * make gameover work ✖✖✖
 * graphics
     * load rest of graphics
     * make minimap so players dont get lost???

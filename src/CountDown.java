@@ -31,7 +31,7 @@ public class CountDown {
         pausedTime += (pause2 - pause1);
         pause1 = 0;
         pause2 = 0;
-        backwardsTime = 30000 + 1000 + pausedTime - elapsedTime;
+        backwardsTime = 60000*10 + 1000 + pausedTime - elapsedTime;
         //backwardsTime = 120000 - elapsedTime;
 
         elapsedSeconds = backwardsTime / 1000;
