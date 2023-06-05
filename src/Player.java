@@ -39,6 +39,9 @@ public abstract class Player {
     public void changeIsCaught(boolean c) {
         isCaught = c;
     }
+    public int getPlayerSpeed() { return speed; }
+    public void changeSpeed(int speed) { this.speed = speed; }
+
 
     public Player(int playerN) {
         x = 500;
