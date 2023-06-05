@@ -136,8 +136,12 @@ public class Main extends JPanel {
                 // opening side menu
                 if (!mainMenu.getIsMenuOpen() && !sideMenu.getIsOpen() && e.getKeyCode() == KeyEvent.VK_M) {
                     sideMenu.updateIsOpen(true);
+                    cd.startPause();
+                    pauseGame = true;
                 } else if (!mainMenu.getIsMenuOpen() && sideMenu.getIsOpen() && e.getKeyCode() == KeyEvent.VK_M) {
                     sideMenu.updateIsOpen(false);
+                    cd.stopPause();
+                    pauseGame = false;
                 }
 
                 if (gameOver && e.getKeyCode() == KeyEvent.VK_R) {
