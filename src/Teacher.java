@@ -13,6 +13,10 @@ public class Teacher extends Thing {
     private boolean isFacingLeft = false;
     public void changeFaceDirection(boolean b) { isFacingLeft = b; }
 
+    public void spawnTeacher(int x, int y) {
+        changeX(x);
+        changeY(y);
+    }
 
     public Teacher() {
         super(0, 0, 120, 180);
