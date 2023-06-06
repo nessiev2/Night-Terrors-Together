@@ -16,8 +16,14 @@ public class Minimap {
     }
 
     public void paintYou(Graphics2D g2d, int i) {
-        int ya = i / 3;
-        int xa = i-ya*3;
+        int ya = (i-1) / 3;
+        int xa = (i%3);
+        if (xa == 0) {
+            xa = 2;
+        } else {
+            xa -= 1;
+        }
+        //System.out.println("xa " + xa + " ya " + ya);
         g2d.setColor(Color.pink);
         g2d.fillOval(x+xa*20, y+ya*20, 20, 20);
     }
