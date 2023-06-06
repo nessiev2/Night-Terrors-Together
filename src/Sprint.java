@@ -2,8 +2,8 @@ import java.awt.*;
 import java.util.Random;
 
 public class Sprint extends Task{
-    int x, y, radius = 100;
-    boolean flag = false;
+    int x, y, i = 0, j = 0, radius = 100;
+    boolean flag1 = false, flag2 = false, isComplete = false;
     Timer t = new Timer();
     public Sprint(boolean isTask) {
         super(isTask);
@@ -18,27 +18,45 @@ public class Sprint extends Task{
     }
 
     public void paint(Graphics g2d, Player p1, Player p2) {
+        System.out.println(i);
         double dist1 = Math.sqrt(Math.pow(p1.getX()-x, 2) + Math.pow(p1.getY()-y, 2));
         double dist2 = Math.sqrt(Math.pow(p2.getX()-x, 2) + Math.pow(p2.getY()-y, 2));
 
-        //if (dist1 <= radius || dist2 <= radius){
+        if ((dist1 <= radius || dist2 <= radius) && !isComplete){
             g2d.setColor(Color.yellow);
             g2d.fillOval(x, y, radius/2, radius/2);
-        //}
-        if (dist1 <= radius && dist2 <= radius){
-            flag = true;
+        }
+        if (dist1 <= radius && !isComplete){
+            flag1 = true;
+            p1.changeSpeed(20);
+        }
+        if (dist2 <= radius && !isComplete){
+            flag2 = true;
+            p2.changeSpeed(20);
         }
 
-        if (flag){
-            int i = 0;
-            p2.changeSpeed(50);
-            p1.changeSpeed(50);
-            while (i < 1000){
-                i++;
-            }
-            System.out.println("am sprinting wheeeee");
-            //p2.changeSpeed(10);
-            //p1.changeSpeed(10);
+        if (flag1){
+            i++;
+        }
+        if (flag2){
+            j++;
+        }
+
+        if (i >= 300){
+            flag1 = false;
+            p1.changeSpeed(10);
+            i = 0;
+        }
+
+        if (j >= 300){
+            flag2 = false;
+            p2.changeSpeed(10);
+            j = 0;
+        }
+
+        if (flag1 && flag2){
+            isComplete = true;
+            System.out.println("done");
         }
     }
 }
