@@ -41,6 +41,7 @@ GOLD PLATING
 
 public class Main extends JPanel {
     //ATTRIBUTES
+    Minimap minimap = new Minimap();
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
     boolean gameOver = false, pauseGame = false;
     int currentClassroom = 5, tCurrentClassroom = 1, clickClack = 0;
@@ -355,6 +356,8 @@ public class Main extends JPanel {
                     break;
             }
 
+            minimap.paint(g2d);
+            minimap.paintYou(g2d, currentClassroom);
             if (mainMenu.getIsMenuOpen()) {
                 mainMenu.paintMainMenu(g2d);
             } else {
