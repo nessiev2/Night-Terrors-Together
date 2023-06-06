@@ -96,7 +96,7 @@ public abstract class Player {
             if (down && checkDown(t) && y + height + speed < Main.SCREEN_HEIGHT) {
                 y += speed;
             }
-            if (up && checkUp(t) && (y - speed > 145)) {
+            if (up && checkUp(t) && (y > 145)) {
                 y -= speed;
             }
         }
