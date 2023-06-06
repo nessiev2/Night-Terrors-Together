@@ -13,7 +13,6 @@ TO-DO/TO-FIX LIST
 * teacher
     * dont let the teacher phase thru desks and other stuff
     * teacher should not be able to spawn on top of players, must spawn at least certain distance away
-    * if teacher in same room as u, do not spawn away
 * rooms
     * ugly, why is a door on top of a table
 * tasks
@@ -192,7 +191,7 @@ public class Main extends JPanel {
             clickClack++;
 
             // TEACHER SPAWNS IN A CLASSROOM
-            if (clickClack >= 500 && tCurrentClassroom != currentClassroom){
+            if (clickClack >= 50 && tCurrentClassroom != currentClassroom){
                 int[] tmp = {1, 2, 3, 4, 6, 7, 8, 9};
                 tCurrentClassroom = tmp[r.nextInt(8)];
                 System.out.println(tCurrentClassroom);
