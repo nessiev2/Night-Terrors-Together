@@ -358,6 +358,7 @@ public class Main extends JPanel {
 
             minimap.paint(g2d);
             minimap.paintYou(g2d, currentClassroom);
+            minimap.paintTeacher(g2d, tCurrentClassroom);
             if (mainMenu.getIsMenuOpen()) {
                 mainMenu.paintMainMenu(g2d);
             } else {
