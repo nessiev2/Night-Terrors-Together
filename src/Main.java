@@ -191,7 +191,8 @@ public class Main extends JPanel {
         if (!pauseGame) {
             clickClack++;
 
-            if (clickClack >= 500){
+            // TEACHER SPAWNS IN A CLASSROOM
+            if (clickClack >= 500 && tCurrentClassroom != currentClassroom){
                 int[] tmp = {1, 2, 3, 4, 6, 7, 8, 9};
                 tCurrentClassroom = tmp[r.nextInt(8)];
                 System.out.println(tCurrentClassroom);

@@ -81,15 +81,11 @@ public class Teacher extends Thing {
     public void paint(Graphics2D g2d) {
         if (isFacingLeft) {
             //g2d.drawImage(img, getX(), getY(), width, height, null);
-            g2d.drawImage(gif, getX()+getWidth(), getY(), -getWidth(), getHeight(), null);
+            g2d.drawImage(gif, getX() + getWidth(), getY(), -getWidth(), getHeight(), null);
         } else {
             //g2d.drawImage(img, getX() + getWidth(), getY(), -width, height, null);
             g2d.drawImage(gif, getX(), getY(), getWidth(), getHeight(), null);
         }
-
-    /*g2d.setColor(Color.blue);
-        g2d.fillRect(getX(), getY(), 120, 180);*/
     }
-
 
 }
