@@ -22,7 +22,7 @@ public class Sprint extends Task{
         double dist1 = Math.sqrt(Math.pow(p1.getX()-x, 2) + Math.pow(p1.getY()-y, 2));
         double dist2 = Math.sqrt(Math.pow(p2.getX()-x, 2) + Math.pow(p2.getY()-y, 2));
 
-        if (dist1 <= radius || dist2 <= radius){
+        if ((dist1 <= radius || dist2 <= radius) && !isComplete){
             g2d.setColor(Color.yellow);
             g2d.fillOval(x, y, radius/2, radius/2);
         }
