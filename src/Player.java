@@ -79,11 +79,17 @@ public abstract class Player {
     public void keyPressed(KeyEvent e) {}
     public void keyReleased(Player p2, KeyEvent e, DoArson arson1, TrashCan[] trashCans, ChalkBoard cb, PressurePlate pp) {}
 
-    public boolean checkTeacher(Teacher[] t) {
+    public boolean checkPlayerCaught(Teacher[] t) {
         if (!checkRight(t) || !checkLeft(t) || !checkDown(t) || !checkUp(t)) {
             isCaught = true;
         }
         return isCaught;
+    }
+    public boolean checkTeacher(Teacher[] t) {
+        if (!checkRight(t) || !checkLeft(t) || !checkDown(t) || !checkUp(t)) {
+            return true;
+        }
+        return false;
     }
 
     public void move(Thing[] t) {
