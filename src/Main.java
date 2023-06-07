@@ -193,15 +193,8 @@ public class Main extends JPanel {
             // TEACHER SPAWNS IN A CLASSROOM
             if (clickClack >= 50 && tCurrentClassroom != currentClassroom){
                 int[] tmp = {1, 2, 3, 4, 6, 7, 8, 9};
+                t.spawnTeacher(0,0);
                 tCurrentClassroom = tmp[r.nextInt(8)];
-                if (p1.checkTeacher(teacher) && p2.checkTeacher(teacher)) {
-                    t.spawnTeacher(500, 500);
-                }
-                if (p1.checkTeacher(teacher)) {
-                    t.spawnTeacher(0, 0);
-                } else if (p2.checkTeacher(teacher)) {
-                    t.spawnTeacher(200, 200);
-                }
                 System.out.println(tCurrentClassroom);
                 clickClack = 0;
             }
@@ -250,7 +243,9 @@ public class Main extends JPanel {
                     break;
             }
 
-            t.move(c, p1, p2, p1.getX(), p1.getY(), p2.getX(), p2.getY());
+            if (tCurrentClassroom == currentClassroom) {
+                t.move(c, p1, p2, p1.getX(), p1.getY(), p2.getX(), p2.getY());
+            }
 
             cd.move();
 
