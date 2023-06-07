@@ -88,6 +88,7 @@ public class Main extends JPanel {
     REng eng = new REng();
     MainMenu mainMenu = new MainMenu();
     GameOver gameOverScreen = new GameOver();
+    DoMess mess3 = new DoMess(true);
 
     public void changeGameOver() {
         gameOver = true;
@@ -141,32 +142,32 @@ public class Main extends JPanel {
                 }
 
                 if (currentClassroom == 1) {
-                    p1.keyReleased(p2, e, office.arson1, office.trashCans, office.cb, office.pp);
-                    p2.keyReleased(p1, e, office.arson1, office.trashCans, office.cb, office.pp);
+                    p1.keyReleased(p2, e, office.arson1, office.trashCans, office.cb, office.pp, mess3);
+                    p2.keyReleased(p1, e, office.arson1, office.trashCans, office.cb, office.pp, mess3);
                 } else if (currentClassroom == 2){
-                    p1.keyReleased(p2, e, caf.arson2, caf.trashCans, caf.cb, office.pp);
-                    p2.keyReleased(p1, e, caf.arson2, caf.trashCans, caf.cb, office.pp);
+                    p1.keyReleased(p2, e, caf.arson2, caf.trashCans, caf.cb, office.pp, mess3);
+                    p2.keyReleased(p1, e, caf.arson2, caf.trashCans, caf.cb, office.pp, mess3);
                 } else if (currentClassroom == 3){
-                    p1.keyReleased(p2, e, gym.arson3, gym.trashCans, gym.cb, office.pp);
-                    p2.keyReleased(p1, e, gym.arson3, gym.trashCans, gym.cb, office.pp);
+                    p1.keyReleased(p2, e, gym.arson3, gym.trashCans, gym.cb, office.pp, mess3);
+                    p2.keyReleased(p1, e, gym.arson3, gym.trashCans, gym.cb, office.pp, mess3);
                 } else if (currentClassroom == 4) {
-                    p1.keyReleased(p2, e, bio.arson4, bio.trashCans, bio.cb, office.pp);
-                    p2.keyReleased(p1, e, bio.arson4, bio.trashCans, bio.cb, office.pp);
+                    p1.keyReleased(p2, e, bio.arson4, bio.trashCans, bio.cb, office.pp, mess3);
+                    p2.keyReleased(p1, e, bio.arson4, bio.trashCans, bio.cb, office.pp, mess3);
                 } else if (currentClassroom == 5) {
-                    p1.keyReleased(p2, e, phys.arson5, phys.trashCans, phys.cb, office.pp);
-                    p2.keyReleased(p1, e, phys.arson5, phys.trashCans, phys.cb, office.pp);
+                    p1.keyReleased(p2, e, phys.arson5, phys.trashCans, phys.cb, office.pp, mess3);
+                    p2.keyReleased(p1, e, phys.arson5, phys.trashCans, phys.cb, office.pp, mess3);
                 } else if (currentClassroom == 6) {
-                    p1.keyReleased(p2, e, chem.arson6, chem.trashCans, chem.cb, office.pp);
-                    p2.keyReleased(p1, e, chem.arson6, chem.trashCans, chem.cb, office.pp);
+                    p1.keyReleased(p2, e, chem.arson6, chem.trashCans, chem.cb, office.pp, mess3);
+                    p2.keyReleased(p1, e, chem.arson6, chem.trashCans, chem.cb, office.pp, mess3);
                 } else if (currentClassroom == 7){
-                    p1.keyReleased(p2, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp);
-                    p2.keyReleased(p1, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp);
+                    p1.keyReleased(p2, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp, mess3);
+                    p2.keyReleased(p1, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp, mess3);
                 } else if (currentClassroom == 8){
-                    p1.keyReleased(p2, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp);
-                    p2.keyReleased(p1, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp);
+                    p1.keyReleased(p2, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp, mess3);
+                    p2.keyReleased(p1, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp, mess3);
                 } else if (currentClassroom == 9){
-                    p1.keyReleased(p2, e, eng.arson9, eng.trashCans, eng.cb, office.pp);
-                    p2.keyReleased(p1, e, eng.arson9, eng.trashCans, eng.cb, office.pp);
+                    p1.keyReleased(p2, e, eng.arson9, eng.trashCans, eng.cb, office.pp, mess3);
+                    p2.keyReleased(p1, e, eng.arson9, eng.trashCans, eng.cb, office.pp, mess3);
                 }
             }
             @Override
@@ -295,6 +296,7 @@ public class Main extends JPanel {
 
                 case 3:
                     gym.paint(g, p1, p2, transition1);
+                    mess3.paint(g2d);
                     gymToCaf.paint(g2d);
                     gymToChem.paint(g2d);
                     changeRooms(gymToCaf, cafToGym, 2, p1, p2, transition1, g2d);

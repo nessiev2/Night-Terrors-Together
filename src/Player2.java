@@ -25,7 +25,7 @@ public class Player2 extends Player {
         }
     }
 
-    public void keyReleased(Player p1, KeyEvent e, DoArson arson1, TrashCan[] trashCans, ChalkBoard cb, PressurePlate pp) {
+    public void keyReleased(Player p1, KeyEvent e, DoArson arson1, TrashCan[] trashCans, ChalkBoard cb, PressurePlate pp, DoMess mess) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             left = false;
         }
@@ -39,6 +39,8 @@ public class Player2 extends Player {
             down = false;
         }
         if (e.getKeyCode() == KeyEvent.VK_Q) {
+            mess.addWaterStain(getCenterX(), getCenterY());
+
             for (TrashCan tc : trashCans) {
                 if (tc.isPlayerClose(this, this)) {
                     tc.setOnFire();
