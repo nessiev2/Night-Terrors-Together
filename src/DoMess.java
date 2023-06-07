@@ -1,7 +1,7 @@
 import java.awt.*;
 public class DoMess extends Task {
 
-    public boolean[][] waterStains = new boolean[1080-270][1920];
+    public boolean[][] waterStains = new boolean[1920/30][810/30];
 
     public DoMess(boolean isTask){
         super(isTask);
@@ -12,23 +12,23 @@ public class DoMess extends Task {
             for (int j = 0; j < waterStains[i].length; j++) {
                 if (waterStains[i][j]) {
                     g2d.setColor(Color.blue);
-                    g2d.drawRect(i, j, 1, 1);
+                    g2d.fillRect(i*30, j*30+60, 30, 30);
                 }
             }
         }
     }
 
     public void addWaterStain(int x, int y) {
-        int a = x-50;
+        int a = (x/30);
         if (a < 0) {
             a = 0;
         }
-        int b = y-50;
+        int b = (y/30);
         if (b < 0) {
             b = 0;
         }
-        for (int i = a; i < waterStains.length; i++) {
-            for (int j = b; j < waterStains[i].length; j++) {
+        for (int i = a; i < a+5; i++) {
+            for (int j = b; j < b+5; j++) {
                 waterStains[i][j] = true;
             }
         }
