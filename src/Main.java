@@ -6,15 +6,12 @@ import java.util.Random;
 
 /*
 
-BUGS
-* if u leave physics thru door on right, then come back to physics, u cant go thru the up door bc the players are like 2 pixels too long (the boundaries got changed????? idk)
-
 TO-DO/TO-FIX LIST
 * teacher
     * dont let the teacher phase thru desks and other stuff
     * teacher should not be able to spawn on top of players, must spawn at least certain distance away
 * rooms
-    * ugly, why is a door on top of a table
+    * add in their proper furniture stuffs
 * tasks
     * finish coding rest of tasks
     * choose 4 tasks at random
@@ -32,6 +29,7 @@ GOLD PLATING
 * instead of pressing a button to open the menu, u click with a mouse
 * add music/sound
 * animations???
+* screen gets red and tinted the closer the teacher is
 
 */
 
@@ -41,7 +39,7 @@ public class Main extends JPanel {
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
     boolean gameOver = false, pauseGame = false;
     int currentClassroom = 5, tCurrentClassroom = 1, clickClack = 0;
-    int tobX = 1300, botY = 850, topY = 70, rightX = SCREEN_WIDTH-150, leftX = 0, sideY = SCREEN_HEIGHT/2-100;
+    int tobX = 1300, botY = 810, topY = 70, rightX = SCREEN_WIDTH-150, leftX = 0, sideY = SCREEN_HEIGHT/2-100;
     SideMenu sideMenu = new SideMenu();
     CountDown cd = new CountDown();
     Transition transition1 = new Transition();
@@ -114,13 +112,6 @@ public class Main extends JPanel {
                     cd.CDReset();
                 }
 
-                // RESTART GAME - UISELSS
-                if (gameOver && e.getKeyCode() == KeyEvent.VK_R) {
-                    gameOver = false;
-                    mainMenu.changeMenu(true);
-                    cd.CDReset();
-                }
-
                 // PAUSE GAME
                 if (!pauseGame && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     cd.startPause();
@@ -141,9 +132,12 @@ public class Main extends JPanel {
                     pauseGame = false;
                 }
 
+                // RESTART GAME - UISELSS
                 if (gameOver && e.getKeyCode() == KeyEvent.VK_R) {
                     gameOver = false;
+                    mainMenu.changeMenu(true);
                     System.out.println("u pressed r");
+                    cd.CDReset();
                 }
 
                 if (currentClassroom == 1) {
@@ -194,21 +188,19 @@ public class Main extends JPanel {
             if (clickClack >= 50 && tCurrentClassroom != currentClassroom){
                 int[] tmp = {1, 2, 3, 4, 6, 7, 8, 9};
                 tCurrentClassroom = tmp[r.nextInt(8)];
-                if (p1.checkTeacher(teacher) && p2.checkTeacher(teacher)) {
-                    t.spawnTeacher(500, 500);
-                }
-                if (p1.checkTeacher(teacher)) {
-                    t.spawnTeacher(0, 0);
-                } else if (p2.checkTeacher(teacher)) {
-                    t.spawnTeacher(200, 200);
-                }
                 System.out.println(tCurrentClassroom);
                 clickClack = 0;
             }
 
             if (currentClassroom == tCurrentClassroom){
-                p1.checkTeacher(teacher);
-                p2.checkTeacher(teacher);
+                boolean checkP1 = p1.checkPlayerCaught(teacher), checkP2 = p2.checkPlayerCaught(teacher);
+                // if p1 and p2 are both caught
+            }
+
+            if (currentClassroom != tCurrentClassroom ){
+                if (p1.checkTeacher(teacher) || p2.checkTeacher(teacher)) {
+                    t.spawnTeacher(500, 500);
+                }
             }
 
             switch (currentClassroom) {
@@ -258,6 +250,10 @@ public class Main extends JPanel {
                 gameOver = true;
             }
         }
+    }
+
+    public void reset(){
+
     }
 
     @Override
@@ -367,14 +363,15 @@ public class Main extends JPanel {
             if (mainMenu.getIsMenuOpen()) {
                 mainMenu.paintMainMenu(g2d);
             } else {
-                if (!p1.getIsCaught() || currentClassroom == 1)
+                if (!p1.getIsCaught() || currentClassroom == 1){
                     p1.paint(g2d);
-                if (!p2.getIsCaught() || currentClassroom == 1)
-                    p2.paint(g2d);
-
-                if (currentClassroom == tCurrentClassroom){
-                    t.paint(g2d);
                 }
+                if (!p2.getIsCaught() || currentClassroom == 1){
+                    p2.paint(g2d);
+                }
+                //if (currentClassroom == tCurrentClassroom){
+                    t.paint(g2d);
+                //}
                 cd.paint(g2d);
                 sideMenu.paint(g2d);
             }
@@ -405,7 +402,6 @@ public class Main extends JPanel {
                 System.out.println("ayo this door is kinda broken fix it asap :) ---> door1: " + door1 + "\t door2: " + door2);
                 p1.spawnPlayer(0, 0);
                 p2.spawnPlayer(0, 0);
-
             }
 
         }
@@ -428,6 +424,8 @@ public class Main extends JPanel {
 
 
                 if (c.gameOver) {
+
+                } else {
 
                 }
                     /*
