@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.Random;
 
 public class RChemistry {
-    Arson arson6 = new Arson(true);
+    DoArson arson6 = new DoArson(true);
     TrashCan[] trashCans = new TrashCan[3];
 
     ChalkBoard cb = new ChalkBoard(300, 10, "CHEMISTRY", true);

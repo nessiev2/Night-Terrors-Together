@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.Random;
 
 public class RMath {
-    Arson arson7 = new Arson(true);
+    DoArson arson7 = new DoArson(true);
     TrashCan[] trashCans = new TrashCan[3];
     ChalkBoard cb = new ChalkBoard(300, 10, "MATH", true);
     Wall w1 = new Wall(0, 0);

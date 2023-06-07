@@ -1,10 +1,10 @@
 import java.awt.*;
 
-public class Door extends Thing {
+public class ADoor extends Thing {
     private final static int width = 150;
     private final static int height = 200;
 
-    public Door(int x, int y) {
+    public ADoor(int x, int y) {
         super(x, y, width, height);
     }
 

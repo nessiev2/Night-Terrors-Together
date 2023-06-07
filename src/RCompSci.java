@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.Random;
 
 public class RCompSci {
-    Arson arson8 = new Arson(true);
+    DoArson arson8 = new DoArson(true);
     TrashCan[] trashCans = new TrashCan[3];
     ChalkBoard cb = new ChalkBoard(300, 10, "COMPUTER SCIENCE :P", true);
     Wall w1 = new Wall(0, 0);

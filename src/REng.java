@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.Random;
 
 public class REng {
-    Arson arson9 = new Arson(true);
+    DoArson arson9 = new DoArson(true);
     TrashCan[] trashCans = new TrashCan[3];
     ChalkBoard cb = new ChalkBoard(300, 10, "ENGLISH", true);
     Wall w1 = new Wall(0, 0);

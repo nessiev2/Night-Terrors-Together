@@ -22,7 +22,7 @@ public class Player1 extends Player {
         }
     }
 
-    public void keyReleased(Player p2, KeyEvent e, Arson arson1, TrashCan[] trashCans, ChalkBoard cb, PressurePlate pp) {
+    public void keyReleased(Player p2, KeyEvent e, DoArson arson1, TrashCan[] trashCans, ChalkBoard cb, PressurePlate pp, int cc) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             left = false;
         }
@@ -37,6 +37,9 @@ public class Player1 extends Player {
         }
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            if (cc == 3) {
+
+            }
             for (TrashCan tc : trashCans) {
                 if (tc.isPlayerClose(this, this)) {
                     tc.setOnFire();

@@ -1,7 +1,8 @@
 import java.awt.*;
 
 public class RGym {
-    Arson arson3 = new Arson(true);
+    DoMess mess3 = new DoMess(true);
+    DoArson arson3 = new DoArson(true);
     TrashCan[] trashCans = {};
 
     ChalkBoard cb = new ChalkBoard(500, 10, "GYM", true);
@@ -16,6 +17,8 @@ public class RGym {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.BLACK);
+
+        mess3.paint(g2d);
 
         for (TrashCan tc: trashCans){
             tc.isPlayerClose(p1, p2);

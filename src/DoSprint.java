@@ -1,11 +1,11 @@
 import java.awt.*;
 import java.util.Random;
 
-public class Sprint extends Task{
+public class DoSprint extends Task{
     int x, y, i = 0, j = 0, radius = 100;
     boolean flag1 = false, flag2 = false, isComplete = false;
     Timer t = new Timer();
-    public Sprint(boolean isTask) {
+    public DoSprint(boolean isTask) {
         super(isTask);
 
         Random r = new Random();

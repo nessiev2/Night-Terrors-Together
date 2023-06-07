@@ -47,30 +47,30 @@ public class Main extends JPanel {
     Transition transition1 = new Transition();
 
     //DOORS
-    Door bioToOffice = new Door(tobX, topY);
-    Door officeToBio = new Door(tobX, botY);
-    Door physToChem = new Door(rightX, sideY);
-    Door chemToPhys = new Door(leftX, sideY);
-    Door physToBio = new Door(leftX, sideY);
-    Door bioToPhys = new Door(rightX, sideY);
-    Door physToCaf = new Door(tobX, topY);
-    Door cafToPhys = new Door(tobX, botY);
-    Door gymToCaf = new Door(leftX, sideY);
-    Door cafToGym = new Door(rightX, sideY);
-    Door gymToChem = new Door(tobX, botY);
-    Door chemToGym = new Door(tobX, topY);
-    Door mathToBio = new Door(tobX, topY);
-    Door bioToMath = new Door(tobX, botY);
-    Door compSciToMath = new Door(leftX, sideY);
-    Door mathToCompSci = new Door(rightX, sideY);
-    Door physToCompSci = new Door(tobX, botY);
-    Door compSciToPhys = new Door(tobX, topY);
-    Door compSciToEng = new Door(rightX, sideY);
-    Door engToCompSci = new Door(leftX, sideY);
-    Door engToChem = new Door(tobX, topY);
-    Door chemToEng = new Door(tobX, botY);
-    Door cafToOffice = new Door(leftX, sideY);
-    Door officeToCaf = new Door(rightX, sideY);
+    ADoor bioToOffice = new ADoor(tobX, topY);
+    ADoor officeToBio = new ADoor(tobX, botY);
+    ADoor physToChem = new ADoor(rightX, sideY);
+    ADoor chemToPhys = new ADoor(leftX, sideY);
+    ADoor physToBio = new ADoor(leftX, sideY);
+    ADoor bioToPhys = new ADoor(rightX, sideY);
+    ADoor physToCaf = new ADoor(tobX, topY);
+    ADoor cafToPhys = new ADoor(tobX, botY);
+    ADoor gymToCaf = new ADoor(leftX, sideY);
+    ADoor cafToGym = new ADoor(rightX, sideY);
+    ADoor gymToChem = new ADoor(tobX, botY);
+    ADoor chemToGym = new ADoor(tobX, topY);
+    ADoor mathToBio = new ADoor(tobX, topY);
+    ADoor bioToMath = new ADoor(tobX, botY);
+    ADoor compSciToMath = new ADoor(leftX, sideY);
+    ADoor mathToCompSci = new ADoor(rightX, sideY);
+    ADoor physToCompSci = new ADoor(tobX, botY);
+    ADoor compSciToPhys = new ADoor(tobX, topY);
+    ADoor compSciToEng = new ADoor(rightX, sideY);
+    ADoor engToCompSci = new ADoor(leftX, sideY);
+    ADoor engToChem = new ADoor(tobX, topY);
+    ADoor chemToEng = new ADoor(tobX, botY);
+    ADoor cafToOffice = new ADoor(leftX, sideY);
+    ADoor officeToCaf = new ADoor(rightX, sideY);
 
     //PLAYERS AND TEACHER
     Player p1 = new Player1();
@@ -378,7 +378,7 @@ public class Main extends JPanel {
         }
     }
 
-    public void changeRooms(Door door1, Door door2, int nextClassroom, Player p1, Player p2, Transition transition1, Graphics2D g2d){
+    public void changeRooms(ADoor door1, ADoor door2, int nextClassroom, Player p1, Player p2, Transition transition1, Graphics2D g2d){
         if (door1.containsPlayer(p1, p2)) {
             transition1.paintBlack(g2d);
             changeCurrentClassroom(nextClassroom);

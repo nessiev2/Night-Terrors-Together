@@ -25,7 +25,7 @@ public class Player2 extends Player {
         }
     }
 
-    public void keyReleased(Player p1, KeyEvent e, Arson arson1, TrashCan[] trashCans, ChalkBoard cb, PressurePlate pp) {
+    public void keyReleased(Player p1, KeyEvent e, DoArson arson1, TrashCan[] trashCans, ChalkBoard cb, PressurePlate pp) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             left = false;
         }

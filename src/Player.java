@@ -77,7 +77,7 @@ public abstract class Player {
 
     //public void keyTyped(KeyEvent e) {}
     public void keyPressed(KeyEvent e) {}
-    public void keyReleased(Player p2, KeyEvent e, Arson arson1, TrashCan[] trashCans, ChalkBoard cb, PressurePlate pp) {}
+    public void keyReleased(Player p2, KeyEvent e, DoArson arson1, TrashCan[] trashCans, ChalkBoard cb, PressurePlate pp) {}
 
     public boolean checkTeacher(Teacher[] t) {
         if (!checkRight(t) || !checkLeft(t) || !checkDown(t) || !checkUp(t)) {

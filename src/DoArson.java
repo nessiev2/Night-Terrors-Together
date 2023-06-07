@@ -1,8 +1,8 @@
-public class Arson extends Task{
+public class DoArson extends Task{
 
     public final int RADIUS = 200;
     public int counter = 0;
-    public Arson(boolean isTask){
+    public DoArson(boolean isTask){
         super(isTask);
     }
 
