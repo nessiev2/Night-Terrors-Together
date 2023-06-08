@@ -14,6 +14,10 @@ public abstract class Player {
     private int y, centerY;
     private int width = 80;
     private int height = 120;
+    private boolean isSpillingWater;
+    public boolean getIsSpillingWater() { return isSpillingWater; }
+    public void changeIsSpillingWater(boolean b) { isSpillingWater = b; }
+
     private int playerN;
     private boolean isFacingLeft = false;
     public void changeFaceDirection(boolean b) { isFacingLeft = b; }
@@ -60,7 +64,10 @@ public abstract class Player {
         }
     }
 
-    public void paint(Graphics2D g2d) {
+    public void paint(Graphics2D g2d, DoMess mess) {
+        if (isSpillingWater) {
+            mess.addWaterStain(getCenterX(), getCenterY());
+        }
         if (left || isFacingLeft) {
             //g2d.drawImage(img, getX(), getY(), width, height, null);
             g2d.drawImage(gif, getX()+width, getY(), -width, height, null);

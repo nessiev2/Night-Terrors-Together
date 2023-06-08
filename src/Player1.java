@@ -1,6 +1,7 @@
 import java.awt.event.KeyEvent;
 
 public class Player1 extends Player {
+
     public Player1() {
         super(1);
     }
@@ -20,6 +21,9 @@ public class Player1 extends Player {
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             down = true;
         }
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            changeIsSpillingWater(true);
+        }
     }
 
     public void keyReleased(Player p2, KeyEvent e, DoArson arson1, TrashCan[] trashCans, ChalkBoard cb, PressurePlate pp, DoMess mess) {
@@ -37,7 +41,8 @@ public class Player1 extends Player {
         }
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            mess.addWaterStain(getCenterX(), getCenterY());
+            changeIsSpillingWater(false);
+            //mess.addWaterStain(getCenterX(), getCenterY());
 
             for (TrashCan tc : trashCans) {
                 if (tc.isPlayerClose(this, this)) {

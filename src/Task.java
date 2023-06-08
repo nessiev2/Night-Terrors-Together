@@ -4,4 +4,6 @@ public class Task {
         this.isTask = isTask;
     }
 
+    public void taskFinished() { isComplete = true; }
+
 }
