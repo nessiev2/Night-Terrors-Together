@@ -387,10 +387,10 @@ public class Main extends JPanel {
                 mainMenu.paintMainMenu(g2d);
             } else if (!gameOver) {
                 if (!p1.getIsCaught() || currentClassroom == 1){
-                    p1.paint(g2d);
+                    p1.paint(g2d, mess3);
                 }
                 if (!p2.getIsCaught() || currentClassroom == 1){
-                    p2.paint(g2d);
+                    p2.paint(g2d, mess3);
                 }
                 if (currentClassroom == tCurrentClassroom){
                     t.paint(g2d);

@@ -8,6 +8,13 @@ public class SideMenu {
         return isOpen;
     }
 
+    public void generateTasks() {
+        // will randomly generate an int
+        // int corresponds to a task and we have to randomly generate for a room
+
+
+    }
+
     public void updateIsOpen(boolean isOpen){
         this.isOpen = isOpen;
     }

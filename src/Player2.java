@@ -23,6 +23,9 @@ public class Player2 extends Player {
         if (e.getKeyCode() == KeyEvent.VK_Q) {
             interact = true;
         }
+        if (e.getKeyCode() == KeyEvent.VK_Q) {
+            changeIsSpillingWater(true);
+        }
     }
 
     public void keyReleased(Player p1, KeyEvent e, DoArson arson1, TrashCan[] trashCans, ChalkBoard cb, PressurePlate pp, DoMess mess) {
@@ -39,7 +42,8 @@ public class Player2 extends Player {
             down = false;
         }
         if (e.getKeyCode() == KeyEvent.VK_Q) {
-            mess.addWaterStain(getCenterX(), getCenterY());
+            changeIsSpillingWater(false);
+            //mess.addWaterStain(getCenterX(), getCenterY());
 
             for (TrashCan tc : trashCans) {
                 if (tc.isPlayerClose(this, this)) {
