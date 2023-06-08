@@ -112,6 +112,7 @@ public abstract class Player {
         centerY = (int)((2*y + height)/2);
     }
 
+    // returns true if not touching
     public boolean checkRight(Thing[] things) {
         for (Thing t:things)
             if (x < t.getX() && x + width + speed > t.getX() && y + height > t.getY() && y < t.getY() + t.getHeight()) {

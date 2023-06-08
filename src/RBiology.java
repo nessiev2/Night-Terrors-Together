@@ -11,20 +11,7 @@ public class RBiology {
     Desk[] desks = new Desk[6];
 
     public RBiology() {
-        Random r = new Random();
-        int counter = 0;
-
-        //generating desks loop
-        for (int i = 400; i <= 1000; i += 300){         // x
-            for (int j = 500; j <= 800; j += 300){      // y
-                desks[counter] = new Desk(i, j);
-                counter++;
-            }
-        }
-
-        trashCans[0] = new TrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
-        trashCans[1] = new TrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
-        trashCans[2] = new TrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
+        initializeBio();
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1) {
@@ -46,7 +33,23 @@ public class RBiology {
 
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard
+    }
 
+    public void initializeBio(){
+        Random r = new Random();
+        int counter = 0;
+
+        //generating desks loop
+        for (int i = 400; i <= 1000; i += 300){         // x
+            for (int j = 500; j <= 800; j += 300){      // y
+                desks[counter] = new Desk(i, j);
+                counter++;
+            }
+        }
+
+        trashCans[0] = new TrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
+        trashCans[1] = new TrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
+        trashCans[2] = new TrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
     }
 
 

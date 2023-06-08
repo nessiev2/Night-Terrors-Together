@@ -19,6 +19,10 @@ public class Thing {
     public void changeX(int x) { this.x += x; }
 
     public void changeY(int y) { this.y += y; }
+    public void resetX(int x) { this.x = x; }
+
+    public void resetY(int y) { this.y = y; }
+
 
     public Thing(int x, int y, int width, int height) {
         this.x = x;

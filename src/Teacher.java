@@ -9,21 +9,30 @@ public class Teacher extends Thing {
     private Image gif = null;
     private boolean right = false, left = false, up = false, down = false, interact = false;
     private int speed = 1;
+    private boolean bothCaught = false;
 
     private boolean isFacingLeft = false;
     public void changeFaceDirection(boolean b) { isFacingLeft = b; }
 
     public void spawnTeacher(int x, int y) {
-        changeX(x);
-        changeY(y);
+        resetX(x);
+        resetY(y);
+    }
+    public boolean getBothCaught(){
+        return bothCaught;
     }
 
+    public void initializeTeacher(){
+        spawnTeacher(0, 0);
+        bothCaught = false;
+    }
     public Teacher() {
         super(0, 0, 120, 180);
         try {
                 img = ImageIO.read(new File("res\\TeacherWalkR.png"));
                 gif = Toolkit.getDefaultToolkit().createImage("res\\TeacherWalkGif.gif");
             } catch (IOException e) { System.out.println("teacher problem"); }
+        initializeTeacher();
     }
 
     public void move(Main c, Player p1, Player p2, int x1, int y1, int x2, int y2) {
@@ -46,8 +55,7 @@ public class Teacher extends Thing {
                 up = true;
             }
         } else if (tmp == -1) {
-            c.changeGameOver();
-            System.out.println("GAME OVER LMAO U LOST LOSER");
+            bothCaught = true;
         } else {
             if (x2 > getX()) {
                 changeX(speed);

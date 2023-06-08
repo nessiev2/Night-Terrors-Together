@@ -51,7 +51,6 @@ public class TrashCan extends Thing {
         }
     }
 
-
     public void setOnFire() {
         isOnFire = true;
     }
