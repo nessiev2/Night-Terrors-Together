@@ -2,7 +2,6 @@ import java.awt.*;
 public class DoMess extends Task {
 
     public boolean[][] waterStains = new boolean[(1920/2)/30][(810-270)/30];
-
     public DoMess(boolean isTask){
         super(isTask);
     }

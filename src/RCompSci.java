@@ -6,20 +6,10 @@ public class RCompSci {
     TrashCan[] trashCans = new TrashCan[3];
     ChalkBoard cb = new ChalkBoard(300, 10, "COMPUTER SCIENCE :P", true);
     Wall w1 = new Wall(0, 0);
-    Desk[] desks = new Desk[6];
+    Desk[] desks = {new Desk(400, 500, 200, 100), new Desk(700, 500, 200, 100), new Desk(1000, 500, 200, 100), new Desk(1300, 500, 200, 100), new Desk(400, 600, 100, 200), new Desk(1400, 600, 100, 200), new Desk(750, 800, 400, 200)};
 
     public RCompSci() {
         Random r = new Random();
-        int counter = 0;
-
-        //generating desks loop
-        for (int i = 400; i <= 1200; i += 400){
-            for (int j = 500; j <= 800; j += 300){
-                desks[counter] = new Desk(i, j);
-                counter++;
-            }
-        }
-
         trashCans[0] = new TrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
         trashCans[1] = new TrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
         trashCans[2] = new TrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
