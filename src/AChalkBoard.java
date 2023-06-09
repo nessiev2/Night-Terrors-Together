@@ -26,7 +26,6 @@ public class AChalkBoard extends Thing {
     public boolean isPlayerClose(Player p1, Player p2) {
         if ((p1.getCenterX() >= getX() - RADIUS && p1.getCenterX() <= getX() + getWidth() + RADIUS && p1.getY() - getY() - getHeight() <= RADIUS) || (p2.getCenterX() >= getX() - RADIUS && p2.getCenterX() <= getX() + getWidth() + RADIUS && p2.getY() - getY() - getHeight() <= RADIUS)) {
             playerIsClose = true;
-
             return true;
         } else {
             playerIsClose = false;

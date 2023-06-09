@@ -28,7 +28,7 @@ public class Player2 extends Player {
         }
     }
 
-    public void keyReleased(Player p1, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess) {
+    public void keyReleased(Player p1, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess, DoHack hack) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             left = false;
         }
@@ -57,6 +57,9 @@ public class Player2 extends Player {
                 System.out.println("PRESSURE PLATE PRESSED");
                 p1.changeIsCaught(false);
                 p1.spawnPlayer(getX(), getY());
+            }
+            if (hack.isPlayerClose(this, this)){
+                hack.taskFinished();
             }
         }
     }

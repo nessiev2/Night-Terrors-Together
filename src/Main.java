@@ -8,6 +8,7 @@ import java.util.Random;
 
 BUG
 * fix invisible pressure plate
+* fix do arson
 
 TO-DO/TO-FIX LIST
 * teacher
@@ -139,32 +140,32 @@ public class Main extends JPanel {
                 }
 
                 if (currentClassroom == 1) {
-                    p1.keyReleased(p2, e, office.arson1, office.trashCans, office.cb, office.pp, mess3);
-                    p2.keyReleased(p1, e, office.arson1, office.trashCans, office.cb, office.pp, mess3);
+                    p1.keyReleased(p2, e, office.arson1, office.trashCans, office.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, e, office.arson1, office.trashCans, office.cb, office.pp, mess3, compSci.doHack8);
                 } else if (currentClassroom == 2){
-                    p1.keyReleased(p2, e, caf.arson2, caf.trashCans, caf.cb, office.pp, mess3);
-                    p2.keyReleased(p1, e, caf.arson2, caf.trashCans, caf.cb, office.pp, mess3);
+                    p1.keyReleased(p2, e, caf.arson2, caf.trashCans, caf.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, e, caf.arson2, caf.trashCans, caf.cb, office.pp, mess3, compSci.doHack8);
                 } else if (currentClassroom == 3){
-                    p1.keyReleased(p2, e, gym.arson3, gym.trashCans, gym.cb, office.pp, mess3);
-                    p2.keyReleased(p1, e, gym.arson3, gym.trashCans, gym.cb, office.pp, mess3);
+                    p1.keyReleased(p2, e, gym.arson3, gym.trashCans, gym.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, e, gym.arson3, gym.trashCans, gym.cb, office.pp, mess3, compSci.doHack8);
                 } else if (currentClassroom == 4) {
-                    p1.keyReleased(p2, e, bio.arson4, bio.trashCans, bio.cb, office.pp, mess3);
-                    p2.keyReleased(p1, e, bio.arson4, bio.trashCans, bio.cb, office.pp, mess3);
+                    p1.keyReleased(p2, e, bio.arson4, bio.trashCans, bio.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, e, bio.arson4, bio.trashCans, bio.cb, office.pp, mess3, compSci.doHack8);
                 } else if (currentClassroom == 5) {
-                    p1.keyReleased(p2, e, phys.arson5, phys.trashCans, phys.cb, office.pp, mess3);
-                    p2.keyReleased(p1, e, phys.arson5, phys.trashCans, phys.cb, office.pp, mess3);
+                    p1.keyReleased(p2, e, phys.arson5, phys.trashCans, phys.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, e, phys.arson5, phys.trashCans, phys.cb, office.pp, mess3, compSci.doHack8);
                 } else if (currentClassroom == 6) {
-                    p1.keyReleased(p2, e, chem.arson6, chem.trashCans, chem.cb, office.pp, mess3);
-                    p2.keyReleased(p1, e, chem.arson6, chem.trashCans, chem.cb, office.pp, mess3);
+                    p1.keyReleased(p2, e, chem.arson6, chem.trashCans, chem.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, e, chem.arson6, chem.trashCans, chem.cb, office.pp, mess3, compSci.doHack8);
                 } else if (currentClassroom == 7){
-                    p1.keyReleased(p2, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp, mess3);
-                    p2.keyReleased(p1, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp, mess3);
+                    p1.keyReleased(p2, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp, mess3, compSci.doHack8);
                 } else if (currentClassroom == 8){
-                    p1.keyReleased(p2, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp, mess3);
-                    p2.keyReleased(p1, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp, mess3);
+                    p1.keyReleased(p2, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp, mess3, compSci.doHack8);
                 } else if (currentClassroom == 9){
-                    p1.keyReleased(p2, e, eng.arson9, eng.trashCans, eng.cb, office.pp, mess3);
-                    p2.keyReleased(p1, e, eng.arson9, eng.trashCans, eng.cb, office.pp, mess3);
+                    p1.keyReleased(p2, e, eng.arson9, eng.trashCans, eng.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, e, eng.arson9, eng.trashCans, eng.cb, office.pp, mess3, compSci.doHack8);
                 }
             }
             @Override

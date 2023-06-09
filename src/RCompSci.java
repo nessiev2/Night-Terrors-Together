@@ -3,6 +3,7 @@ import java.util.Random;
 
 public class RCompSci {
     DoArson arson8 = new DoArson(true);
+    DoHack doHack8 = new DoHack(true);
     ATrashCan[] trashCans = new ATrashCan[3];
     AChalkBoard cb = new AChalkBoard(300, 10, "COMPUTER SCIENCE :P", true);
     AWall w1 = new AWall(0, 0);
@@ -36,6 +37,7 @@ public class RCompSci {
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard
 
+        doHack8.paint(g2d, p1, p2);
     }
 
 
