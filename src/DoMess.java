@@ -14,7 +14,7 @@ public class DoMess extends Task {
                     g2d.setColor(Color.blue);
                     g2d.fillRect(i*30+15+1920/4, j*30+150, 30, 30);
                 } else {
-                    waterStains[i][j] = true;
+                    //waterStains[i][j] = true;
                 }
             }
         }
