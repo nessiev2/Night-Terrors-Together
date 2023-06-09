@@ -69,6 +69,7 @@ public abstract class Player {
         }
     }
 
+
     public void paint(Graphics2D g2d, DoMess mess) {
         if (isSpillingWater) {
             mess.addWaterStain(getCenterX(), getCenterY());

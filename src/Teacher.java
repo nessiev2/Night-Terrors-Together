@@ -42,10 +42,12 @@ public class Teacher extends Thing {
             if (x1 > getX()) {
                 changeX(speed);
                 right = true;
+                isFacingLeft = false;
             }
             if (x1 < getX()) {
                 changeX(-speed);
                 left = true;
+                isFacingLeft = true;
             }
             if (y1 > getY()) {
                 changeY(speed);
@@ -61,10 +63,12 @@ public class Teacher extends Thing {
             if (x2 > getX()) {
                 changeX(speed);
                 right = true;
+                isFacingLeft = false;
             }
             if (x2 < getX()) {
                 changeX(-speed);
                 left = true;
+                isFacingLeft = true;
             }
             if (y2 > getY()) {
                 changeY(speed);
