@@ -11,7 +11,11 @@ public class AChalkBoard extends Thing {
     private int[] ys = new int[20];
     private boolean scribble = false, playerIsClose = false, interactive;
     private String classroom;
-    private DoScribble skribl = new DoScribble(10, 10, BOARD_WIDTH, BOARD_HEIGHT);
+    private DoScribble skribl = new DoScribble(10, 10, this);
+
+    public boolean getScribble() {
+        return scribble;
+    }
 
     public AChalkBoard(int x, int y, String classroom, boolean interactive){
         super(x, y, BOARD_WIDTH, BOARD_HEIGHT);

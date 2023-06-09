@@ -42,7 +42,6 @@ public class Player1 extends Player {
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             changeIsSpillingWater(false);
-            //mess.addWaterStain(getCenterX(), getCenterY());
 
             for (ATrashCan tc : trashCans) {
                 if (tc.isPlayerClose(this, this)) {

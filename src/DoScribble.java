@@ -5,16 +5,18 @@ public class DoScribble extends Thing {
     private String[] scribbleArray = new String[20];
     private int[] xs = new int[20];
     private int[] ys = new int[20];
-    private int width, height, x, y, maxX, minX, maxY, minY;
-    private boolean scribble = false;
+    private int maxX, minX, maxY, minY;
+    AChalkBoard cb;
 
-    public DoScribble(int x, int y, int width, int height){
-        super(x, y, width, height);
+    public DoScribble(int x, int y, AChalkBoard cb){
+        super(x, y, cb.getWidth(), cb.getHeight());
 
-        maxX = x + width - 80;
-        minX = x + 20;
-        maxY = y + height - 30;
-        minY = y + 20;
+        this.cb = cb;
+
+        maxX = cb.getX() + cb.getWidth() - 80;
+        minX = cb.getX() + 20;
+        maxY = cb.getY() + cb.getHeight() - 30;
+        minY = cb.getY() + 20;
 
         for (int i = 0; i < 20; i++){
             String c = randomChar();
@@ -32,8 +34,7 @@ public class DoScribble extends Thing {
     }
 
     public void paint (Graphics2D g2d){
-        //we skribl
-        if (scribble) {
+        if (cb.getScribble()) {
             g2d.setColor(Color.pink);
             for (int j = 0; j < 20; j++){
                 g2d.drawString(scribbleArray[j], xs[j], ys[j]);

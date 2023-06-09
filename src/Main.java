@@ -7,7 +7,7 @@ import java.util.Random;
 /*
 
 BUG
-* invisible pressure plate
+* fix invisible pressure plate
 
 TO-DO/TO-FIX LIST
 * teacher
@@ -420,6 +420,11 @@ public class Main extends JPanel {
         c.p1.initializePlayer();
         c.p2.initializePlayer();
         c.currentClassroom = 5;
+
+        // reset all tasks
+        // reset side menu???
+        // reset chosen tasks????
+
         CountDown.CDReset();
     }
 
