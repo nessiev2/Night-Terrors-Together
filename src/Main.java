@@ -111,8 +111,7 @@ public class Main extends JPanel {
                 if (mainMenu.getIsMenuOpen() && e.getKeyCode() == KeyEvent.VK_ENTER) {
                     mainMenu.changeMenu(false);
                     CountDown.CDReset();
-                }
-                if (gameOver && e.getKeyCode() == KeyEvent.VK_R) {
+                } else if (gameOver && e.getKeyCode() == KeyEvent.VK_R) {
                     flag = true;
 
                     gameOver = false;
@@ -274,7 +273,7 @@ public class Main extends JPanel {
             mainMenu.paintMainMenu(g2d);
         } else if (gameOver) {
             gameOverScreen.paintGameOver(g2d);
-        } else {
+        }else {
             if (t.getBothCaught()){
                 System.out.println("skill issue");
                 gameOver = true;
@@ -371,6 +370,9 @@ public class Main extends JPanel {
                         changeRooms(engToChem, chemToEng, 6, p1, p2, transition1, g2d);
                         changeRooms(engToCompSci, compSciToEng, 8, p1, p2, transition1, g2d);
                         break;
+                    default:
+                        g2d.setFont(new Font("TimesRoman", Font.BOLD, 100));
+                        g2d.drawString("idk how u made it here!! please stop!!!", 200, 100);
                 }
                 if (!p1.getIsCaught() || currentClassroom == 1){
                     p1.paint(g2d, mess3);
@@ -428,14 +430,23 @@ public class Main extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         while (true){
-            c.gameOver = false;
+            System.out.println("reset");
             CountDown.CDReset();
             c.t.initializeTeacher();
+            c.gameOver = false;
+            c.p1.changeIsCaught(false);
+            c.p2.changeIsCaught(false);
+            c.p1.spawnPlayer(SCREEN_WIDTH/2-c.p1.getWidth(), 660);
+            c.p2.spawnPlayer(SCREEN_WIDTH/2-2*c.p1.getWidth(), 660);
+
 
             while (true) {
                 c.move(c); //Updates the coordinates
                 c.repaint(); //Calls the paint method
                 Thread.sleep(10); //Pauses for a moment
+                if (c.flag){
+                    break;
+                }
             }
         }
     }
