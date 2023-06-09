@@ -256,10 +256,6 @@ public class Main extends JPanel {
         }
     }
 
-    public void reset(){
-
-    }
-
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -420,6 +416,18 @@ public class Main extends JPanel {
         }
     }
 
+    public void reset(Main c){
+        System.out.println("reset");
+
+        c.flag = false;
+        c.gameOver = false;
+        c.t.initializeTeacher();
+        c.p1.initializePlayer();
+        c.p2.initializePlayer();
+        c.currentClassroom = 5;
+        CountDown.CDReset();
+    }
+
     public static void main(String[] args) throws InterruptedException {
         JFrame frame = new JFrame("NIGHT TERRORS TOGETHER!");
 
@@ -430,17 +438,7 @@ public class Main extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         while (true){
-            c.flag = false;
-            System.out.println("reset");
-            CountDown.CDReset();
-            c.t.initializeTeacher();
-            c.gameOver = false;
-            c.p1.changeIsCaught(false);
-            c.p2.changeIsCaught(false);
-            c.p1.spawnPlayer(SCREEN_WIDTH/2-c.p1.getWidth(), 660);
-            c.p2.spawnPlayer(SCREEN_WIDTH/2-2*c.p1.getWidth(), 660);
-            c.currentClassroom = 5;
-
+            c.reset(c);
             while (true) {
                 c.move(c); //Updates the coordinates
                 c.repaint(); //Calls the paint method

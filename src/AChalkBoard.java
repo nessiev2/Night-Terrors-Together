@@ -11,18 +11,12 @@ public class AChalkBoard extends Thing {
     private int[] ys = new int[20];
     private boolean scribble = false, playerIsClose = false, interactive;
     private String classroom;
+    private DoScribble skribl = new DoScribble(10, 10, BOARD_WIDTH, BOARD_HEIGHT);
 
     public AChalkBoard(int x, int y, String classroom, boolean interactive){
         super(x, y, BOARD_WIDTH, BOARD_HEIGHT);
         this.classroom = classroom;
         this.interactive = interactive;
-
-        for (int i = 0; i < 20; i++){
-            String c = randomChar();
-            scribbleArray[i] = c;
-            xs[i] = (int)(Math.random() * maxX + minX);
-            ys[i] = (int)(Math.random() * maxY + minY);
-        }
     }
 
     public boolean isPlayerClose(Player p1, Player p2) {
@@ -36,20 +30,12 @@ public class AChalkBoard extends Thing {
         }
     }
 
-    private static String randomChar() {
-        String ans = "";
-        Random r = new Random();
-        ans += (char)(r.nextInt(26) + 'A');
-        return ans;
-    }
-
     public void scribble(){
         scribble = true;
     }
 
     public void paint (Graphics2D g2d){
         int i = 10;
-
         //interactive "glow"
         if (playerIsClose && interactive) {
             g2d.setColor(Color.yellow);
@@ -63,12 +49,8 @@ public class AChalkBoard extends Thing {
         g2d.setFont(new Font("TimesRoman", Font.BOLD, 50));
         g2d.drawString(classroom, getX()+200, getY()+100);
 
-        //we skribl
-        if (scribble && interactive) {
-            g2d.setColor(Color.pink);
-            for (int j = 0; j < 20; j++){
-                g2d.drawString(scribbleArray[j], xs[j], ys[j]);
-            }
+        if (scribble){
+            skribl.paint(g2d);
         }
     }
 

@@ -15,7 +15,6 @@ public abstract class Player {
     private int width = 80;
     private int height = 120;
     private boolean isSpillingWater;
-    public boolean getIsSpillingWater() { return isSpillingWater; }
     public void changeIsSpillingWater(boolean b) { isSpillingWater = b; }
 
     private int playerN;
@@ -43,13 +42,19 @@ public abstract class Player {
     public void changeIsCaught(boolean c) {
         isCaught = c;
     }
-    public int getPlayerSpeed() { return speed; }
     public void changeSpeed(int x) {speed = x; }
 
+    public void initializePlayer() {
+        isCaught = false;
+        isSpillingWater = false;
+        if (playerN == 1){
+            spawnPlayer(Main.SCREEN_WIDTH/2-width, 660);
+        } else {
+            spawnPlayer(Main.SCREEN_WIDTH/2-2*width, 660);
+        }
+    }
 
     public Player(int playerN) {
-        x = 500;
-        y = 500;
         this.playerN = playerN;
         if (playerN == 1) {
             try {
