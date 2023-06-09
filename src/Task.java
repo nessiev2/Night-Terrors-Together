@@ -1,4 +1,4 @@
-public class Task {
+public class Task extends SideMenu {
     boolean isTask, isComplete = false;
     public Task (boolean isTask) {
         this.isTask = isTask;
