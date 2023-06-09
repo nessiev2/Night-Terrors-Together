@@ -116,10 +116,6 @@ public class Main extends JPanel {
 
                     gameOver = false;
                     mainMenu.changeMenu(true);
-
-                    System.out.println("GAMEOVER: " + gameOver);
-                    System.out.println("MAINMENU: " + mainMenu.getIsMenuOpen());
-
                 }
 
                 // PAUSE GAME
@@ -262,8 +258,7 @@ public class Main extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        System.out.println("gameover: " + gameOver);
-        System.out.println("mainMenu: " + mainMenu.getIsMenuOpen());
+        System.out.println("gameover: " + gameOver + "\tmainMenu: " + mainMenu.getIsMenuOpen());
 
         if (mainMenu.getIsMenuOpen()) {
             mainMenu.paintMainMenu(g2d);
@@ -439,13 +434,10 @@ public class Main extends JPanel {
 
         while (true){
             c.reset(c);
-            while (true) {
+            while (!c.flag) {
                 c.move(c); //Updates the coordinates
                 c.repaint(); //Calls the paint method
                 Thread.sleep(10); //Pauses for a moment
-                if (c.flag){
-                    break;
-                }
             }
         }
     }
