@@ -430,6 +430,7 @@ public class Main extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         while (true){
+            c.flag = false;
             System.out.println("reset");
             CountDown.CDReset();
             c.t.initializeTeacher();
@@ -438,7 +439,7 @@ public class Main extends JPanel {
             c.p2.changeIsCaught(false);
             c.p1.spawnPlayer(SCREEN_WIDTH/2-c.p1.getWidth(), 660);
             c.p2.spawnPlayer(SCREEN_WIDTH/2-2*c.p1.getWidth(), 660);
-
+            c.currentClassroom = 5;
 
             while (true) {
                 c.move(c); //Updates the coordinates
