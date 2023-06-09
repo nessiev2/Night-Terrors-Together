@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.Random;
 
-public class ChalkBoard extends Thing {
+public class AChalkBoard extends Thing {
     private static final int BOARD_WIDTH = Main.SCREEN_WIDTH/2, BOARD_HEIGHT = (Main.SCREEN_WIDTH/4) - 230;
     private final int maxX = BOARD_WIDTH-80, minX = 320;
     private final int maxY = BOARD_HEIGHT-30, minY = 50;
@@ -12,7 +12,7 @@ public class ChalkBoard extends Thing {
     private boolean scribble = false, playerIsClose = false, interactive;
     private String classroom;
 
-    public ChalkBoard(int x, int y, String classroom, boolean interactive){
+    public AChalkBoard(int x, int y, String classroom, boolean interactive){
         super(x, y, BOARD_WIDTH, BOARD_HEIGHT);
         this.classroom = classroom;
         this.interactive = interactive;

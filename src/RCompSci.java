@@ -3,16 +3,16 @@ import java.util.Random;
 
 public class RCompSci {
     DoArson arson8 = new DoArson(true);
-    TrashCan[] trashCans = new TrashCan[3];
-    ChalkBoard cb = new ChalkBoard(300, 10, "COMPUTER SCIENCE :P", true);
-    Wall w1 = new Wall(0, 0);
-    Desk[] desks = {new Desk(400, 500, 200, 100), new Desk(700, 500, 200, 100), new Desk(1000, 500, 200, 100), new Desk(1300, 500, 200, 100), new Desk(400, 600, 100, 200), new Desk(1400, 600, 100, 200), new Desk(750, 800, 400, 200)};
+    ATrashCan[] trashCans = new ATrashCan[3];
+    AChalkBoard cb = new AChalkBoard(300, 10, "COMPUTER SCIENCE :P", true);
+    AWall w1 = new AWall(0, 0);
+    ADesk[] desks = {new ADesk(400, 500, 200, 100), new ADesk(700, 500, 200, 100), new ADesk(1000, 500, 200, 100), new ADesk(1300, 500, 200, 100), new ADesk(400, 600, 100, 200), new ADesk(1400, 600, 100, 200), new ADesk(750, 800, 400, 200)};
 
     public RCompSci() {
         Random r = new Random();
-        trashCans[0] = new TrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
-        trashCans[1] = new TrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
-        trashCans[2] = new TrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
+        trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
+        trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
+        trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1) {
@@ -22,11 +22,11 @@ public class RCompSci {
         g2d.setColor(Color.BLACK);
 
         // IRENE IS MAKING A CLASSROOM DESK TRIAL
-        for (Desk d:desks) {
+        for (ADesk d:desks) {
             d.paint(g2d);
         }
 
-        for (TrashCan tc: trashCans){
+        for (ATrashCan tc: trashCans){
             tc.isPlayerClose(p1, p2);
             tc.paint(g2d);
         }

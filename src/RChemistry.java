@@ -3,19 +3,19 @@ import java.util.Random;
 
 public class RChemistry {
     DoArson arson6 = new DoArson(true);
-    TrashCan[] trashCans = new TrashCan[3];
+    ATrashCan[] trashCans = new ATrashCan[3];
 
-    ChalkBoard cb = new ChalkBoard(300, 10, "CHEMISTRY", true);
+    AChalkBoard cb = new AChalkBoard(300, 10, "CHEMISTRY", true);
 
-    Wall w1 = new Wall(0, 0);
-    Desk[] desks = {new Desk(400, 500), new Desk(800, 500), new Desk(400, 800), new Desk(800, 800)};
+    AWall w1 = new AWall(0, 0);
+    ADesk[] desks = {new ADesk(400, 500), new ADesk(800, 500), new ADesk(400, 800), new ADesk(800, 800)};
 
     public RChemistry() {
         Random r = new Random();
 
-        trashCans[0] = new TrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
-        trashCans[1] = new TrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
-        trashCans[2] = new TrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
+        trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
+        trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
+        trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1) {
@@ -25,11 +25,11 @@ public class RChemistry {
         g2d.setColor(Color.BLACK);
 
         // IRENE IS MAKING A CLASSROOM DESK TRIAL
-        for (Desk d:desks) {
+        for (ADesk d:desks) {
             d.paint(g2d);
         }
 
-        for (TrashCan tc: trashCans){
+        for (ATrashCan tc: trashCans){
             tc.isPlayerClose(p1, p2);
             tc.paint(g2d);
         }

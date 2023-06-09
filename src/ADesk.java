@@ -1,17 +1,17 @@
 import java.awt.*;
 
-public class Desk extends Thing {
+public class ADesk extends Thing {
 
     private int width;
     private int height;
 
-    public Desk(int x, int y) {
+    public ADesk(int x, int y) {
         super(x, y, 200, 150);
         width = 200;
         height = 150;
     }
 
-    public Desk(int x, int y, int w, int h) {
+    public ADesk(int x, int y, int w, int h) {
         super(x, y, w, h);
         width = w;
         height = h;

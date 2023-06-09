@@ -2,11 +2,11 @@ import java.awt.*;
 
 public class RCaf {
     DoArson arson2 = new DoArson(true);
-    TrashCan[] trashCans = {};
+    ATrashCan[] trashCans = {};
 
-    ChalkBoard cb = new ChalkBoard(500, 10, "CAFETERIA", true);
-    Desk[] desks = {new Desk(700, 500, 400, 200)};
-    Wall w1 = new Wall(0, 0);
+    AChalkBoard cb = new AChalkBoard(500, 10, "CAFETERIA", true);
+    ADesk[] desks = {new ADesk(700, 500, 400, 200)};
+    AWall w1 = new AWall(0, 0);
     public RCaf() {
 
     }
@@ -17,12 +17,12 @@ public class RCaf {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.BLACK);
 
-        for (TrashCan tc: trashCans){
+        for (ATrashCan tc: trashCans){
             tc.isPlayerClose(p1, p2);
             tc.paint(g2d);
         }
 
-        for (Desk d:desks) {
+        for (ADesk d:desks) {
             d.paint(g2d);
         }
 

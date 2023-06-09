@@ -6,9 +6,9 @@ public class DoArson extends Task{
         super(isTask);
     }
 
-    public int doTask(TrashCan[] trash, Player p1, Player p2) {
+    public int doTask(ATrashCan[] trash, Player p1, Player p2) {
         if (isTask){
-            for (TrashCan t: trash){
+            for (ATrashCan t: trash){
                 if (t.getIsOnFire()) {
                     counter++;
                 }

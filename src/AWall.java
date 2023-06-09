@@ -1,8 +1,8 @@
 import java.awt.*;
 
-public class Wall extends Thing{
+public class AWall extends Thing{
     private final static int WALL_WIDTH = Main.SCREEN_WIDTH, WALL_HEIGHT = Main.SCREEN_HEIGHT/4;
-    public Wall(int x, int y){
+    public AWall(int x, int y){
         super(x, y, WALL_WIDTH, WALL_HEIGHT);
     }
 

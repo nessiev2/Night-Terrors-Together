@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class TrashCan extends Thing {
+public class ATrashCan extends Thing {
     private final static int width = 100;
     private final static int height = 100;
     private final static int RADIUS = 50;
@@ -12,7 +12,7 @@ public class TrashCan extends Thing {
         return isOnFire;
     }
 
-    public TrashCan(int x, int y) {
+    public ATrashCan(int x, int y) {
         super(x, y, width, height);
     }
 

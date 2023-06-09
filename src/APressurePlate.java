@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class PressurePlate extends Thing {
+public class APressurePlate extends Thing {
 
     private static int width = 100;
     private static int height = 100;
@@ -8,7 +8,7 @@ public class PressurePlate extends Thing {
 
     private boolean playerIsClose = false;
 
-    public PressurePlate(int x, int y) {
+    public APressurePlate(int x, int y) {
         super(x, y, width, height);
     }
 

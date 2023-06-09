@@ -107,7 +107,7 @@ public class Main extends JPanel {
             @Override
             public void keyReleased(KeyEvent e) {
                 // STARTING GAME - MAIN MENU
-                if (!gameOver && mainMenu.getIsMenuOpen() && e.getKeyCode() == KeyEvent.VK_ENTER) {
+                if (mainMenu.getIsMenuOpen() && e.getKeyCode() == KeyEvent.VK_ENTER) {
                     mainMenu.changeMenu(false);
                     cd.CDReset();
                 } else if (gameOver && e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -117,8 +117,8 @@ public class Main extends JPanel {
                     gameOver = false;
                     mainMenu.changeMenu(true);
                     //
-                    System.out.println("Rgameover: " + gameOver);
-                    System.out.println("RmainMenu: " + mainMenu.getIsMenuOpen());
+                    System.out.println("GAMEOVER: " + gameOver);
+                    System.out.println("MAINMENU: " + mainMenu.getIsMenuOpen());
                     //
                 }
 
@@ -141,18 +141,6 @@ public class Main extends JPanel {
                     cd.stopPause();
                     pauseGame = false;
                 }
-
-                // RESTART GAME - UISELSS
-//                if (gameOver && e.getKeyCode() == KeyEvent.VK_R) {
-//                    gameOver = false;
-//                    mainMenu.changeMenu(true);
-//                    //
-//                    System.out.println("Rgameover: " + gameOver);
-//                    System.out.println("RmainMenu: " + mainMenu.getIsMenuOpen());
-//                    //
-//
-//                    cd.CDReset();
-//                }
 
                 if (currentClassroom == 1) {
                     p1.keyReleased(p2, e, office.arson1, office.trashCans, office.cb, office.pp, mess3);
@@ -281,9 +269,13 @@ public class Main extends JPanel {
         System.out.println("gameover: " + gameOver);
         System.out.println("mainMenu: " + mainMenu.getIsMenuOpen());
 
-        if (!gameOver){
-            //g2d.setColor(Color.BLACK);
+        if (mainMenu.getIsMenuOpen()) {
+            mainMenu.paintMainMenu(g2d);
+        } else if (!gameOver){
             if (t.getBothCaught()){
+                System.out.println("hellooooo");
+
+                System.out.println("u were caught lmao");
                 gameOver = true;
             }
             switch(currentClassroom) {
@@ -380,35 +372,23 @@ public class Main extends JPanel {
                     break;
             }
 
-            minimap.paint(g2d);
-            minimap.paintYou(g2d, currentClassroom);
-            minimap.paintTeacher(g2d, tCurrentClassroom);
-            if (mainMenu.getIsMenuOpen()) {
-                mainMenu.paintMainMenu(g2d);
-            } else if (!gameOver) {
-                if (!p1.getIsCaught() || currentClassroom == 1){
-                    p1.paint(g2d, mess3);
-                }
-                if (!p2.getIsCaught() || currentClassroom == 1){
-                    p2.paint(g2d, mess3);
-                }
-                if (currentClassroom == tCurrentClassroom){
-                    t.paint(g2d);
-                }
-                cd.paint(g2d);
-                sideMenu.paint(g2d);
+            if (!p1.getIsCaught() || currentClassroom == 1){
+                p1.paint(g2d, mess3);
             }
-        } else {
-            //gameOverScreen.paintGameOver(g2d);
-            p1.paint(g2d);
-            p2.paint(g2d);
-
+            if (!p2.getIsCaught() || currentClassroom == 1){
+                p2.paint(g2d, mess3);
+            }
             if (currentClassroom == tCurrentClassroom){
                 t.paint(g2d);
             }
-
             cd.paint(g2d);
             sideMenu.paint(g2d);
+
+            minimap.paint(g2d);
+            minimap.paintYou(g2d, currentClassroom);
+            minimap.paintTeacher(g2d, tCurrentClassroom);
+        } else {
+            gameOverScreen.paintGameOver(g2d);
         }
     }
 
@@ -448,10 +428,12 @@ public class Main extends JPanel {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        while (true) {
-            c.move(c); //Updates the coordinates
-            c.repaint(); //Calls the paint method
-            Thread.sleep(10); //Pauses for a moment
+        while (true){
+            while (!c.gameOver) {
+                c.move(c); //Updates the coordinates
+                c.repaint(); //Calls the paint method
+                Thread.sleep(10); //Pauses for a moment
+            }
         }
     }
 }

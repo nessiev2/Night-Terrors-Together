@@ -2,12 +2,12 @@ import java.awt.*;
 
 public class ROffice {
     DoArson arson1 = new DoArson(false);
-    TrashCan[] trashCans = {new TrashCan(1300, 400), new TrashCan(1300, 600), new TrashCan(1000, 600)};
+    ATrashCan[] trashCans = {new ATrashCan(1300, 400), new ATrashCan(1300, 600), new ATrashCan(1000, 600)};
 
-    ChalkBoard cb = new ChalkBoard(900, 10, "OFFICE", false);
-    Desk[] desks = {new Desk(0, 500, 500, 250), new Desk(500, 300, 150, 250+200)};
-    Wall w1 = new Wall(0, 0);
-    PressurePlate pp = new PressurePlate(200, 300);
+    AChalkBoard cb = new AChalkBoard(900, 10, "OFFICE", false);
+    ADesk[] desks = {new ADesk(0, 500, 500, 250), new ADesk(500, 300, 150, 250+200)};
+    AWall w1 = new AWall(0, 0);
+    APressurePlate pp = new APressurePlate(200, 300);
 
     public ROffice() {
 
@@ -19,12 +19,12 @@ public class ROffice {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.BLACK);
 
-        for (TrashCan tc: trashCans){
+        for (ATrashCan tc: trashCans){
             tc.isPlayerClose(p1, p2);
             tc.paint(g2d);
         }
 
-        for (Desk d:desks) {
+        for (ADesk d:desks) {
             d.paint(g2d);
         }
 
