@@ -8,7 +8,6 @@ public class RPhysics {
     AWall w1 = new AWall(0, 0);
     ADesk[] desks = new ADesk[6];
     DoSprint sprint = new DoSprint(true);
-
     public RPhysics() {
         Random r = new Random();
         int counter = 0;

@@ -8,7 +8,7 @@ import java.util.Random;
 
 BUG
 * fix invisible pressure plate
-* fix do arson
+* make sure sprint does not draw inside a desk
 
 TO-DO/TO-FIX LIST
 * teacher
@@ -18,22 +18,24 @@ TO-DO/TO-FIX LIST
     * add in their proper furniture stuffs
 * tasks
     * finish coding rest of tasks
+        * math
+        * bio
+        * chem
+        * eng
     * choose 4 tasks at random
 * side menu
-    * write random tasks
-    * write task in red after completion
-* general
-    * make gameover work ✖✖✖
-* graphics
-    * load rest of graphics
-* doors
-    * make side doors mats
+    * cross red after completion
+
 
 GOLD PLATING
 * instead of pressing a button to open the menu, u click with a mouse
 * add music/sound
 * animations???
 * screen gets red and tinted the closer the teacher is
+* graphics
+    * load rest of graphics
+* doors
+    * make side doors mats
 
 */
 
@@ -140,32 +142,32 @@ public class Main extends JPanel {
                 }
 
                 if (currentClassroom == 1) {
-                    p1.keyReleased(p2, e, office.arson1, office.trashCans, office.cb, office.pp, mess3, compSci.doHack8);
-                    p2.keyReleased(p1, e, office.arson1, office.trashCans, office.cb, office.pp, mess3, compSci.doHack8);
+                    p1.keyReleased(p2, currentClassroom, e, office.arson1, office.trashCans, office.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, currentClassroom, e, office.arson1, office.trashCans, office.cb, office.pp, mess3, compSci.doHack8);
                 } else if (currentClassroom == 2){
-                    p1.keyReleased(p2, e, caf.arson2, caf.trashCans, caf.cb, office.pp, mess3, compSci.doHack8);
-                    p2.keyReleased(p1, e, caf.arson2, caf.trashCans, caf.cb, office.pp, mess3, compSci.doHack8);
+                    p1.keyReleased(p2, currentClassroom, e, caf.arson2, caf.trashCans, caf.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, currentClassroom, e, caf.arson2, caf.trashCans, caf.cb, office.pp, mess3, compSci.doHack8);
                 } else if (currentClassroom == 3){
-                    p1.keyReleased(p2, e, gym.arson3, gym.trashCans, gym.cb, office.pp, mess3, compSci.doHack8);
-                    p2.keyReleased(p1, e, gym.arson3, gym.trashCans, gym.cb, office.pp, mess3, compSci.doHack8);
+                    p1.keyReleased(p2, currentClassroom, e, gym.arson3, gym.trashCans, gym.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, currentClassroom, e, gym.arson3, gym.trashCans, gym.cb, office.pp, mess3, compSci.doHack8);
                 } else if (currentClassroom == 4) {
-                    p1.keyReleased(p2, e, bio.arson4, bio.trashCans, bio.cb, office.pp, mess3, compSci.doHack8);
-                    p2.keyReleased(p1, e, bio.arson4, bio.trashCans, bio.cb, office.pp, mess3, compSci.doHack8);
+                    p1.keyReleased(p2, currentClassroom, e, bio.arson4, bio.trashCans, bio.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, currentClassroom, e, bio.arson4, bio.trashCans, bio.cb, office.pp, mess3, compSci.doHack8);
                 } else if (currentClassroom == 5) {
-                    p1.keyReleased(p2, e, phys.arson5, phys.trashCans, phys.cb, office.pp, mess3, compSci.doHack8);
-                    p2.keyReleased(p1, e, phys.arson5, phys.trashCans, phys.cb, office.pp, mess3, compSci.doHack8);
+                    p1.keyReleased(p2, currentClassroom, e, phys.arson5, phys.trashCans, phys.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, currentClassroom, e, phys.arson5, phys.trashCans, phys.cb, office.pp, mess3, compSci.doHack8);
                 } else if (currentClassroom == 6) {
-                    p1.keyReleased(p2, e, chem.arson6, chem.trashCans, chem.cb, office.pp, mess3, compSci.doHack8);
-                    p2.keyReleased(p1, e, chem.arson6, chem.trashCans, chem.cb, office.pp, mess3, compSci.doHack8);
+                    p1.keyReleased(p2, currentClassroom, e, chem.arson6, chem.trashCans, chem.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, currentClassroom, e, chem.arson6, chem.trashCans, chem.cb, office.pp, mess3, compSci.doHack8);
                 } else if (currentClassroom == 7){
-                    p1.keyReleased(p2, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp, mess3, compSci.doHack8);
-                    p2.keyReleased(p1, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp, mess3, compSci.doHack8);
+                    p1.keyReleased(p2, currentClassroom, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, currentClassroom, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp, mess3, compSci.doHack8);
                 } else if (currentClassroom == 8){
-                    p1.keyReleased(p2, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp, mess3, compSci.doHack8);
-                    p2.keyReleased(p1, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp, mess3, compSci.doHack8);
+                    p1.keyReleased(p2, currentClassroom, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, currentClassroom, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp, mess3, compSci.doHack8);
                 } else if (currentClassroom == 9){
-                    p1.keyReleased(p2, e, eng.arson9, eng.trashCans, eng.cb, office.pp, mess3, compSci.doHack8);
-                    p2.keyReleased(p1, e, eng.arson9, eng.trashCans, eng.cb, office.pp, mess3, compSci.doHack8);
+                    p1.keyReleased(p2, currentClassroom, e, eng.arson9, eng.trashCans, eng.cb, office.pp, mess3, compSci.doHack8);
+                    p2.keyReleased(p1, currentClassroom, e, eng.arson9, eng.trashCans, eng.cb, office.pp, mess3, compSci.doHack8);
                 }
             }
             @Override
@@ -178,6 +180,13 @@ public class Main extends JPanel {
     }
 
     private void move(Main c) {
+        if (phys.sprint.getFlag1()){
+            phys.sprint.sprintTicks(p1);
+        }
+        if (phys.sprint.getFlag2()){
+            phys.sprint.sprintTicks(p2);
+        }
+
         Random r = new Random();
 
         if (!pauseGame) {

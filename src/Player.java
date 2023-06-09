@@ -43,7 +43,9 @@ public abstract class Player {
         isCaught = c;
     }
     public void changeSpeed(int x) {speed = x; }
-
+    public int getPlayerN(){
+        return playerN;
+    }
     public void initializePlayer() {
         isCaught = false;
         isSpillingWater = false;
@@ -89,7 +91,7 @@ public abstract class Player {
 
     //public void keyTyped(KeyEvent e) {}
     public void keyPressed(KeyEvent e) {}
-    public void keyReleased(Player p2, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess3, DoHack doHack8) {}
+    public void keyReleased(Player p2, int currentClassroom, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess3, DoHack doHack8) {}
 
     public boolean checkPlayerCaught(Teacher[] t) {
         if (!checkRight(t) || !checkLeft(t) || !checkDown(t) || !checkUp(t)) {
