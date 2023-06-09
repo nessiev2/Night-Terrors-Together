@@ -15,7 +15,7 @@ public class DoArson extends Task{
             }
 
             if (counter >= 3){
-                isComplete = true;
+                taskFinished();
                 return 1;
             }
         }
