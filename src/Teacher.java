@@ -23,7 +23,7 @@ public class Teacher extends Thing {
     }
 
     public void initializeTeacher(){
-        spawnTeacher(0, 0);
+        spawnTeacher(200, 0);
         bothCaught = false;
     }
     public Teacher() {

@@ -1,24 +1,24 @@
 import java.awt.*;
 public class CountDown {
-    long startTime;
-    long currentTime;
-    long elapsedTime;
-    long backwardsTime;
-    long elapsedSeconds;
+    private static long startTime;
+    private long currentTime;
+    private long elapsedTime;
+    private long backwardsTime;
+    private long elapsedSeconds;
 
 
-    long secondsDisplay;
-    long elapsedMinutes;
-    long pausedTime;
+    private long secondsDisplay;
+    private long elapsedMinutes;
+    private long pausedTime;
 
-    long pause1 = 0;
-    long pause2 = 0;
+    private long pause1 = 0;
+    private long pause2 = 0;
 
     public CountDown() {
         startTime = System.currentTimeMillis();
     }
 
-    public void CDReset()  {
+    public static void CDReset()  {
         startTime = System.currentTimeMillis();
     }
 
