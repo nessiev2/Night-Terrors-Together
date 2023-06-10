@@ -7,7 +7,6 @@ import java.util.Random;
 /*
 
 BUG
-* fix invisible pressure plate
 * make sure sprint does not draw inside a desk
 
 TO-DO/TO-FIX LIST
@@ -25,7 +24,6 @@ TO-DO/TO-FIX LIST
     * choose 4 tasks at random
 * side menu
     * cross red after completion
-
 
 GOLD PLATING
 * instead of pressing a button to open the menu, u click with a mouse
@@ -268,7 +266,7 @@ public class Main extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        System.out.println("gameover: " + gameOver + "\tmainMenu: " + mainMenu.getIsMenuOpen());
+        //System.out.println("gameover: " + gameOver + "\tmainMenu: " + mainMenu.getIsMenuOpen());
 
         if (mainMenu.getIsMenuOpen()) {
             mainMenu.paintMainMenu(g2d);
@@ -422,8 +420,6 @@ public class Main extends JPanel {
     }
 
     public void reset(Main c){
-        System.out.println("reset");
-
         c.flag = false;
         c.gameOver = false;
         c.t.initializeTeacher();
@@ -431,7 +427,9 @@ public class Main extends JPanel {
         c.p2.initializePlayer();
         c.currentClassroom = 5;
 
-        // reset all tasks
+        // reset all rooms
+        phys.initializePhysics();
+        
         // reset side menu???
         // reset chosen tasks????
 

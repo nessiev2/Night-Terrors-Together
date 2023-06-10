@@ -8,7 +8,7 @@ import java.io.IOException;
 public abstract class Player {
     private BufferedImage img = null;
     private Image gif = null;
-    protected boolean right = false, left = false, up = false, down = false, interact = false;
+    protected boolean right = false, left = false, up = false, down = false, interact = false, standing = true;
     private int speed = 10;
     private int x, centerX;
     private int y, centerY;
@@ -76,12 +76,21 @@ public abstract class Player {
         if (isSpillingWater) {
             mess.addWaterStain(getCenterX(), getCenterY());
         }
-        if (left || isFacingLeft) {
-            //g2d.drawImage(img, getX(), getY(), width, height, null);
-            g2d.drawImage(gif, getX()+width, getY(), -width, height, null);
+        if (standing){
+            if (isFacingLeft){
+                g2d.drawImage(img, getX()+width, getY(), -width, height, null);
+            }
+            else {
+                g2d.drawImage(img, getX(), getY(), width, height, null);
+            }
         } else {
-            //g2d.drawImage(img, getX() + getWidth(), getY(), -width, height, null);
-            g2d.drawImage(gif, getX(), getY(), width, height, null);
+            if (left || isFacingLeft) {
+                //g2d.drawImage(img, getX(), getY(), width, height, null);
+                g2d.drawImage(gif, getX()+width, getY(), -width, height, null);
+            } else {
+                //g2d.drawImage(img, getX() + getWidth(), getY(), -width, height, null);
+                g2d.drawImage(gif, getX(), getY(), width, height, null);
+            }
         }
     }
 
@@ -108,6 +117,11 @@ public abstract class Player {
     }
 
     public void move(Thing[] t) {
+        if (!left && !right && !up && !down){
+            standing = true;
+        } else {
+            standing = false;
+        }
         if (!isCaught) {
             if (right && checkRight(t) && (x + width + speed < Main.SCREEN_WIDTH)) {
                 x += speed;

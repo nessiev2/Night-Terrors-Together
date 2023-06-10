@@ -5,8 +5,12 @@ public class ATrashCan extends Thing {
     private final static int height = 100;
     private final static int RADIUS = 50;
 
-    private boolean isOnFire = false;
-    private boolean playerIsClose = false;
+    private boolean isOnFire;
+    private boolean playerIsClose;
+    public void initializeTrash(){
+        isOnFire = false;
+        playerIsClose = false;
+    }
 
     public boolean getIsOnFire() {
         return isOnFire;
@@ -14,6 +18,7 @@ public class ATrashCan extends Thing {
 
     public ATrashCan(int x, int y) {
         super(x, y, width, height);
+        initializeTrash();
     }
 
     public void paint(Graphics g2d) {

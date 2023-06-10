@@ -6,23 +6,26 @@ public class AChalkBoard extends Thing {
     private final int maxX = BOARD_WIDTH-80, minX = 320;
     private final int maxY = BOARD_HEIGHT-30, minY = 50;
     private final int RADIUS = 50;
-    private String[] scribbleArray = new String[20];
-    private int[] xs = new int[20];
-    private int[] ys = new int[20];
-    private boolean scribble = false, playerIsClose = false, interactive;
+    private boolean scribble, playerIsClose, interactive;
     private String classroom;
-    private DoScribble skribl = new DoScribble(10, 10, this);
+    private DoScribble skribl;
 
-    public boolean getScribble() {
-        return scribble;
+    public void initializeChalkboard(){
+        skribl = new DoScribble(10, 10, this);
+        scribble = false;
+        playerIsClose = false;
     }
+
 
     public AChalkBoard(int x, int y, String classroom, boolean interactive){
         super(x, y, BOARD_WIDTH, BOARD_HEIGHT);
         this.classroom = classroom;
         this.interactive = interactive;
+        initializeChalkboard();
     }
-
+    public boolean getScribble() {
+        return scribble;
+    }
     public boolean isPlayerClose(Player p1, Player p2) {
         if ((p1.getCenterX() >= getX() - RADIUS && p1.getCenterX() <= getX() + getWidth() + RADIUS && p1.getY() - getY() - getHeight() <= RADIUS) || (p2.getCenterX() >= getX() - RADIUS && p2.getCenterX() <= getX() + getWidth() + RADIUS && p2.getY() - getY() - getHeight() <= RADIUS)) {
             playerIsClose = true;

@@ -2,14 +2,27 @@ import java.awt.*;
 import java.util.Random;
 
 public class RPhysics {
-    DoArson arson5 = new DoArson(true);
+    DoArson arson5;
     ATrashCan[] trashCans = new ATrashCan[3];
-    AChalkBoard cb = new AChalkBoard(300, 10, "PHYSICS", true);
+    AChalkBoard cb;
     AWall w1 = new AWall(0, 0);
     ADesk[] desks = new ADesk[6];
-    DoSprint sprint = new DoSprint(true);
-    public RPhysics() {
+    DoSprint sprint;
+
+    public void initializePhysics(){
         Random r = new Random();
+
+        trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
+        trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
+        trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
+
+        sprint = new DoSprint(true);
+        arson5 = new DoArson(true);
+
+        cb = new AChalkBoard(300, 10, "PHYSICS", true);
+    }
+
+    public RPhysics() {
         int counter = 0;
 
         //generating desks loop
@@ -20,9 +33,7 @@ public class RPhysics {
             }
         }
 
-        trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
-        trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
-        trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
+        initializePhysics();
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1) {

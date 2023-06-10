@@ -2,11 +2,24 @@ import java.awt.*;
 import java.util.Random;
 
 public class DoScribble extends Thing {
-    private String[] scribbleArray = new String[20];
-    private int[] xs = new int[20];
-    private int[] ys = new int[20];
+    private String[] scribbleArray;
+    private int[] xs;
+    private int[] ys;
     private int maxX, minX, maxY, minY;
     AChalkBoard cb;
+
+    public void initializeScribble(){
+        scribbleArray = new String[20];
+        xs = new int[20];
+        ys = new int[20];
+
+        for (int i = 0; i < 20; i++){
+            String c = randomChar();
+            scribbleArray[i] = c;
+            xs[i] = (int)(Math.random() * maxX + minX);
+            ys[i] = (int)(Math.random() * maxY + minY);
+        }
+    }
 
     public DoScribble(int x, int y, AChalkBoard cb){
         super(x, y, cb.getWidth(), cb.getHeight());
@@ -18,12 +31,7 @@ public class DoScribble extends Thing {
         maxY = cb.getY() + cb.getHeight() - 30;
         minY = cb.getY() + 20;
 
-        for (int i = 0; i < 20; i++){
-            String c = randomChar();
-            scribbleArray[i] = c;
-            xs[i] = (int)(Math.random() * maxX + minX);
-            ys[i] = (int)(Math.random() * maxY + minY);
-        }
+        initializeScribble();
     }
 
     private static String randomChar() {
