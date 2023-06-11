@@ -36,7 +36,7 @@ public class DoSprint extends Task{
         }
 
         if (j >= 300){
-            flag1 = false;
+            flag2 = false;
             p.changeSpeed(10);
             j = 0;
         }

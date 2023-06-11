@@ -2,15 +2,32 @@ import java.awt.*;
 import java.util.Random;
 
 public class RBiology {
-    DoArson arson4 = new DoArson(true);
+    DoArson arson4;
     ATrashCan[] trashCans = new ATrashCan[3];
-
-    AChalkBoard cb = new AChalkBoard(300, 10, "BIOLOGY",true);
-
+    AChalkBoard cb;
     AWall w1 = new AWall(0, 0);
-    ADesk[] desks = new ADesk[6];
+    ADesk[] desks = new ADesk[4];
+    public void initializeBio(){
+        Random r = new Random();
 
+        trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
+        trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
+        trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
+
+        arson4 = new DoArson(true);
+        cb = new AChalkBoard(300, 10, "BIOLOGY",true);
+    }
     public RBiology() {
+        int counter = 0;
+
+        //generating desks loop
+        for (int i = 700; i <= 1000; i += 300){         // x
+            for (int j = 500; j <= 800; j += 300){      // y
+                desks[counter] = new ADesk(i, j);
+                counter++;
+            }
+        }
+
         initializeBio();
     }
 
@@ -34,23 +51,4 @@ public class RBiology {
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard
     }
-
-    public void initializeBio(){
-        Random r = new Random();
-        int counter = 0;
-
-        //generating desks loop
-        for (int i = 400; i <= 1000; i += 300){         // x
-            for (int j = 500; j <= 800; j += 300){      // y
-                desks[counter] = new ADesk(i, j);
-                counter++;
-            }
-        }
-
-        trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
-        trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
-        trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
-    }
-
-
 }

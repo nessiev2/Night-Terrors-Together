@@ -2,20 +2,25 @@ import java.awt.*;
 import java.util.Random;
 
 public class RChemistry {
-    DoArson arson6 = new DoArson(true);
+    DoArson arson6;
     ATrashCan[] trashCans = new ATrashCan[3];
-
-    AChalkBoard cb = new AChalkBoard(300, 10, "CHEMISTRY", true);
-
+    AChalkBoard cb;
     AWall w1 = new AWall(0, 0);
     ADesk[] desks = {new ADesk(400, 500), new ADesk(800, 500), new ADesk(400, 800), new ADesk(800, 800)};
 
-    public RChemistry() {
+    public void initializeChem(){
         Random r = new Random();
 
         trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
         trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
+
+        arson6 = new DoArson(true);
+        cb = new AChalkBoard(300, 10, "CHEMISTRY", true);
+    }
+
+    public RChemistry() {
+        initializeChem();
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1) {

@@ -9,6 +9,7 @@ public class DoScribble extends Thing {
     AChalkBoard cb;
 
     public void initializeScribble(){
+        Random r = new Random();
         scribbleArray = new String[20];
         xs = new int[20];
         ys = new int[20];
@@ -16,8 +17,10 @@ public class DoScribble extends Thing {
         for (int i = 0; i < 20; i++){
             String c = randomChar();
             scribbleArray[i] = c;
-            xs[i] = (int)(Math.random() * maxX + minX);
-            ys[i] = (int)(Math.random() * maxY + minY);
+            xs[i] = r.nextInt((maxX - minX) + 1) + minX;
+            ys[i] = r.nextInt((maxY - minY) + 1) + minY;
+
+
         }
     }
 
@@ -26,10 +29,10 @@ public class DoScribble extends Thing {
 
         this.cb = cb;
 
-        maxX = cb.getX() + cb.getWidth() - 80;
+        maxX = cb.getX() + cb.getWidth() - 40;
         minX = cb.getX() + 20;
         maxY = cb.getY() + cb.getHeight() - 30;
-        minY = cb.getY() + 20;
+        minY = cb.getY() + 30;
 
         initializeScribble();
     }
@@ -48,6 +51,15 @@ public class DoScribble extends Thing {
                 g2d.drawString(scribbleArray[j], xs[j], ys[j]);
             }
         }
+
+//        g2d.setColor(Color.red);
+//        g2d.fillRect(minX, minY, 20, 20);
+//        g2d.setColor(Color.yellow);
+//        g2d.fillRect(maxX, minY, 20, 20);
+//        g2d.setColor(Color.green);
+//        g2d.fillRect(minX, maxY, 20, 20);
+//        g2d.setColor(Color.blue);
+//        g2d.fillRect(maxX, maxY, 20, 20);
     }
 
 }

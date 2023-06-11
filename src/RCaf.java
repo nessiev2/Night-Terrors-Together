@@ -1,14 +1,16 @@
 import java.awt.*;
 
 public class RCaf {
-    DoArson arson2 = new DoArson(true);
+    DoArson arson2;
     ATrashCan[] trashCans = {};
-
-    AChalkBoard cb = new AChalkBoard(500, 10, "CAFETERIA", true);
-    ADesk[] desks = {new ADesk(700, 500, 400, 200)};
+    AChalkBoard cb = new AChalkBoard(500, 10, "CAFETERIA", false);
+    ADesk[] desks = {new ADesk(300, 300, 400, 150, true), new ADesk(800, 300, 400, 150, true), new ADesk(1300, 300, 400, 150, true), new ADesk(300, 600, 400, 150, true), new ADesk(800, 600, 400, 150, true), new ADesk(1300, 600, 400, 150, true)};
     AWall w1 = new AWall(0, 0);
+    public void initializeCaf(){
+        arson2 = new DoArson(true);
+    }
     public RCaf() {
-
+        initializeCaf();
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1) {
@@ -22,6 +24,7 @@ public class RCaf {
             tc.paint(g2d);
         }
 
+        g2d.setColor(new Color(160, 146, 146));
         for (ADesk d:desks) {
             d.paint(g2d);
         }

@@ -1,16 +1,18 @@
 import java.awt.*;
 
 public class RGym {
-    DoArson arson3 = new DoArson(true);
+    DoArson arson3;
     ATrashCan[] trashCans = {};
-
-    AChalkBoard cb = new AChalkBoard(500, 10, "GYM", true);
+    AChalkBoard cb;
     ADesk[] desks = {};
     AWall w1 = new AWall(0, 0);
-    public RGym() {
-
+    public void initalizeGym(){
+        arson3 = new DoArson(true);
+        cb = new AChalkBoard(500, 10, "GYM", true);
     }
-
+    public RGym(){
+        initalizeGym();
+    }
     public void paint(Graphics g, Player p1, Player p2, Transition transition1) {
         //super.paint(g);
         Graphics2D g2d = (Graphics2D) g;

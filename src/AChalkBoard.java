@@ -55,7 +55,7 @@ public class AChalkBoard extends Thing {
         g2d.setFont(new Font("TimesRoman", Font.BOLD, 50));
         g2d.drawString(classroom, getX()+200, getY()+100);
 
-        if (scribble){
+        if (scribble && interactive){
             skribl.paint(g2d);
         }
     }

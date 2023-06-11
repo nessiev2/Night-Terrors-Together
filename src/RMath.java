@@ -2,14 +2,24 @@ import java.awt.*;
 import java.util.Random;
 
 public class RMath {
-    DoArson arson7 = new DoArson(true);
+    DoArson arson7;
     ATrashCan[] trashCans = new ATrashCan[3];
-    AChalkBoard cb = new AChalkBoard(300, 10, "MATH", true);
+    AChalkBoard cb;
     AWall w1 = new AWall(0, 0);
     ADesk[] desks = new ADesk[6];
 
-    public RMath() {
+    public void initializeMath(){
         Random r = new Random();
+
+        trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
+        trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
+        trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
+
+        arson7 = new DoArson(true);
+        cb = new AChalkBoard(300, 10, "MATH", true);
+    }
+
+    public RMath() {
         int counter = 0;
 
         //generating desks loop
@@ -20,9 +30,7 @@ public class RMath {
             }
         }
 
-        trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
-        trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
-        trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
+        initializeMath();
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1) {

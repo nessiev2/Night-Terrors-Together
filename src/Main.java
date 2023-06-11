@@ -8,6 +8,7 @@ import java.util.Random;
 
 BUG
 * make sure sprint does not draw inside a desk
+* make sure the office's trash cans do not generate under a desk
 
 TO-DO/TO-FIX LIST
 * teacher
@@ -43,7 +44,7 @@ public class Main extends JPanel {
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
     boolean gameOver = false, pauseGame = false;
     int currentClassroom = 5, tCurrentClassroom = 1, clickClack = 0;
-    int tobX = 1300, botY = 810, topY = 70, rightX = SCREEN_WIDTH-150, leftX = 0, sideY = SCREEN_HEIGHT/2-100;
+    int tobX = 1300, botY = 840, topY = 70, rightX = SCREEN_WIDTH-150, leftX = 0, sideY = SCREEN_HEIGHT/2-100;
     boolean flag = false;
     SideMenu sideMenu = new SideMenu();
     CountDown cd = new CountDown();
@@ -266,8 +267,6 @@ public class Main extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        //System.out.println("gameover: " + gameOver + "\tmainMenu: " + mainMenu.getIsMenuOpen());
-
         if (mainMenu.getIsMenuOpen()) {
             mainMenu.paintMainMenu(g2d);
         } else if (gameOver) {
@@ -379,6 +378,9 @@ public class Main extends JPanel {
                 if (!p2.getIsCaught() || currentClassroom == 1){
                     p2.paint(g2d, mess3);
                 }
+                if (p1.getIsCaught() || p2.getIsCaught()){
+                    office.paintBars(g2d);
+                }
                 if (currentClassroom == tCurrentClassroom){
                     t.paint(g2d);
                 }
@@ -427,9 +429,16 @@ public class Main extends JPanel {
         c.p2.initializePlayer();
         c.currentClassroom = 5;
 
-        // reset all rooms
+        office.initializeOffice();
+        caf.initializeCaf();
+        gym.initalizeGym();
+        bio.initializeBio();
         phys.initializePhysics();
-        
+        chem.initializeChem();
+        mathematics.initializeMath();
+        compSci.initializeCompSci();
+        eng.initializeEng();
+
         // reset side menu???
         // reset chosen tasks????
 

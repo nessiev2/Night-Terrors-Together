@@ -11,7 +11,7 @@ public class ADoor extends Thing {
     public void paint(Graphics g2d) {
         g2d.setColor(Color.yellow);
         g2d.fillRect(getX(), getY(), width, height);
-        g2d.setColor(new Color(205, 139, 77));
+        g2d.setColor(new Color(212, 171, 135));
         g2d.fillRect(getX() + 10, getY() + 10, width - 20, height - 10);
         g2d.setColor(new Color(74, 74, 74));
         g2d.fillOval(getX() + width - 40, getY() + 120, 20, 20);
