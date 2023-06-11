@@ -19,10 +19,8 @@ public class ADoor extends Thing {
 
     public boolean containsPlayer(Player p1, Player p2) {
         if (p1.getX() >= getX() && p1.getY() >= getY() && p1.getX() + p1.getWidth() <= getX() + width && p1.getY() + p1.getHeight() - 20 <= getY() + height) {
-            System.out.println("P1 is contained");
             return true;
         } else if (p2.getX() >= getX() && p2.getY() >= getY() && p2.getX() + p2.getWidth() <= getX() + width && p2.getY() + p2.getHeight() - 20 <= getY() + height) {
-            System.out.println("P2 is contained");
             return true;
         }
         return false;

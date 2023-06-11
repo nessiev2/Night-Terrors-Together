@@ -2,16 +2,18 @@ import java.awt.*;
 
 public class RGym {
     DoArson arson3;
+    DoMess mess3;
     ATrashCan[] trashCans = {};
     AChalkBoard cb;
     ADesk[] desks = {};
     AWall w1 = new AWall(0, 0);
-    public void initalizeGym(){
+    public void initializeGym(){
         arson3 = new DoArson(true);
+        mess3 = new DoMess(true);
         cb = new AChalkBoard(500, 10, "GYM", true);
     }
     public RGym(){
-        initalizeGym();
+        initializeGym();
     }
     public void paint(Graphics g, Player p1, Player p2, Transition transition1) {
         //super.paint(g);
@@ -24,9 +26,19 @@ public class RGym {
             tc.paint(g2d);
         }
 
+        mess3.paint(g2d);
+
+        if (p1.getIsSpillingWater()){
+            mess3.addWaterStain(p1.getCenterX(), p1.getCenterY(), p1, g2d);
+        }
+        if (p2.getIsSpillingWater()){
+            mess3.addWaterStain(p2.getCenterX(), p2.getCenterY(), p2, g2d);
+        }
+
         w1.paint(g2d); // wall
 
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard
+
     }
 }

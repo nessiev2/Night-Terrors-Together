@@ -19,6 +19,7 @@ public abstract class Player {
 
     private int playerN;
     private boolean isFacingLeft = false;
+
     public void changeFaceDirection(boolean b) { isFacingLeft = b; }
     private boolean isCaught = false;
 
@@ -38,6 +39,9 @@ public abstract class Player {
     public int getHeight() { return height; }
 
     public boolean getIsCaught() { return isCaught; }
+    public boolean getIsSpillingWater() {
+        return isSpillingWater;
+    }
 
     public void changeIsCaught(boolean c) {
         isCaught = c;
@@ -73,9 +77,6 @@ public abstract class Player {
 
 
     public void paint(Graphics2D g2d, DoMess mess) {
-        if (isSpillingWater) {
-            mess.addWaterStain(getCenterX(), getCenterY());
-        }
         if (standing){
             if (isFacingLeft){
                 g2d.drawImage(img, getX()+width, getY(), -width, height, null);
@@ -137,8 +138,8 @@ public abstract class Player {
             }
         }
 
-        centerX = (int)((2*x + width)/2);
-        centerY = (int)((2*y + height)/2);
+        centerX = (2*x + width)/2;
+        centerY = (2*y + height)/2;
     }
 
     // returns true if not touching

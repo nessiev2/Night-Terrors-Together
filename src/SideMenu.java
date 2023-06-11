@@ -51,12 +51,9 @@ public class SideMenu {
             g2d.setColor(Color.black);
             g2d.drawString("TASKS:", openX + openWidth - 500, openY + 70);
 
-            // dekete later
-            //finTasks[0] = true;
-
-            for (int i = 0; i < 4; i++) {
-                System.out.print("FINTASKS: " + i + " " + finTasks[i] + " ");
-            }
+//            for (int i = 0; i < 4; i++) {
+//                System.out.print("FINTASKS: " + i + " " + finTasks[i] + " ");
+//            }
 
             for (int i = 0; i < 4; i++)  {
                 g2d.setColor(Color.black);

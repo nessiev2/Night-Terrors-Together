@@ -5,24 +5,24 @@ import javax.swing.*;
 import java.util.Random;
 
 /*
-
-BUG
+BUGS
 * make sure sprint does not draw inside a desk
 * make sure the office's trash cans do not generate under a desk
+* player movement gets restricted when holding down interact key??
 
 TO-DO/TO-FIX LIST
 * teacher
-    * dont let the teacher phase thru desks and other stuff
     * teacher should not be able to spawn on top of players, must spawn at least certain distance away
 * rooms
     * add in their proper furniture stuffs
+    * add in the other computers onto the desks in comp sci
 * tasks
     * finish coding rest of tasks
         * math
+        * caf
         * bio
         * chem
         * eng
-    * choose 4 tasks at random
 * side menu
     * cross red after completion
 
@@ -35,7 +35,6 @@ GOLD PLATING
     * load rest of graphics
 * doors
     * make side doors mats
-
 */
 
 public class Main extends JPanel {
@@ -304,7 +303,6 @@ public class Main extends JPanel {
 
                     case 3:
                         gym.paint(g, p1, p2, transition1);
-                        mess3.paint(g2d);
                         gymToCaf.paint(g2d);
                         gymToChem.paint(g2d);
                         changeRooms(gymToCaf, cafToGym, 2, p1, p2, transition1, g2d);
@@ -378,7 +376,7 @@ public class Main extends JPanel {
                 if (!p2.getIsCaught() || currentClassroom == 1){
                     p2.paint(g2d, mess3);
                 }
-                if (p1.getIsCaught() || p2.getIsCaught()){
+                if ((p1.getIsCaught() || p2.getIsCaught()) && currentClassroom == 1){
                     office.paintBars(g2d);
                 }
                 if (currentClassroom == tCurrentClassroom){
@@ -431,7 +429,7 @@ public class Main extends JPanel {
 
         office.initializeOffice();
         caf.initializeCaf();
-        gym.initalizeGym();
+        gym.initializeGym();
         bio.initializeBio();
         phys.initializePhysics();
         chem.initializeChem();
