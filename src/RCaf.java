@@ -1,10 +1,15 @@
 import java.awt.*;
 
 public class RCaf {
+    DoVendingMachine vendMachine1 = new DoVendingMachine(800, 600, true);
+    DoVendingMachine vendMachine2 = new DoVendingMachine(1000, 600, true);
+
+    DoVendingMachine[] vendMachines = {vendMachine1, vendMachine2};
+
     DoArson arson2;
     ATrashCan[] trashCans = {};
     AChalkBoard cb = new AChalkBoard(500, 10, "CAFETERIA", false);
-    ADesk[] desks = {new ADesk(300, 300, 400, 150, true), new ADesk(800, 300, 400, 150, true), new ADesk(1300, 300, 400, 150, true), new ADesk(300, 600, 400, 150, true), new ADesk(800, 600, 400, 150, true), new ADesk(1300, 600, 400, 150, true)};
+    ADesk[] desks = {new ADesk(300, 300+25, 400, 150, true), new ADesk(800, 300+25, 400, 150, true), new ADesk(1300, 300+25, 400, 150, true), new ADesk(300, 600+25, 400, 150, true), new ADesk(1300, 600+25, 400, 150, true)};
     AWall w1 = new AWall(0, 0);
     public void initializeCaf(){
         arson2 = new DoArson(true);
@@ -30,6 +35,15 @@ public class RCaf {
         }
 
         w1.paint(g2d); // wall
+        for (DoVendingMachine VM:vendMachines) {
+            VM.paint(g2d, p1, p2);
+        }
+
+        if (vendMachines[0].getVendComplete() && vendMachines[1].getVendComplete() ) {
+            vendMachines[0].taskFinished();
+            vendMachines[1].taskFinished();
+        }
+
 
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard

@@ -18,6 +18,10 @@ public class DoHack extends Task{
         return false;
     }
 
+    public void startPress() {
+
+    }
+
     public void paint(Graphics g2d, Player p1, Player p2) {
         int i = 10;
         this.isPlayerClose(p1, p2);

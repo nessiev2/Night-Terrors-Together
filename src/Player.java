@@ -15,6 +15,9 @@ public abstract class Player {
     private int width = 80;
     private int height = 120;
     private boolean isSpillingWater;
+    private boolean isHolding;
+    public boolean getIsHolding() {return isHolding; }
+    public void changeIsHolding(boolean b) { isHolding = b; }
     public void changeIsSpillingWater(boolean b) { isSpillingWater = b; }
 
     private int playerN;
@@ -102,7 +105,7 @@ public abstract class Player {
 
     //public void keyTyped(KeyEvent e) {}
     public void keyPressed(KeyEvent e) {}
-    public void keyReleased(Player p2, int currentClassroom, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess3, DoHack doHack8) {}
+    public void keyReleased(Player p2, int currentClassroom, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess3, DoHack doHack8, DoVendingMachine[] doVendingMachine) {}
 
     public boolean checkPlayerCaught(Teacher[] t) {
         if (!checkRight(t) || !checkLeft(t) || !checkDown(t) || !checkUp(t)) {

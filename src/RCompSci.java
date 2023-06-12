@@ -30,7 +30,6 @@ public class RCompSci {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.BLACK);
 
-        // IRENE IS MAKING A CLASSROOM DESK TRIAL
         for (ADesk d:desks) {
             d.paint(g2d);
         }

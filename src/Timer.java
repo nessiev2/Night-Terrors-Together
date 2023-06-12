@@ -3,6 +3,10 @@ public class Timer {
     private long startTime = 0;
     private long stopTime = 0;
 
+    public Timer() {}
+
+/*    public long getStartTime() { return startTime; }
+    public long getStartTime() { return startTime; }*/
 
     public void start() {
         this.startTime = System.nanoTime();
@@ -19,4 +23,9 @@ public class Timer {
         elapsed = (stopTime - startTime)/(long)(Math.pow(10, 12));
         return elapsed;
     }
+
+    public void paint() {
+        // draw a bar
+    }
+
 }
