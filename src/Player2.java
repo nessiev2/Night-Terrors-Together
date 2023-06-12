@@ -50,7 +50,7 @@ public class Player2 extends Player {
                 }
             }
             if (cb.isPlayerClose(this, this)) {
-                cb.scribble();
+                cb.makeScribble();
             }
             if (p1.getIsCaught() && pp.isPlayerClose(this, this) && currentRoom == 1) {
                 System.out.println("PRESSURE PLATE PRESSED");

@@ -43,7 +43,7 @@ public class ATrashCan extends Thing {
     }
 
     public boolean isPlayerClose(Player p1, Player p2) {
-        int centerX = (int)((2*getX() + getWidth())/2), centerY = (int)((2*getY() + getHeight())/2);
+        int centerX = (2*getX() + getWidth())/2, centerY = (2*getY() + getHeight())/2;
         double dist1 = Math.sqrt(Math.pow(centerX-p1.getCenterX(), 2) + Math.pow(centerY-p1.getCenterY(), 2));
         double dist2 = Math.sqrt(Math.pow(centerX-p2.getCenterX(), 2) + Math.pow(centerY-p2.getCenterY(), 2));
 

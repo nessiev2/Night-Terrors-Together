@@ -1,10 +1,7 @@
 import java.awt.*;
-import java.util.Random;
 
 public class AChalkBoard extends Thing {
     private static final int BOARD_WIDTH = Main.SCREEN_WIDTH/2, BOARD_HEIGHT = (Main.SCREEN_WIDTH/4) - 230;
-    private final int maxX = BOARD_WIDTH-80, minX = 320;
-    private final int maxY = BOARD_HEIGHT-30, minY = 50;
     private final int RADIUS = 50;
     private boolean scribble, playerIsClose, interactive;
     private String classroom;
@@ -36,7 +33,7 @@ public class AChalkBoard extends Thing {
         }
     }
 
-    public void scribble(){
+    public void makeScribble(){
         scribble = true;
     }
 
