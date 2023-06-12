@@ -47,6 +47,7 @@ public class SideMenu {
             hasGenerated = true;
         }
         g2d.setColor(Color.white);
+        //System.out.println(mess.getIsComplete());
         if (!isOpen){
             g2d.fillRect(x, y, width, height);
         } else {
@@ -54,7 +55,6 @@ public class SideMenu {
             g2d.setColor(Color.black);
             g2d.drawString("TASKS:", openX + openWidth - 500, openY + 70);
 
-            //DOEST WORK 🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡
             if (mess.getFinished()){
                 g2d.drawString("X", openX + 33, openY + 200 + 2*100);
                 System.out.println("done!");
@@ -69,7 +69,7 @@ public class SideMenu {
                 g2d.setColor(Color.black);
                 g2d.drawRect(openX + 25, openY + 155 + i*100, 50, 50);
                 g2d.drawString(sArray[array[i]], openX + 100, openY + 200 + i*100);
-//
+
 //                if (finTasks[i]) {
 //                    System.out.println("task " + i + " is fin, did draw X");
 //                    g2d.setColor(Color.red);

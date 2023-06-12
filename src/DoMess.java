@@ -1,9 +1,12 @@
 import java.awt.*;
 public class DoMess extends Task {
-    private boolean isFin = false;
+    private boolean isFin, flag = false;
     private boolean[][] waterStains = new boolean[(Main.SCREEN_WIDTH/2)/30][(810-270)/30];
     public DoMess(boolean isTask){
         super(isTask);
+    }
+    public boolean getIsComplete(){
+        return isFin;
     }
     public void paint(Graphics g2d) {
         checkIsFin();
@@ -19,16 +22,22 @@ public class DoMess extends Task {
 
     public void checkIsFin(){
         isFin = true;
-        for (int i = 0; i < waterStains.length; i++) {
-            for (int j = 0; j < waterStains[i].length; j++) {
-                if (!waterStains[i][j]){
-                    isFin = false;
+        //if (!flag){
+            for (int i = 0; i < waterStains.length; i++) {
+                for (int j = 0; j < waterStains[i].length; j++) {
+                    if (!waterStains[i][j]){
+                        isFin = false;
+                        flag = true;
+                        //System.out.println("sabotage");
+                    }
                 }
             }
-        }
+        //}
 
         if (isFin) {
+            //System.out.println("i work tho???");
             this.taskFinished();
+            isTask = true;
         }
     }
 

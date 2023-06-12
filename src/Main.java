@@ -197,7 +197,7 @@ public class Main extends JPanel {
             // TEACHER SPAWNS IN A CLASSROOM
             if (clickClack >= 50 && tCurrentClassroom != currentClassroom){
                 int[] tmp = {1, 2, 3, 4, 6, 7, 8, 9};
-                t.spawnTeacher(0,0);
+                t.spawnTeacher(p1, p2);
                 tCurrentClassroom = tmp[r.nextInt(8)];
                 clickClack = 0;
             }
@@ -209,7 +209,7 @@ public class Main extends JPanel {
 
             if (currentClassroom != tCurrentClassroom ){
                 if (p1.checkTeacher(teacher) || p2.checkTeacher(teacher)) {
-                    t.spawnTeacher(100, 10);
+                    t.spawnTeacher(p1, p2);
                 }
             }
 

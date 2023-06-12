@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 public class Teacher extends Thing {
     private BufferedImage img = null;
@@ -14,16 +15,30 @@ public class Teacher extends Thing {
     private boolean isFacingLeft = false;
     public void changeFaceDirection(boolean b) { isFacingLeft = b; }
 
-    public void spawnTeacher(int x, int y) {
-        resetX(x);
-        resetY(y);
+    //MAKE THIS WORK!!!!!!!!!!!
+    public void spawnTeacher(Player p1, Player p2) {
+        Random r = new Random();
+        int tmp1 = r.nextInt(2), tmp2 = r.nextInt(2);
+        if (tmp1 == 0){
+            tmp1 = -1;
+        }
+        if (tmp2 == 0){
+            tmp2 = -1;
+        }
+
+        int x = r.nextInt(100) + 50;
+        int y = r.nextInt(100) + 50;
+
+        changeX(tmp1*x);
+        changeY(tmp2*y);
     }
     public boolean getBothCaught(){
         return bothCaught;
     }
 
     public void initializeTeacher(){
-        spawnTeacher(0, 0);
+        resetX(0);
+        resetY(500);
         bothCaught = false;
     }
     public Teacher() {
