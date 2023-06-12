@@ -2,6 +2,8 @@ import java.awt.event.KeyEvent;
 
 public class Player1 extends Player {
 
+    Timer t = new Timer();
+
     public Player1() {
         super(1);
     }
@@ -24,9 +26,19 @@ public class Player1 extends Player {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             changeIsSpillingWater(true);
         }
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            if (!getIsHolding()) {
+                changeIsHolding(true);
+                t.start();
+            }
+            if (getIsHolding()) {
+
+            }
+        }
+
     }
 
-    public void keyReleased(Player p2, int currentRoom, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess, DoHack hack) {
+    public void keyReleased(Player p2, int currentRoom, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess, DoHack hack, DoVendingMachine[] vend) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             left = false;
         }
@@ -56,8 +68,20 @@ public class Player1 extends Player {
                 p2.changeIsCaught(false);
                 p2.spawnPlayer(getX(), getY());
             }
-            if (hack.isPlayerClose(this, this)){
-                hack.taskFinished();
+            if (hack.isPlayerClose(this, this)) {
+                System.out.println("time: " + t.getElapsedTime());
+
+                t.stop();
+                if (t.getElapsedTime() >= 500) {
+                    hack.taskFinished();
+                    System.out.println("HACK SUCCESS");
+                    changeIsHolding(false);
+                }
+            }
+            for (DoVendingMachine VM:vend) {
+                if (VM.isPlayerClose(this, this)) {
+                    VM.finishVending();
+                }
             }
         }
     }
