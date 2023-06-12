@@ -29,10 +29,10 @@ public class RGym {
         mess3.paint(g2d);
 
         if (p1.getIsSpillingWater()){
-            mess3.addWaterStain(p1.getCenterX(), p1.getCenterY(), p1, g2d);
+            mess3.addWaterStain(p1, g2d);
         }
         if (p2.getIsSpillingWater()){
-            mess3.addWaterStain(p2.getCenterX(), p2.getCenterY(), p2, g2d);
+            mess3.addWaterStain(p2, g2d);
         }
 
         w1.paint(g2d); // wall

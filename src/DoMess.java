@@ -5,28 +5,34 @@ public class DoMess extends Task {
     public DoMess(boolean isTask){
         super(isTask);
     }
-
     public void paint(Graphics g2d) {
+        checkIsFin();
+        g2d.setColor(new Color(1, 184, 252));
+        for (int i = 0; i < waterStains.length; i++) {
+            for (int j = 0; j < waterStains[i].length; j++) {
+                if (waterStains[i][j]){
+                    g2d.fillRect((i*30)+15+(1920/4), j*30+270, 30, 30);
+                }
+            }
+        }
+    }
+
+    public void checkIsFin(){
         isFin = true;
         for (int i = 0; i < waterStains.length; i++) {
             for (int j = 0; j < waterStains[i].length; j++) {
-                g2d.setColor(new Color(1, 184, 252));
-                if (waterStains[i][j]){
-                    g2d.fillRect((i*30)+15+(1920/4), j*30+270, 30, 30);
-                } else {
+                if (!waterStains[i][j]){
                     isFin = false;
                 }
             }
         }
 
         if (isFin) {
-            System.out.println("task has finished");
-            //updateTaskCompletion(2);
-            taskFinished();
+            this.taskFinished();
         }
     }
 
-    public void addWaterStain(int x, int y, Player p, Graphics g2d) {
+    public void addWaterStain(Player p, Graphics g2d) {
         int px = p.getCenterX();
         int py = p.getCenterY();
         int minX = 15+(1920/4);
@@ -38,8 +44,8 @@ public class DoMess extends Task {
             if (py > minY && py < maxY + 30){
                 int i = ((px-1920/4)/30);
                 int j = (py-270)/30;
-                for (int a = 0; a < 3; a++){
-                    for (int b = 0; b < 3; b++){
+                for (int a = 0; a < 10; a++){
+                    for (int b = 0; b < 10; b++){
                         if (i + a < waterStains.length && j + b < waterStains[0].length){
                             waterStains[i+a][j+b] = true;
                         }

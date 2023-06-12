@@ -9,6 +9,7 @@ BUGS
 * make sure sprint does not draw inside a desk
 * make sure the office's trash cans do not generate under a desk
 * player movement gets restricted when holding down interact key??
+* make it easier to spill water at the edges
 
 TO-DO/TO-FIX LIST
 * teacher
@@ -24,7 +25,7 @@ TO-DO/TO-FIX LIST
         * chem
         * eng
 * side menu
-    * cross red after completion
+    * cross off the completed tasks when done
 
 GOLD PLATING
 * instead of pressing a button to open the menu, u click with a mouse
@@ -45,7 +46,6 @@ public class Main extends JPanel {
     int currentClassroom = 5, tCurrentClassroom = 1, clickClack = 0;
     int tobX = 1300, botY = 840, topY = 70, rightX = SCREEN_WIDTH-150, leftX = 0, sideY = SCREEN_HEIGHT/2-100;
     boolean flag = false;
-    SideMenu sideMenu = new SideMenu();
     CountDown cd = new CountDown();
     Transition transition1 = new Transition();
 
@@ -94,6 +94,7 @@ public class Main extends JPanel {
     MainMenu mainMenu = new MainMenu();
     GameOver gameOverScreen = new GameOver();
     DoMess mess3 = new DoMess(true);
+    SideMenu sideMenu = new SideMenu(mess3);
 
     public void changeCurrentClassroom(int i) {
         currentClassroom = i;
@@ -120,23 +121,23 @@ public class Main extends JPanel {
                 }
 
                 // PAUSE GAME
-                if (!pauseGame && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                if (!pauseGame && e.getKeyCode() == KeyEvent.VK_ESCAPE && !sideMenu.getIsOpen()) {
                     cd.startPause();
                     pauseGame = true;
-                } else if (pauseGame && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                } else if (pauseGame && e.getKeyCode() == KeyEvent.VK_ESCAPE && !sideMenu.getIsOpen()) {
                     cd.stopPause();
                     pauseGame = false;
                 }
 
                 // opening side menu
-                if (!mainMenu.getIsMenuOpen() && !sideMenu.getIsOpen() && e.getKeyCode() == KeyEvent.VK_M) {
+                if (!mainMenu.getIsMenuOpen() && !sideMenu.getIsOpen() && e.getKeyCode() == KeyEvent.VK_M && !pauseGame) {
+                    //cd.startPause();
+                    //pauseGame = true;
                     sideMenu.updateIsOpen(true);
-                    cd.startPause();
-                    pauseGame = true;
-                } else if (!mainMenu.getIsMenuOpen() && sideMenu.getIsOpen() && e.getKeyCode() == KeyEvent.VK_M) {
+                } else if (!mainMenu.getIsMenuOpen() && sideMenu.getIsOpen() && e.getKeyCode() == KeyEvent.VK_M && !pauseGame) {
+                    //cd.startPause();
+                    //pauseGame = true;
                     sideMenu.updateIsOpen(false);
-                    cd.stopPause();
-                    pauseGame = false;
                 }
 
                 if (currentClassroom == 1) {
@@ -397,7 +398,6 @@ public class Main extends JPanel {
             transition1.paintBlack(g2d);
             changeCurrentClassroom(nextClassroom);
 
-            // i love hardcoding (brain doesmt function past 11pm, will fix tmr maybe)
             if (door2.getX() == leftX){                                                                             // door is on left
                 p1.spawnPlayer(door2.getX() + door2.getWidth() + 50, door2.getY() + 15);
                 p2.spawnPlayer(door2.getX() + door2.getWidth() + 50, door2.getY() + 15);
@@ -437,8 +437,7 @@ public class Main extends JPanel {
         compSci.initializeCompSci();
         eng.initializeEng();
 
-        // reset side menu???
-        // reset chosen tasks????
+        // reset side menu
 
         CountDown.CDReset();
     }

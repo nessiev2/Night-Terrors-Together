@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Minimap {
-    int x = 1600, y = 20, w = 60;
+    int x = 1750, y = 20, w = 60;
 
     public Minimap() {}
 

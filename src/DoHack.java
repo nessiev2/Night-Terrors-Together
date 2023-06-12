@@ -22,7 +22,7 @@ public class DoHack extends Task{
         int i = 10;
         this.isPlayerClose(p1, p2);
 
-        if (!isComplete){
+        if (!finished){
             if (playerIsClose && isTask) {
                 g2d.setColor(Color.yellow);
                 g2d.fillRect(x-i, y-i, width+2*i, height+2*i);
