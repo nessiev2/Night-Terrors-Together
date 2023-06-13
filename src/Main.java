@@ -9,28 +9,30 @@ NOTES/REMINDERS
 * no tasks in physics, move sprint to some other room later
 
 BUGS
-* make sure sprint does not draw inside a desk
 * make sure the office's trash cans do not generate under a desk
 * player movement gets restricted when holding down interact key??
-* jail bars paint over untrapped player :clown:
+* jail bars paint over un-trapped player :clown:
 * make it easier to spill water at the edges
+* individually hack each vending machine
 
 TO-DO/TO-FIX LIST
 * rooms
-    * add in their proper furniture stuffs
     * add in the other computers onto the desks in comp sci
+
 * tasks
     * finish coding rest of tasks
         * math
-        * caf
         * bio
         * chem
-        * eng
 
 * side menu
     * cross off the completed tasks when done
 
+* general
+   * code win condition
+
 GOLD PLATING
+* write name of classroom a door leads to on it
 * add music/sound
 * animations???
 * screen gets red and tinted the closer the teacher is
@@ -96,14 +98,13 @@ public class Main extends JPanel {
     MainMenu mainMenu = new MainMenu();
     GameOver gameOverScreen = new GameOver();
     DoMess doMess3 = new DoMess(true);
-    SideMenu sideMenu = new SideMenu(doMess3);
+    SideMenu sideMenu = new SideMenu(this);
     public void changeCurrentClassroom(int i) {
         currentClassroom = i;
     }
     public Main() {
         p1.spawnPlayer(SCREEN_WIDTH/2-p1.getWidth(), 660);
         p2.spawnPlayer(SCREEN_WIDTH/2-2*p1.getWidth(), 660);
-
         addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -173,19 +174,19 @@ public class Main extends JPanel {
             }
             @Override
             public void keyPressed(KeyEvent e) {
-                p1.keyPressed(e, compSci.doHack8);
-                p2.keyPressed(e, compSci.doHack8);
+                p1.keyPressed(e, compSci.doHack8, currentClassroom);
+                p2.keyPressed(e, compSci.doHack8, currentClassroom);
             }
         });
         setFocusable(true);
     }
 
     private void move(Main c) {
-        if (phys.sprint.getFlag1()){
-            phys.sprint.sprintTicks(p1);
+        if (eng.sprint.getFlag1()){
+            eng.sprint.sprintTicks(p1);
         }
-        if (phys.sprint.getFlag2()){
-            phys.sprint.sprintTicks(p2);
+        if (eng.sprint.getFlag2()){
+            eng.sprint.sprintTicks(p2);
         }
 
         Random r = new Random();
@@ -287,12 +288,6 @@ public class Main extends JPanel {
                         officeToBio.paint(g2d);
                         officeToCaf.paint(g2d);
 
-                        if (p1.getIsCaught()) {
-                            p1.spawnPlayer(170, 150);
-                        }
-                        if (p2.getIsCaught()) {
-                            p2.spawnPlayer(170, 150);
-                        }
                         changeRooms(officeToBio, bioToOffice, 4, p1, p2, transition1, g2d);
                         changeRooms(officeToCaf, cafToOffice, 2, p1, p2, transition1, g2d);
                         break;
@@ -376,6 +371,12 @@ public class Main extends JPanel {
                         g2d.setFont(new Font("TimesRoman", Font.BOLD, 100));
                         g2d.drawString("idk how u made it here!! please stop!!!", 200, 100);
                 }
+                if (p1.getIsCaught()) {
+                    p1.spawnPlayer(170, 150);
+                }
+                if (p2.getIsCaught()) {
+                    p2.spawnPlayer(170, 150);
+                }
                 if (!p1.getIsCaught() || currentClassroom == 1){
                     p1.paint(g2d, doMess3);
                 }
@@ -391,7 +392,7 @@ public class Main extends JPanel {
                     t.paint(g2d);
                 }
                 cd.paint(g2d);
-                sideMenu.paint(g2d);
+                sideMenu.paint(g2d, doMess3);
 
                 minimap.paint(g2d);
                 minimap.paintYou(g2d, currentClassroom);

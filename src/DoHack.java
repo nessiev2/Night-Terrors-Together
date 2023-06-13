@@ -14,6 +14,7 @@ public class DoHack extends Task{
             playerIsClose = true;
             return true;
         }
+
         playerIsClose = false;
         return false;
     }

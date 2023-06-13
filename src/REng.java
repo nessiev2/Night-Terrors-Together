@@ -7,6 +7,7 @@ public class REng {
     AChalkBoard cb;
     AWall w1 = new AWall(0, 0);
     ADesk[] desks = new ADesk[6];
+    DoSprint sprint;
 
     public void initializeEng(){
         Random r = new Random();
@@ -17,6 +18,8 @@ public class REng {
 
         arson9 = new DoArson(true);
         cb = new AChalkBoard(300, 10, "ENGLISH", true);
+
+        sprint = new DoSprint(true);
     }
 
     public REng() {
@@ -54,6 +57,7 @@ public class REng {
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard
 
+        sprint.paint(g2d, p1, p2);
     }
 
 

@@ -8,7 +8,7 @@ public class Player1 extends Player {
         super(1);
     }
 
-    public void keyPressed(KeyEvent e, DoHack hack) {
+    public void keyPressed(KeyEvent e, DoHack hack, int currentRoom) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             left = true;
             changeFaceDirection(true);
@@ -25,20 +25,23 @@ public class Player1 extends Player {
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             changeIsSpillingWater(true);
-        }
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            if (!hack.getFinished()){
-                ticks++;
-            }
-            if (hack.isPlayerClose(this, this) && ticks >= 10) {
-                //System.out.println("time: " + t.getElapsedTime());
-                //t.stop();
-                //if (ticks >= 500) {
+            if (hack.isPlayerClose(this, this) && currentRoom == 8){
+                if (!hack.getFinished()){
+                    ticks++;
+                }
+                if (ticks >= 20) {
+                    //System.out.println("time: " + t.getElapsedTime());
+                    //t.stop();
+                    //if (ticks >= 500) {
                     hack.taskFinished();
                     System.out.println("HACK SUCCESS");
                     changeIsHolding(false);
-                //}
+                    //}
+                }
             }
+        }
+
+
 //            if (!getIsHolding()) {
 //                changeIsHolding(true);
 //                t.start();
@@ -46,7 +49,7 @@ public class Player1 extends Player {
 //            if (getIsHolding()) {
 //
 //            }
-        }
+
 
     }
 

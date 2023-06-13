@@ -19,8 +19,10 @@ public class DoSprint extends Task{
         int[] randX = {r.nextInt(1431) + 270, r.nextInt(271), r.nextInt(221) + 1420};
         int[] randY = {r.nextInt(91) + 290, r.nextInt(221) + 660, r.nextInt(221) + 660};
 
-        x = randX[r.nextInt(3)];
-        y = randY[r.nextInt(3)];
+        int yipee = r.nextInt(3);
+
+        x = randX[yipee];
+        y = randY[yipee];
     }
     public int sprintTicks(Player p){
         if (p.getPlayerN() == 1){

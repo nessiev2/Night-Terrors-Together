@@ -7,7 +7,6 @@ public class RPhysics {
     AChalkBoard cb;
     AWall w1 = new AWall(0, 0);
     ADesk[] desks = new ADesk[6];
-    DoSprint sprint;
 
     public void initializePhysics(){
         Random r = new Random();
@@ -16,7 +15,6 @@ public class RPhysics {
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
         trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
 
-        sprint = new DoSprint(true);
         arson5 = new DoArson(true);
 
         cb = new AChalkBoard(300, 10, "PHYSICS", true);
@@ -57,7 +55,6 @@ public class RPhysics {
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard
 
-        sprint.paint(g2d, p1, p2);
     }
 
 

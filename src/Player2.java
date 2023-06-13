@@ -1,11 +1,12 @@
 import java.awt.event.KeyEvent;
 
 public class Player2 extends Player {
+    private int ticks = 0;
     public Player2() {
         super(2);
     }
 
-    public void keyPressed(KeyEvent e, DoHack doHack8) {
+    public void keyPressed(KeyEvent e, DoHack hack, int currentClassroom) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             left = true;
             changeFaceDirection(true);
@@ -25,7 +26,32 @@ public class Player2 extends Player {
         }
         if (e.getKeyCode() == KeyEvent.VK_Q) {
             changeIsSpillingWater(true);
+
+            if (hack.isPlayerClose(this, this)){
+                if (!hack.getFinished()){
+                    ticks++;
+                }
+                if (ticks >= 20) {
+                    //System.out.println("time: " + t.getElapsedTime());
+                    //t.stop();
+                    //if (ticks >= 500) {
+                    hack.taskFinished();
+                    System.out.println("HACK SUCCESS");
+                    changeIsHolding(false);
+                    //}
+                }
+            }
+
+
         }
+
+//            if (!getIsHolding()) {
+//                changeIsHolding(true);
+//                t.start();
+//            }
+//            if (getIsHolding()) {
+//
+//            }
     }
 
     public void keyReleased(Player p1, int currentRoom, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess, DoHack hack, DoVendingMachine[] vend) {
@@ -42,6 +68,8 @@ public class Player2 extends Player {
             down = false;
         }
         if (e.getKeyCode() == KeyEvent.VK_Q) {
+            ticks = 0;
+
             changeIsSpillingWater(false);
 
             for (ATrashCan tc : trashCans) {

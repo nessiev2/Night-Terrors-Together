@@ -13,15 +13,6 @@ public class DoVendingMachine extends Task{
         this.y = y;
     }
 
-    public void startVend() {
-        t.start();
-    }
-
-    public void endVend() {
-        t.stop();
-    }
-
-
     public void finishVending() {
         isThisVendComplete = true;
     }
@@ -41,7 +32,7 @@ public class DoVendingMachine extends Task{
 
     public void paint(Graphics g2d, Player p1, Player p2) {
         int i = 10;
-        this.isPlayerClose(p1, p2);
+        isPlayerClose(p1, p2);
 
         if (!finished){
             if (playerIsClose && isTask) {
