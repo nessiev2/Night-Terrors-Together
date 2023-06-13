@@ -16,9 +16,6 @@ BUGS
 * individually hack each vending machine
 
 TO-DO/TO-FIX LIST
-* rooms
-    * add in the other computers onto the desks in comp sci
-
 * tasks
     * finish coding rest of tasks
         * math

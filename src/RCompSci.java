@@ -7,8 +7,8 @@ public class RCompSci {
     ATrashCan[] trashCans = new ATrashCan[3];
     AChalkBoard cb;
     AWall w1 = new AWall(0, 0);
-    ADesk[] desks = {new ADesk(400, 500, 200, 100), new ADesk(700, 500, 200, 100), new ADesk(1000, 500, 200, 100), new ADesk(1300, 500, 200, 100), new ADesk(400, 600, 100, 200), new ADesk(1400, 600, 100, 200), new ADesk(750, 800, 400, 200)};
-
+    ADesk[] desks = {new ADesk(400, 500, 200, 100), new ADesk(700, 500, 200, 100), new ADesk(1000, 500, 200, 100), new ADesk(1300, 500, 200, 100), new ADesk(400, 500, 100, 300), new ADesk(1400, 500, 100, 300), new ADesk(750, 800, 400, 200)};
+    ADesk[] decorComputers = {new ADesk(410, 650, 50, 80, true), new ADesk(500, 510, 80, 50, true), new ADesk(760, 510, 80, 50, true), new ADesk(1060, 510, 80, 50, true), new ADesk(1320, 510, 80, 50, true), new ADesk(1440, 650, 50, 80, true)};
     public void initializeCompSci(){
         Random r = new Random();
         trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
@@ -32,6 +32,11 @@ public class RCompSci {
 
         for (ADesk d:desks) {
             d.paint(g2d);
+        }
+
+        g2d.setColor(new Color(49, 49, 49));
+        for (ADesk c:decorComputers){
+            c.paint(g2d);
         }
 
         for (ATrashCan tc: trashCans){
