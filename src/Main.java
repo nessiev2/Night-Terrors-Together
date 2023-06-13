@@ -48,7 +48,7 @@ public class Main extends JPanel {
     int tobX = 1300, botY = 840, topY = 70, rightX = SCREEN_WIDTH-150, leftX = 0, sideY = SCREEN_HEIGHT/2-100;
     boolean flag = false;
     CountDown cd = new CountDown();
-    Transition transition1 = new Transition();
+    Transition transition1 = new Transition(); 
 
     //DOORS
     ADoor bioToOffice = new ADoor(tobX, topY);
