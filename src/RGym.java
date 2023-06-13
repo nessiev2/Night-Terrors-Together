@@ -15,7 +15,7 @@ public class RGym {
     public RGym(){
         initializeGym();
     }
-    public void paint(Graphics g, Player p1, Player p2, Transition transition1) {
+    public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
         //super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -26,7 +26,7 @@ public class RGym {
             tc.paint(g2d);
         }
 
-        mess3.paint(g2d);
+        mess3.paint(g2d, menu);
 
         if (p1.getIsSpillingWater()){
             mess3.addWaterStain(p1, g2d);

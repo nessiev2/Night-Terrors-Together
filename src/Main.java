@@ -291,7 +291,7 @@ public class Main extends JPanel {
                         break;
 
                     case 2:
-                        caf.paint(g, p1, p2, transition1);
+                        caf.paint(g, p1, p2, transition1, sideMenu);
                         cafToPhys.paint(g2d);
                         cafToGym.paint(g2d);
                         cafToOffice.paint(g2d);
@@ -301,7 +301,7 @@ public class Main extends JPanel {
                         break;
 
                     case 3:
-                        gym.paint(g, p1, p2, transition1);
+                        gym.paint(g, p1, p2, transition1, sideMenu);
                         gymToCaf.paint(g2d);
                         gymToChem.paint(g2d);
                         changeRooms(gymToCaf, cafToGym, 2, p1, p2, transition1, g2d);
@@ -349,7 +349,7 @@ public class Main extends JPanel {
                         break;
 
                     case 8:
-                        compSci.paint(g, p1, p2, transition1);
+                        compSci.paint(g, p1, p2, transition1, sideMenu);
                         compSciToEng.paint(g2d);
                         compSciToMath.paint(g2d);
                         compSciToPhys.paint(g2d);
@@ -359,7 +359,7 @@ public class Main extends JPanel {
                         break;
 
                     case 9:
-                        eng.paint(g, p1, p2, transition1);
+                        eng.paint(g, p1, p2, transition1, sideMenu);
                         engToChem.paint(g2d);
                         engToCompSci.paint(g2d);
                         changeRooms(engToChem, chemToEng, 6, p1, p2, transition1, g2d);

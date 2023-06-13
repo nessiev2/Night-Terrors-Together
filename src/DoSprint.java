@@ -53,7 +53,7 @@ public class DoSprint extends Task{
         }
         return j;
     }
-    public void paint(Graphics g2d, Player p1, Player p2) {
+    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) {
         double dist1 = Math.sqrt(Math.pow(p1.getX()-x, 2) + Math.pow(p1.getY()-y, 2));
         double dist2 = Math.sqrt(Math.pow(p2.getX()-x, 2) + Math.pow(p2.getY()-y, 2));
 
@@ -72,6 +72,8 @@ public class DoSprint extends Task{
 
         if (flag1 && flag2){
             isComplete = true;
+            menu.updateTaskCompletion(3);
+            System.out.println("do sprint COMPLETE");
         }
     }
 }
