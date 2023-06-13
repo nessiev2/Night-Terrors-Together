@@ -14,6 +14,7 @@ BUGS
 * jail bars paint over un-trapped player :clown:
 * make it easier to spill water at the edges
 * individually hack each vending machine
+* after 1 player is caught, the second player is immune in room 1
 
 TO-DO/TO-FIX LIST
 * tasks
@@ -368,16 +369,20 @@ public class Main extends JPanel {
                         g2d.setFont(new Font("TimesRoman", Font.BOLD, 100));
                         g2d.drawString("idk how u made it here!! please stop!!!", 200, 100);
                 }
-                if (p1.getIsCaught()) {
+                boolean tmp1 = p1.getIsCaught(), tmp2 = p2.getIsCaught();
+
+                System.out.println(tmp2);
+
+                if (tmp1) {
                     p1.spawnPlayer(170, 150);
                 }
-                if (p2.getIsCaught()) {
+                if (tmp2) {
                     p2.spawnPlayer(170, 150);
                 }
-                if (!p1.getIsCaught() || currentClassroom == 1){
+                if (!tmp1 || currentClassroom == 1){
                     p1.paint(g2d, doMess3);
                 }
-                if (!p2.getIsCaught() || currentClassroom == 1){
+                if (!tmp2 || currentClassroom == 1){
                     p2.paint(g2d, doMess3);
                 }
 

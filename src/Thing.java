@@ -20,7 +20,6 @@ public class Thing {
 
     public void changeY(int y) { this.y += y; }
     public void resetX(int x) { this.x = x; }
-
     public void resetY(int y) { this.y = y; }
 
 

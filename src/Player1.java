@@ -30,27 +30,12 @@ public class Player1 extends Player {
                     ticks++;
                 }
                 if (ticks >= 20) {
-                    //System.out.println("time: " + t.getElapsedTime());
-                    //t.stop();
-                    //if (ticks >= 500) {
                     hack.taskFinished();
                     System.out.println("HACK SUCCESS");
                     changeIsHolding(false);
-                    //}
                 }
             }
         }
-
-
-//            if (!getIsHolding()) {
-//                changeIsHolding(true);
-//                t.start();
-//            }
-//            if (getIsHolding()) {
-//
-//            }
-
-
     }
 
     public void keyReleased(Player p2, int currentRoom, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess, DoHack hack, DoVendingMachine[] vend) {

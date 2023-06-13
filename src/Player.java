@@ -171,9 +171,10 @@ public abstract class Player {
         return true;
     }
 
+    // returns false if caught by teacher
     public boolean checkUp(Thing[] things) {
         for (Thing t:things)
-            if (y > t.getY() && y - speed < t.getY() + t.getHeight() && x + width > t.getX() && x < t.getX() + t.getWidth()) {
+            if (y > (t.getY()) && y - speed < t.getY() + t.getHeight() && x + width > t.getX() && x < t.getX() + t.getWidth()) {
                 return false;
             }
         return true;

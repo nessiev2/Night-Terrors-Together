@@ -2,27 +2,32 @@ import java.awt.*;
 import java.util.Random;
 
 public class DoSprint extends Task{
+    Random r = new Random();
     int x, y, i = 0, j = 0, radius = 100;
     boolean flag1 = false, flag2 = false, isComplete = false;
-    Timer t = new Timer();
+    int[] randX = {r.nextInt(1431) + 270, r.nextInt(271), r.nextInt(221) + 1420}, randY = {r.nextInt(91) + 290, r.nextInt(221) + 660, r.nextInt(221) + 660};
+
     public boolean getFlag1(){
         return flag1;
     }
     public boolean getFlag2(){
         return flag2;
     }
-    public DoSprint(boolean isTask) {
-        super(isTask);
-
-        Random r = new Random();
-        // i <3 hard-coding
-        int[] randX = {r.nextInt(1431) + 270, r.nextInt(271), r.nextInt(221) + 1420};
-        int[] randY = {r.nextInt(91) + 290, r.nextInt(221) + 660, r.nextInt(221) + 660};
+    public void initializeSprint(){
+        x = 0;
+        y = i = j = x;
+        flag1 = false;
+        flag2 = false;
+        isComplete = false;
 
         int yipee = r.nextInt(3);
-
         x = randX[yipee];
         y = randY[yipee];
+
+    }
+    public DoSprint(boolean isTask) {
+        super(isTask);
+        initializeSprint();
     }
     public int sprintTicks(Player p){
         if (p.getPlayerN() == 1){

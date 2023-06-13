@@ -11,7 +11,6 @@ public class Teacher extends Thing {
     private boolean right = false, left = false, up = false, down = false, interact = false;
     private int speed = 1;
     private boolean bothCaught = false;
-
     private boolean isFacingLeft = false;
     public void changeFaceDirection(boolean b) { isFacingLeft = b; }
 
@@ -25,8 +24,8 @@ public class Teacher extends Thing {
             tmp2 = -1;
         }
 
-        int x = r.nextInt(100) + 200;
-        int y = r.nextInt(100) + 200;
+        int x = r.nextInt(100) + 100;
+        int y = r.nextInt(100) + 100;
 
         if (r.nextInt(2) == 0 && !p1.getIsCaught()){
             resetX(p1.getX()+(x*tmp1));

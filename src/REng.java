@@ -59,6 +59,4 @@ public class REng {
 
         sprint.paint(g2d, p1, p2);
     }
-
-
 }
