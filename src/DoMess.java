@@ -1,11 +1,12 @@
 import java.awt.*;
 public class DoMess extends Task {
-    private boolean isFin, flag = false;
+    private boolean flag = false;
+    protected boolean isFin;
     private boolean[][] waterStains = new boolean[(Main.SCREEN_WIDTH/2)/30][(810-270)/30];
     public DoMess(boolean isTask){
         super(isTask);
     }
-    public boolean getIsComplete(){
+    public boolean getIsFin(){
         return isFin;
     }
     public void paint(Graphics g2d) {
@@ -17,6 +18,12 @@ public class DoMess extends Task {
                     g2d.fillRect((i*30)+15+(1920/4), j*30+270, 30, 30);
                 }
             }
+        }
+
+        if (isFin){
+            g2d.setColor(Color.green);
+            //g2d.fillRect(0, 300,100,100);
+            //System.out.println("done");
         }
     }
 

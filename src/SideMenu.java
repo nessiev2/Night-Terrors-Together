@@ -55,7 +55,7 @@ public class SideMenu {
             g2d.setColor(Color.black);
             g2d.drawString("TASKS:", openX + openWidth - 500, openY + 70);
 
-            if (mess.getFinished()){
+            if (mess.getIsFin()){
                 g2d.drawString("X", openX + 33, openY + 200 + 2*100);
                 System.out.println("done!");
             }
