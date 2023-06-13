@@ -19,11 +19,7 @@ public class DoHack extends Task{
         return false;
     }
 
-    public void startPress() {
-
-    }
-
-    public void paint(Graphics g2d, Player p1, Player p2) {
+    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) {
         int i = 10;
         this.isPlayerClose(p1, p2);
 
@@ -38,6 +34,7 @@ public class DoHack extends Task{
         } else {
             g2d.setColor(new Color(255, 0, 0));
             g2d.fillRect(x, y, width, height);
+            menu.updateTaskCompletion(4);
         }
     }
 }

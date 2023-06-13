@@ -8,8 +8,27 @@ public class DoMess extends Task {
     public boolean getIsFin(){
         return isFin;
     }
-    public void paint(Graphics g2d) {
-        checkIsFin();
+    public void paint(Graphics g2d, SideMenu menu) {
+        //checkIsFin();
+        isFin = true;
+        //if (!flag){
+        for (int i = 0; i < waterStains.length; i++) {
+            for (int j = 0; j < waterStains[i].length; j++) {
+                if (!waterStains[i][j]){
+                    isFin = false;
+                    //System.out.println("sabotage");
+                }
+            }
+        }
+        //}
+
+        if (isFin) {
+            //System.out.println("i work tho???");
+            this.taskFinished();
+            menu.updateTaskCompletion(2);
+            isTask = true;
+        }
+
         g2d.setColor(new Color(1, 184, 252));
         for (int i = 0; i < waterStains.length; i++) {
             for (int j = 0; j < waterStains[i].length; j++) {
@@ -18,35 +37,8 @@ public class DoMess extends Task {
                 }
             }
         }
-
-        if (isFin){
-            g2d.setColor(Color.green);
-            //g2d.fillRect(0, 300,100,100);
-            //System.out.println("done");
-        }
     }
 
-    public boolean checkIsFin(){
-        isFin = true;
-        //if (!flag){
-            for (int i = 0; i < waterStains.length; i++) {
-                for (int j = 0; j < waterStains[i].length; j++) {
-                    if (!waterStains[i][j]){
-                        isFin = false;
-                        return false;
-                        //System.out.println("sabotage");
-                    }
-                }
-            }
-        //}
-
-        if (isFin) {
-            //System.out.println("i work tho???");
-            this.taskFinished();
-            isTask = true;
-        }
-        return true;
-    }
 
     public void addWaterStain(Player p, Graphics g2d) {
         int px = p.getCenterX();
