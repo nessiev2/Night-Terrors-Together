@@ -37,11 +37,12 @@ public class RCaf {
         w1.paint(g2d); // wall
         for (DoVendingMachine VM:vendMachines) {
             VM.paint(g2d, p1, p2);
+            if (VM.getVendComplete()) {
+                VM.taskFinished();
+            }
         }
 
         if (vendMachines[0].getVendComplete() && vendMachines[1].getVendComplete() ) {
-            vendMachines[0].taskFinished();
-            vendMachines[1].taskFinished();
             menu.updateTaskCompletion(5);
         }
 
