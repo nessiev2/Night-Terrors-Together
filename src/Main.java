@@ -5,9 +5,6 @@ import javax.swing.*;
 import java.util.Random;
 
 /*
-NOTES/REMINDERS
-* no tasks in physics, move sprint to some other room later
-
 BUGS
 * make sure the office's trash cans do not generate under a desk
 * player movement gets restricted when holding down interact key??
@@ -15,6 +12,8 @@ BUGS
 * make it easier to spill water at the edges
 * individually hack each vending machine
 * after 1 player is caught, the second player is immune in room 1
+* fix the doMess bug (make draw evenly from center)
+* always spawn teacher in the frame
 
 TO-DO/TO-FIX LIST
 * tasks
@@ -22,9 +21,6 @@ TO-DO/TO-FIX LIST
         * math
         * bio
         * chem
-
-* side menu
-    * cross off the completed tasks when done
 
 * general
    * code win condition
@@ -386,7 +382,7 @@ public class Main extends JPanel {
                     p2.paint(g2d, doMess3);
                 }
 
-                if ((p1.getIsCaught() || p2.getIsCaught()) && currentClassroom == 1){
+                if ((tmp1 || tmp2) && currentClassroom == 1){
                     office.paintBars(g2d);
                 }
 
