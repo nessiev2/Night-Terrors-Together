@@ -6,7 +6,6 @@ public class Task {
 
     public void taskFinished() {
         finished = true;
-        System.out.println("HELOOOOOOO??????? " + finished);
     }
     public boolean getFinished() { return finished; }
 }

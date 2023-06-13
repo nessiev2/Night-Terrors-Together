@@ -15,7 +15,6 @@ public class Teacher extends Thing {
     private boolean isFacingLeft = false;
     public void changeFaceDirection(boolean b) { isFacingLeft = b; }
 
-    //MAKE THIS WORK!!!!!!!!!!!
     public void spawnTeacher(Player p1, Player p2) {
         Random r = new Random();
         int tmp1 = r.nextInt(2), tmp2 = r.nextInt(2);
@@ -26,12 +25,22 @@ public class Teacher extends Thing {
             tmp2 = -1;
         }
 
-        int x = r.nextInt(100) + 50;
-        int y = r.nextInt(100) + 50;
+        int x = r.nextInt(100) + 200;
+        int y = r.nextInt(100) + 200;
 
-        changeX(tmp1*x);
-        changeY(tmp2*y);
+        if (r.nextInt(2) == 0 && !p1.getIsCaught()){
+            resetX(p1.getX()+(x*tmp1));
+            resetY(p1.getY()+(y*tmp2));
+        } else if (!p2.getIsCaught()) {
+            resetX(p2.getX()+(x*tmp1));
+            resetY(p2.getY()+(y*tmp2));
+        } else {
+            changeX(200);
+            changeY(200);
+        }
+
     }
+
     public boolean getBothCaught(){
         return bothCaught;
     }

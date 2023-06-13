@@ -12,6 +12,7 @@ BUGS
 * make sure sprint does not draw inside a desk
 * make sure the office's trash cans do not generate under a desk
 * player movement gets restricted when holding down interact key??
+* jail bars paint over untrapped player :clown:
 * make it easier to spill water at the edges
 
 TO-DO/TO-FIX LIST
@@ -104,7 +105,6 @@ public class Main extends JPanel {
     public void changeCurrentClassroom(int i) {
         currentClassroom = i;
     }
-
     public Main() {
         p1.spawnPlayer(SCREEN_WIDTH/2-p1.getWidth(), 660);
         p2.spawnPlayer(SCREEN_WIDTH/2-2*p1.getWidth(), 660);
@@ -199,19 +199,22 @@ public class Main extends JPanel {
             // TEACHER SPAWNS IN A CLASSROOM
             if (clickClack >= 50 && tCurrentClassroom != currentClassroom){
                 int[] tmp = {1, 2, 3, 4, 6, 7, 8, 9};
+
                 t.spawnTeacher(p1, p2);
                 tCurrentClassroom = tmp[r.nextInt(8)];
                 clickClack = 0;
             }
 
-            if (currentClassroom == tCurrentClassroom){
-                p1.checkPlayerCaught(teacher);
-                p2.checkPlayerCaught(teacher);
-            }
-
-            if (currentClassroom != tCurrentClassroom ){
-                if (p1.checkTeacher(teacher) || p2.checkTeacher(teacher)) {
-                    t.spawnTeacher(p1, p2);
+            if (currentClassroom == 1 && (p1.getIsCaught() || p2.getIsCaught())){
+                tCurrentClassroom = 1;
+            } else {
+                if (currentClassroom == tCurrentClassroom){
+                    p1.checkPlayerCaught(teacher);
+                    p2.checkPlayerCaught(teacher);
+                } else {
+                    if (p1.checkTeacher(teacher) || p2.checkTeacher(teacher)) {
+                        t.spawnTeacher(p1, p2);
+                    }
                 }
             }
 
@@ -382,9 +385,11 @@ public class Main extends JPanel {
                 if (!p2.getIsCaught() || currentClassroom == 1){
                     p2.paint(g2d, doMess3);
                 }
+
                 if ((p1.getIsCaught() || p2.getIsCaught()) && currentClassroom == 1){
                     office.paintBars(g2d);
                 }
+
                 if (currentClassroom == tCurrentClassroom){
                     t.paint(g2d);
                 }
