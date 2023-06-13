@@ -1,6 +1,5 @@
 import java.awt.*;
 public class DoMess extends Task {
-    private boolean flag = false;
     protected boolean isFin;
     private boolean[][] waterStains = new boolean[(Main.SCREEN_WIDTH/2)/30][(810-270)/30];
     public DoMess(boolean isTask){
@@ -27,14 +26,14 @@ public class DoMess extends Task {
         }
     }
 
-    public void checkIsFin(){
+    public boolean checkIsFin(){
         isFin = true;
         //if (!flag){
             for (int i = 0; i < waterStains.length; i++) {
                 for (int j = 0; j < waterStains[i].length; j++) {
                     if (!waterStains[i][j]){
                         isFin = false;
-                        flag = true;
+                        return false;
                         //System.out.println("sabotage");
                     }
                 }
@@ -46,6 +45,7 @@ public class DoMess extends Task {
             this.taskFinished();
             isTask = true;
         }
+        return true;
     }
 
     public void addWaterStain(Player p, Graphics g2d) {

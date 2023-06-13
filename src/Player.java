@@ -104,7 +104,7 @@ public abstract class Player {
     }
 
     //public void keyTyped(KeyEvent e) {}
-    public void keyPressed(KeyEvent e) {}
+    public void keyPressed(KeyEvent e, DoHack doHack8) {}
     public void keyReleased(Player p2, int currentClassroom, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess3, DoHack doHack8, DoVendingMachine[] doVendingMachine) {}
 
     public boolean checkPlayerCaught(Teacher[] t) {
@@ -121,6 +121,7 @@ public abstract class Player {
     }
 
     public void move(Thing[] t) {
+
         if (!left && !right && !up && !down){
             standing = true;
         } else {

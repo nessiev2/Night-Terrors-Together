@@ -5,7 +5,7 @@ public class Player2 extends Player {
         super(2);
     }
 
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed(KeyEvent e, DoHack doHack8) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             left = true;
             changeFaceDirection(true);

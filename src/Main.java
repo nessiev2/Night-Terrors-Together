@@ -16,8 +16,6 @@ BUGS
 * make it easier to spill water at the edges
 
 TO-DO/TO-FIX LIST
-* teacher
-    * teacher should not be able to spawn on top of players, must spawn at least certain distance away
 * rooms
     * add in their proper furniture stuffs
     * add in the other computers onto the desks in comp sci
@@ -28,11 +26,11 @@ TO-DO/TO-FIX LIST
         * bio
         * chem
         * eng
+
 * side menu
     * cross off the completed tasks when done
 
 GOLD PLATING
-* instead of pressing a button to open the menu, u click with a mouse
 * add music/sound
 * animations???
 * screen gets red and tinted the closer the teacher is
@@ -98,10 +96,7 @@ public class Main extends JPanel {
     MainMenu mainMenu = new MainMenu();
     GameOver gameOverScreen = new GameOver();
     DoMess doMess3 = new DoMess(true);
-
     SideMenu sideMenu = new SideMenu(doMess3);
-
-
     public void changeCurrentClassroom(int i) {
         currentClassroom = i;
     }
@@ -133,6 +128,8 @@ public class Main extends JPanel {
                     cd.stopPause();
                     pauseGame = false;
                 }
+
+                //System.out.println(doMess3.checkIsFin());
 
                 // opening side menu
                 if (!mainMenu.getIsMenuOpen() && !sideMenu.getIsOpen() && e.getKeyCode() == KeyEvent.VK_M && !pauseGame) {
@@ -176,8 +173,8 @@ public class Main extends JPanel {
             }
             @Override
             public void keyPressed(KeyEvent e) {
-                p1.keyPressed(e);
-                p2.keyPressed(e);
+                p1.keyPressed(e, compSci.doHack8);
+                p2.keyPressed(e, compSci.doHack8);
             }
         });
         setFocusable(true);

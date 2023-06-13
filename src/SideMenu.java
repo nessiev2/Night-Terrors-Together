@@ -5,7 +5,7 @@ public class SideMenu {
     DoMess mess;
     public static final Random gen = new Random();
     int[] array = {0, 1, 2, 3};
-    String[] sArray = {"Light trash cans on fire", "Scribble on chalkboards", "Spill water in the GYM", "Run around"};
+    String[] sArray = {"Light trash cans on fire", "Scribble on chalkboards", "Spill water in the GYM", "Run around", "Hack COMPUTER SCIENCE", "Break the vending machines in CAF"};
     boolean[] finTasks = new boolean[4];
 
     int x = 1835, y = 20, width = 50, height = 50, openX = Main.SCREEN_WIDTH/2 - 400, openY = 20, openWidth = 800, openHeight = 800;
@@ -37,6 +37,13 @@ public class SideMenu {
         }
     }
 
+    public boolean getIsTaskComplete(Task t){
+        if (t.getFinished()){
+            return true;
+        }
+        return false;
+    }
+
     public void updateIsOpen(boolean isOpen){
         this.isOpen = isOpen;
     }
@@ -48,6 +55,7 @@ public class SideMenu {
         }
         g2d.setColor(Color.white);
         //System.out.println(mess.getIsComplete());
+        System.out.println(getIsTaskComplete(mess));
         if (!isOpen){
             g2d.fillRect(x, y, width, height);
         } else {

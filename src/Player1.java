@@ -3,12 +3,12 @@ import java.awt.event.KeyEvent;
 public class Player1 extends Player {
 
     Timer t = new Timer();
-
+    private int ticks = 0;
     public Player1() {
         super(1);
     }
 
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed(KeyEvent e, DoHack hack) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             left = true;
             changeFaceDirection(true);
@@ -27,13 +27,25 @@ public class Player1 extends Player {
             changeIsSpillingWater(true);
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            if (!getIsHolding()) {
-                changeIsHolding(true);
-                t.start();
+            if (!hack.getFinished()){
+                ticks++;
             }
-            if (getIsHolding()) {
-
+            if (hack.isPlayerClose(this, this) && ticks >= 10) {
+                //System.out.println("time: " + t.getElapsedTime());
+                //t.stop();
+                //if (ticks >= 500) {
+                    hack.taskFinished();
+                    System.out.println("HACK SUCCESS");
+                    changeIsHolding(false);
+                //}
             }
+//            if (!getIsHolding()) {
+//                changeIsHolding(true);
+//                t.start();
+//            }
+//            if (getIsHolding()) {
+//
+//            }
         }
 
     }
@@ -53,6 +65,8 @@ public class Player1 extends Player {
         }
 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            ticks = 0;
+
             changeIsSpillingWater(false);
 
             for (ATrashCan tc : trashCans) {
@@ -68,16 +82,7 @@ public class Player1 extends Player {
                 p2.changeIsCaught(false);
                 p2.spawnPlayer(getX(), getY());
             }
-            if (hack.isPlayerClose(this, this)) {
-                System.out.println("time: " + t.getElapsedTime());
 
-                t.stop();
-                if (t.getElapsedTime() >= 500) {
-                    hack.taskFinished();
-                    System.out.println("HACK SUCCESS");
-                    changeIsHolding(false);
-                }
-            }
             for (DoVendingMachine VM:vend) {
                 if (VM.isPlayerClose(this, this)) {
                     VM.finishVending();
