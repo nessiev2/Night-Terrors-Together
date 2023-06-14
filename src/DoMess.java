@@ -52,13 +52,19 @@ public class DoMess extends Task {
             if (py > minY && py < maxY + 30){
                 int i = ((px-1920/4)/30);
                 int j = (py-270)/30;
-                for (int a = 0; a < 10; a++){
-                    for (int b = 0; b < 10; b++){
+                for (int a = 0; a < 3; a++){
+                    for (int b = 0; b < 3; b++){
                         if (i + a < waterStains.length && j + b < waterStains[0].length){
                             waterStains[i+a][j+b] = true;
                         }
                         if (i - a > 0 && i - a < waterStains.length && j - b > 0 && j - b < waterStains[0].length){
                             waterStains[i-a][j-b] = true;
+                        }
+                        if (i - a > 0 && i - a < waterStains.length && j + b < waterStains[0].length){
+                            waterStains[i-a][j+b] = true;
+                        }
+                        if (i + a < waterStains.length && j - b > 0 && j - b < waterStains[0].length){
+                            waterStains[i+a][j-b] = true;
                         }
                     }
                 }
