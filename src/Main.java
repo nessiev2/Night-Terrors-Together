@@ -9,7 +9,6 @@ BUGS
 * make sure the office's trash cans do not generate under a desk
 * player movement gets restricted when holding down interact key??
 * jail bars paint over un-trapped player
-* after 1 player is caught, the second player is immune in room 1
 * fix the doMess bug (make draw evenly from center)
 * always spawn teacher in the frame
 
@@ -379,15 +378,16 @@ public class Main extends JPanel {
                 if (p2caught) {
                     p2.spawnPlayer(170, 150);
                 }
+
+                if ((p1caught || p2caught) && currentClassroom == 1){
+                    office.paintBars(g2d);
+                }
+
                 if (!p1caught || currentClassroom == 1){
                     p1.paint(g2d, doMess3);
                 }
                 if (!p2caught || currentClassroom == 1){
-                    this.p2.paint(g2d, doMess3);
-                }
-
-                if ((p1caught || p2caught) && currentClassroom == 1){
-                    office.paintBars(g2d);
+                    p2.paint(g2d, doMess3);
                 }
 
                 if (currentClassroom == tCurrentClassroom){
