@@ -2,15 +2,20 @@ import java.awt.*;
 
 public class DoVendingMachine extends Task{
     private int x, y, width = 150, height = 200;
-    private Timer t = new Timer();
-    private boolean playerIsClose = false;
+    private boolean playerIsClose;
     private final int RADIUS = 65;
-    private boolean isThisVendComplete = false;
+    private boolean isThisVendComplete;
+
+    public void initializeVM(){
+        playerIsClose = false;
+        isThisVendComplete = false;
+    }
 
     public DoVendingMachine(int x, int y, boolean isTask) {
         super(isTask);
         this.x = x;
         this.y = y;
+        initializeVM();
     }
 
     public void finishVending() {

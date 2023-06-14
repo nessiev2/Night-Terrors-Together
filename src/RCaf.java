@@ -1,10 +1,10 @@
 import java.awt.*;
 
 public class RCaf {
-    DoVendingMachine vendMachine1 = new DoVendingMachine(800, 600, true);
-    DoVendingMachine vendMachine2 = new DoVendingMachine(1000, 600, true);
+    DoVendingMachine vendMachine1;
+    DoVendingMachine vendMachine2;
 
-    DoVendingMachine[] vendMachines = {vendMachine1, vendMachine2};
+    DoVendingMachine[] vendMachines = new DoVendingMachine[2];
 
     DoArson arson2;
     ATrashCan[] trashCans = {};
@@ -13,6 +13,10 @@ public class RCaf {
     AWall w1 = new AWall(0, 0);
     public void initializeCaf(){
         arson2 = new DoArson(true);
+        DoVendingMachine vendMachine1 = new DoVendingMachine(800, 600, true);
+        DoVendingMachine vendMachine2 = new DoVendingMachine(1000, 600, true);
+        vendMachines[0] = vendMachine1;
+        vendMachines[1] = vendMachine2;
     }
     public RCaf() {
         initializeCaf();

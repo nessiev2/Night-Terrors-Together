@@ -1,6 +1,4 @@
 import java.awt.*;
-import java.sql.SQLOutput;
-import java.util.Collections;
 import java.util.Random;
 
 public class SideMenu {
@@ -16,13 +14,19 @@ public class SideMenu {
         5 - brealk vend
     */
 
-    boolean[] finTasks = new boolean[6];
-
+    boolean[] finTasks;
     int x = 1835, y = 20, width = 50, height = 50, openX = Main.SCREEN_WIDTH/2 - 400, openY = 20, openWidth = 800, openHeight = 800;
-    boolean isOpen = false;
-    boolean hasGenerated = false;
+    boolean isOpen;
+    boolean hasGenerated;
     public SideMenu(Main c) {
         this.c = c;
+        initializeSideMenu();
+    }
+
+    public void initializeSideMenu(){
+        finTasks = new boolean[6];
+        isOpen = false;
+        hasGenerated = false;
     }
 
     public void updateTaskCompletion(int n) {
