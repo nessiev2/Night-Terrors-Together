@@ -9,7 +9,6 @@ BUGS
 * make sure the office's trash cans do not generate under a desk
 * player movement gets restricted when holding down interact key??
 * jail bars paint over un-trapped player
-* fix the doMess bug (make draw evenly from center)
 * always spawn teacher in the frame
 
 TO-DO/TO-FIX LIST
@@ -274,7 +273,6 @@ public class Main extends JPanel {
             gameOverScreen.paintGameOver(g2d);
         } else {
             if (t.getBothCaught()){
-                System.out.println("skill issue");
                 gameOver = true;
             } else {
                 switch(currentClassroom) {
@@ -368,10 +366,7 @@ public class Main extends JPanel {
                 }
                 boolean p1caught = p1.getIsCaught(), p2caught = this.p2.getIsCaught();
 
-                //System.out.println(p2caught);
 
-
-                System.out.println("teacher both caught " + t.getBothCaught());
                 if (p1caught) {
                     p1.spawnPlayer(170, 150);
                 }

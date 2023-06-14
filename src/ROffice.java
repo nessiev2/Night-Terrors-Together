@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class ROffice {
     DoArson arson1 = new DoArson(false);
-    ATrashCan[] trashCans = new ATrashCan[3];
+    ATrashCan[] trashCans = new ATrashCan[1];
     AChalkBoard cb = new AChalkBoard(900, 10, "OFFICE", false);
     ADesk[] desks = {new ADesk(0, 500, 500, 250), new ADesk(500, 300, 150, 250+200)};
     AWall w1 = new AWall(0, 0);
@@ -11,10 +11,9 @@ public class ROffice {
 
     public void initializeOffice(){
         Random r = new Random();
-
-        trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
-        trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
-        trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
+        // trashCans[0] = new ATrashCan(r.nextInt(400) + 270,r.nextInt(91) + 290); // top wall
+        // trashCans[1] = new ATrashCan(r.nextInt(980) + 715,r.nextInt(91) + 290); // top wall
+        trashCans[0] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
     }
     public ROffice(){
         initializeOffice();
