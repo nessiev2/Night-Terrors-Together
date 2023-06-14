@@ -8,9 +8,7 @@ import java.util.Random;
 BUGS
 * make sure the office's trash cans do not generate under a desk
 * player movement gets restricted when holding down interact key??
-* jail bars paint over un-trapped player :clown:
-* make it easier to spill water at the edges
-* individually hack each vending machine
+* jail bars paint over un-trapped player
 * after 1 player is caught, the second player is immune in room 1
 * fix the doMess bug (make draw evenly from center)
 * always spawn teacher in the frame
@@ -21,9 +19,6 @@ TO-DO/TO-FIX LIST
         * math
         * bio
         * chem
-
-* general
-   * code win condition
 
 GOLD PLATING
 * write name of classroom a door leads to on it
@@ -437,6 +432,8 @@ public class Main extends JPanel {
     public void reset(Main c){
         c.flag = false;
         c.gameOver = false;
+        c.win = false;
+
         c.t.initializeTeacher();
         c.p1.initializePlayer();
         c.p2.initializePlayer();
@@ -451,6 +448,8 @@ public class Main extends JPanel {
         mathematics.initializeMath();
         compSci.initializeCompSci();
         eng.initializeEng();
+
+        sideMenu.initializeSideMenu();
 
         // reset side menu
 
@@ -468,7 +467,7 @@ public class Main extends JPanel {
 
         while (true){
             c.reset(c);
-            while (!c.flag) {
+            while (!c.flag && !c.win) {
                 c.move(c); //Updates the coordinates
                 c.repaint(); //Calls the paint method
                 Thread.sleep(10); //Pauses for a moment
