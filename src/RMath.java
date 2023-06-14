@@ -33,7 +33,7 @@ public class RMath {
         initializeMath();
     }
 
-    public void paint(Graphics g, Player p1, Player p2, Transition transition1) {
+    public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
         //super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -48,6 +48,8 @@ public class RMath {
             tc.isPlayerClose(p1, p2);
             tc.paint(g2d);
         }
+
+        arson7.doTask(trashCans, p1, p2, menu);
 
         w1.paint(g2d); // wall
 

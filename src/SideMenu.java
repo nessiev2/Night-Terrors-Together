@@ -6,7 +6,7 @@ import java.util.Random;
 public class SideMenu {
     Main c;
     int[] array = {0, 1, 2, 3, 4, 5};
-    String[] sArray = {"FIRE", "CHALKBOARD SCRIBBLE", "SPILL WATER", "SPRINT", "Hack COMPUTER SCIENCE", "Break the vending machines in CAF"};
+    String[] sArray = {"FIRE", "CHALKBOARD SCRIBBLE", "SPILL WATER", "SPRINT", "HACK COMPUTER SCIENCE", "SMASH CAF VENDING MACHINES"};
     /*
         0 - fire
         1 - scribble
@@ -29,6 +29,17 @@ public class SideMenu {
         System.out.println("update task completion for int " + n);
         finTasks[n] = true;
         System.out.println("fintasks [n]: " + finTasks[n]);
+    }
+
+    public boolean checkIfWinCondition() {
+        for (int i = 0; i < 4; i++)  {
+            //finTasks[array[i]] = true;
+            if (!finTasks[array[i]]) // if it's not ALL TRUE -> bad
+                return false;
+            System.out.println("i am running");
+        }
+        System.out.println("ALL TASKS COMEPLTE");
+        return true; // ALL TASKS COMPLETE
     }
 
     public boolean getIsOpen(){

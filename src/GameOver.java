@@ -14,9 +14,14 @@ public class GameOver {
         } catch (IOException e) { System.out.println("gameover no img"); }
     }
 
+    public void paintGameOverYouWin(Graphics2D g2d) {
+        g2d.setColor(Color.pink);
+        g2d.setFont(new Font("TimesRoman", Font.BOLD, 300));
+        g2d.drawString("U WIN", 500, 500);
+    }
+
     public void paintGameOver(Graphics2D g2d){
         g2d.drawImage(img, 0, 0, Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT, null);
-
     }
 
 }

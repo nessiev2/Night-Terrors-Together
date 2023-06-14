@@ -1,4 +1,4 @@
-public class DoArson extends Task{
+public class DoArson extends Task {
 
     public final int RADIUS = 200;
     public int counter = 0;
@@ -6,7 +6,7 @@ public class DoArson extends Task{
         super(isTask);
     }
 
-    public int doTask(ATrashCan[] trash, Player p1, Player p2) {
+    public int doTask(ATrashCan[] trash, Player p1, Player p2, SideMenu menu) {
         if (isTask){
             for (ATrashCan t: trash){
                 if (t.getIsOnFire()) {
@@ -15,7 +15,8 @@ public class DoArson extends Task{
             }
 
             if (counter >= 3){
-                taskFinished();
+                this.taskFinished();
+                menu.updateTaskCompletion(0);
                 return 1;
             }
         }

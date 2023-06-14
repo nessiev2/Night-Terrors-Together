@@ -93,6 +93,8 @@ public class Main extends JPanel {
     GameOver gameOverScreen = new GameOver();
     DoMess doMess3 = new DoMess(true);
     SideMenu sideMenu = new SideMenu(this);
+    boolean win = false;
+
     public void changeCurrentClassroom(int i) {
         currentClassroom = i;
     }
@@ -255,6 +257,10 @@ public class Main extends JPanel {
 
             cd.move();
 
+            if (sideMenu.checkIfWinCondition()) {
+                gameOver = true;
+                win = true;
+            }
             if (cd.getTime() <= 0) {
                 gameOver = true;
             }
@@ -269,9 +275,11 @@ public class Main extends JPanel {
 
         if (mainMenu.getIsMenuOpen()) {
             mainMenu.paintMainMenu(g2d);
+        } else if (win) {
+            gameOverScreen.paintGameOverYouWin(g2d);
         } else if (gameOver) {
             gameOverScreen.paintGameOver(g2d);
-        }else {
+        } else {
             if (t.getBothCaught()){
                 System.out.println("skill issue");
                 gameOver = true;
@@ -337,7 +345,7 @@ public class Main extends JPanel {
                         break;
 
                     case 7:
-                        mathematics.paint(g, p1, p2, transition1);
+                        mathematics.paint(g, p1, p2, transition1, sideMenu);
                         mathToCompSci.paint(g2d);
                         mathToBio.paint(g2d);
                         changeRooms(mathToCompSci, compSciToMath, 8, p1, p2, transition1, g2d);
