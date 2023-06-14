@@ -73,7 +73,7 @@ public class DoSprint extends Task{
         if (flag1 && flag2){
             isComplete = true;
             menu.updateTaskCompletion(3);
-            System.out.println("do sprint COMPLETE");
+            //System.out.println("do sprint COMPLETE");
         }
     }
 }

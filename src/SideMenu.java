@@ -26,9 +26,9 @@ public class SideMenu {
     }
 
     public void updateTaskCompletion(int n) {
-        System.out.println("update task completion for int " + n);
+        //System.out.println("update task completion for int " + n);
         finTasks[n] = true;
-        System.out.println("fintasks [n]: " + finTasks[n]);
+        //System.out.println("fintasks [n]: " + finTasks[n]);
     }
 
     public boolean checkIfWinCondition() {
@@ -36,7 +36,7 @@ public class SideMenu {
             //finTasks[array[i]] = true;
             if (!finTasks[array[i]]) // if it's not ALL TRUE -> bad
                 return false;
-            System.out.println("i am running");
+            //System.out.println("i am running");
         }
         System.out.println("ALL TASKS COMEPLTE");
         return true; // ALL TASKS COMPLETE

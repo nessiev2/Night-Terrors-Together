@@ -126,7 +126,6 @@ public class Main extends JPanel {
                     pauseGame = false;
                 }
 
-                //System.out.println(doMess3.checkIsFin());
 
                 // opening side menu
                 if (!mainMenu.getIsMenuOpen() && !sideMenu.getIsOpen() && e.getKeyCode() == KeyEvent.VK_M && !pauseGame) {
@@ -199,16 +198,16 @@ public class Main extends JPanel {
                 clickClack = 0;
             }
 
+            if (currentClassroom == tCurrentClassroom) {
+                p1.checkPlayerCaught(teacher);
+                p2.checkPlayerCaught(teacher);
+            }
+
             if (currentClassroom == 1 && (p1.getIsCaught() || p2.getIsCaught())){
                 tCurrentClassroom = 1;
             } else {
-                if (currentClassroom == tCurrentClassroom){
-                    p1.checkPlayerCaught(teacher);
-                    p2.checkPlayerCaught(teacher);
-                } else {
-                    if (p1.checkTeacher(teacher) || p2.checkTeacher(teacher)) {
-                        t.spawnTeacher(p1, p2);
-                    }
+                if (p1.checkTeacher(teacher) || p2.checkTeacher(teacher)) {
+                    t.spawnTeacher(p1, p2);
                 }
             }
 
@@ -373,24 +372,26 @@ public class Main extends JPanel {
                         g2d.setFont(new Font("TimesRoman", Font.BOLD, 100));
                         g2d.drawString("idk how u made it here!! please stop!!!", 200, 100);
                 }
-                boolean tmp1 = p1.getIsCaught(), tmp2 = p2.getIsCaught();
+                boolean p1caught = p1.getIsCaught(), p2caught = this.p2.getIsCaught();
 
-                System.out.println(tmp2);
+                //System.out.println(p2caught);
 
-                if (tmp1) {
+
+                System.out.println("teacher both caught " + t.getBothCaught());
+                if (p1caught) {
                     p1.spawnPlayer(170, 150);
                 }
-                if (tmp2) {
+                if (p2caught) {
                     p2.spawnPlayer(170, 150);
                 }
-                if (!tmp1 || currentClassroom == 1){
+                if (!p1caught || currentClassroom == 1){
                     p1.paint(g2d, doMess3);
                 }
-                if (!tmp2 || currentClassroom == 1){
-                    p2.paint(g2d, doMess3);
+                if (!p2caught || currentClassroom == 1){
+                    this.p2.paint(g2d, doMess3);
                 }
 
-                if ((tmp1 || tmp2) && currentClassroom == 1){
+                if ((p1caught || p2caught) && currentClassroom == 1){
                     office.paintBars(g2d);
                 }
 
