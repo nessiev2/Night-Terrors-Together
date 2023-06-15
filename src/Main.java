@@ -15,7 +15,7 @@ BUGS
 
 TO-DO/TO-FIX LIST
 * make sure teacher does not spawn away after you leave a room so you cant bypass the teacher
-* code randomly resets
+* code randomly resets - after u
 
 * tasks
 * make set on fire limited time in chem task
