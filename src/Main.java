@@ -7,7 +7,7 @@ import java.util.Random;
 /*
 BUGS
 * player movement gets restricted when holding down interact key??
-* always spawn teacher in the frame
+* always spawn teacher in the frame HELLO
 * revamp eng/chem so they dont look so ugly
     * make sure eng/chem trash cans doesnt spwn in teacher desk and eng sprint doesnt spawn in desk
 * make sure u can only do task if in room
