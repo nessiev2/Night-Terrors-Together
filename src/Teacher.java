@@ -24,8 +24,8 @@ public class Teacher extends Thing {
             tmp2 = -1;
         }
 
-        int x = r.nextInt(100) + 100;
-        int y = r.nextInt(100) + 100;
+        int x = r.nextInt(200) + 200;
+        int y = r.nextInt(200) + 200;
 
         if (r.nextInt(2) == 0 && !p1.getIsCaught()){
             resetX(p1.getX()+(x*tmp1));

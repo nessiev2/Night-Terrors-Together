@@ -9,6 +9,15 @@ public class DoMess extends Task {
         return isFin;
     }
     public void paint(Graphics g2d, SideMenu menu) {
+        int k = 10;
+        g2d.setColor(Color.black);
+        if (!isFin){
+            g2d.drawRect(15+(1920/4), 270, Main.SCREEN_WIDTH/2, (810-270));
+        }
+        g2d.setFont(new Font("TimesRoman", Font.BOLD, 50));
+        g2d.drawString("NO WATER IN THE GYM.", 15+(1920/4) + 200, 400);
+        g2d.drawString("STAY DEHYDRATED :).", 15+(1920/4) + 200, 500);
+
         //checkIsFin();
         isFin = true;
         //if (!flag){
@@ -29,10 +38,10 @@ public class DoMess extends Task {
             isTask = true;
         }
 
-        g2d.setColor(new Color(1, 184, 252));
         for (int i = 0; i < waterStains.length; i++) {
             for (int j = 0; j < waterStains[i].length; j++) {
                 if (waterStains[i][j]){
+                    g2d.setColor(new Color(1, 184, 252));
                     g2d.fillRect((i*30)+15+(1920/4), j*30+270, 30, 30);
                 }
             }
@@ -54,16 +63,16 @@ public class DoMess extends Task {
                 int j = (py-270)/30;
                 for (int a = 0; a < 3; a++){
                     for (int b = 0; b < 3; b++){
-                        if (i + a < waterStains.length && j + b < waterStains[0].length){
+                        if ((i + a < waterStains.length) && (j + b < waterStains[0].length)){
                             waterStains[i+a][j+b] = true;
                         }
-                        if (i - a > 0 && i - a < waterStains.length && j - b > 0 && j - b < waterStains[0].length){
+                        if ((i - a > 0) && (j - b > 0)){
                             waterStains[i-a][j-b] = true;
                         }
-                        if (i - a > 0 && i - a < waterStains.length && j + b < waterStains[0].length){
+                        if ((i - a > 0) && (j + b < waterStains[0].length)){
                             waterStains[i-a][j+b] = true;
                         }
-                        if (i + a < waterStains.length && j - b > 0 && j - b < waterStains[0].length){
+                        if ((i + a < waterStains.length) && (j - b > 0)){
                             waterStains[i+a][j-b] = true;
                         }
                     }

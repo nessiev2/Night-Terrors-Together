@@ -9,13 +9,11 @@ BUGS
 * player movement gets restricted when holding down interact key??
 * always spawn teacher in the frame
 * make sure math trash can doesnt spwn in teacher desk
+* make sure u can only do task if in room
 
 TO-DO/TO-FIX LIST
 * tasks
-    * finish coding rest of tasks
-        * math
-        * bio
-        * chem
+    * finish coding bio task
 
 GOLD PLATING
 * write name of classroom a door leads to on it
@@ -24,8 +22,6 @@ GOLD PLATING
 * screen gets red and tinted the closer the teacher is
 * graphics
     * load rest of graphics
-* doors
-    * make side doors mats
 */
 
 public class Main extends JPanel {

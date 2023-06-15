@@ -2,8 +2,10 @@ import java.awt.*;
 
 public class DoBadReaction extends Task{
     private int x = 500, y = 515, xSpacing = 350, ySpacing = 300, w = 30, h = 50;
+    private int doneX1, doneY1, doneX2, doneY2;
+    private int stainX1, stainY1, stainX2, stainY2;
     private static final int RADIUS = 170;
-    private boolean green, pink, cyan, yellow, closeGreen, closePink, closeCyan, closeYellow;
+    private boolean green, pink, cyan, yellow, closeGreen, closePink, closeCyan, closeYellow, flag = false;
     public DoBadReaction(boolean isTask){
         super(isTask);
     }
@@ -37,6 +39,21 @@ public class DoBadReaction extends Task{
         closePink = isPlayerClose(x + xSpacing, y, p1, p2);
         closeCyan = isPlayerClose(x + xSpacing, y + ySpacing, p1, p2);
         closeYellow = isPlayerClose(x, y + ySpacing, p1, p2);
+
+        if (green && pink && cyan && yellow){
+            doneX1 = p1.getX();
+            doneY1 = p1.getY();
+            doneX2 = p2.getX();
+            doneY2 = p2.getY();
+            flag = true;
+            taskFinished();
+        }
+        if (!flag){
+            stainX1 = p1.getX();
+            stainY1 = p1.getY();
+            stainX2 = p2.getX();
+            stainY2 = p2.getY();
+        }
     }
     public void paint(Graphics g2d) {
         int i = 10;
@@ -87,9 +104,15 @@ public class DoBadReaction extends Task{
         g2d.drawOval(x + xSpacing, y + ySpacing, w, h);
         g2d.drawOval(x, y + ySpacing, w, h);
 
-        if (green && pink && cyan && yellow){
+        if (getFinished()){
             g2d.setColor(new Color(255, 0, 0));
-            g2d.fillRect(600, 670, 200, 100);
+            g2d.fillRect(doneX1, doneY1, 100, 100);
+            g2d.fillRect(doneX2, doneY2, 100, 100);
+
+            g2d.setColor(new Color(0, 0, 0, 195));
+            g2d.fillRect(stainX1, stainY1, 100, 100);
+            g2d.fillRect(stainX2, stainY2, 100, 100);
+
             taskFinished();
             //menu.updateTaskCompletion(n);
         }
@@ -99,7 +122,7 @@ public class DoBadReaction extends Task{
         int centerX = (2*x + w)/2, centerY = (2*y + h)/2;
         double dist1 = Math.sqrt(Math.pow(centerX-p1.getCenterX(), 2) + Math.pow(centerY-p1.getY(), 2));
         double dist2 = Math.sqrt(Math.pow(centerX-p2.getCenterX(), 2) + Math.pow(centerY-p2.getY(), 2));
-        
+
         if ((dist1 <= RADIUS && p1.getY() < y)|| (dist2 <= RADIUS && p2.getY() < y)) {
             return true;
         } else {
