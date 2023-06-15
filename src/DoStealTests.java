@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class DoBurnTests extends Task{
+public class DoStealTests extends Task{
     private int x = 700, y = 200, w = 50, h = 100, stack = 10;
     private final static int RADIUS = 100, THICKNESS = 10, COUNT = 10;
     private boolean isTaskComplete = false;
@@ -12,7 +12,7 @@ public class DoBurnTests extends Task{
             stack--;
         }
     }
-    public DoBurnTests(boolean isTask){
+    public DoStealTests(boolean isTask){
         super(isTask);
     }
     public void paint(Graphics g2d, Player p1, Player p2) {

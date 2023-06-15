@@ -11,9 +11,11 @@ BUGS
 * revamp eng/chem so they dont look so ugly
     * make sure eng/chem trash cans doesnt spwn in teacher desk and eng sprint doesnt spawn in desk
 * make sure u can only do task if in room
+* reset bug??????????
 
 TO-DO/TO-FIX LIST
 * tasks
+* make set on fire limited time in chem task
     * finish coding bio task
 * win condition for every task
 
