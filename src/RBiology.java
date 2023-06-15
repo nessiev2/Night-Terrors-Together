@@ -57,7 +57,7 @@ public class RBiology {
 
         w1.paint(g2d); // wall
 
-        dissection4.paint(g2d);
+        dissection4.paint(g2d, p1, p2);
 
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard
