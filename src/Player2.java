@@ -42,7 +42,7 @@ public class Player2 extends Player {
         }
     }
 
-    public void keyReleased(Player p1, int currentRoom, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess, DoHack hack, DoVendingMachine[] vend) {
+    public void keyReleased(Player p1, int currentRoom, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess, DoHack hack, DoVendingMachine[] vend, DoBadReaction badReaction) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             left = false;
         }

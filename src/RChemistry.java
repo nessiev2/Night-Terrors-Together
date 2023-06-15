@@ -7,7 +7,7 @@ public class RChemistry {
     AChalkBoard cb;
     AWall w1 = new AWall(0, 0);
     ADesk[] desks = {new ADesk(400, 500), new ADesk(800, 500), new ADesk(400, 800), new ADesk(800, 800)};
-
+    DoBadReaction badReaction6;
     public void initializeChem(){
         Random r = new Random();
 
@@ -17,6 +17,7 @@ public class RChemistry {
 
         arson6 = new DoArson(true);
         cb = new AChalkBoard(300, 10, "CHEMISTRY", true);
+        badReaction6 = new DoBadReaction(true);
     }
 
     public RChemistry() {
@@ -29,6 +30,8 @@ public class RChemistry {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.BLACK);
 
+        badReaction6.doTask(p1, p2);
+
         // IRENE IS MAKING A CLASSROOM DESK TRIAL
         for (ADesk d:desks) {
             d.paint(g2d);
@@ -38,6 +41,8 @@ public class RChemistry {
             tc.isPlayerClose(p1, p2);
             tc.paint(g2d);
         }
+
+        badReaction6.paint(g2d);
 
         w1.paint(g2d); // wall
 
