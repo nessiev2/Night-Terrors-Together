@@ -42,7 +42,7 @@ public class Player2 extends Player {
         }
     }
 
-    public void keyReleased(Player p1, int currentRoom, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess, DoHack hack, DoVendingMachine[] vend, DoBadReaction badReaction) {
+    public void keyReleased(Player p1, int currentRoom, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess, DoHack hack, DoVendingMachine[] vend, DoBadReaction badReaction, DoBurnTests burnTests7) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             left = false;
         }
@@ -95,6 +95,9 @@ public class Player2 extends Player {
             }
             if (badReaction.getCloseYellow()){
                 badReaction.changeYellow(true);
+            }
+            if (burnTests7.getStack() >= 1){
+                burnTests7.decrementStack(this, this);
             }
         }
     }

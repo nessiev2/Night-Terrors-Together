@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.Deque;
 import java.util.Random;
 
 public class RMath {
@@ -6,7 +7,8 @@ public class RMath {
     ATrashCan[] trashCans = new ATrashCan[3];
     AChalkBoard cb;
     AWall w1 = new AWall(0, 0);
-    ADesk[] desks = new ADesk[6];
+    ADesk[] desks = new ADesk[7];
+    DoBurnTests burnTests7;
 
     public void initializeMath(){
         Random r = new Random();
@@ -17,6 +19,7 @@ public class RMath {
 
         arson7 = new DoArson(true);
         cb = new AChalkBoard(300, 10, "MATH", true);
+        burnTests7 = new DoBurnTests(true);
     }
 
     public RMath() {
@@ -24,11 +27,12 @@ public class RMath {
 
         //generating desks loop
         for (int i = 400; i <= 1200; i += 400){
-            for (int j = 500; j <= 800; j += 300){
+            for (int j = 600; j <= 900; j += 300){
                 desks[counter] = new ADesk(i, j);
                 counter++;
             }
         }
+        desks[6] = new ADesk(600, 300, 400, 150);
 
         initializeMath();
     }
@@ -55,7 +59,7 @@ public class RMath {
 
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard
-
+        burnTests7.paint(g2d, p1, p2);
     }
 
 
