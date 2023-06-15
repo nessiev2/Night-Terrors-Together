@@ -99,9 +99,7 @@ public class DoBadReaction extends Task{
         int centerX = (2*x + w)/2, centerY = (2*y + h)/2;
         double dist1 = Math.sqrt(Math.pow(centerX-p1.getCenterX(), 2) + Math.pow(centerY-p1.getY(), 2));
         double dist2 = Math.sqrt(Math.pow(centerX-p2.getCenterX(), 2) + Math.pow(centerY-p2.getY(), 2));
-
-        //System.out.println(dist1);
-
+        
         if ((dist1 <= RADIUS && p1.getY() < y)|| (dist2 <= RADIUS && p2.getY() < y)) {
             return true;
         } else {
