@@ -8,12 +8,14 @@ import java.util.Random;
 BUGS
 * player movement gets restricted when holding down interact key??
 * always spawn teacher in the frame
-* make sure math trash can doesnt spwn in teacher desk
+* revamp eng/chem so they dont look so ugly
+    * make sure eng/chem trash cans doesnt spwn in teacher desk and eng sprint doesnt spawn in desk
 * make sure u can only do task if in room
 
 TO-DO/TO-FIX LIST
 * tasks
     * finish coding bio task
+* win condition for every task
 
 GOLD PLATING
 * write name of classroom a door leads to on it

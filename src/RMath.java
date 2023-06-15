@@ -13,9 +13,9 @@ public class RMath {
     public void initializeMath(){
         Random r = new Random();
 
-        trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
+        trashCans[0] = new ATrashCan(r.nextInt(501),r.nextInt(201) + 290); // top wall
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
-        trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
+        trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(301) + 660); //right wall
 
         arson7 = new DoArson(true);
         cb = new AChalkBoard(300, 10, "MATH", true);
