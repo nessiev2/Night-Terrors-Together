@@ -3,9 +3,11 @@ import java.awt.*;
 public class ADoor extends Thing {
     private final static int width = 150;
     private final static int height = 200;
+    private String toClassroom;
 
-    public ADoor(int x, int y) {
+    public ADoor(int x, int y, String toClassroom) {
         super(x, y, width, height);
+        this.toClassroom = toClassroom;
     }
 
     public void paint(Graphics g2d) {
@@ -15,6 +17,10 @@ public class ADoor extends Thing {
         g2d.fillRect(getX() + 10, getY() + 10, width - 20, height - 10);
         g2d.setColor(new Color(74, 74, 74));
         g2d.fillOval(getX() + width - 40, getY() + 120, 20, 20);
+
+        g2d.setColor(Color.black);
+        g2d.setFont(new Font("TimesRoman", Font.BOLD, 20));
+        g2d.drawString(toClassroom, getX()+20, getY()+40);
     }
 
     public boolean containsPlayer(Player p1, Player p2) {

@@ -43,6 +43,7 @@ public class CountDown {
 
     public void paint(Graphics g2d) {
         g2d.setColor(Color.white);
+        g2d.setFont(new Font("TimesRoman", Font.BOLD, 50));
         if (elapsedSeconds <= 10) {
             g2d.setColor(Color.red);
         }

@@ -40,30 +40,30 @@ public class Main extends JPanel {
     Transition transition1 = new Transition(); 
 
     //DOORS
-    ADoor bioToOffice = new ADoor(tobX, topY);
-    ADoor officeToBio = new ADoor(tobX, botY);
-    ADoor physToChem = new ADoor(rightX, sideY);
-    ADoor chemToPhys = new ADoor(leftX, sideY);
-    ADoor physToBio = new ADoor(leftX, sideY);
-    ADoor bioToPhys = new ADoor(rightX, sideY);
-    ADoor physToCaf = new ADoor(tobX, topY);
-    ADoor cafToPhys = new ADoor(tobX, botY);
-    ADoor gymToCaf = new ADoor(leftX, sideY);
-    ADoor cafToGym = new ADoor(rightX, sideY);
-    ADoor gymToChem = new ADoor(tobX, botY);
-    ADoor chemToGym = new ADoor(tobX, topY);
-    ADoor mathToBio = new ADoor(tobX, topY);
-    ADoor bioToMath = new ADoor(tobX, botY);
-    ADoor compSciToMath = new ADoor(leftX, sideY);
-    ADoor mathToCompSci = new ADoor(rightX, sideY);
-    ADoor physToCompSci = new ADoor(tobX, botY);
-    ADoor compSciToPhys = new ADoor(tobX, topY);
-    ADoor compSciToEng = new ADoor(rightX, sideY);
-    ADoor engToCompSci = new ADoor(leftX, sideY);
-    ADoor engToChem = new ADoor(tobX, topY);
-    ADoor chemToEng = new ADoor(tobX, botY);
-    ADoor cafToOffice = new ADoor(leftX, sideY);
-    ADoor officeToCaf = new ADoor(rightX, sideY);
+    ADoor bioToOffice = new ADoor(tobX, topY, "Office");
+    ADoor officeToBio = new ADoor(tobX, botY, "Bio");
+    ADoor physToChem = new ADoor(rightX, sideY, "Chem");
+    ADoor chemToPhys = new ADoor(leftX, sideY, "Phys");
+    ADoor physToBio = new ADoor(leftX, sideY, "Bio");
+    ADoor bioToPhys = new ADoor(rightX, sideY, "Phys");
+    ADoor physToCaf = new ADoor(tobX, topY, "Caf");
+    ADoor cafToPhys = new ADoor(tobX, botY, "Phys");
+    ADoor gymToCaf = new ADoor(leftX, sideY, "Caf");
+    ADoor cafToGym = new ADoor(rightX, sideY, "Gym");
+    ADoor gymToChem = new ADoor(tobX, botY, "Chem");
+    ADoor chemToGym = new ADoor(tobX, topY, "Gym");
+    ADoor mathToBio = new ADoor(tobX, topY, "Bio");
+    ADoor bioToMath = new ADoor(tobX, botY, "Math");
+    ADoor compSciToMath = new ADoor(leftX, sideY, "Math");
+    ADoor mathToCompSci = new ADoor(rightX, sideY, "CompSci");
+    ADoor physToCompSci = new ADoor(tobX, botY, "CompSci");
+    ADoor compSciToPhys = new ADoor(tobX, topY, "Phys");
+    ADoor compSciToEng = new ADoor(rightX, sideY, "Eng");
+    ADoor engToCompSci = new ADoor(leftX, sideY, "CompSci");
+    ADoor engToChem = new ADoor(tobX, topY, "Chem");
+    ADoor chemToEng = new ADoor(tobX, botY, "Eng");
+    ADoor cafToOffice = new ADoor(leftX, sideY, "Office");
+    ADoor officeToCaf = new ADoor(rightX, sideY, "Office");
 
     //PLAYERS AND TEACHER
     Player p1 = new Player1();
