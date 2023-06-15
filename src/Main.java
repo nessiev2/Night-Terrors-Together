@@ -14,6 +14,9 @@ BUGS
 * reset bug??????????
 
 TO-DO/TO-FIX LIST
+* make sure teacher does not spawn away after you leave a room so you cant bypass the teacher
+* code randomly resets
+
 * tasks
 * make set on fire limited time in chem task
     * finish coding bio task
@@ -63,7 +66,7 @@ public class Main extends JPanel {
     ADoor engToChem = new ADoor(tobX, topY, "Chem");
     ADoor chemToEng = new ADoor(tobX, botY, "Eng");
     ADoor cafToOffice = new ADoor(leftX, sideY, "Office");
-    ADoor officeToCaf = new ADoor(rightX, sideY, "Office");
+    ADoor officeToCaf = new ADoor(rightX, sideY, "Caf");
 
     //PLAYERS AND TEACHER
     Player p1 = new Player1();
@@ -325,7 +328,7 @@ public class Main extends JPanel {
                         break;
 
                     case 6:
-                        chem.paint(g, p1, p2, transition1);
+                        chem.paint(g, p1, p2, transition1, sideMenu);
                         chemToPhys.paint(g2d);
                         chemToGym.paint(g2d);
                         chemToEng.paint(g2d);
@@ -408,6 +411,8 @@ public class Main extends JPanel {
         if (door1.containsPlayer(p1, p2)) {
             transition1.paintBlack(g2d);
             changeCurrentClassroom(nextClassroom);
+            p1.updateCRoom(nextClassroom);
+            p2.updateCRoom(nextClassroom);
 
             if (door2.getX() == leftX){                                                                             // door is on left
                 p1.spawnPlayer(door2.getX() + door2.getWidth() + 50, door2.getY() + 15);

@@ -43,6 +43,7 @@ public class RCaf {
             VM.paint(g2d, p1, p2);
             if (VM.getVendComplete()) {
                 VM.taskFinished();
+                menu.updateTaskCompletion(8);
             }
         }
 

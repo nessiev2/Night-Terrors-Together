@@ -3,16 +3,8 @@ import java.util.Random;
 
 public class SideMenu {
     Main c;
-    int[] array = {0, 1, 2, 3, 4, 5};
-    String[] sArray = {"FIRE", "CHALKBOARD SCRIBBLE", "SPILL WATER", "SPRINT", "HACK COMPUTER SCIENCE", "SMASH CAF VENDING MACHINES"};
-    /*
-        0 - fire
-        1 - scribble
-        2 - spill water do mess
-        3 - sprint
-        4 - hack cs
-        5 - brealk vend
-    */
+    int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+    String[] sArray = {"SET FIRE TO TRASH CANS", "CHEMICALS", "DISSECTION", "HACK COMPUTER SCIENCE", "SPILL WATER", "CHALKBOARD SCRIBBLE", "SPRINT", "STEAL MATH TESTS" , "SMASH CAF VENDING MACHINES"};
 
     boolean[] finTasks;
     int x = 1835, y = 20, width = 50, height = 50, openX = Main.SCREEN_WIDTH/2 - 400, openY = 20, openWidth = 800, openHeight = 800;
@@ -24,7 +16,7 @@ public class SideMenu {
     }
 
     public void initializeSideMenu(){
-        finTasks = new boolean[6];
+        finTasks = new boolean[9];
         isOpen = false;
         hasGenerated = false;
     }

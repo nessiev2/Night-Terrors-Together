@@ -15,11 +15,12 @@ public class DoStealTests extends Task{
     public DoStealTests(boolean isTask){
         super(isTask);
     }
-    public void paint(Graphics g2d, Player p1, Player p2) {
+    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) {
         int i = 10;
 
         if (stack == 0){
             isTaskComplete = true;
+            menu.updateTaskCompletion(7);
             taskFinished();
         }
 

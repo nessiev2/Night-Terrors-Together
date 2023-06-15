@@ -34,7 +34,7 @@ public class DoMess extends Task {
         if (isFin) {
             //System.out.println("i work tho???");
             this.taskFinished();
-            menu.updateTaskCompletion(2);
+            menu.updateTaskCompletion(4);
             isTask = true;
         }
 

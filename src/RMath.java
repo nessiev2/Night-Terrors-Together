@@ -58,7 +58,7 @@ public class RMath {
 
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard
-        burnTests7.paint(g2d, p1, p2);
+        burnTests7.paint(g2d, p1, p2, menu);
     }
 
 

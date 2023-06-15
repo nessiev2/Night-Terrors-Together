@@ -24,7 +24,7 @@ public class RChemistry {
         initializeChem();
     }
 
-    public void paint(Graphics g, Player p1, Player p2, Transition transition1) {
+    public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
         //super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -32,7 +32,6 @@ public class RChemistry {
 
         badReaction6.doTask(p1, p2);
 
-        // IRENE IS MAKING A CLASSROOM DESK TRIAL
         for (ADesk d:desks) {
             d.paint(g2d);
         }
@@ -42,7 +41,7 @@ public class RChemistry {
             tc.paint(g2d);
         }
 
-        badReaction6.paint(g2d);
+        badReaction6.paint(g2d, menu);
 
         w1.paint(g2d); // wall
 
