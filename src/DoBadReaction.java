@@ -42,16 +42,16 @@ public class DoBadReaction extends Task{
         int i = 10;
 
         g2d.setColor(Color.yellow);
-        if (closeGreen){
+        if (closeGreen && !green){
             g2d.fillOval(x-i, y-i, w+2*i, h+2*i);
         }
-        if (closePink){
+        if (closePink && !pink){
             g2d.fillOval(x + xSpacing - i, y-i, w+2*i, h+2*i);
         }
-        if (closeCyan){
+        if (closeCyan && !cyan){
             g2d.fillOval(x  + xSpacing -i, y + ySpacing -i, w+2*i, h+2*i);
         }
-        if (closeYellow){
+        if (closeYellow && !yellow){
             g2d.fillOval(x-i, y + ySpacing-i, w+2*i, h+2*i);
         }
 

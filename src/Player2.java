@@ -82,6 +82,20 @@ public class Player2 extends Player {
                     VM.finishVending();
                 }
             }
+
+            if (badReaction.getCloseGreen()){
+                badReaction.changeGreen(true);
+                System.out.println("true");
+            }
+            if (badReaction.getClosePink()){
+                badReaction.changePink(true);
+            }
+            if (badReaction.getCloseCyan()){
+                badReaction.changeCyan(true);
+            }
+            if (badReaction.getCloseYellow()){
+                badReaction.changeYellow(true);
+            }
         }
     }
 }
