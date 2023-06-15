@@ -34,7 +34,7 @@ public class DoHack extends Task{
         } else {
             g2d.setColor(new Color(255, 0, 0));
             g2d.fillRect(x, y, width, height);
-            menu.updateTaskCompletion(4);
+            menu.updateTaskCompletion(3);
         }
     }
 }

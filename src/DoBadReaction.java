@@ -55,7 +55,7 @@ public class DoBadReaction extends Task{
             stainY2 = p2.getY();
         }
     }
-    public void paint(Graphics g2d) {
+    public void paint(Graphics g2d, SideMenu menu) {
         int i = 10;
 
         g2d.setColor(Color.yellow);
@@ -114,7 +114,7 @@ public class DoBadReaction extends Task{
             g2d.fillRect(stainX2, stainY2, 100, 100);
 
             taskFinished();
-            //menu.updateTaskCompletion(n);
+            menu.updateTaskCompletion(1);
         }
     }
 

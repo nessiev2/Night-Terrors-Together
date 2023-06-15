@@ -20,6 +20,9 @@ public abstract class Player {
     public void changeIsHolding(boolean b) { isHolding = b; }
     public void changeIsSpillingWater(boolean b) { isSpillingWater = b; }
 
+    protected int croom = 5;
+    public void updateCRoom(int i) { croom = i; }
+
     private int playerN;
     private boolean isFacingLeft = false;
 
