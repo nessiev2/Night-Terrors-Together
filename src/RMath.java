@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.Deque;
 import java.util.Random;
 
 public class RMath {
@@ -8,7 +7,7 @@ public class RMath {
     AChalkBoard cb;
     AWall w1 = new AWall(0, 0);
     ADesk[] desks = new ADesk[7];
-    DoBurnTests burnTests7;
+    DoStealTests burnTests7;
 
     public void initializeMath(){
         Random r = new Random();
@@ -19,7 +18,7 @@ public class RMath {
 
         arson7 = new DoArson(true);
         cb = new AChalkBoard(300, 10, "MATH", true);
-        burnTests7 = new DoBurnTests(true);
+        burnTests7 = new DoStealTests(true);
     }
 
     public RMath() {
