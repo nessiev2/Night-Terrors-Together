@@ -200,7 +200,7 @@ public class Main extends JPanel {
                 tCurrentClassroom = 1;
             } else {
                 if (p1.checkTeacher(teacher) || p2.checkTeacher(teacher)) {
-                    t.spawnTeacher(p1, p2);
+                    //t.spawnTeacher(p1, p2);
                 }
             }
 
@@ -374,14 +374,21 @@ public class Main extends JPanel {
                     p2.spawnPlayer(170, 150);
                 }
 
-                if ((p1caught || p2caught) && currentClassroom == 1){
+          /*      if ((p1caught || p2caught) && currentClassroom == 1){
+                    office.paintBars(g2d);
+                }*/
+                if (p1caught && currentClassroom == 1) {
+                    p1.paint(g2d, doMess3);
+                    office.paintBars(g2d);
+                } else if (p2caught && currentClassroom == 1) {
+                    p2.paint(g2d, doMess3);
                     office.paintBars(g2d);
                 }
 
-                if (!p1caught || currentClassroom == 1){
+                if (!p1caught) { //|| currentClassroom == 1){
                     p1.paint(g2d, doMess3);
                 }
-                if (!p2caught || currentClassroom == 1){
+                if (!p2caught) { //|| currentClassroom == 1){
                     p2.paint(g2d, doMess3);
                 }
 
