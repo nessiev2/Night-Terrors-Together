@@ -6,7 +6,7 @@ public class RChemistry {
     ATrashCan[] trashCans = new ATrashCan[3];
     AChalkBoard cb;
     AWall w1 = new AWall(0, 0);
-    ADesk[] desks = {new ADesk(400, 500), new ADesk(800, 500), new ADesk(400, 800), new ADesk(800, 800)};
+    ADesk[] desks = {new ADesk(400, 500), new ADesk(800, 500), new ADesk(400, 800), new ADesk(800, 800), new ADesk(1200, 500, 500, 150), new ADesk(1200, 500, 500, 150)};
     DoBadReaction badReaction6;
     public void initializeChem(){
         Random r = new Random();

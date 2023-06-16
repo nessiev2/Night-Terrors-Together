@@ -160,8 +160,8 @@ public class NTT extends JPanel {
             }
             @Override
             public void keyPressed(KeyEvent e) {
-                p1.keyPressed(e, compSci.doHack8, currentClassroom);
-                p2.keyPressed(e, compSci.doHack8, currentClassroom);
+                p1.keyPressed(e, compSci.doHack8, currentClassroom, bio.dissection4);
+                p2.keyPressed(e, compSci.doHack8, currentClassroom, bio.dissection4);
             }
         });
         setFocusable(true);
@@ -473,7 +473,6 @@ public class NTT extends JPanel {
                 c.move(c); //Updates the coordinates
                 c.repaint(); //Calls the paint method
                 Thread.sleep(10); //Pauses for a moment
-                System.out.println(c.win);
             }
         }
     }

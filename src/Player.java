@@ -107,7 +107,7 @@ public abstract class Player {
     }
 
     //public void keyTyped(KeyEvent e) {}
-    public void keyPressed(KeyEvent e, DoHack doHack8, int currentClassroom) {}
+    public void keyPressed(KeyEvent e, DoHack doHack8, int currentClassroom, DoDissection dissection4) {}
     public void keyReleased(Player p2, int currentClassroom, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess3, DoHack doHack8, DoVendingMachine[] doVendingMachine, DoBadReaction badReaction, DoStealTests burnTests7, DoDissection dissection4) {}
 
     public boolean checkPlayerCaught(Teacher[] t) {
