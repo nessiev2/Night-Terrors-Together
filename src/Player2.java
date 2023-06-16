@@ -6,7 +6,7 @@ public class Player2 extends Player {
         super(2);
     }
 
-    public void keyPressed(KeyEvent e, DoHack hack, int currentClassroom) {
+    public void keyPressed(KeyEvent e, DoHack hack, int currentClassroom, DoDissection dissection4) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             left = true;
             changeFaceDirection(true);
@@ -37,8 +37,26 @@ public class Player2 extends Player {
                     changeIsHolding(false);
                 }
             }
-
-            // LET ME COMMIT :)
+            if (currentClassroom == 4){
+                if (dissection4.getIsClose(0, this)){
+                    dissection4.changeIsClose(0);
+                }
+                if (dissection4.getIsClose(1, this)){
+                    dissection4.changeIsClose(1);
+                }
+                if (dissection4.getIsClose(2, this)){
+                    dissection4.changeIsClose(2);
+                }
+                if (dissection4.getIsClose(3, this)){
+                    dissection4.changeIsClose(3);
+                }
+                if (dissection4.getIsClose(4, this)){
+                    dissection4.changeIsClose(4);
+                }
+                if (dissection4.getIsClose(5, this)){
+                    dissection4.changeIsClose(5);
+                }
+            }
         }
     }
 
@@ -58,7 +76,9 @@ public class Player2 extends Player {
         if (e.getKeyCode() == KeyEvent.VK_Q) {
             ticks = 0;
 
-            changeIsSpillingWater(false);
+            if (currentRoom == 3){
+                changeIsSpillingWater(false);
+            }
 
             for (ATrashCan tc : trashCans) {
                 if (tc.isPlayerClose(this, this)) {
@@ -73,49 +93,32 @@ public class Player2 extends Player {
                 p1.changeIsCaught(false);
                 p1.spawnPlayer(getX(), getY());
             }
-            if (hack.isPlayerClose(this, this)){
+            if (hack.isPlayerClose(this, this) && currentRoom == 8){
                 hack.taskFinished();
             }
 
             for (DoVendingMachine VM:vend) {
-                if (VM.isPlayerClose(this, this)) {
+                if (VM.isPlayerClose(this, this) && currentRoom == 2) {
                     VM.finishVending();
                 }
             }
 
-            if (badReaction.getCloseGreen()){
-                badReaction.changeGreen(true);
-                System.out.println("true");
-            }
-            if (badReaction.getClosePink()){
-                badReaction.changePink(true);
-            }
-            if (badReaction.getCloseCyan()){
-                badReaction.changeCyan(true);
-            }
-            if (badReaction.getCloseYellow()){
-                badReaction.changeYellow(true);
-            }
-            if (burnTests7.getStack() >= 1){  // LET ME COMMIT
-                burnTests7.decrementStack(this, this);
-            }
-            if (dissection4.getIsClose(0, this)){
-                dissection4.changeIsClose(0);
-            }
-            if (dissection4.getIsClose(1, this)){
-                dissection4.changeIsClose(1);
-            }
-            if (dissection4.getIsClose(2, this)){
-                dissection4.changeIsClose(2);
-            }
-            if (dissection4.getIsClose(3, this)){
-                dissection4.changeIsClose(3);
-            }
-            if (dissection4.getIsClose(4, this)){
-                dissection4.changeIsClose(4);
-            }
-            if (dissection4.getIsClose(5, this)){
-                dissection4.changeIsClose(5);
+            if (currentRoom == 6){
+                if (badReaction.getCloseGreen()) {
+                    badReaction.changeGreen(true);
+                }
+                if (badReaction.getClosePink()) {
+                    badReaction.changePink(true);
+                }
+                if (badReaction.getCloseCyan()) {
+                    badReaction.changeCyan(true);
+                }
+                if (badReaction.getCloseYellow()) {
+                    badReaction.changeYellow(true);
+                }
+                if (burnTests7.getStack() >= 1) {  // LET ME COMMIT
+                    burnTests7.decrementStack(this, this);
+                }
             }
         }
     }

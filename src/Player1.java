@@ -8,7 +8,7 @@ public class Player1 extends Player {
         super(1);
     }
 
-    public void keyPressed(KeyEvent e, DoHack hack, int currentRoom) {
+    public void keyPressed(KeyEvent e, DoHack hack, int currentRoom, DoDissection dissect) {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             left = true;
             changeFaceDirection(true);
@@ -33,6 +33,26 @@ public class Player1 extends Player {
                     hack.taskFinished();
                     System.out.println("HACK SUCCESS");
                     changeIsHolding(false);
+                }
+            }
+            if (currentRoom == 4){
+                if (dissect.getIsClose(0, this)){
+                    dissect.changeIsClose(0);
+                }
+                if (dissect.getIsClose(1, this)){
+                    dissect.changeIsClose(1);
+                }
+                if (dissect.getIsClose(2, this)){
+                    dissect.changeIsClose(2);
+                }
+                if (dissect.getIsClose(3, this)){
+                    dissect.changeIsClose(3);
+                }
+                if (dissect.getIsClose(4, this)){
+                    dissect.changeIsClose(4);
+                }
+                if (dissect.getIsClose(5, this)){
+                    dissect.changeIsClose(5);
                 }
             }
         }
@@ -100,27 +120,6 @@ public class Player1 extends Player {
             if (currentRoom == 7){
                 if (burnTests.getStack() >= 1){
                     burnTests.decrementStack(this, this);
-                }
-            }
-
-            if (currentRoom == 4){
-                if (dissect.getIsClose(0, this)){
-                    dissect.changeIsClose(0);
-                }
-                if (dissect.getIsClose(1, this)){
-                    dissect.changeIsClose(1);
-                }
-                if (dissect.getIsClose(2, this)){
-                    dissect.changeIsClose(2);
-                }
-                if (dissect.getIsClose(3, this)){
-                    dissect.changeIsClose(3);
-                }
-                if (dissect.getIsClose(4, this)){
-                    dissect.changeIsClose(4);
-                }
-                if (dissect.getIsClose(5, this)){
-                    dissect.changeIsClose(5);
                 }
             }
         }
