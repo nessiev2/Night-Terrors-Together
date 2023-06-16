@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class DoDissection extends Task{
     private int x = 450, y = 600, w = 30, h = 50;
-    private final static int RADIUS = 160;
+    private final static int RADIUS = 130;
     private boolean[] isComplete = {false, false, false, false, false, false};
     private boolean[] interacted = {false, false, false, false, false, false};
     public DoDissection(boolean isTask){
@@ -48,10 +48,11 @@ public class DoDissection extends Task{
             interacted[5] = true;
         }
     }
-    public void paint(Graphics g2d, Player p1, Player p2) {
-        int i = 0;
+    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) {
+        int i = 10;
         if (checkWin()){
             taskFinished();
+            menu.updateTaskCompletion(2);
         }
 
         // drawing "glow"
@@ -67,13 +68,13 @@ public class DoDissection extends Task{
         }
 
         if (isPlayerClose(x - 270, y, p1, p2) && !interacted[3]){
-            g2d.fillRect(x - 270 - i, y - i, w - 2 * i, h - 2 * i);
+            g2d.fillRect(x - 270 - i, y - i, w + 2 * i, h + 2 * i);
         }
         if (isPlayerClose(x - 270, y + 100, p1, p2) && !interacted[4]){
-            g2d.fillRect(x - 270 - i, y + 100 - i, w - 2 * i, h - 2 * i);
+            g2d.fillRect(x - 270 - i, y + 100 - i, w + 2 * i, h + 2 * i);
         }
         if (isPlayerClose(x - 270, y + 2 * 100, p1, p2) && !interacted[5]){
-            g2d.fillRect(x - 270 - i, y + 2 * 100 - i, w - 2 * i, h - 2 * i);
+            g2d.fillRect(x - 270 - i, y + 2 * 100 - i, w + 2 * i, h + 2 * i);
         }
 
         g2d.setColor(Color.green);
@@ -109,7 +110,6 @@ public class DoDissection extends Task{
         }
 
         g2d.setColor(Color.red);
-        g2d.fillRect(x, y, w, h);
 
         if (isComplete[0]){
             g2d.fillRect(x, y, w, h);
@@ -137,14 +137,13 @@ public class DoDissection extends Task{
                 return false;
             }
         }
+
         return true;
     }
     public boolean isPlayerClose(int x, int y, Player p1, Player p2) {
         int centerX = (2*x + w)/2, centerY = (2*y + h)/2;
         double dist1 = Math.sqrt(Math.pow(centerX-p1.getCenterX(), 2) + Math.pow(centerY-p1.getY(), 2));
         double dist2 = Math.sqrt(Math.pow(centerX-p2.getCenterX(), 2) + Math.pow(centerY-p2.getY(), 2));
-
-        System.out.println("distance: " + dist1);
 
         if ((dist1 <= RADIUS)|| (dist2 <= RADIUS)) {
             return true;

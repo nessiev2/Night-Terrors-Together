@@ -40,7 +40,7 @@ public class RBiology {
         initializeBio();
     }
 
-    public void paint(Graphics g, Player p1, Player p2, Transition transition1) {
+    public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
         //super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -57,7 +57,7 @@ public class RBiology {
 
         w1.paint(g2d); // wall
 
-        dissection4.paint(g2d, p1, p2);
+        dissection4.paint(g2d, p1, p2, menu);
 
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d); // chalkboard

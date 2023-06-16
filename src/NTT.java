@@ -7,7 +7,7 @@ import java.util.Random;
 /*
 BUGS
 * player movement gets restricted when holding down interact key??
-* always spawn teacher in the frame HELLO
+* always spawn teacher in the frame
 * revamp eng/chem so they dont look so ugly
     * make sure eng/chem trash cans doesnt spwn in teacher desk and eng sprint doesnt spawn in desk
 * make sure u can only do task if in room
@@ -15,7 +15,7 @@ BUGS
 
 TO-DO/TO-FIX LIST
 * make sure teacher does not spawn away after you leave a room so you cant bypass the teacher
-* code randomly resets - after u
+* code randomly resets
 
 * tasks
 * make set on fire limited time in chem task
@@ -40,7 +40,7 @@ public class NTT extends JPanel {
     int tobX = 1300, botY = 840, topY = 70, rightX = SCREEN_WIDTH-150, leftX = 0, sideY = SCREEN_HEIGHT/2-100;
     boolean flag = false;
     CountDown cd = new CountDown();
-    Transition transition1 = new Transition(); 
+    Transition transition1 = new Transition();
 
     //DOORS
     ADoor bioToOffice = new ADoor(tobX, topY, "Office");
@@ -306,7 +306,7 @@ public class NTT extends JPanel {
                         break;
 
                     case 4:
-                        bio.paint(g, p1, p2, transition1);
+                        bio.paint(g, p1, p2, transition1, sideMenu);
                         bioToPhys.paint(g2d);
                         bioToOffice.paint(g2d);
                         bioToMath.paint(g2d);
