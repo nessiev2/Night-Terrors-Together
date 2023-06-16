@@ -8,7 +8,7 @@ public class RChemistry {
     AWall w1 = new AWall(0, 0);
     ADesk[] desks = {new ADesk(400, 500), new ADesk(800, 500), new ADesk(400, 800), new ADesk(800, 800)};
     DoBadReaction badReaction6;
-    public void initializeChem(){
+    public void initializeChem(boolean b, boolean b1){
         Random r = new Random();
 
         trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
@@ -16,12 +16,12 @@ public class RChemistry {
         trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
 
         arson6 = new DoArson(true);
-        cb = new AChalkBoard(300, 10, "CHEMISTRY", true);
+        cb = new AChalkBoard(300, 10, "CHEMISTRY", b);
         badReaction6 = new DoBadReaction(true);
     }
 
     public RChemistry() {
-        initializeChem();
+        initializeChem(false, false);
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
@@ -46,7 +46,7 @@ public class RChemistry {
         w1.paint(g2d); // wall
 
         cb.isPlayerClose(p1, p2);
-        cb.paint(g2d); // chalkboard
+        cb.paint(g2d, menu); // chalkboard
 
     }
 

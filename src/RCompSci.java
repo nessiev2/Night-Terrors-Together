@@ -9,7 +9,7 @@ public class RCompSci {
     AWall w1 = new AWall(0, 0);
     ADesk[] desks = {new ADesk(400, 500, 200, 100), new ADesk(700, 500, 200, 100), new ADesk(1000, 500, 200, 100), new ADesk(1300, 500, 200, 100), new ADesk(400, 500, 100, 300), new ADesk(1400, 500, 100, 300), new ADesk(750, 800, 400, 200)};
     ADesk[] decorComputers = {new ADesk(410, 650, 50, 80, true), new ADesk(500, 510, 80, 50, true), new ADesk(760, 510, 80, 50, true), new ADesk(1060, 510, 80, 50, true), new ADesk(1320, 510, 80, 50, true), new ADesk(1440, 650, 50, 80, true)};
-    public void initializeCompSci(){
+    public void initializeCompSci(boolean b, boolean b1){
         Random r = new Random();
         trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
@@ -17,11 +17,11 @@ public class RCompSci {
 
         arson8 = new DoArson(true);
         doHack8 = new DoHack(true);
-        cb = new AChalkBoard(300, 10, "COMPUTER SCIENCE :P", true);
+        cb = new AChalkBoard(300, 10, "COMPUTER SCIENCE :P", b);
     }
 
     public RCompSci() {
-        initializeCompSci();
+        initializeCompSci(false, false);
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
@@ -47,7 +47,7 @@ public class RCompSci {
         w1.paint(g2d); // wall
 
         cb.isPlayerClose(p1, p2);
-        cb.paint(g2d); // chalkboard
+        cb.paint(g2d, menu); // chalkboard
 
         doHack8.paint(g2d, p1, p2, menu);
     }

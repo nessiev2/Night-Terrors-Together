@@ -275,7 +275,7 @@ public class NTT extends JPanel {
             } else {
                 switch(currentClassroom) {
                     case 1:
-                        office.paint(g, p1, p2, transition1);
+                        office.paint(g, p1, p2, transition1, sideMenu);
                         officeToBio.paint(g2d);
                         officeToCaf.paint(g2d);
 
@@ -312,7 +312,7 @@ public class NTT extends JPanel {
                         break;
 
                     case 5:
-                        phys.paint(g, p1, p2, transition1);
+                        phys.paint(g, p1, p2, transition1, sideMenu);
                         physToChem.paint(g2d);
                         physToBio.paint(g2d);
                         physToCaf.paint(g2d);
@@ -441,15 +441,34 @@ public class NTT extends JPanel {
         c.p2.initializePlayer();
         c.currentClassroom = 5;
 
-        office.initializeOffice();
-        caf.initializeCaf();
-        gym.initializeGym();
-        bio.initializeBio();
-        phys.initializePhysics();
-        chem.initializeChem();
-        mathematics.initializeMath();
-        compSci.initializeCompSci();
-        eng.initializeEng();
+        // CHOOSING 1 CHALKBOARD
+        Random rand = new Random();
+        boolean[] b = {false, false, false, false, false, false, false, false, true};
+        for (int i = 0; i < b.length; i++) {
+            int randomIndexToSwap = rand.nextInt(b.length);
+            boolean temp = b[randomIndexToSwap];
+            b[randomIndexToSwap] = b[i];
+            b[i] = temp;
+        }
+
+        rand = new Random();
+        boolean[] d = {false, false, false, false, false, false, false, false, true};
+        for (int i = 0; i < d.length; i++) {
+            int randomIndexToSwap = rand.nextInt(d.length);
+            boolean temp = d[randomIndexToSwap];
+            d[randomIndexToSwap] = d[i];
+            d[i] = temp;
+        }
+
+        office.initializeOffice(b[0], d[0]);
+        caf.initializeCaf(b[1], d[1]);
+        gym.initializeGym(b[2], d[2]);
+        bio.initializeBio(b[3], d[3]);
+        phys.initializePhysics(b[4], d[4]);
+        chem.initializeChem(b[5], d[5]);
+        mathematics.initializeMath(b[6], d[6]);
+        compSci.initializeCompSci(b[7], d[7]);
+        eng.initializeEng(b[8], d[8]);
 
         sideMenu.initializeSideMenu();
 

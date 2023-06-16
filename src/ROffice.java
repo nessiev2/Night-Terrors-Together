@@ -9,16 +9,16 @@ public class ROffice {
     AWall w1 = new AWall(0, 0);
     APressurePlate pp = new APressurePlate(200, 300);
 
-    public void initializeOffice(){
+    public void initializeOffice(boolean b, boolean b1){
         Random r = new Random();
         // trashCans[0] = new ATrashCan(r.nextInt(400) + 270,r.nextInt(91) + 290); // top wall
         // trashCans[1] = new ATrashCan(r.nextInt(980) + 715,r.nextInt(91) + 290); // top wall
         trashCans[0] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
     }
     public ROffice(){
-        initializeOffice();
+        initializeOffice(false, false);
     }
-    public void paint(Graphics g, Player p1, Player p2, Transition transition1) {
+    public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
         //super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -36,7 +36,7 @@ public class ROffice {
         w1.paint(g2d); // wall
 
         cb.isPlayerClose(p1, p2);
-        cb.paint(g2d); // chalkboard
+        cb.paint(g2d, menu); // chalkboard
 
         pp.isPlayerClose(p1, p2);
         pp.paint(g2d);

@@ -9,7 +9,7 @@ public class RMath {
     ADesk[] desks = new ADesk[7];
     DoStealTests burnTests7;
 
-    public void initializeMath(){
+    public void initializeMath(boolean b, boolean b1){
         Random r = new Random();
 
         trashCans[0] = new ATrashCan(r.nextInt(501),r.nextInt(201) + 290); // top wall
@@ -17,7 +17,7 @@ public class RMath {
         trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(301) + 660); //right wall
 
         arson7 = new DoArson(true);
-        cb = new AChalkBoard(300, 10, "MATH", true);
+        cb = new AChalkBoard(300, 10, "MATH", b);
         burnTests7 = new DoStealTests(true);
     }
 
@@ -33,7 +33,7 @@ public class RMath {
         }
         desks[6] = new ADesk(600, 300, 400, 150);
 
-        initializeMath();
+        initializeMath(false, false);
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
@@ -57,7 +57,7 @@ public class RMath {
         w1.paint(g2d); // wall
 
         cb.isPlayerClose(p1, p2);
-        cb.paint(g2d); // chalkboard
+        cb.paint(g2d, menu); // chalkboard
         burnTests7.paint(g2d, p1, p2, menu);
     }
 

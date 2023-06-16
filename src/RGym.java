@@ -7,14 +7,15 @@ public class RGym {
     AChalkBoard cb;
     ADesk[] desks = {};
     AWall w1 = new AWall(0, 0);
-    public void initializeGym(){
+    public void initializeGym(boolean b, boolean b1){
         arson3 = new DoArson(true);
         mess3 = new DoMess(true);
-        cb = new AChalkBoard(500, 10, "GYM", true);
+        cb = new AChalkBoard(500, 10, "GYM", b);
     }
     public RGym(){
-        initializeGym();
+        initializeGym(false, false);
     }
+
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
         //super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
@@ -38,7 +39,7 @@ public class RGym {
         w1.paint(g2d); // wall
 
         cb.isPlayerClose(p1, p2);
-        cb.paint(g2d); // chalkboard
+        cb.paint(g2d, menu); // chalkboard
 
     }
 }

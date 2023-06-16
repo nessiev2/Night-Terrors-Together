@@ -5,9 +5,11 @@ public class ATrashCan extends Thing {
     private final static int height = 100;
     private final static int RADIUS = 50;
 
+    DoArson arson;
+
     private boolean isOnFire;
     private boolean playerIsClose;
-    public void initializeTrash(){
+    public void initializeTrash() {
         isOnFire = false;
         playerIsClose = false;
     }

@@ -37,7 +37,7 @@ public class AChalkBoard extends Thing {
         scribble = true;
     }
 
-    public void paint (Graphics2D g2d){
+    public void paint (Graphics2D g2d, SideMenu menu){
         int i = 10;
         //interactive "glow"
         if (playerIsClose && interactive) {
@@ -52,7 +52,8 @@ public class AChalkBoard extends Thing {
         g2d.setFont(new Font("TimesRoman", Font.BOLD, 50));
         g2d.drawString(classroom, getX()+200, getY()+100);
 
-        if (scribble && interactive){
+        if (scribble && interactive) {
+            menu.updateTaskCompletion(5);
             skribl.paint(g2d);
         }
     }

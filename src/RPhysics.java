@@ -8,7 +8,7 @@ public class RPhysics {
     AWall w1 = new AWall(0, 0);
     ADesk[] desks = new ADesk[6];
 
-    public void initializePhysics(){
+    public void initializePhysics(boolean b, boolean b1){
         Random r = new Random();
 
         trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
@@ -17,7 +17,7 @@ public class RPhysics {
 
         arson5 = new DoArson(true);
 
-        cb = new AChalkBoard(300, 10, "PHYSICS", true);
+        cb = new AChalkBoard(300, 10, "PHYSICS", b);
     }
 
     public RPhysics() {
@@ -31,10 +31,10 @@ public class RPhysics {
             }
         }
 
-        initializePhysics();
+        initializePhysics(false, false);
     }
 
-    public void paint(Graphics g, Player p1, Player p2, Transition transition1) {
+    public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
         //super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -53,7 +53,7 @@ public class RPhysics {
         w1.paint(g2d); // wall
 
         cb.isPlayerClose(p1, p2);
-        cb.paint(g2d); // chalkboard
+        cb.paint(g2d, menu); // chalkboard
 
     }
 

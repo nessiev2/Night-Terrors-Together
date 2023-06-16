@@ -9,15 +9,15 @@ public class REng {
     ADesk[] desks = new ADesk[6];
     DoSprint sprint;
 
-    public void initializeEng(){
+    public void initializeEng(boolean b, boolean b1){
         Random r = new Random();
 
         trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
         trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
 
-        arson9 = new DoArson(true);
-        cb = new AChalkBoard(300, 10, "ENGLISH", true);
+        arson9 = new DoArson(b1);
+        cb = new AChalkBoard(300, 10, "ENGLISH", b);
 
         sprint = new DoSprint(true);
     }
@@ -33,7 +33,7 @@ public class REng {
             }
         }
 
-        initializeEng();
+        initializeEng(false,false);
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
@@ -55,7 +55,7 @@ public class REng {
         w1.paint(g2d); // wall
 
         cb.isPlayerClose(p1, p2);
-        cb.paint(g2d); // chalkboard
+        cb.paint(g2d, menu); // chalkboard
 
         sprint.paint(g2d, p1, p2, menu);
     }

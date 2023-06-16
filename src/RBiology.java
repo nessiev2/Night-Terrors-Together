@@ -8,15 +8,15 @@ public class RBiology {
     AWall w1 = new AWall(0, 0);
     ADesk[] desks = new ADesk[6];
     DoDissection dissection4;
-    public void initializeBio(){
+    public void initializeBio(boolean b, boolean b1){
         Random r = new Random();
 
         trashCans[0] = new ATrashCan(r.nextInt(1001) + 400,r.nextInt(131) + 290); // top wall
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(150) + 270); // left wall
         trashCans[2] = new ATrashCan(r.nextInt(221) + 1450,r.nextInt(451) + 300); //right wall
 
-        arson4 = new DoArson(true);
-        cb = new AChalkBoard(300, 10, "BIOLOGY",true);
+        arson4 = new DoArson(false);
+        cb = new AChalkBoard(300, 10, "BIOLOGY",b);
         dissection4 = new DoDissection(true);
     }
     public RBiology() {
@@ -33,7 +33,7 @@ public class RBiology {
         desks[4] = new ADesk(100, 520, 150, 400);
         desks[5] = new ADesk(400, 520, 150, 400);
 
-        initializeBio();
+        initializeBio(false, false);
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
@@ -56,7 +56,7 @@ public class RBiology {
         dissection4.paint(g2d, p1, p2, menu);
 
         cb.isPlayerClose(p1, p2);
-        cb.paint(g2d); // chalkboard
+        cb.paint(g2d, menu); // chalkboard
 
 //        g2d.fillRect(400, 290, 1000, 130);   // top
 //        g2d.fillRect(0, 270, 270, 150);     // left
