@@ -15,7 +15,7 @@ public class RChemistry {
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
         trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
 
-        arson6 = new DoArson(true);
+        arson6 = new DoArson(true, trashCans);
         cb = new AChalkBoard(300, 10, "CHEMISTRY", b);
         badReaction6 = new DoBadReaction(true);
     }
@@ -37,7 +37,6 @@ public class RChemistry {
         }
 
         for (ATrashCan tc: trashCans){
-            tc.isPlayerClose(p1, p2);
             tc.paint(g2d);
         }
 

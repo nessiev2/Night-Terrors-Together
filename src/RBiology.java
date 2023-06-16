@@ -15,7 +15,7 @@ public class RBiology {
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(150) + 270); // left wall
         trashCans[2] = new ATrashCan(r.nextInt(221) + 1450,r.nextInt(451) + 300); //right wall
 
-        arson4 = new DoArson(false);
+        arson4 = new DoArson(false, trashCans);
         cb = new AChalkBoard(300, 10, "BIOLOGY",b);
         dissection4 = new DoDissection(true);
     }
@@ -47,7 +47,6 @@ public class RBiology {
         }
 
         for (ATrashCan tc: trashCans){
-            tc.isPlayerClose(p1, p2);
             tc.paint(g2d);
         }
 

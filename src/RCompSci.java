@@ -15,7 +15,7 @@ public class RCompSci {
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
         trashCans[2] = new ATrashCan(r.nextInt(200) + 1700,r.nextInt(221) + 660); //right wall
 
-        arson8 = new DoArson(true);
+        arson8 = new DoArson(true, trashCans);
         doHack8 = new DoHack(true);
         cb = new AChalkBoard(300, 10, "COMPUTER SCIENCE :P", b);
     }
@@ -40,7 +40,6 @@ public class RCompSci {
         }
 
         for (ATrashCan tc: trashCans){
-            tc.isPlayerClose(p1, p2);
             tc.paint(g2d);
         }
 

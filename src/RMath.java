@@ -16,7 +16,7 @@ public class RMath {
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
         trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(301) + 660); //right wall
 
-        arson7 = new DoArson(true);
+        arson7 = new DoArson(true, trashCans);
         cb = new AChalkBoard(300, 10, "MATH", b);
         burnTests7 = new DoStealTests(true);
     }
@@ -48,11 +48,10 @@ public class RMath {
         }
 
         for (ATrashCan tc: trashCans){
-            tc.isPlayerClose(p1, p2);
             tc.paint(g2d);
         }
 
-        arson7.doTask(trashCans, p1, p2, menu);
+        arson7.doTask(p1, p2, menu);
 
         w1.paint(g2d); // wall
 

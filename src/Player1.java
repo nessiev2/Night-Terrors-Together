@@ -79,10 +79,12 @@ public class Player1 extends Player {
                 changeIsSpillingWater(false);
             }
 
+            int c = 0;
             for (ATrashCan tc : trashCans) {
-                if (tc.isPlayerClose(this, this)) {
-                    tc.setOnFire();
+                if (arson1.isPlayerClose(this, this, c)) {
+                    arson1.changeInteracted(c);
                 }
+                c++;
             }
 
             if (cb.isPlayerClose(this, this)) {

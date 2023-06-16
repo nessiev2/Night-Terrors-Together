@@ -16,7 +16,7 @@ public class REng {
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
         trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
 
-        arson9 = new DoArson(b1);
+        arson9 = new DoArson(b1, trashCans);
         cb = new AChalkBoard(300, 10, "ENGLISH", b);
 
         sprint = new DoSprint(true);
@@ -48,7 +48,6 @@ public class REng {
         }
 
         for (ATrashCan tc: trashCans){
-            tc.isPlayerClose(p1, p2);
             tc.paint(g2d);
         }
 

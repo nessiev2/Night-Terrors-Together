@@ -8,7 +8,7 @@ public class RGym {
     ADesk[] desks = {};
     AWall w1 = new AWall(0, 0);
     public void initializeGym(boolean b, boolean b1){
-        arson3 = new DoArson(true);
+        arson3 = new DoArson(true, trashCans);
         mess3 = new DoMess(true);
         cb = new AChalkBoard(500, 10, "GYM", b);
     }
@@ -23,7 +23,6 @@ public class RGym {
         g2d.setColor(Color.BLACK);
 
         for (ATrashCan tc: trashCans){
-            tc.isPlayerClose(p1, p2);
             tc.paint(g2d);
         }
 
