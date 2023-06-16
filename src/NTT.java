@@ -453,8 +453,6 @@ public class NTT extends JPanel {
 
         sideMenu.initializeSideMenu();
 
-        // reset side menu
-
         CountDown.CDReset();
     }
 
