@@ -11,8 +11,7 @@ BUGS
 * only able to do tasks if part of side menu
 * make sure teacher does not spawn away after you leave a room so you cant bypass the teacher
 
-* tasks
-* make set on fire limited time in chem task
+* TO-DO
 * win condition for scribble
 
 GOLD PLATING
