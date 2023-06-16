@@ -55,16 +55,20 @@ public class Player1 extends Player {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             ticks = 0;
 
-            changeIsSpillingWater(false);
+            if (currentRoom == 3){
+                changeIsSpillingWater(false);
+            }
 
             for (ATrashCan tc : trashCans) {
                 if (tc.isPlayerClose(this, this)) {
                     tc.setOnFire();
                 }
             }
+
             if (cb.isPlayerClose(this, this)) {
                 cb.makeScribble();
             }
+
             if (p2.getIsCaught() && pp.isPlayerClose(this, this) && currentRoom == 1) {
                 System.out.println("PRESSURE PLATE PRESSED");
                 p2.changeIsCaught(false);
@@ -72,45 +76,52 @@ public class Player1 extends Player {
             }
 
             for (DoVendingMachine VM:vend) {
-                if (VM.isPlayerClose(this, this)) {
+                if (VM.isPlayerClose(this, this) && currentRoom == 2) {
                     VM.finishVending();
                 }
             }
 
-            if (badReaction.getCloseGreen()){
-                badReaction.changeGreen(true);
-                System.out.println("true");
-            }
-            if (badReaction.getClosePink()){
-                badReaction.changePink(true);
-            }
-            if (badReaction.getCloseCyan()){
-                badReaction.changeCyan(true);
-            }
-            if (badReaction.getCloseYellow()){
-                badReaction.changeYellow(true);
-            }
-            if (burnTests.getStack() >= 1){
-                burnTests.decrementStack(this, this);
+            if (currentRoom == 6){
+                if (badReaction.getCloseGreen()){
+                    badReaction.changeGreen(true);
+                    System.out.println("true");
+                }
+                if (badReaction.getClosePink()){
+                    badReaction.changePink(true);
+                }
+                if (badReaction.getCloseCyan()){
+                    badReaction.changeCyan(true);
+                }
+                if (badReaction.getCloseYellow()){
+                    badReaction.changeYellow(true);
+                }
             }
 
-            if (dissect.getIsClose(0, this)){
-                dissect.changeIsClose(0);
+            if (currentRoom == 7){
+                if (burnTests.getStack() >= 1){
+                    burnTests.decrementStack(this, this);
+                }
             }
-            if (dissect.getIsClose(1, this)){
-                dissect.changeIsClose(1);
-            }
-            if (dissect.getIsClose(2, this)){
-                dissect.changeIsClose(2);
-            }
-            if (dissect.getIsClose(3, this)){
-                dissect.changeIsClose(3);
-            }
-            if (dissect.getIsClose(4, this)){
-                dissect.changeIsClose(4);
-            }
-            if (dissect.getIsClose(5, this)){
-                dissect.changeIsClose(5);
+
+            if (currentRoom == 4){
+                if (dissect.getIsClose(0, this)){
+                    dissect.changeIsClose(0);
+                }
+                if (dissect.getIsClose(1, this)){
+                    dissect.changeIsClose(1);
+                }
+                if (dissect.getIsClose(2, this)){
+                    dissect.changeIsClose(2);
+                }
+                if (dissect.getIsClose(3, this)){
+                    dissect.changeIsClose(3);
+                }
+                if (dissect.getIsClose(4, this)){
+                    dissect.changeIsClose(4);
+                }
+                if (dissect.getIsClose(5, this)){
+                    dissect.changeIsClose(5);
+                }
             }
         }
     }

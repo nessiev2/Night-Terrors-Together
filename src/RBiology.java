@@ -11,12 +11,8 @@ public class RBiology {
     public void initializeBio(){
         Random r = new Random();
 
-//        g2d.fillRect(400, 290, 1000, 130);   // top
-//        g2d.fillRect(0, 260, 270, 220);     // left
-//        g2d.fillRect(1450, 300, 220, 450);  // right
-
         trashCans[0] = new ATrashCan(r.nextInt(1001) + 400,r.nextInt(131) + 290); // top wall
-        trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 260); // left wall
+        trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(150) + 270); // left wall
         trashCans[2] = new ATrashCan(r.nextInt(221) + 1450,r.nextInt(451) + 300); //right wall
 
         arson4 = new DoArson(true);
@@ -63,7 +59,7 @@ public class RBiology {
         cb.paint(g2d); // chalkboard
 
 //        g2d.fillRect(400, 290, 1000, 130);   // top
-//        g2d.fillRect(0, 260, 270, 220);     // left
+//        g2d.fillRect(0, 270, 270, 150);     // left
 //        g2d.fillRect(1450, 300, 220, 450);  // right
     }
 }
