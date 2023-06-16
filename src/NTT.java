@@ -8,17 +8,12 @@ import java.util.Random;
 BUGS
 * revamp eng/chem so they dont look so ugly
     * make sure eng/chem trash cans doesnt spwn in teacher desk and eng sprint doesnt spawn in desk
-* reset bug?????????? - when u win it doesn't show win screen
 * only able to do tasks if part of side menu
-
-TO-DO/TO-FIX LIST
 * make sure teacher does not spawn away after you leave a room so you cant bypass the teacher
-* code randomly resets
 
 * tasks
 * make set on fire limited time in chem task
-    * finish coding bio task
-* win condition for every task
+* win condition for scribble
 
 GOLD PLATING
 * always spawn teacher in the frame
@@ -106,7 +101,10 @@ public class NTT extends JPanel {
                     CountDown.CDReset();
                 } else if (gameOver && e.getKeyCode() == KeyEvent.VK_R) {
                     flag = true;
-
+                    gameOver = false;
+                    mainMenu.changeMenu(true);
+                } else if (win && e.getKeyCode() == KeyEvent.VK_R) {
+                    flag = true;
                     gameOver = false;
                     mainMenu.changeMenu(true);
                 }
@@ -472,10 +470,11 @@ public class NTT extends JPanel {
 
         while (true){
             c.reset(c);
-            while (!c.flag && !c.win) {
+            while (!c.flag) {
                 c.move(c); //Updates the coordinates
                 c.repaint(); //Calls the paint method
                 Thread.sleep(10); //Pauses for a moment
+                System.out.println(c.win);
             }
         }
     }

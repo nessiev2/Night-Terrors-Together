@@ -38,7 +38,7 @@ public class Player2 extends Player {
                 }
             }
 
-
+            // LET ME COMMIT :)
         }
     }
 
@@ -96,8 +96,26 @@ public class Player2 extends Player {
             if (badReaction.getCloseYellow()){
                 badReaction.changeYellow(true);
             }
-            if (burnTests7.getStack() >= 1){
+            if (burnTests7.getStack() >= 1){  // LET ME COMMIT
                 burnTests7.decrementStack(this, this);
+            }
+            if (dissection4.getIsClose(0, this)){
+                dissection4.changeIsClose(0);
+            }
+            if (dissection4.getIsClose(1, this)){
+                dissection4.changeIsClose(1);
+            }
+            if (dissection4.getIsClose(2, this)){
+                dissection4.changeIsClose(2);
+            }
+            if (dissection4.getIsClose(3, this)){
+                dissection4.changeIsClose(3);
+            }
+            if (dissection4.getIsClose(4, this)){
+                dissection4.changeIsClose(4);
+            }
+            if (dissection4.getIsClose(5, this)){
+                dissection4.changeIsClose(5);
             }
         }
     }

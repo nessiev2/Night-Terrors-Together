@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class DoBadReaction extends Task{
-    private int x = 500, y = 515, xSpacing = 350, ySpacing = 300, w = 30, h = 50;
+    private int x = 500, y = 515, xSpacing = 350, ySpacing = 300, w = 30, h = 50, ticks = 0;
     private int doneX1, doneY1, doneX2, doneY2;
     private int stainX1, stainY1, stainX2, stainY2;
     private static final int RADIUS = 170;
@@ -105,9 +105,12 @@ public class DoBadReaction extends Task{
         g2d.drawOval(x, y + ySpacing, w, h);
 
         if (getFinished()){
-            g2d.setColor(new Color(255, 0, 0));
-            g2d.fillRect(doneX1, doneY1, 100, 100);
-            g2d.fillRect(doneX2, doneY2, 100, 100);
+            ticks++;
+            if (ticks <= 120){
+                g2d.setColor(new Color(255, 0, 0));
+                g2d.fillRect(doneX1, doneY1, 100, 100);
+                g2d.fillRect(doneX2, doneY2, 100, 100);
+            }
 
             g2d.setColor(new Color(0, 0, 0, 195));
             g2d.fillRect(stainX1, stainY1, 100, 100);
