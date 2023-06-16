@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class AWall extends Thing{
-    private final static int WALL_WIDTH = Main.SCREEN_WIDTH, WALL_HEIGHT = Main.SCREEN_HEIGHT/4;
+    private final static int WALL_WIDTH = NTT.SCREEN_WIDTH, WALL_HEIGHT = NTT.SCREEN_HEIGHT/4;
     public AWall(int x, int y){
         super(x, y, WALL_WIDTH, WALL_HEIGHT);
     }

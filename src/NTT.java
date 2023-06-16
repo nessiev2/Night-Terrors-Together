@@ -31,7 +31,7 @@ GOLD PLATING
     * load rest of graphics
 */
 
-public class Main extends JPanel {
+public class NTT extends JPanel {
     //ATTRIBUTES
     Minimap minimap = new Minimap();
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
@@ -93,7 +93,7 @@ public class Main extends JPanel {
     public void changeCurrentClassroom(int i) {
         currentClassroom = i;
     }
-    public Main() {
+    public NTT() {
         p1.spawnPlayer(SCREEN_WIDTH/2-p1.getWidth(), 660);
         p2.spawnPlayer(SCREEN_WIDTH/2-2*p1.getWidth(), 660);
         addKeyListener(new KeyListener() {
@@ -171,7 +171,7 @@ public class Main extends JPanel {
         setFocusable(true);
     }
 
-    private void move(Main c) {
+    private void move(NTT c) {
         if (eng.sprint.getFlag1()){
             eng.sprint.sprintTicks(p1);
         }
@@ -435,7 +435,7 @@ public class Main extends JPanel {
         }
     }
 
-    public void reset(Main c){
+    public void reset(NTT c){
         c.flag = false;
         c.gameOver = false;
         c.win = false;
@@ -465,7 +465,7 @@ public class Main extends JPanel {
     public static void main(String[] args) throws InterruptedException {
         JFrame frame = new JFrame("NIGHT TERRORS TOGETHER!");
 
-        Main c = new Main();
+        NTT c = new NTT();
         frame.add(c);
         frame.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         frame.setVisible(true);

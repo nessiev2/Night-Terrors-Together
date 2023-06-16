@@ -60,9 +60,9 @@ public abstract class Player {
         isCaught = false;
         isSpillingWater = false;
         if (playerN == 1){
-            spawnPlayer(Main.SCREEN_WIDTH/2-width, 660);
+            spawnPlayer(NTT.SCREEN_WIDTH/2-width, 660);
         } else {
-            spawnPlayer(Main.SCREEN_WIDTH/2-2*width, 660);
+            spawnPlayer(NTT.SCREEN_WIDTH/2-2*width, 660);
         }
     }
 
@@ -131,13 +131,13 @@ public abstract class Player {
             standing = false;
         }
         if (!isCaught) {
-            if (right && checkRight(t) && (x + width + speed < Main.SCREEN_WIDTH)) {
+            if (right && checkRight(t) && (x + width + speed < NTT.SCREEN_WIDTH)) {
                 x += speed;
             }
             if (left && checkLeft(t) && (x - speed > 0)) {
                 x -= speed;
             }
-            if (down && checkDown(t) && y + height + speed < Main.SCREEN_HEIGHT) {
+            if (down && checkDown(t) && y + height + speed < NTT.SCREEN_HEIGHT) {
                 y += speed;
             }
             if (up && checkUp(t) && (y > 155)) {

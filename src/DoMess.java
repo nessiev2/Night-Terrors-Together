@@ -1,7 +1,7 @@
 import java.awt.*;
 public class DoMess extends Task {
     protected boolean isFin;
-    private boolean[][] waterStains = new boolean[(Main.SCREEN_WIDTH/2)/30][(810-270)/30];
+    private boolean[][] waterStains = new boolean[(NTT.SCREEN_WIDTH/2)/30][(810-270)/30];
     public DoMess(boolean isTask){
         super(isTask);
     }
@@ -12,7 +12,7 @@ public class DoMess extends Task {
         int k = 10;
         g2d.setColor(Color.black);
         if (!isFin){
-            g2d.drawRect(15+(1920/4), 270, Main.SCREEN_WIDTH/2, (810-270));
+            g2d.drawRect(15+(1920/4), 270, NTT.SCREEN_WIDTH/2, (810-270));
         }
         g2d.setFont(new Font("TimesRoman", Font.BOLD, 50));
         g2d.drawString("NO WATER IN THE GYM.", 15+(1920/4) + 200, 400);

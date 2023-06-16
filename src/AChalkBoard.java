@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class AChalkBoard extends Thing {
-    private static final int BOARD_WIDTH = Main.SCREEN_WIDTH/2, BOARD_HEIGHT = (Main.SCREEN_WIDTH/4) - 230;
+    private static final int BOARD_WIDTH = NTT.SCREEN_WIDTH/2, BOARD_HEIGHT = (NTT.SCREEN_WIDTH/4) - 230;
     private final int RADIUS = 50;
     private boolean scribble, playerIsClose, interactive;
     private String classroom;
