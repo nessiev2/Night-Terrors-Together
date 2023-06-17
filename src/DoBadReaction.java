@@ -69,23 +69,23 @@ public class DoBadReaction extends Task{
         }
     }
     public void paint(Graphics g2d, SideMenu menu) {
-        int i = 2*10;
+        int i = 15, j = 25;
 
         g2d.setColor(Color.yellow);
         if (closeGreen && !green){
-            g2d.drawImage(imghehe, x-i, y-i, null);
+            g2d.drawImage(imghehe, x-i, y-j, null);
 //            g2d.fillOval(x-i, y-i, w+2*i, h+2*i);
         }
         if (closePink && !pink){
-            g2d.drawImage(imghehe, x + xSpacing -i, y-i, null);
+            g2d.drawImage(imghehe, x + xSpacing -i, y-j, null);
 //            g2d.fillOval(x + xSpacing - i, y-i, w+2*i, h+2*i);
         }
         if (closeCyan && !cyan){
-            g2d.drawImage(imghehe, x + xSpacing - i, y + ySpacing - i, null);
+            g2d.drawImage(imghehe, x + xSpacing - i, y + ySpacing - j, null);
 //            g2d.fillOval(x  + xSpacing -i, y + ySpacing -i, w+2*i, h+2*i);
         }
         if (closeYellow && !yellow){
-            g2d.drawImage(imghehe, x-i, y + ySpacing - i, null);
+            g2d.drawImage(imghehe, x-i, y + ySpacing - j, null);
 //            g2d.fillOval(x-i, y + ySpacing-i, w+2*i, h+2*i);
         }
 
