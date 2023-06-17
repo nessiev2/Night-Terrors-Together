@@ -25,7 +25,7 @@ public class NTT extends JPanel {
     Minimap minimap = new Minimap();
     Tutorial tut = new Tutorial();
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
-    boolean gameOver = false, pauseGame = false, tutOpen = true;
+    boolean gameOver = false, pauseGame = false, tutOpen = false;
     int currentClassroom = 5, tCurrentClassroom = 1, clickClack = 0;
     int tobX = 1300, botY = 840, topY = 70, rightX = SCREEN_WIDTH-150, leftX = 0, sideY = SCREEN_HEIGHT/2-100;
     boolean flag = false;
@@ -92,27 +92,6 @@ public class NTT extends JPanel {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyReleased(KeyEvent e) {
-                //  TUTORIAL
-                if (!mainMenu.getIsMenuOpen() && !gameOver){
-                    System.out.println("slideNum: " + tut.getSlide());
-                    if (!tutOpen && e.getKeyCode() == KeyEvent.VK_T) {
-                        tut.changePlayTut(true);
-                        tutOpen = true;
-                        pauseGame = true;
-                    }
-
-                    if (tutOpen && e.getKeyCode() == KeyEvent.VK_ENTER){
-                        if (tut.getSlide() < 7){
-                            tut.nextSlide();
-                        } else {
-                            tutOpen = false;
-                            tut.changePlayTut(false);
-                            tut.initializeTut();
-                            pauseGame = false;
-                        }
-                    }
-                }
-
                 // STARTING GAME - MAIN MENU
                 if (mainMenu.getIsMenuOpen() && e.getKeyCode() == KeyEvent.VK_ENTER) {
                     mainMenu.changeMenu(false);
@@ -125,6 +104,29 @@ public class NTT extends JPanel {
                     flag = true;
                     gameOver = false;
                     mainMenu.changeMenu(true);
+                }
+
+                // TUTORIAL
+                if (!mainMenu.getIsMenuOpen() && !gameOver){
+                    System.out.println("slideNum: " + tut.getSlide());
+                    if (!tutOpen) {
+                        if (e.getKeyCode() == KeyEvent.VK_T){
+                            tut.changePlayTut(true);
+                            tutOpen = true;
+                            pauseGame = true;
+                        }
+                    } else {
+                        if (e.getKeyCode() == KeyEvent.VK_SPACE){
+                            if (tut.getSlide() < 7){
+                                tut.nextSlide();
+                            } else {
+                                tutOpen = false;
+                                tut.changePlayTut(false);
+                                tut.initializeTut();
+                                pauseGame = false;
+                            }
+                        }
+                    }
                 }
 
                 // PAUSE GAME
@@ -416,7 +418,7 @@ public class NTT extends JPanel {
                 minimap.paintYou(g2d, currentClassroom);
                 minimap.paintTeacher(g2d, tCurrentClassroom);
 
-                if (tut.getPlayTut()){
+                if (tutOpen){
                     tut.paint(g2d);
                 }
             }
