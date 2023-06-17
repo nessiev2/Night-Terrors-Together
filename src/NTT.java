@@ -448,19 +448,21 @@ public class NTT extends JPanel {
         }
 
         rand = new Random();
-        boolean[] d = {false, false, false, false, false, false, false, false, true};
-        for (int i = 0; i < d.length; i++) {
-            int randomIndexToSwap = rand.nextInt(d.length);
-            boolean temp = d[randomIndexToSwap];
-            d[randomIndexToSwap] = d[i];
-            d[i] = temp;
+        boolean[] d = {true, false, false, false, false, false, false, false, false};
+        while (d[0] || d[1] || d[2] || d[4]) { // if any of them are true
+            for (int i = 0; i < d.length; i++) {
+                int randomIndexToSwap = rand.nextInt(d.length);
+                boolean temp = d[randomIndexToSwap];
+                d[randomIndexToSwap] = d[i];
+                d[i] = temp;
+            }
         }
 
-        office.initializeOffice(b[0], d[0]);
-        caf.initializeCaf(b[1], d[1]);
-        gym.initializeGym(b[2], d[2]);
+        office.initializeOffice(b[0], d[0]); // no tc
+        caf.initializeCaf(b[1], d[1]); // no tc
+        gym.initializeGym(b[2], d[2]); // no tc
         bio.initializeBio(b[3], d[3]);
-        phys.initializePhysics(b[4], d[4]);
+        phys.initializePhysics(b[4], d[4]); // no tc
         chem.initializeChem(b[5], d[5]);
         mathematics.initializeMath(b[6], d[6]);
         compSci.initializeCompSci(b[7], d[7]);

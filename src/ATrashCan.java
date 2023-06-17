@@ -10,10 +10,10 @@ public class ATrashCan extends Thing {
         super(x, y, width, height);
     }
 
-    public void paint(Graphics g2d, Player p1, Player p2) {
+    public void paint(Graphics g2d, Player p1, Player p2, boolean isTask) {
         int i = 10;
         isPlayerClose(p1, p2);
-        if (isPlayerClose){
+        if (isPlayerClose && isTask){
             g2d.setColor(Color.yellow);
             g2d.fillOval(getX()-2*i, getY()-2*i, getWidth()+4*i, getHeight()+4*i);
         }

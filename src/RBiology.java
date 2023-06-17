@@ -9,16 +9,19 @@ public class RBiology {
     AWall w1 = new AWall(0, 0);
     ADesk[] desks = new ADesk[6];
     DoDissection dissection4;
+    boolean b1;
+
     public void initializeBio(boolean b, boolean b1){
         Random r = new Random();
+        this.b1 = b1;
 
         trashCans[0] = new ATrashCan(r.nextInt(1001) + 400,r.nextInt(131) + 290); // top wall
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(150) + 270); // left wall
         trashCans[2] = new ATrashCan(r.nextInt(221) + 1450,r.nextInt(451) + 300); //right wall
 
-        arsont1 = new DoArson(true, trashCans[0]);
-        arsont2 = new DoArson(true, trashCans[1]);
-        arsont3 = new DoArson(true, trashCans[2]);
+        arsont1 = new DoArson(b1, trashCans[0]);
+        arsont2 = new DoArson(b1, trashCans[1]);
+        arsont3 = new DoArson(b1, trashCans[2]);
 
         arson4[0] = arsont1;
         arson4[1] = arsont2;
@@ -55,7 +58,7 @@ public class RBiology {
         }
 
         for (ATrashCan tc: trashCans){
-            tc.paint(g2d, p1, p2);
+            tc.paint(g2d, p1, p2, b1);
         }
 
         for (DoArson arson: arson4){

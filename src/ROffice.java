@@ -9,9 +9,11 @@ public class ROffice {
     ADesk[] desks = {new ADesk(0, 500, 500, 250), new ADesk(500, 300, 150, 250+200)};
     AWall w1 = new AWall(0, 0);
     APressurePlate pp = new APressurePlate(200, 300);
+    boolean b1;
 
     public void initializeOffice(boolean b, boolean b1){
         Random r = new Random();
+        this.b1 = b1;
         // trashCans[0] = new ATrashCan(r.nextInt(400) + 270,r.nextInt(91) + 290); // top wall
         // trashCans[1] = new ATrashCan(r.nextInt(980) + 715,r.nextInt(91) + 290); // top wall
         trashCans[0] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
@@ -26,7 +28,7 @@ public class ROffice {
         g2d.setColor(Color.BLACK);
 
         for (ATrashCan tc: trashCans){
-            tc.paint(g2d, p1, p2);
+            tc.paint(g2d, p1, p2, b1);
         }
 
         for (ADesk d:desks) {
