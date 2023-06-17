@@ -14,7 +14,7 @@ public class RCompSci {
         Random r = new Random();
         trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
-        trashCans[2] = new ATrashCan(r.nextInt(200) + 1700,r.nextInt(221) + 660); //right wall
+        trashCans[2] = new ATrashCan(r.nextInt(100) + 1700,r.nextInt(221) + 660); //right wall
 
         arsont1 = new DoArson(true, trashCans[0]);
         arsont2 = new DoArson(true, trashCans[1]);

@@ -1,13 +1,26 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class DoBadReaction extends Task{
     private int x = 500, y = 515, xSpacing = 350, ySpacing = 300, w = 30, h = 50, ticks = 0;
     private int doneX1, doneY1, doneX2, doneY2;
     private int stainX1, stainY1, stainX2, stainY2;
     private static final int RADIUS = 170;
+    private BufferedImage img0, img1, img2, img3, img4, imghehe;
     private boolean green, pink, cyan, yellow, closeGreen, closePink, closeCyan, closeYellow, flag = false;
     public DoBadReaction(boolean isTask){
         super(isTask);
+        try {
+            img0 = ImageIO.read(new File("res\\flask.png"));
+            img1 = ImageIO.read(new File("res\\flaskgreen.png"));
+            img2 = ImageIO.read(new File("res\\flaskpink.png"));
+            img3 = ImageIO.read(new File("res\\flaskcyan.png"));
+            img4 = ImageIO.read(new File("res\\flaskyellow.png"));
+            imghehe = ImageIO.read(new File("res\\flaskinteract.png"));
+        } catch (IOException e) { System.out.println("stuff not loading :C"); }
     }
     public void changeGreen(boolean z){
         green = z;
@@ -56,53 +69,59 @@ public class DoBadReaction extends Task{
         }
     }
     public void paint(Graphics g2d, SideMenu menu) {
-        int i = 10;
+        int i = 2*10;
 
         g2d.setColor(Color.yellow);
         if (closeGreen && !green){
-            g2d.fillOval(x-i, y-i, w+2*i, h+2*i);
+            g2d.drawImage(imghehe, x-i, y-i, null);
+//            g2d.fillOval(x-i, y-i, w+2*i, h+2*i);
         }
         if (closePink && !pink){
-            g2d.fillOval(x + xSpacing - i, y-i, w+2*i, h+2*i);
+            g2d.drawImage(imghehe, x + xSpacing -i, y-i, null);
+//            g2d.fillOval(x + xSpacing - i, y-i, w+2*i, h+2*i);
         }
         if (closeCyan && !cyan){
-            g2d.fillOval(x  + xSpacing -i, y + ySpacing -i, w+2*i, h+2*i);
+            g2d.drawImage(imghehe, x + xSpacing - i, y + ySpacing - i, null);
+//            g2d.fillOval(x  + xSpacing -i, y + ySpacing -i, w+2*i, h+2*i);
         }
         if (closeYellow && !yellow){
-            g2d.fillOval(x-i, y + ySpacing-i, w+2*i, h+2*i);
+            g2d.drawImage(imghehe, x-i, y + ySpacing - i, null);
+//            g2d.fillOval(x-i, y + ySpacing-i, w+2*i, h+2*i);
         }
 
-        g2d.setColor(Color.white);
-        g2d.fillOval(x, y, w, h);
-        g2d.fillOval(x + xSpacing, y, w, h);
-        g2d.fillOval(x + xSpacing, y + ySpacing, w, h);
-        g2d.fillOval(x, y + ySpacing, w, h);
+        g2d.drawImage(img0, x, y, null);
+        g2d.drawImage(img0, x + xSpacing, y, null);
+        g2d.drawImage(img0, x + xSpacing, y + ySpacing, null);
+        g2d.drawImage(img0, x, y + ySpacing, null);
+
+//        g2d.fillOval(x, y, w, h);
+//        g2d.fillOval(x + xSpacing, y, w, h);
+//        g2d.fillOval(x + xSpacing, y + ySpacing, w, h);
+//        g2d.fillOval(x, y + ySpacing, w, h);
 
         if (!green){
-            g2d.setColor(new Color(5, 255, 0));
-            g2d.fillOval(x, y, w, h);
+            g2d.drawImage(img1, x, y, null);
+//          g2d.setColor(new Color(5, 255, 0));
+//          g2d.fillOval(x, y, w, h);
         }
 
         if (!pink){
-            g2d.setColor(new Color(255, 0, 204));
-            g2d.fillOval(x + xSpacing, y, w, h);
+            g2d.drawImage(img2, x + xSpacing, y, null);
+//            g2d.setColor(new Color(255, 0, 204));
+//            g2d.fillOval(x + xSpacing, y, w, h);
         }
 
         if (!cyan){
-            g2d.setColor(new Color(0, 255, 241));
-            g2d.fillOval(x + xSpacing, y + ySpacing, w, h);
+            g2d.drawImage(img3, x + xSpacing, y + ySpacing, null);
+//            g2d.setColor(new Color(0, 255, 241));
+//            g2d.fillOval(x + xSpacing, y + ySpacing, w, h);
         }
 
         if (!yellow){
-            g2d.setColor(new Color(255, 138, 0));
-            g2d.fillOval(x, y + ySpacing, w, h);
+            g2d.drawImage(img4, x, y + ySpacing, null);
+//            g2d.setColor(new Color(255, 138, 0));
+//            g2d.fillOval(x, y + ySpacing, w, h);
         }
-
-        g2d.setColor(Color.black);
-        g2d.drawOval(x, y, w, h);
-        g2d.drawOval(x + xSpacing, y, w, h);
-        g2d.drawOval(x + xSpacing, y + ySpacing, w, h);
-        g2d.drawOval(x, y + ySpacing, w, h);
 
         if (getFinished()){
             ticks++;
