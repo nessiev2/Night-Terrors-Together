@@ -33,7 +33,7 @@ public class APressurePlate extends Thing {
         double dist1 = Math.sqrt(Math.pow(centerX-p1.getCenterX(), 2) + Math.pow(centerY-p1.getCenterY(), 2));
         double dist2 = Math.sqrt(Math.pow(centerX-p2.getCenterX(), 2) + Math.pow(centerY-p2.getCenterY(), 2));
 
-        if (dist1 <= RADIUS || dist2 <= RADIUS) {
+        if ((dist1 <= RADIUS || dist2 <= RADIUS)) {// && (p1.getIsCaught() || p2.getIsCaught())) {
             playerIsClose = true;
             return true;
         } else {

@@ -48,7 +48,7 @@ public class DoBadReaction extends Task{
     }
 
     public void doTask(Player p1, Player p2){
-        if (isTask) {
+        //if (isTask) {
             closeGreen = isPlayerClose(x, y, p1, p2);
             closePink = isPlayerClose(x + xSpacing, y, p1, p2);
             closeCyan = isPlayerClose(x + xSpacing, y + ySpacing, p1, p2);
@@ -68,7 +68,10 @@ public class DoBadReaction extends Task{
                 stainX2 = p2.getX();
                 stainY2 = p2.getY();
             }
-        }
+        //
+        //
+        //
+        // }
     }
 
     public void paint(Graphics g2d, SideMenu menu) {
@@ -138,8 +141,16 @@ public class DoBadReaction extends Task{
             g2d.fillRect(stainX1, stainY1, 100, 100);
             g2d.fillRect(stainX2, stainY2, 100, 100);
 
+            g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
+            g2d.setColor(Color.red);
+            g2d.drawString("task complete!", 625, 700);
             taskFinished();
             menu.updateTaskCompletion(1);
+        } else {
+            g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
+            g2d.setColor(Color.red);
+            g2d.drawString("interact with all chemicals", 500, 700);
+            g2d.drawString("to create an explosion", 500, 700+25);
         }
     }
 
