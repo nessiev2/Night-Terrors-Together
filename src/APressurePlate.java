@@ -23,13 +23,8 @@ public class APressurePlate extends Thing {
     public void paint(Graphics g2d) {
         int i = 10;
         if (playerIsClose) {
-            g2d.drawImage(imginteract, getX()-i, getY()-i, null);
-//            g2d.setColor(Color.yellow);
-//            g2d.fillRect(getX()-2*i, getY()-2*i, width+4*i, height+4*i);
+            g2d.drawImage(imginteract, getX(), getY(), null);
         }
-
-//        g2d.setColor(Color.cyan);
-//        g2d.fillRect(getX(), getY(), width, height);
         g2d.drawImage(img, getX(), getY(), null);
     }
 
