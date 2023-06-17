@@ -23,9 +23,10 @@ GOLD PLATING
 public class NTT extends JPanel {
     //ATTRIBUTES
     Minimap minimap = new Minimap();
+    Tutorial tut = new Tutorial();
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
-    boolean gameOver = false, pauseGame = false;
-    int currentClassroom = 5, tCurrentClassroom = 1, clickClack = 0;
+    boolean gameOver = false, pauseGame = false, tutOpen = false;
+    int currentClassroom = 5, tCurrentClassroom = 1, clickClack = 0, playTut = 1;
     int tobX = 1300, botY = 840, topY = 70, rightX = SCREEN_WIDTH-150, leftX = 0, sideY = SCREEN_HEIGHT/2-100;
     boolean flag = false;
     CountDown cd = new CountDown();
@@ -158,6 +159,20 @@ public class NTT extends JPanel {
             public void keyPressed(KeyEvent e) {
                 p1.keyPressed(e, compSci.doHack8, currentClassroom, bio.dissection4);
                 p2.keyPressed(e, compSci.doHack8, currentClassroom, bio.dissection4);
+                System.out.println(tutOpen);
+                if (!tutOpen && e.getKeyCode() == KeyEvent.VK_T) {
+                    tut.changePlayTut(true);
+                    tutOpen = true;
+                    pauseGame = true;
+                } else if (tutOpen && tut.getSlide() < 7){
+                    System.out.println("next");
+                    tut.nextSlide();
+                } else if (tutOpen && tut.getSlide() >= 7){
+                    tutOpen = false;
+                    tut.changePlayTut(false);
+                    tut.initializeTut();
+                    pauseGame = false;
+                }
             }
         });
         setFocusable(true);
@@ -368,9 +383,6 @@ public class NTT extends JPanel {
                     p2.spawnPlayer(170, 150);
                 }
 
-          /*      if ((p1caught || p2caught) && currentClassroom == 1){
-                    office.paintBars(g2d);
-                }*/
                 if (p1caught && currentClassroom == 1) {
                     p1.paint(g2d, doMess3);
                     office.paintBars(g2d);
@@ -395,6 +407,10 @@ public class NTT extends JPanel {
                 minimap.paint(g2d);
                 minimap.paintYou(g2d, currentClassroom);
                 minimap.paintTeacher(g2d, tCurrentClassroom);
+
+                if (tut.getPlayTut()){
+                    tut.paint(g2d);
+                }
             }
         }
     }
