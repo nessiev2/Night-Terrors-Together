@@ -1,6 +1,10 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 public class DoArson extends Task {
+    private Image img = null;
     private final int RADIUS = 200;
     private boolean isOnFire;
     ATrashCan trash;
@@ -13,6 +17,9 @@ public class DoArson extends Task {
     public DoArson(boolean isTask, ATrashCan trash){
         super(isTask);
         this.trash = trash;
+        try {
+            img = ImageIO.read(new File("res\\arson.png"));
+        } catch (IOException e) { System.out.println("arson no image"); }
     }
 
     public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) {
@@ -23,7 +30,8 @@ public class DoArson extends Task {
             g2d.setColor(Color.red);
 
             if (isOnFire && isTask) {
-                g2d.fillRect(trash.getX()+2*i, trash.getY()+2*i, trash.getWidth()-4*i, trash.getHeight()-4*i);
+                //g2d.fillRect(trash.getX()+2*i, trash.getY()+2*i, trash.getWidth()-4*i, trash.getHeight()-4*i);
+                g2d.drawImage(img, trash.getX()+2*i, trash.getY()+2*i, trash.getWidth()-4*i, trash.getHeight()-4*i, null);
             }
         }
     }
