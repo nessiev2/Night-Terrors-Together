@@ -6,14 +6,9 @@ import java.util.Random;
 
 /*
 BUGS
-* revamp eng/chem so they dont look so ugly
-    * make sure eng/chem trash cans doesnt spwn in teacher desk and eng sprint doesnt spawn in desk
 * only able to do tasks if part of side menu
 * make sure teacher does not spawn away after you leave a room so you cant bypass the teacher
 * ENCAPSULATE CODE.
-
-* TO-DO
-* win condition for scribble
 
 GOLD PLATING
 * always spawn teacher in the frame
