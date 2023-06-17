@@ -13,7 +13,6 @@ BUGS
 
 GOLD PLATING
 * always spawn teacher in the frame
-* write name of classroom a door leads to on it
 * add music/sound
 * animations???
 * screen gets red and tinted the closer the teacher is
@@ -116,6 +115,21 @@ public class NTT extends JPanel {
                     pauseGame = false;
                 }
 
+                if (e.getKeyCode() == KeyEvent.VK_T){
+                    if (!tutOpen && e.getKeyCode() == KeyEvent.VK_T) {
+                        tut.changePlayTut(true);
+                        tutOpen = true;
+                        pauseGame = true;
+                    } else if (tutOpen && tut.getSlide() < 7){
+                        tut.nextSlide();
+                    } else if (tutOpen && tut.getSlide() >= 7){
+                        tutOpen = false;
+                        tut.changePlayTut(false);
+                        tut.initializeTut();
+                        pauseGame = false;
+                    }
+                }
+
 
                 // opening side menu
                 if (!mainMenu.getIsMenuOpen() && !sideMenu.getIsOpen() && e.getKeyCode() == KeyEvent.VK_M && !pauseGame) {
@@ -155,19 +169,6 @@ public class NTT extends JPanel {
                 } else if (currentClassroom == 9){
                     p1.keyReleased(p2, currentClassroom, e, eng.arson9, eng.trashCans, eng.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
                     p2.keyReleased(p1, currentClassroom, e, eng.arson9, eng.trashCans, eng.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                }
-
-                if (!tutOpen && e.getKeyCode() == KeyEvent.VK_T) {
-                    tut.changePlayTut(true);
-                    tutOpen = true;
-                    pauseGame = true;
-                } else if (tutOpen && tut.getSlide() < 7){
-                    tut.nextSlide();
-                } else if (tutOpen && tut.getSlide() >= 7){
-                    tutOpen = false;
-                    tut.changePlayTut(false);
-                    tut.initializeTut();
-                    pauseGame = false;
                 }
             }
             @Override
