@@ -57,24 +57,26 @@ public class DoDissection extends Task{
 
         // drawing "glow"
         g2d.setColor(Color.yellow);
-        if (isTask){
-            if (isPlayerClose(x, y, p1, p2) && !interacted[0]){
+
+        if (isTask) {
+            g2d.setColor(Color.yellow);
+            if (isPlayerClose(x, y, p1, p2) && !interacted[0]) {
                 g2d.fillRect(x - i, y - i, w + 2 * i, h + 2 * i);
             }
-            if (isPlayerClose(x, y + 100, p1, p2) && !interacted[1]){
+            if (isPlayerClose(x, y + 100, p1, p2) && !interacted[1]) {
                 g2d.fillRect(x - i, y + 100 - i, w + 2 * i, h + 2 * i);
             }
-            if (isPlayerClose(x, y + 2 * 100, p1, p2) && !interacted[2]){
+            if (isPlayerClose(x, y + 2 * 100, p1, p2) && !interacted[2]) {
                 g2d.fillRect(x - i, y + 2 * 100 - i, w + 2 * i, h + 2 * i);
             }
 
-            if (isPlayerClose(x - 270, y, p1, p2) && !interacted[3]){
+            if (isPlayerClose(x - 270, y, p1, p2) && !interacted[3]) {
                 g2d.fillRect(x - 270 - i, y - i, w + 2 * i, h + 2 * i);
             }
-            if (isPlayerClose(x - 270, y + 100, p1, p2) && !interacted[4]){
+            if (isPlayerClose(x - 270, y + 100, p1, p2) && !interacted[4]) {
                 g2d.fillRect(x - 270 - i, y + 100 - i, w + 2 * i, h + 2 * i);
             }
-            if (isPlayerClose(x - 270, y + 2 * 100, p1, p2) && !interacted[5]){
+            if (isPlayerClose(x - 270, y + 2 * 100, p1, p2) && !interacted[5]) {
                 g2d.fillRect(x - 270 - i, y + 2 * 100 - i, w + 2 * i, h + 2 * i);
             }
         }
@@ -133,7 +135,7 @@ public class DoDissection extends Task{
         }
     }
 
-    public boolean checkWin(){
+    public boolean checkWin() {
         for (boolean x: isComplete){
             if (!x){
                 return false;
@@ -142,6 +144,7 @@ public class DoDissection extends Task{
 
         return true;
     }
+
     public boolean isPlayerClose(int x, int y, Player p1, Player p2) {
         int centerX = (2*x + w)/2, centerY = (2*y + h)/2;
         double dist1 = Math.sqrt(Math.pow(centerX-p1.getCenterX(), 2) + Math.pow(centerY-p1.getY(), 2));

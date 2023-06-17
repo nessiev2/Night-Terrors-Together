@@ -11,7 +11,7 @@ public class REng {
     DoSprint sprint;
     boolean b1;
 
-    public void initializeEng(boolean b, boolean b1){
+    public void initializeEng(boolean b, boolean b1, boolean b2){
         Random r = new Random();
         this.b1 = b1;
 
@@ -29,7 +29,7 @@ public class REng {
 
         cb = new AChalkBoard(300, 10, "ENGLISH", b);
 
-        sprint = new DoSprint(true);
+        sprint = new DoSprint(b2);
     }
 
     public REng() {
@@ -43,7 +43,7 @@ public class REng {
             }
         }
 
-        initializeEng(false,false);
+        initializeEng(false,false, false);
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {

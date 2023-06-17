@@ -48,26 +48,29 @@ public class DoBadReaction extends Task{
     }
 
     public void doTask(Player p1, Player p2){
-        closeGreen = isPlayerClose(x, y, p1, p2);
-        closePink = isPlayerClose(x + xSpacing, y, p1, p2);
-        closeCyan = isPlayerClose(x + xSpacing, y + ySpacing, p1, p2);
-        closeYellow = isPlayerClose(x, y + ySpacing, p1, p2);
+        if (isTask) {
+            closeGreen = isPlayerClose(x, y, p1, p2);
+            closePink = isPlayerClose(x + xSpacing, y, p1, p2);
+            closeCyan = isPlayerClose(x + xSpacing, y + ySpacing, p1, p2);
+            closeYellow = isPlayerClose(x, y + ySpacing, p1, p2);
 
-        if (green && pink && cyan && yellow){
-            doneX1 = p1.getX();
-            doneY1 = p1.getY();
-            doneX2 = p2.getX();
-            doneY2 = p2.getY();
-            flag = true;
-            taskFinished();
-        }
-        if (!flag){
-            stainX1 = p1.getX();
-            stainY1 = p1.getY();
-            stainX2 = p2.getX();
-            stainY2 = p2.getY();
+            if (green && pink && cyan && yellow) {
+                doneX1 = p1.getX();
+                doneY1 = p1.getY();
+                doneX2 = p2.getX();
+                doneY2 = p2.getY();
+                flag = true;
+                taskFinished();
+            }
+            if (!flag) {
+                stainX1 = p1.getX();
+                stainY1 = p1.getY();
+                stainX2 = p2.getX();
+                stainY2 = p2.getY();
+            }
         }
     }
+
     public void paint(Graphics g2d, SideMenu menu) {
         int i = 15, j = 25;
 

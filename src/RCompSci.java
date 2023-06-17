@@ -12,7 +12,7 @@ public class RCompSci {
     ADesk[] decorComputers = {new ADesk(410, 650, 50, 80, true), new ADesk(500, 510, 80, 50, true), new ADesk(760, 510, 80, 50, true), new ADesk(1060, 510, 80, 50, true), new ADesk(1320, 510, 80, 50, true), new ADesk(1440, 650, 50, 80, true)};
     boolean b1;
 
-    public void initializeCompSci(boolean b, boolean b1){
+    public void initializeCompSci(boolean b, boolean b1, boolean b2){
         Random r = new Random();
         this.b1 = b1;
 
@@ -28,12 +28,12 @@ public class RCompSci {
         arson8[1] = arsont2;
         arson8[2] = arsont3;
 
-        doHack8 = new DoHack(true);
+        doHack8 = new DoHack(b2);
         cb = new AChalkBoard(300, 10, "COMPUTER SCIENCE :P", b);
     }
 
     public RCompSci() {
-        initializeCompSci(false, false);
+        initializeCompSci(false, false, false);
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {

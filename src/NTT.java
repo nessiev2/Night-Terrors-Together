@@ -453,36 +453,75 @@ public class NTT extends JPanel {
         c.p2.initializePlayer();
         c.currentClassroom = 5;
 
-        // CHOOSING 1 CHALKBOARD
-        Random rand = new Random();
-        boolean[] b = {false, false, false, false, false, false, false, false, true};
-        for (int i = 0; i < b.length; i++) {
-            int randomIndexToSwap = rand.nextInt(b.length);
-            boolean temp = b[randomIndexToSwap];
-            b[randomIndexToSwap] = b[i];
-            b[i] = temp;
+        // 4 TASKS
+        boolean[] bArray = sideMenu.which4Tasks();
+        for (int i = 0; i < 9; i++)  {
+            System.out.print(bArray[i] + " ");
         }
+        System.out.println("");
 
-        rand = new Random();
-        boolean[] d = {true, false, false, false, false, false, false, false, false};
-        while (d[0] || d[1] || d[2] || d[4]) { // if any of them are true
-            for (int i = 0; i < d.length; i++) {
-                int randomIndexToSwap = rand.nextInt(d.length);
-                boolean temp = d[randomIndexToSwap];
-                d[randomIndexToSwap] = d[i];
-                d[i] = temp;
+        // CHOOSING 1 CHALKBOARD
+        boolean[] b = {false, false, false, false, false, false, false, false, false};
+        if (bArray[5]) {
+            System.out.println("choosing chalkboard");
+            Random rand = new Random();
+            b[8] = true;
+            while (b[0] || b[4]) {
+                for (int i = 0; i < b.length; i++) {
+                    int randomIndexToSwap = rand.nextInt(b.length);
+                    boolean temp = b[randomIndexToSwap];
+                    b[randomIndexToSwap] = b[i];
+                    b[i] = temp;
+                }
             }
         }
 
-        office.initializeOffice(b[0], d[0]); // no tc
-        caf.initializeCaf(b[1], d[1]); // no tc
-        gym.initializeGym(b[2], d[2]); // no tc
-        bio.initializeBio(b[3], d[3]);
-        phys.initializePhysics(b[4], d[4]); // no tc
-        chem.initializeChem(b[5], d[5]);
-        mathematics.initializeMath(b[6], d[6]);
-        compSci.initializeCompSci(b[7], d[7]);
-        eng.initializeEng(b[8], d[8]);
+        // CHOOSING 1 TRASH CAN ROOM
+        boolean[] d = {false, false, false, false, false, false, false, false, false};
+        if (bArray[0]) {
+            System.out.println("choosing trash can");
+            Random rand = new Random();
+            d[0] = true;
+            while (d[0] || d[1] || d[2] || d[4]) { // if any of them are true
+                for (int i = 0; i < d.length; i++) {
+                    int randomIndexToSwap = rand.nextInt(d.length);
+                    boolean temp = d[randomIndexToSwap];
+                    d[randomIndexToSwap] = d[i];
+                    d[i] = temp;
+                }
+            }
+        }
+
+        for (int i = 0; i < 9; i++) {
+            if (b[i]) {
+                System.out.println(i + " is chalkboard");
+            }
+            if (d[i])
+                System.out.println(i + " is trash can");
+        }
+                /*
+        RANDOM - "SET FIRE TO TRASH CANS",      0
+        2 - "CHEMICALS",                        1 CHECK
+        0 - "DISSECTION",                       2 CHECK
+        3 - "HACK COMPUTER SCIENCE",            3 CHECK
+        5 - "SPILL WATER",                      4 CHECK
+        RANDOM - "CHALKBOARD SCRIBBLE",         5
+        4 - "SPRINT",                           6 CHECK
+        6 - "STEAL MATH TESTS" ,                7 CHECK
+        1 - "SMASH CAF VENDING MACHINES"};      8 CHECK
+         */
+
+        office.initializeOffice(b[0], d[0]);
+        caf.initializeCaf(b[1], d[1],           bArray[8]);
+        gym.initializeGym(b[2], d[2],           bArray[4]);
+        System.out.println("gym - " + bArray[4]);
+
+        bio.initializeBio(b[3], d[3],           bArray[2]);
+        phys.initializePhysics(b[4], d[4]);
+        chem.initializeChem(b[5], d[5],         bArray[1]);
+        mathematics.initializeMath(b[6], d[6],  bArray[7]);
+        compSci.initializeCompSci(b[7], d[7],   bArray[3]);
+        eng.initializeEng(b[8], d[8],           bArray[6]);
 
         sideMenu.initializeSideMenu();
 

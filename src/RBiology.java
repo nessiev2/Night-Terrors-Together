@@ -11,7 +11,7 @@ public class RBiology {
     DoDissection dissection4;
     boolean b1;
 
-    public void initializeBio(boolean b, boolean b1){
+    public void initializeBio(boolean b, boolean b1, boolean b2){
         Random r = new Random();
         this.b1 = b1;
 
@@ -28,7 +28,7 @@ public class RBiology {
         arson4[2] = arsont3;
 
         cb = new AChalkBoard(300, 10, "BIOLOGY",b);
-        dissection4 = new DoDissection(true);
+        dissection4 = new DoDissection(b2);
     }
     public RBiology() {
         int counter = 0;
@@ -44,7 +44,7 @@ public class RBiology {
         desks[4] = new ADesk(100, 520, 150, 400);
         desks[5] = new ADesk(400, 520, 150, 400);
 
-        initializeBio(false, false);
+        initializeBio(false, false, false);
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {

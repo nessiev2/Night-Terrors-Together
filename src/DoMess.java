@@ -50,30 +50,32 @@ public class DoMess extends Task {
 
 
     public void addWaterStain(Player p, Graphics g2d) {
-        int px = p.getCenterX();
-        int py = p.getCenterY();
-        int minX = 15+(1920/4);
-        int maxX = ((waterStains.length-1)*30)+15+(1920/4);
-        int minY = 270;
-        int maxY = ((waterStains[0].length-1)*30)+270;
+        if (isTask) {
+            int px = p.getCenterX();
+            int py = p.getCenterY();
+            int minX = 15 + (1920 / 4);
+            int maxX = ((waterStains.length - 1) * 30) + 15 + (1920 / 4);
+            int minY = 270;
+            int maxY = ((waterStains[0].length - 1) * 30) + 270;
 
-        if (px > minX && px < maxX){
-            if (py > minY && py < maxY + 30){
-                int i = ((px-1920/4)/30);
-                int j = (py-270)/30;
-                for (int a = 0; a < 3; a++){
-                    for (int b = 0; b < 3; b++){
-                        if ((i + a < waterStains.length) && (j + b < waterStains[0].length)){
-                            waterStains[i+a][j+b] = true;
-                        }
-                        if ((i - a > 0) && (j - b > 0)){
-                            waterStains[i-a][j-b] = true;
-                        }
-                        if ((i - a > 0) && (j + b < waterStains[0].length)){
-                            waterStains[i-a][j+b] = true;
-                        }
-                        if ((i + a < waterStains.length) && (j - b > 0)){
-                            waterStains[i+a][j-b] = true;
+            if (px > minX && px < maxX) {
+                if (py > minY && py < maxY + 30) {
+                    int i = ((px - 1920 / 4) / 30);
+                    int j = (py - 270) / 30;
+                    for (int a = 0; a < 3; a++) {
+                        for (int b = 0; b < 3; b++) {
+                            if ((i + a < waterStains.length) && (j + b < waterStains[0].length)) {
+                                waterStains[i + a][j + b] = true;
+                            }
+                            if ((i - a > 0) && (j - b > 0)) {
+                                waterStains[i - a][j - b] = true;
+                            }
+                            if ((i - a > 0) && (j + b < waterStains[0].length)) {
+                                waterStains[i - a][j + b] = true;
+                            }
+                            if ((i + a < waterStains.length) && (j - b > 0)) {
+                                waterStains[i + a][j - b] = true;
+                            }
                         }
                     }
                 }

@@ -4,15 +4,24 @@ import java.util.Random;
 public class SideMenu {
     NTT c;
     int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+    boolean[] bArray = new boolean[9];
     String[] sArray = {"SET FIRE TO TRASH CANS", "CHEMICALS", "DISSECTION", "HACK COMPUTER SCIENCE", "SPILL WATER", "CHALKBOARD SCRIBBLE", "SPRINT", "STEAL MATH TESTS" , "SMASH CAF VENDING MACHINES"};
-
     boolean[] finTasks;
+
     int x = 1835, y = 20, width = 50, height = 50, openX = NTT.SCREEN_WIDTH/2 - 400, openY = 20, openWidth = 800, openHeight = 800;
     boolean isOpen;
     boolean hasGenerated;
     public SideMenu(NTT c) {
         this.c = c;
         initializeSideMenu();
+    }
+
+    public boolean[] which4Tasks() {
+        for (int i = 0; i < 9; i++)  {
+            System.out.print(bArray[i] + " ");
+        }
+        System.out.println("");
+        return bArray;
     }
 
     public void initializeSideMenu(){
@@ -54,7 +63,12 @@ public class SideMenu {
         }
 
         for (int i = 0; i < 4; i++)  {
+            bArray[array[i]] = true;
             System.out.println(array[i]);
+        }
+
+        for (int i = 0; i < 9; i++)  {
+            System.out.print(bArray[i] + " ");
         }
     }
 
@@ -85,7 +99,7 @@ public class SideMenu {
                 g2d.drawString(sArray[array[i]], openX + 100, openY + 200 + i*100);
 
                 if (finTasks[array[i]]) {
-                    System.out.println("task " + i + " is fin, did draw X");
+                    //System.out.println("task " + i + " is fin, did draw X");
                     g2d.setColor(Color.red);
                     g2d.drawString("X", openX + 33, openY + 200 + i*100);
                 }
