@@ -2,7 +2,8 @@ import java.awt.*;
 import java.util.Random;
 
 public class RBiology {
-    DoArson arson4;
+    DoArson[] arson4 = new DoArson[3];
+    DoArson arsont1, arsont2, arsont3;
     ATrashCan[] trashCans = new ATrashCan[3];
     AChalkBoard cb;
     AWall w1 = new AWall(0, 0);
@@ -15,7 +16,14 @@ public class RBiology {
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(150) + 270); // left wall
         trashCans[2] = new ATrashCan(r.nextInt(221) + 1450,r.nextInt(451) + 300); //right wall
 
-        arson4 = new DoArson(false, trashCans);
+        arsont1 = new DoArson(true, trashCans[0]);
+        arsont2 = new DoArson(true, trashCans[1]);
+        arsont3 = new DoArson(true, trashCans[2]);
+
+        arson4[0] = arsont1;
+        arson4[1] = arsont2;
+        arson4[2] = arsont3;
+
         cb = new AChalkBoard(300, 10, "BIOLOGY",b);
         dissection4 = new DoDissection(true);
     }
@@ -47,7 +55,11 @@ public class RBiology {
         }
 
         for (ATrashCan tc: trashCans){
-            tc.paint(g2d);
+            tc.paint(g2d, p1, p2);
+        }
+
+        for (DoArson arson: arson4){
+            arson.paint(g2d, p1, p2, menu);
         }
 
         w1.paint(g2d); // wall

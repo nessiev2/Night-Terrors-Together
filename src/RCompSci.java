@@ -2,7 +2,8 @@ import java.awt.*;
 import java.util.Random;
 
 public class RCompSci {
-    DoArson arson8;
+    DoArson[] arson8 = new DoArson[3];
+    DoArson arsont1, arsont2, arsont3;
     DoHack doHack8;
     ATrashCan[] trashCans = new ATrashCan[3];
     AChalkBoard cb;
@@ -15,7 +16,14 @@ public class RCompSci {
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
         trashCans[2] = new ATrashCan(r.nextInt(200) + 1700,r.nextInt(221) + 660); //right wall
 
-        arson8 = new DoArson(true, trashCans);
+        arsont1 = new DoArson(true, trashCans[0]);
+        arsont2 = new DoArson(true, trashCans[1]);
+        arsont3 = new DoArson(true, trashCans[2]);
+
+        arson8[0] = arsont1;
+        arson8[1] = arsont2;
+        arson8[2] = arsont3;
+
         doHack8 = new DoHack(true);
         cb = new AChalkBoard(300, 10, "COMPUTER SCIENCE :P", b);
     }
@@ -40,7 +48,11 @@ public class RCompSci {
         }
 
         for (ATrashCan tc: trashCans){
-            tc.paint(g2d);
+            tc.paint(g2d, p1, p2);
+        }
+
+        for (DoArson arson: arson8){
+            arson.paint(g2d, p1, p2, menu);
         }
 
         w1.paint(g2d); // wall

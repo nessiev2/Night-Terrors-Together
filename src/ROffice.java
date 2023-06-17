@@ -2,8 +2,9 @@ import java.awt.*;
 import java.util.Random;
 
 public class ROffice {
+    DoArson[] arson1 = new DoArson[3];
     ATrashCan[] trashCans = new ATrashCan[1];
-    DoArson arson1 = new DoArson(false, trashCans);
+    //DoArson arson1 = new DoArson(false, trashCans);
     AChalkBoard cb = new AChalkBoard(900, 10, "OFFICE", false);
     ADesk[] desks = {new ADesk(0, 500, 500, 250), new ADesk(500, 300, 150, 250+200)};
     AWall w1 = new AWall(0, 0);
@@ -25,7 +26,7 @@ public class ROffice {
         g2d.setColor(Color.BLACK);
 
         for (ATrashCan tc: trashCans){
-            tc.paint(g2d);
+            tc.paint(g2d, p1, p2);
         }
 
         for (ADesk d:desks) {

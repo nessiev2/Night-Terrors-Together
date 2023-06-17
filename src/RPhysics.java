@@ -2,7 +2,8 @@ import java.awt.*;
 import java.util.Random;
 
 public class RPhysics {
-    DoArson arson5;
+    DoArson[] arson5 = new DoArson[3];
+    DoArson arsont1, arsont2, arsont3;
     ATrashCan[] trashCans = new ATrashCan[3];
     AChalkBoard cb;
     AWall w1 = new AWall(0, 0);
@@ -15,7 +16,13 @@ public class RPhysics {
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
         trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
 
-        arson5 = new DoArson(true, trashCans);
+        arsont1 = new DoArson(true, trashCans[0]);
+        arsont2 = new DoArson(true, trashCans[1]);
+        arsont3 = new DoArson(true, trashCans[2]);
+
+        arson5[0] = arsont1;
+        arson5[1] = arsont2;
+        arson5[2] = arsont3;
 
         cb = new AChalkBoard(300, 10, "PHYSICS", b);
     }
@@ -46,15 +53,16 @@ public class RPhysics {
         }
 
         for (ATrashCan tc: trashCans){
-            tc.paint(g2d);
+            tc.paint(g2d, p1, p2);
+        }
+
+        for (DoArson arson: arson5){
+            arson.paint(g2d, p1, p2, menu);
         }
 
         w1.paint(g2d); // wall
 
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d, menu); // chalkboard
-
     }
-
-
 }

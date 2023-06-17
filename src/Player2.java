@@ -60,7 +60,7 @@ public class Player2 extends Player {
         }
     }
 
-    public void keyReleased(Player p1, int currentRoom, KeyEvent e, DoArson arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess, DoHack hack, DoVendingMachine[] vend, DoBadReaction badReaction, DoStealTests burnTests7, DoDissection dissection4) {
+    public void keyReleased(Player p1, int currentRoom, KeyEvent e, DoArson[] arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess, DoHack hack, DoVendingMachine[] vend, DoBadReaction badReaction, DoStealTests burnTests7, DoDissection dissection4) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             left = false;
         }
@@ -80,18 +80,16 @@ public class Player2 extends Player {
                 changeIsSpillingWater(false);
             }
 
-            int c = 0;
-            for (ATrashCan tc : trashCans) {
-                if (arson1.isPlayerClose(this, this, c)) {
-                    arson1.changeInteracted(c);
+            for (DoArson arson : arson1) {
+                if (arson.isPlayerClose(this)) {
+                    arson.setOnFire();
                 }
-                c++;
             }
+
             if (cb.isPlayerClose(this, this)) {
                 cb.makeScribble();
             }
             if (p1.getIsCaught() && pp.isPlayerClose(this, this) && currentRoom == 1) {
-                System.out.println("PRESSURE PLATE PRESSED");
                 p1.changeIsCaught(false);
                 p1.spawnPlayer(getX(), getY());
             }

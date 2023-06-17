@@ -1,14 +1,14 @@
 import java.awt.*;
 
 public class RGym {
-    DoArson arson3;
+    DoArson[] arson3;
     DoMess mess3;
     ATrashCan[] trashCans = {};
     AChalkBoard cb;
     ADesk[] desks = {};
     AWall w1 = new AWall(0, 0);
     public void initializeGym(boolean b, boolean b1){
-        arson3 = new DoArson(true, trashCans);
+        //arson3 = new DoArson(true, trashCans[0]);
         mess3 = new DoMess(true);
         cb = new AChalkBoard(500, 10, "GYM", b);
     }
@@ -23,7 +23,7 @@ public class RGym {
         g2d.setColor(Color.BLACK);
 
         for (ATrashCan tc: trashCans){
-            tc.paint(g2d);
+            tc.paint(g2d, p1, p2);
         }
 
         mess3.paint(g2d, menu);
