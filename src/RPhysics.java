@@ -56,6 +56,8 @@ public class RPhysics {
             tc.paint(g2d, p1, p2);
         }
 
+        //.out.println(arson5[0].getOnFire());
+
         for (DoArson arson: arson5){
             arson.paint(g2d, p1, p2, menu);
         }

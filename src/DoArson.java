@@ -5,6 +5,9 @@ public class DoArson extends Task {
     private final int RADIUS = 200;
     private boolean isOnFire;
     ATrashCan trash;
+    public boolean getOnFire(){
+        return isOnFire;
+    }
     public void setOnFire(){
         isOnFire = true;
     }
@@ -31,10 +34,8 @@ public class DoArson extends Task {
         double dist1 = Math.sqrt(Math.pow(centerX-p.getCenterX(), 2) + Math.pow(centerY-p.getCenterY(), 2));
 
         if (dist1 <= RADIUS) {
-            isOnFire = true;
             return true;
         } else {
-            isOnFire = false;
             return false;
         }
     }
