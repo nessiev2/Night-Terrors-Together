@@ -11,7 +11,10 @@ public class RCaf {
     AChalkBoard cb;
     ADesk[] desks = {new ADesk(300, 300+25, 400, 150, true), new ADesk(800, 300+25, 400, 150, true), new ADesk(1300, 300+25, 400, 150, true), new ADesk(300, 600+25, 400, 150, true), new ADesk(1300, 600+25, 400, 150, true)};
     AWall w1 = new AWall(0, 0);
+    boolean b1;
+
     public void initializeCaf(boolean b, boolean b1){
+        this.b1 = b1;
         //arson2 = new DoArson(true, trashCans[0]);
         DoVendingMachine vendMachine1 = new DoVendingMachine(800, 600, true);
         DoVendingMachine vendMachine2 = new DoVendingMachine(1000, 600, true);
@@ -30,7 +33,7 @@ public class RCaf {
         g2d.setColor(Color.BLACK);
 
         for (ATrashCan tc: trashCans){
-            tc.paint(g2d, p1, p2);
+            tc.paint(g2d, p1, p2, b1);
         }
 
         g2d.setColor(new Color(160, 146, 146));

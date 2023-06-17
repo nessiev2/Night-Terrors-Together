@@ -9,16 +9,19 @@ public class RPhysics {
     AWall w1 = new AWall(0, 0);
     ADesk[] desks = new ADesk[6];
 
+    boolean b1;
+
     public void initializePhysics(boolean b, boolean b1){
         Random r = new Random();
+        this.b1 = b1;
 
         trashCans[0] = new ATrashCan(r.nextInt(1431) + 270,r.nextInt(91) + 290); // top wall
         trashCans[1] = new ATrashCan(r.nextInt(271),r.nextInt(221) + 660); // left wall
         trashCans[2] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
 
-        arsont1 = new DoArson(true, trashCans[0]);
-        arsont2 = new DoArson(true, trashCans[1]);
-        arsont3 = new DoArson(true, trashCans[2]);
+        arsont1 = new DoArson(b1, trashCans[0]);
+        arsont2 = new DoArson(b1, trashCans[1]);
+        arsont3 = new DoArson(b1, trashCans[2]);
 
         arson5[0] = arsont1;
         arson5[1] = arsont2;
@@ -53,7 +56,7 @@ public class RPhysics {
         }
 
         for (ATrashCan tc: trashCans){
-            tc.paint(g2d, p1, p2);
+            tc.paint(g2d, p1, p2, b1);
         }
 
         //.out.println(arson5[0].getOnFire());
