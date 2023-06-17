@@ -31,7 +31,7 @@ public class DoArson extends Task {
 
             if (isOnFire && isTask) {
                 //g2d.fillRect(trash.getX()+2*i, trash.getY()+2*i, trash.getWidth()-4*i, trash.getHeight()-4*i);
-                g2d.drawImage(img, trash.getX()+3*i/2, trash.getY()+i, trash.getWidth()-2*i, trash.getHeight()-2*i, null);
+                g2d.drawImage(img, trash.getX()+2*i, trash.getY()+i, trash.getWidth()-2*i, trash.getHeight()-2*i, null);
             }
         }
     }

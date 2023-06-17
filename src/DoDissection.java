@@ -57,24 +57,26 @@ public class DoDissection extends Task{
 
         // drawing "glow"
         g2d.setColor(Color.yellow);
-        if (isPlayerClose(x, y, p1, p2) && !interacted[0]){
-            g2d.fillRect(x - i, y - i, w + 2 * i, h + 2 * i);
-        }
-        if (isPlayerClose(x, y + 100, p1, p2) && !interacted[1]){
-            g2d.fillRect(x - i, y + 100 - i, w + 2 * i, h + 2 * i);
-        }
-        if (isPlayerClose(x, y + 2 * 100, p1, p2) && !interacted[2]){
-            g2d.fillRect(x - i, y + 2 * 100 - i, w + 2 * i, h + 2 * i);
-        }
+        if (isTask){
+            if (isPlayerClose(x, y, p1, p2) && !interacted[0]){
+                g2d.fillRect(x - i, y - i, w + 2 * i, h + 2 * i);
+            }
+            if (isPlayerClose(x, y + 100, p1, p2) && !interacted[1]){
+                g2d.fillRect(x - i, y + 100 - i, w + 2 * i, h + 2 * i);
+            }
+            if (isPlayerClose(x, y + 2 * 100, p1, p2) && !interacted[2]){
+                g2d.fillRect(x - i, y + 2 * 100 - i, w + 2 * i, h + 2 * i);
+            }
 
-        if (isPlayerClose(x - 270, y, p1, p2) && !interacted[3]){
-            g2d.fillRect(x - 270 - i, y - i, w + 2 * i, h + 2 * i);
-        }
-        if (isPlayerClose(x - 270, y + 100, p1, p2) && !interacted[4]){
-            g2d.fillRect(x - 270 - i, y + 100 - i, w + 2 * i, h + 2 * i);
-        }
-        if (isPlayerClose(x - 270, y + 2 * 100, p1, p2) && !interacted[5]){
-            g2d.fillRect(x - 270 - i, y + 2 * 100 - i, w + 2 * i, h + 2 * i);
+            if (isPlayerClose(x - 270, y, p1, p2) && !interacted[3]){
+                g2d.fillRect(x - 270 - i, y - i, w + 2 * i, h + 2 * i);
+            }
+            if (isPlayerClose(x - 270, y + 100, p1, p2) && !interacted[4]){
+                g2d.fillRect(x - 270 - i, y + 100 - i, w + 2 * i, h + 2 * i);
+            }
+            if (isPlayerClose(x - 270, y + 2 * 100, p1, p2) && !interacted[5]){
+                g2d.fillRect(x - 270 - i, y + 2 * 100 - i, w + 2 * i, h + 2 * i);
+            }
         }
 
         g2d.setColor(Color.green);

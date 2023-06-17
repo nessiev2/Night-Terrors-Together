@@ -1,6 +1,11 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class ATrashCan extends Thing {
+    private BufferedImage img, imginteract;
     private final static int width = 100;
     private final static int height = 100;
     private boolean isPlayerClose = false;
@@ -8,20 +13,26 @@ public class ATrashCan extends Thing {
 
     public ATrashCan(int x, int y) {
         super(x, y, width, height);
+        try {
+            img = ImageIO.read(new File("res\\trash.png"));
+            imginteract = ImageIO.read(new File("res\\trashinteract.png"));
+        } catch (IOException e) { System.out.println("trash  no image"); }
     }
 
     public void paint(Graphics g2d, Player p1, Player p2, boolean isTask) {
-        int i = 10;
         isPlayerClose(p1, p2);
+        int i = 10;
         if (isPlayerClose && isTask){
-            g2d.setColor(Color.yellow);
-            g2d.fillOval(getX()-2*i, getY()-2*i, getWidth()+4*i, getHeight()+4*i);
+            g2d.drawImage(imginteract, getX(), getY(), null);
+//            g2d.setColor(Color.yellow);
+//            g2d.fillOval(getX()-2*i, getY()-2*i, getWidth()+4*i, getHeight()+4*i);
         }
 
-        g2d.setColor(Color.black);
-        g2d.fillOval(getX(), getY(), width, height);
-        g2d.setColor(Color.darkGray);
-        g2d.fillOval(getX()+i, getY()+i, width-2*i, height-2*i);
+        g2d.drawImage(img, getX(), getY(), null);
+//        g2d.setColor(Color.black);
+//        g2d.fillOval(getX(), getY(), width, height);
+//        g2d.setColor(Color.darkGray);
+//        g2d.fillOval(getX()+i, getY()+i, width-2*i, height-2*i);
     }
 
     public void isPlayerClose(Player p1, Player p2) {
