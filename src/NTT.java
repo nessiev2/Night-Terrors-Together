@@ -9,6 +9,7 @@ BUGS
 * only able to do tasks if part of side menu
 * make sure teacher does not spawn away after you leave a room so you cant bypass the teacher
 * ENCAPSULATE CODE.
+* pause game when tut is open
 
 GOLD PLATING
 * always spawn teacher in the frame
@@ -25,8 +26,8 @@ public class NTT extends JPanel {
     Minimap minimap = new Minimap();
     Tutorial tut = new Tutorial();
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
-    boolean gameOver = false, pauseGame = false, tutOpen = false;
-    int currentClassroom = 5, tCurrentClassroom = 1, clickClack = 0, playTut = 1;
+    boolean gameOver = false, pauseGame = false, tutOpen = true;
+    int currentClassroom = 5, tCurrentClassroom = 1, clickClack = 0;
     int tobX = 1300, botY = 840, topY = 70, rightX = SCREEN_WIDTH-150, leftX = 0, sideY = SCREEN_HEIGHT/2-100;
     boolean flag = false;
     CountDown cd = new CountDown();
@@ -84,6 +85,7 @@ public class NTT extends JPanel {
         currentClassroom = i;
     }
     public NTT() {
+        tut.changePlayTut(true);
         p1.spawnPlayer(SCREEN_WIDTH/2-p1.getWidth(), 660);
         p2.spawnPlayer(SCREEN_WIDTH/2-2*p1.getWidth(), 660);
         addKeyListener(new KeyListener() {
@@ -154,18 +156,12 @@ public class NTT extends JPanel {
                     p1.keyReleased(p2, currentClassroom, e, eng.arson9, eng.trashCans, eng.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
                     p2.keyReleased(p1, currentClassroom, e, eng.arson9, eng.trashCans, eng.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
                 }
-            }
-            @Override
-            public void keyPressed(KeyEvent e) {
-                p1.keyPressed(e, compSci.doHack8, currentClassroom, bio.dissection4);
-                p2.keyPressed(e, compSci.doHack8, currentClassroom, bio.dissection4);
-                System.out.println(tutOpen);
+
                 if (!tutOpen && e.getKeyCode() == KeyEvent.VK_T) {
                     tut.changePlayTut(true);
                     tutOpen = true;
                     pauseGame = true;
                 } else if (tutOpen && tut.getSlide() < 7){
-                    System.out.println("next");
                     tut.nextSlide();
                 } else if (tutOpen && tut.getSlide() >= 7){
                     tutOpen = false;
@@ -173,6 +169,11 @@ public class NTT extends JPanel {
                     tut.initializeTut();
                     pauseGame = false;
                 }
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                p1.keyPressed(e, compSci.doHack8, currentClassroom, bio.dissection4);
+                p2.keyPressed(e, compSci.doHack8, currentClassroom, bio.dissection4);
             }
         });
         setFocusable(true);
