@@ -92,6 +92,27 @@ public class NTT extends JPanel {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyReleased(KeyEvent e) {
+                //  TUTORIAL
+                if (!mainMenu.getIsMenuOpen() && !gameOver){
+                    System.out.println("slideNum: " + tut.getSlide());
+                    if (!tutOpen && e.getKeyCode() == KeyEvent.VK_T) {
+                        tut.changePlayTut(true);
+                        tutOpen = true;
+                        pauseGame = true;
+                    }
+
+                    if (tutOpen && e.getKeyCode() == KeyEvent.VK_ENTER){
+                        if (tut.getSlide() < 7){
+                            tut.nextSlide();
+                        } else {
+                            tutOpen = false;
+                            tut.changePlayTut(false);
+                            tut.initializeTut();
+                            pauseGame = false;
+                        }
+                    }
+                }
+
                 // STARTING GAME - MAIN MENU
                 if (mainMenu.getIsMenuOpen() && e.getKeyCode() == KeyEvent.VK_ENTER) {
                     mainMenu.changeMenu(false);
@@ -113,21 +134,6 @@ public class NTT extends JPanel {
                 } else if (pauseGame && e.getKeyCode() == KeyEvent.VK_ESCAPE && !sideMenu.getIsOpen()) {
                     cd.stopPause();
                     pauseGame = false;
-                }
-
-                if (e.getKeyCode() == KeyEvent.VK_T){
-                    if (!tutOpen && e.getKeyCode() == KeyEvent.VK_T) {
-                        tut.changePlayTut(true);
-                        tutOpen = true;
-                        pauseGame = true;
-                    } else if (tutOpen && tut.getSlide() < 7){
-                        tut.nextSlide();
-                    } else if (tutOpen && tut.getSlide() >= 7){
-                        tutOpen = false;
-                        tut.changePlayTut(false);
-                        tut.initializeTut();
-                        pauseGame = false;
-                    }
                 }
 
 
@@ -462,46 +468,52 @@ public class NTT extends JPanel {
         }
         System.out.println("");
 
-        // CHOOSING 1 CHALKBOARD
-        boolean[] b = {false, false, false, false, false, false, false, false, false};
-        if (bArray[5]) {
-            System.out.println("choosing chalkboard");
-            Random rand = new Random();
-            b[8] = true;
-            while (b[0] || b[4]) {
-                for (int i = 0; i < b.length; i++) {
-                    int randomIndexToSwap = rand.nextInt(b.length);
-                    boolean temp = b[randomIndexToSwap];
-                    b[randomIndexToSwap] = b[i];
-                    b[i] = temp;
-                }
-            }
-        }
+        // possible room that chalkboard is in
+        boolean[] chalkRoom = {false, false, false, false, false, false, false, false, false};
+        // possible room that trashcan is in
+        boolean[] trashRoom = {false, false, false, false, false, false, false, false, false};
 
         // CHOOSING 1 TRASH CAN ROOM
-        boolean[] d = {false, false, false, false, false, false, false, false, false};
         if (bArray[0]) {
             System.out.println("choosing trash can");
             Random rand = new Random();
-            d[0] = true;
-            while (d[0] || d[1] || d[2] || d[4]) { // if any of them are true
-                for (int i = 0; i < d.length; i++) {
-                    int randomIndexToSwap = rand.nextInt(d.length);
-                    boolean temp = d[randomIndexToSwap];
-                    d[randomIndexToSwap] = d[i];
-                    d[i] = temp;
+            trashRoom[0] = true;
+            while (trashRoom[0] || trashRoom[1] || trashRoom[2] || trashRoom[4]) { // if any of them are true (office, caf, gym, phys)
+                for (int i = 0; i < trashRoom.length; i++) {
+                    int randomIndexToSwap = rand.nextInt(trashRoom.length);
+                    boolean temp = trashRoom[randomIndexToSwap];
+                    trashRoom[randomIndexToSwap] = trashRoom[i];
+                    trashRoom[i] = temp;
+                }
+            }
+            for (int i = 0; i < trashRoom.length; i++){
+                if (trashRoom[i]){
+                    System.out.println(i + " is the trashcan room");
                 }
             }
         }
 
-        for (int i = 0; i < 9; i++) {
-            if (b[i]) {
-                System.out.println(i + " is chalkboard");
+        // CHOOSING 1 CHALKBOARD ROOM
+        if (bArray[5]) {
+            System.out.println("choosing chalkboard");
+            Random rand = new Random();
+            chalkRoom[0] = true;
+            while (chalkRoom[0] || chalkRoom[4]) {          // if office or physics is chosen
+                for (int i = 0; i < chalkRoom.length; i++) {
+                    int randomIndexToSwap = rand.nextInt(chalkRoom.length);
+                    boolean temp = chalkRoom[randomIndexToSwap];
+                    chalkRoom[randomIndexToSwap] = chalkRoom[i];
+                    chalkRoom[i] = temp;
+                }
             }
-            if (d[i])
-                System.out.println(i + " is trash can");
+            for (int i = 0; i < chalkRoom.length; i++){
+                if (chalkRoom[i]){
+                    System.out.println(i + " is the chalkboard room");
+                }
+            }
         }
-                /*
+
+/*
         RANDOM - "SET FIRE TO TRASH CANS",      0
         2 - "CHEMICALS",                        1 CHECK
         0 - "DISSECTION",                       2 CHECK
@@ -511,19 +523,18 @@ public class NTT extends JPanel {
         4 - "SPRINT",                           6 CHECK
         6 - "STEAL MATH TESTS" ,                7 CHECK
         1 - "SMASH CAF VENDING MACHINES"};      8 CHECK
-         */
+*/
 
-        office.initializeOffice(b[0], d[0]);
-        caf.initializeCaf(b[1], d[1],           bArray[8]);
-        gym.initializeGym(b[2], d[2],           bArray[4]);
-        System.out.println("gym - " + bArray[4]);
-
-        bio.initializeBio(b[3], d[3],           bArray[2]);
-        phys.initializePhysics(b[4], d[4]);
-        chem.initializeChem(b[5], d[5],         bArray[1]);
-        mathematics.initializeMath(b[6], d[6],  bArray[7]);
-        compSci.initializeCompSci(b[7], d[7],   bArray[3]);
-        eng.initializeEng(b[8], d[8],           bArray[6]);
+        office.initializeOffice(chalkRoom[0], trashRoom[0]);
+        caf.initializeCaf(chalkRoom[1], trashRoom[1],           bArray[8]);
+        gym.initializeGym(chalkRoom[2], trashRoom[2],           bArray[4]);
+        //System.out.println("gym - " + bArray[4]);
+        bio.initializeBio(chalkRoom[3], trashRoom[3],           bArray[2]);
+        phys.initializePhysics(chalkRoom[4], trashRoom[4]);
+        chem.initializeChem(chalkRoom[5], trashRoom[5],         bArray[1]);
+        mathematics.initializeMath(chalkRoom[6], trashRoom[6],  bArray[7]);
+        compSci.initializeCompSci(chalkRoom[7], trashRoom[7],   bArray[3]);
+        eng.initializeEng(chalkRoom[8], trashRoom[8],           bArray[6]);
 
         sideMenu.initializeSideMenu();
 

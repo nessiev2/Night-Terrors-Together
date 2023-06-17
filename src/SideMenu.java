@@ -79,7 +79,7 @@ public class SideMenu {
 
     public void paint (Graphics2D g2d, DoMess mess){
         if (!hasGenerated) {
-            System.out.println("i have generated a unique tasks");
+            //System.out.println("i have generated 4 unique tasks");
             generateTasks();
             hasGenerated = true;
         }
