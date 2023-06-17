@@ -24,7 +24,12 @@ public class DoHack extends Task{
         this.isPlayerClose(p1, p2);
 
         if (!finished){
-            if (playerIsClose && isTask) {
+            if (playerIsClose) {// && isTask) {
+                g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
+                g2d.setColor(Color.red);
+                g2d.drawString("hold interact to smash", x, y-50);
+                g2d.drawString("this expensive computer", x, y-25);
+
                 g2d.setColor(Color.yellow);
                 g2d.fillRect(x-i, y-i, width+2*i, height+2*i);
             }
@@ -35,6 +40,10 @@ public class DoHack extends Task{
             g2d.setColor(new Color(255, 0, 0));
             g2d.fillRect(x, y, width, height);
             menu.updateTaskCompletion(3);
+
+            g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
+            g2d.setColor(Color.red);
+            g2d.drawString("task complete!", x, y-25);
         }
     }
 }

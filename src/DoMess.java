@@ -10,10 +10,14 @@ public class DoMess extends Task {
     }
     public void paint(Graphics g2d, SideMenu menu) {
         int k = 10;
-        g2d.setColor(Color.black);
         if (!isFin){
+            g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
+            g2d.setColor(Color.white);
+            g2d.drawString("interact to spill water", 15+(1920/4)+100, 270-25);
+
             g2d.drawRect(15+(1920/4), 270, NTT.SCREEN_WIDTH/2, (810-270));
         }
+        g2d.setColor(Color.black);
         g2d.setFont(new Font("TimesRoman", Font.BOLD, 50));
         g2d.drawString("NO WATER IN THE GYM.", 15+(1920/4) + 200, 400);
         g2d.drawString("STAY DEHYDRATED :).", 15+(1920/4) + 200, 500);
@@ -33,6 +37,10 @@ public class DoMess extends Task {
 
         if (isFin) {
             //System.out.println("i work tho???");
+            g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
+            g2d.setColor(Color.red);
+            g2d.drawString("task complete!", 15+(1920/4)+100, 270-25);
+
             this.taskFinished();
             menu.updateTaskCompletion(4);
             isTask = true;
@@ -50,7 +58,7 @@ public class DoMess extends Task {
 
 
     public void addWaterStain(Player p, Graphics g2d) {
-        if (isTask) {
+        //if (isTask) {
             int px = p.getCenterX();
             int py = p.getCenterY();
             int minX = 15 + (1920 / 4);
@@ -80,7 +88,7 @@ public class DoMess extends Task {
                     }
                 }
             }
-        }
+        //}
     }
 
 }

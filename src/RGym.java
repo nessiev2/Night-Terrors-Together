@@ -30,6 +30,11 @@ public class RGym {
             tc.paint(g2d, p1, p2, b1);
         }
 
+        w1.paint(g2d); // wall
+
+        cb.isPlayerClose(p1, p2);
+        cb.paint(g2d, menu); // chalkboard
+
         mess3.paint(g2d, menu);
 
         if (p1.getIsSpillingWater()){
@@ -38,11 +43,5 @@ public class RGym {
         if (p2.getIsSpillingWater()){
             mess3.addWaterStain(p2, g2d);
         }
-
-        w1.paint(g2d); // wall
-
-        cb.isPlayerClose(p1, p2);
-        cb.paint(g2d, menu); // chalkboard
-
     }
 }

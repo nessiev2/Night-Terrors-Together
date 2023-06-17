@@ -6,6 +6,9 @@ public class DoVendingMachine extends Task{
     private final int RADIUS = 65;
     private boolean isThisVendComplete;
 
+    public int getX() { return x; }
+    public int getY() { return y; }
+
     public void initializeVM(){
         playerIsClose = false;
         isThisVendComplete = false;
@@ -41,6 +44,7 @@ public class DoVendingMachine extends Task{
 
         if (!finished){
             if (playerIsClose && isTask) {
+
                 // lights up yellow
                 g2d.setColor(Color.yellow);
                 g2d.fillRect(x-i, y-i, width+2*i, height+2*i);

@@ -18,13 +18,18 @@ public class DoStealTests extends Task{
     public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) {
         int i = 10;
 
+        g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
         if (stack == 0){
             isTaskComplete = true;
+            g2d.drawString("task complete!", x+75, y);
             menu.updateTaskCompletion(7);
             taskFinished();
         }
 
         if (!isTaskComplete && isPlayerClose(x, y, p1, p2)){
+            g2d.drawString("interact to pick up", x+75, y);
+            g2d.drawString("the math tests", x+75, y+25);
+
             g2d.setColor(Color.yellow);
             g2d.fillRect(x - i, y + THICKNESS * (COUNT-stack) - i, w + 2*i, h - THICKNESS * (COUNT-stack) + 2*i);
         }

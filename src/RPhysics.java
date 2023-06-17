@@ -69,5 +69,17 @@ public class RPhysics {
 
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d, menu); // chalkboard
+
+        // physics should have access to if chalkboard and trash can are
+        // REAL tasks
+
+        g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
+        g2d.setColor(Color.red);
+        g2d.drawString("which chalkboard are you destined to scribble on?", 500, 150);
+        g2d.drawString("find out by looking for the glowing chalkboard", 500, 150+25);
+
+        g2d.drawString("which room's trash cans were you prophesied to draw on?", 500, 225);
+        g2d.drawString("find out by looking for the room with glowing trash cans", 500, 225+25);
+
     }
 }

@@ -51,8 +51,16 @@ public class DoDissection extends Task{
     public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) {
         int i = 10;
         if (checkWin()){
+            g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
+            g2d.setColor(Color.red);
+            g2d.drawString("task complete!", 250, 500);
             taskFinished();
             menu.updateTaskCompletion(2);
+        } else {
+            g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
+            g2d.setColor(Color.red);
+            g2d.drawString("interact with all frogs", 225, 475);
+            g2d.drawString("to dissect them", 225, 475+25);
         }
 
         // drawing "glow"
