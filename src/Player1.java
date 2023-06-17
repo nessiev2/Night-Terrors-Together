@@ -106,7 +106,6 @@ public class Player1 extends Player {
             if (currentRoom == 6){
                 if (badReaction.getCloseGreen()){
                     badReaction.changeGreen(true);
-                    System.out.println("true");
                 }
                 if (badReaction.getClosePink()){
                     badReaction.changePink(true);
