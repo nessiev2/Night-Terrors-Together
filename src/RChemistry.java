@@ -11,7 +11,7 @@ public class RChemistry {
     DoBadReaction badReaction6;
     boolean b1;
 
-    public void initializeChem(boolean b, boolean b1){
+    public void initializeChem(boolean b, boolean b1, boolean b2){
         Random r = new Random();
         this.b1 = b1;
 
@@ -28,11 +28,11 @@ public class RChemistry {
         arson6[2] = arsont3;
 
         cb = new AChalkBoard(300, 10, "CHEMISTRY", b);
-        badReaction6 = new DoBadReaction(true);
+        badReaction6 = new DoBadReaction(b2);
     }
 
     public RChemistry() {
-        initializeChem(false, false);
+        initializeChem(false, false, false);
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {

@@ -9,14 +9,15 @@ public class RGym {
     AWall w1 = new AWall(0, 0);
     boolean b1;
 
-    public void initializeGym(boolean b, boolean b1){
+    public void initializeGym(boolean b, boolean b1, boolean b2){
         this.b1 = b1;
         //arson3 = new DoArson(true, trashCans[0]);
-        mess3 = new DoMess(true);
+        mess3 = new DoMess(b2);
+        System.out.println("b2 is " + b2);
         cb = new AChalkBoard(500, 10, "GYM", b);
     }
     public RGym(){
-        initializeGym(false, false);
+        initializeGym(false, false, false);
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {

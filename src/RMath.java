@@ -11,7 +11,7 @@ public class RMath {
     DoStealTests burnTests7;
     boolean b1;
 
-    public void initializeMath(boolean b, boolean b1){
+    public void initializeMath(boolean b, boolean b1, boolean b2){
         Random r = new Random();
         this.b1 = b1;
 
@@ -28,7 +28,7 @@ public class RMath {
         arson7[2] = arsont3;
 
         cb = new AChalkBoard(300, 10, "MATH", b);
-        burnTests7 = new DoStealTests(true);
+        burnTests7 = new DoStealTests(b2);
     }
 
     public RMath() {
@@ -43,7 +43,7 @@ public class RMath {
         }
         desks[6] = new ADesk(600, 300, 400, 150);
 
-        initializeMath(false, false);
+        initializeMath(false, false, false);
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
