@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class Tutorial {
-    private int slideNum = 1;
+    private int slideNum = 0;
     private boolean playTut;
     private BufferedImage img1, img2, img3, img4, img5, img6, img7;
     public void nextSlide(){
@@ -36,7 +36,7 @@ public class Tutorial {
     }
 
     public void paint(Graphics g2d){
-        System.out.println(slideNum);
+        //System.out.println(slideNum);
         if (playTut){
             if (slideNum == 1){
                 g2d.drawImage(img1, 0, 0, null);
