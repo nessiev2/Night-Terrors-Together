@@ -1,7 +1,6 @@
 import java.awt.*;
 
 public class DoArson extends Task {
-
     private final int RADIUS = 200;
     private boolean isOnFire;
     ATrashCan trash;
@@ -23,7 +22,7 @@ public class DoArson extends Task {
         for (int j = 0; j < 3; j++){
             g2d.setColor(Color.red);
 
-            if (isOnFire) {
+            if (isOnFire && isTask) {
                 g2d.fillRect(trash.getX()+2*i, trash.getY()+2*i, trash.getWidth()-4*i, trash.getHeight()-4*i);
             }
         }
