@@ -113,6 +113,8 @@ public class NTT extends JPanel {
                         if (e.getKeyCode() == KeyEvent.VK_T){
                             tut.changePlayTut(true);
                             tutOpen = true;
+
+                            cd.startPause();
                             pauseGame = true;
                         }
                     } else {
@@ -123,6 +125,8 @@ public class NTT extends JPanel {
                                 tutOpen = false;
                                 tut.changePlayTut(false);
                                 tut.initializeTut();
+
+                                cd.stopPause();
                                 pauseGame = false;
                             }
                         }
