@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 public abstract class Player {
-    private BufferedImage img = null;
+    private BufferedImage img;
     private Image gif = null;
     protected boolean right = false, left = false, up = false, down = false, interact = false, standing = true;
     private int speed = 10;

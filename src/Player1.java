@@ -79,9 +79,11 @@ public class Player1 extends Player {
                 changeIsSpillingWater(false);
             }
 
-            for (DoArson arson : arson1) {
-                if (arson.isPlayerClose(this)) {
-                    arson.setOnFire();
+            if (currentRoom > 3 && currentRoom != 5 ){
+                for (DoArson arson : arson1) {
+                    if (arson.isPlayerClose(this)) {
+                        arson.setOnFire();
+                    }
                 }
             }
 

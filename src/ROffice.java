@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.Random;
 
 public class ROffice {
-    DoArson[] arson1 = new DoArson[3];
+    DoArson[] arson1;
     ATrashCan[] trashCans = new ATrashCan[1];
     //DoArson arson1 = new DoArson(false, trashCans);
     AChalkBoard cb = new AChalkBoard(900, 10, "OFFICE", false);
