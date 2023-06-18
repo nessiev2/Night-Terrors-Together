@@ -15,7 +15,10 @@ public class DoSprint extends Task{
     }
     public void initializeSprint(){
         x = 0;
-        y = i = j = x;
+        y = 0;
+        i = 0;
+        j = 0;
+
         flag1 = false;
         flag2 = false;
         isComplete = false;
@@ -23,8 +26,13 @@ public class DoSprint extends Task{
         int yipee = r.nextInt(3);
         x = randX[yipee];
         y = randY[yipee];
-
     }
+
+    public void resetNormalSpeed(Player p1, Player p2){
+        p1.changeSpeed(10);
+        p2.changeSpeed(10);
+    }
+
     public DoSprint(boolean isTask) {
         super(isTask);
         initializeSprint();
@@ -57,31 +65,33 @@ public class DoSprint extends Task{
         double dist1 = Math.sqrt(Math.pow(p1.getX()-x, 2) + Math.pow(p1.getY()-y, 2));
         double dist2 = Math.sqrt(Math.pow(p2.getX()-x, 2) + Math.pow(p2.getY()-y, 2));
 
-        if ((dist1 <= radius || dist2 <= radius) && !isComplete){
-            g2d.setColor(Color.yellow);
-            g2d.fillOval(x, y, radius/2, radius/2);
-        }
-        if (dist1 <= radius && !isComplete){
-            flag1 = true;
-            p1.changeSpeed(20);
-        }
-        if (dist2 <= radius && !isComplete){
-            flag2 = true;
-            p2.changeSpeed(20);
-        }
+        if (isTask){
+            if ((dist1 <= radius || dist2 <= radius) && !isComplete){
+                g2d.setColor(Color.yellow);
+                g2d.fillOval(x, y, radius/2, radius/2);
+            }
+            if (dist1 <= radius && !isComplete){
+                flag1 = true;
+                p1.changeSpeed(20);
+            }
+            if (dist2 <= radius && !isComplete){
+                flag2 = true;
+                p2.changeSpeed(20);
+            }
 
-        if (flag1 && flag2){
-            g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
-            g2d.setColor(Color.red);
-            g2d.drawString("task complete!", 650, 350);
-            isComplete = true;
-            menu.updateTaskCompletion(6);
-            //System.out.println("do sprint COMPLETE");
-        } else {
-            g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
-            g2d.setColor(Color.red);
-            g2d.drawString("find the yellow circle on the ground", 600, 350);
-            g2d.drawString("and zoom to complete the task", 600, 350+25);
+            if (flag1 && flag2){
+                g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
+                g2d.setColor(Color.red);
+                g2d.drawString("task complete!", 650, 350);
+                isComplete = true;
+                menu.updateTaskCompletion(6);
+                //System.out.println("do sprint COMPLETE");
+            } else {
+                g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
+                g2d.setColor(Color.red);
+                g2d.drawString("find the yellow circle on the ground", 600, 350);
+                g2d.drawString("and zoom to complete the task", 600, 350+25);
+            }
         }
     }
 }

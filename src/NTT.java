@@ -457,6 +457,8 @@ public class NTT extends JPanel {
     }
 
     public void reset(NTT c){
+        c.eng.sprint.resetNormalSpeed(c.p1, c.p2);
+
         c.flag = false;
         c.gameOver = false;
         c.win = false;
@@ -527,15 +529,15 @@ public class NTT extends JPanel {
         System.out.println("");
 
         /*
-        RANDOM - "SET FIRE TO TRASH CANS",      0
-        2 - "CHEMICALS",                        1 CHECK
-        0 - "DISSECTION",                       2 CHECK
-        3 - "HACK COMPUTER SCIENCE",            3 CHECK
-        5 - "SPILL WATER",                      4 CHECK
-        RANDOM - "CHALKBOARD SCRIBBLE",         5
-        4 - "SPRINT",                           6 CHECK
-        6 - "STEAL MATH TESTS" ,                7 CHECK
-        1 - "SMASH CAF VENDING MACHINES"};      8 CHECK
+        RANDOM - "SET FIRE TO TRASH CANS",      0 DONE
+        2 - "CHEMICALS",                        1
+        0 - "DISSECTION",                       2 DONE
+        3 - "HACK COMPUTER SCIENCE",            3
+        5 - "SPILL WATER",                      4
+        RANDOM - "CHALKBOARD SCRIBBLE",         5 DONE
+        4 - "SPRINT",                           6
+        6 - "STEAL MATH TESTS" ,                7
+        1 - "SMASH CAF VENDING MACHINES"};      8
 */
 
         office.initializeOffice(false, false);
