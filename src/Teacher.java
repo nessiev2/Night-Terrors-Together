@@ -62,7 +62,7 @@ public class Teacher extends Thing {
 
         char tmp = heh.charAt(r.nextInt(heh.length()));
 
-        System.out.println(heh.length());
+        //System.out.println(heh.length());
 
 //        System.out.println("Door options: " + heh);
 //        System.out.println("chose door " + tmp);
@@ -124,17 +124,17 @@ public class Teacher extends Thing {
         double dist3p1 = Math.sqrt(Math.pow(0-p1.getX(), 2) + Math.pow(440-p1.getY(), 2));
         double dist3p2 = Math.sqrt(Math.pow(0-p2.getX(), 2) + Math.pow(440-p2.getY(), 2));
 
-        System.out.println("p1 to top door0: " + dist0p1);
-        System.out.println("p2 to top door0: " + dist0p2);
-
-        System.out.println("p1 to top door1: " + dist1p1);
-        System.out.println("p2 to top door1: " + dist1p2);
-
-        System.out.println("p1 to top door2: " + dist2p1);
-        System.out.println("p2 to top door2: " + dist2p2);
-
-        System.out.println("p1 to top door3: " + dist3p1);
-        System.out.println("p2 to top door3: " + dist3p2);
+//        System.out.println("p1 to top door0: " + dist0p1);
+//        System.out.println("p2 to top door0: " + dist0p2);
+//
+//        System.out.println("p1 to top door1: " + dist1p1);
+//        System.out.println("p2 to top door1: " + dist1p2);
+//
+//        System.out.println("p1 to top door2: " + dist2p1);
+//        System.out.println("p2 to top door2: " + dist2p2);
+//
+//        System.out.println("p1 to top door3: " + dist3p1);
+//        System.out.println("p2 to top door3: " + dist3p2);
 
         if (dist0p1 <= RADIUS || dist0p2 <= RADIUS) {
             d0 = false;

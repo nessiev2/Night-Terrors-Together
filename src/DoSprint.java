@@ -19,6 +19,7 @@ public class DoSprint extends Task{
         return flag2;
     }
     public void initializeSprint(){
+        System.out.println("reset sprint");
         x = 0;
         y = 0;
         i = 0;
@@ -84,19 +85,22 @@ public class DoSprint extends Task{
                 p2.changeSpeed(20);
             }
 
-            if (flag1 && flag2){
+            if (flag1 && flag2 && !isComplete){
                 g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
-                g2d.setColor(Color.red);
-                g2d.drawString("task complete!", 650, 350);
+                g2d.setColor(Color.black);
                 isComplete = true;
                 if (ts) {
                     menu.updateTaskCompletion(6);
                     ts = false;
                 }
                 //System.out.println("do sprint COMPLETE");
+            }
+            g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
+            g2d.setColor(Color.black);
+
+            if (isComplete){
+                g2d.drawString("task complete!", 650, 350);
             } else {
-                g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
-                g2d.setColor(Color.black);
                 g2d.drawString("find the yellow circle on the ground", 600, 350);
                 g2d.drawString("and both players sprint to complete the task", 600, 350+25);
             }
