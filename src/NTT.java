@@ -530,6 +530,7 @@ public class NTT extends JPanel {
         if (mainMenu.getIsMenuOpen()) {
             mainMenu.paintMainMenu(g2d);
         } else if (win) {
+            System.out.println("game over u win");
             gameOverScreen.paintGameOverYouWin(g2d);
         } else if (gameOver) {
             gameOverScreen.paintGameOver(g2d);
