@@ -1,4 +1,6 @@
 import javax.imageio.ImageIO;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -6,6 +8,8 @@ import java.io.File;
 import java.io.IOException;
 
 public abstract class Player {
+    Sound sound;
+
     private BufferedImage img;
     private Image gif = null;
     protected boolean right = false, left = false, up = false, down = false, interact = false, standing = true;
@@ -20,7 +24,7 @@ public abstract class Player {
     public void changeIsHolding(boolean b) { isHolding = b; }
     public void changeIsSpillingWater(boolean b) { isSpillingWater = b; }
 
-    boolean PCaughtSound = true;
+    private boolean PCaughtSound = true;
     public boolean getPCaughtSound() { return PCaughtSound; }
     public void changePCaughtSound(boolean b) { PCaughtSound = b; }
 
@@ -53,9 +57,13 @@ public abstract class Player {
         return isSpillingWater;
     }
 
-    public void changeIsCaught(boolean c) {
+    public void changeIsCaught(boolean c) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         isCaught = c;
+        if (!c) {
+            sound.playJailBreakSoundEffect();
+        }
     }
+
     public void changeSpeed(int x) {speed = x; }
     public int getPlayerN(){
         return playerN;
@@ -68,6 +76,10 @@ public abstract class Player {
         } else {
             spawnPlayer(NTT.SCREEN_WIDTH/2-2*width, 660);
         }
+    }
+
+    public void regSound(Sound sound) {
+        this.sound = sound;
     }
 
     public Player(int playerN) {
@@ -112,7 +124,7 @@ public abstract class Player {
 
     //public void keyTyped(KeyEvent e) {}
     public void keyPressed(KeyEvent e, DoHack doHack8, int currentClassroom, DoDissection dissection4) {}
-    public void keyReleased(Player p2, int currentClassroom, KeyEvent e, DoArson[] arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess3, DoHack doHack8, DoVendingMachine[] doVendingMachine, DoBadReaction badReaction, DoStealTests burnTests7, DoDissection dissection4) {}
+    public void keyReleased(Player p2, int currentClassroom, KeyEvent e, DoArson[] arson1, ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess3, DoHack doHack8, DoVendingMachine[] doVendingMachine, DoBadReaction badReaction, DoStealTests burnTests7, DoDissection dissection4) throws UnsupportedAudioFileException, LineUnavailableException, IOException {}
 
     public boolean checkPlayerCaught(Teacher[] t) {
         if (!checkRight(t) || !checkLeft(t) || !checkDown(t) || !checkUp(t)) {
