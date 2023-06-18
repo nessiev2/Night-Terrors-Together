@@ -1,9 +1,12 @@
 import javax.imageio.ImageIO;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
 public class DoArson extends Task {
+    private boolean ts = true;
     private Image img;
     private final int RADIUS = 200;
     private boolean isOnFire;
@@ -22,7 +25,7 @@ public class DoArson extends Task {
         } catch (IOException e) { System.out.println("arson no image"); }
     }
 
-    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) {
+    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         int i = 10;
 
         // draws the glow around the trash can
@@ -37,8 +40,9 @@ public class DoArson extends Task {
                 b = false;
             }
         }
-        if (b) {
+        if (b && ts) {
             menu.updateTaskCompletion(0);
+            ts = false;
         }
     }
 

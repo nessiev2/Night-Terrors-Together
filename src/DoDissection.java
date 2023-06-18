@@ -1,4 +1,7 @@
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.io.IOException;
 
 public class DoDissection extends Task{
     private int x = 450, y = 600, w = 30, h = 50;
@@ -48,7 +51,7 @@ public class DoDissection extends Task{
             interacted[5] = true;
         }
     }
-    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) {
+    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         int i = 10;
         if (checkWin()){
             g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));

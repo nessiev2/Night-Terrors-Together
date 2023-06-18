@@ -1,4 +1,7 @@
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Random;
 
 public class DoSprint extends Task{
@@ -61,7 +64,7 @@ public class DoSprint extends Task{
         }
         return j;
     }
-    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) {
+    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         double dist1 = Math.sqrt(Math.pow(p1.getX()-x, 2) + Math.pow(p1.getY()-y, 2));
         double dist2 = Math.sqrt(Math.pow(p2.getX()-x, 2) + Math.pow(p2.getY()-y, 2));
 

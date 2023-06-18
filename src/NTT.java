@@ -84,7 +84,7 @@ public class NTT extends JPanel {
     MainMenu mainMenu = new MainMenu();
     GameOver gameOverScreen = new GameOver();
     DoMess doMess3 = new DoMess(true);
-    SideMenu sideMenu = new SideMenu(this);
+    SideMenu sideMenu = new SideMenu(this, sound);
     boolean win = false;
     boolean first = true;
 
@@ -228,6 +228,7 @@ public class NTT extends JPanel {
 
     private void move(NTT c) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         sound.playBackgroundMusic();
+        sound.soundMaintenance();
 
         if (eng.sprint.getFlag1()){
             eng.sprint.sprintTicks(p1);
@@ -292,11 +293,13 @@ public class NTT extends JPanel {
             if (currentClassroom == tCurrentClassroom) {
                 //p1.checkPlayerCaught(teacher);
                 //p2.checkPlayerCaught(teacher);
-                if (p1.checkPlayerCaught(teacher)) {
+                if (p1.checkPlayerCaught(teacher) && p1.getPCaughtSound()) {
                     sound.playGotCaughtSoundEffect();
+                    p1.changePCaughtSound(false);
                 }
-                if (p2.checkPlayerCaught(teacher)) {
+                if (p2.checkPlayerCaught(teacher) && p2.getPCaughtSound()) {
                     sound.playGotCaughtSoundEffect();
+                    p2.changePCaughtSound(false);
                 }
             }
 
@@ -381,7 +384,15 @@ public class NTT extends JPanel {
             } else {
                 switch(currentClassroom) {
                     case 1:
-                        office.paint(g, p1, p2, transition1, sideMenu);
+                        try {
+                            office.paint(g, p1, p2, transition1, sideMenu);
+                        } catch (UnsupportedAudioFileException e) {
+                            throw new RuntimeException(e);
+                        } catch (LineUnavailableException e) {
+                            throw new RuntimeException(e);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         officeToBio.paint(g2d);
                         officeToCaf.paint(g2d);
 
@@ -390,7 +401,15 @@ public class NTT extends JPanel {
                         break;
 
                     case 2:
-                        caf.paint(g, p1, p2, transition1, sideMenu);
+                        try {
+                            caf.paint(g, p1, p2, transition1, sideMenu);
+                        } catch (UnsupportedAudioFileException e) {
+                            throw new RuntimeException(e);
+                        } catch (LineUnavailableException e) {
+                            throw new RuntimeException(e);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         cafToPhys.paint(g2d);
                         cafToGym.paint(g2d);
                         cafToOffice.paint(g2d);
@@ -401,7 +420,15 @@ public class NTT extends JPanel {
 
                     case 3:
                         chem.badReaction6.changeLeave(true);
-                        gym.paint(g, p1, p2, transition1, sideMenu);
+                        try {
+                            gym.paint(g, p1, p2, transition1, sideMenu);
+                        } catch (UnsupportedAudioFileException e) {
+                            throw new RuntimeException(e);
+                        } catch (LineUnavailableException e) {
+                            throw new RuntimeException(e);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         gymToCaf.paint(g2d);
                         gymToChem.paint(g2d);
                         changeRooms(gymToCaf, cafToGym, 2, p1, p2, transition1, g2d);
@@ -409,7 +436,15 @@ public class NTT extends JPanel {
                         break;
 
                     case 4:
-                        bio.paint(g, p1, p2, transition1, sideMenu);
+                        try {
+                            bio.paint(g, p1, p2, transition1, sideMenu);
+                        } catch (UnsupportedAudioFileException e) {
+                            throw new RuntimeException(e);
+                        } catch (LineUnavailableException e) {
+                            throw new RuntimeException(e);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         bioToPhys.paint(g2d);
                         bioToOffice.paint(g2d);
                         bioToMath.paint(g2d);
@@ -420,7 +455,15 @@ public class NTT extends JPanel {
 
                     case 5:
                         chem.badReaction6.changeLeave(true);
-                        phys.paint(g, p1, p2, transition1, sideMenu);
+                        try {
+                            phys.paint(g, p1, p2, transition1, sideMenu);
+                        } catch (UnsupportedAudioFileException e) {
+                            throw new RuntimeException(e);
+                        } catch (LineUnavailableException e) {
+                            throw new RuntimeException(e);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         physToChem.paint(g2d);
                         physToBio.paint(g2d);
                         physToCaf.paint(g2d);
@@ -436,7 +479,15 @@ public class NTT extends JPanel {
                             chem.badReaction6.changeLeave(false);
                         }
                         //System.out.println(chem.badReaction6.getLeave());
-                        chem.paint(g, p1, p2, transition1, sideMenu, currentClassroom);
+                        try {
+                            chem.paint(g, p1, p2, transition1, sideMenu, currentClassroom);
+                        } catch (UnsupportedAudioFileException e) {
+                            throw new RuntimeException(e);
+                        } catch (LineUnavailableException e) {
+                            throw new RuntimeException(e);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         chemToPhys.paint(g2d);
                         chemToGym.paint(g2d);
                         chemToEng.paint(g2d);
@@ -446,7 +497,15 @@ public class NTT extends JPanel {
                         break;
 
                     case 7:
-                        mathematics.paint(g, p1, p2, transition1, sideMenu);
+                        try {
+                            mathematics.paint(g, p1, p2, transition1, sideMenu);
+                        } catch (UnsupportedAudioFileException e) {
+                            throw new RuntimeException(e);
+                        } catch (LineUnavailableException e) {
+                            throw new RuntimeException(e);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         mathToCompSci.paint(g2d);
                         mathToBio.paint(g2d);
                         changeRooms(mathToCompSci, compSciToMath, 8, p1, p2, transition1, g2d);
@@ -454,7 +513,15 @@ public class NTT extends JPanel {
                         break;
 
                     case 8:
-                        compSci.paint(g, p1, p2, transition1, sideMenu);
+                        try {
+                            compSci.paint(g, p1, p2, transition1, sideMenu);
+                        } catch (UnsupportedAudioFileException e) {
+                            throw new RuntimeException(e);
+                        } catch (LineUnavailableException e) {
+                            throw new RuntimeException(e);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         compSciToEng.paint(g2d);
                         compSciToMath.paint(g2d);
                         compSciToPhys.paint(g2d);
@@ -465,7 +532,15 @@ public class NTT extends JPanel {
 
                     case 9:
                         chem.badReaction6.changeLeave(true);
-                        eng.paint(g, p1, p2, transition1, sideMenu);
+                        try {
+                            eng.paint(g, p1, p2, transition1, sideMenu);
+                        } catch (UnsupportedAudioFileException e) {
+                            throw new RuntimeException(e);
+                        } catch (LineUnavailableException e) {
+                            throw new RuntimeException(e);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         engToChem.paint(g2d);
                         engToCompSci.paint(g2d);
                         changeRooms(engToChem, chemToEng, 6, p1, p2, transition1, g2d);

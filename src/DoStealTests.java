@@ -1,4 +1,7 @@
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.io.IOException;
 
 public class DoStealTests extends Task{
     private int x = 700, y = 200, w = 50, h = 100, stack = 10;
@@ -16,7 +19,7 @@ public class DoStealTests extends Task{
     public DoStealTests(boolean isTask){
         super(isTask);
     }
-    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) {
+    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         int i = 10;
 
         g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));

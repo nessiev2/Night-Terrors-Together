@@ -1,4 +1,7 @@
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.io.IOException;
 
 public class RGym {
     DoArson[] arson3;
@@ -20,7 +23,7 @@ public class RGym {
         initializeGym(false, false, false);
     }
 
-    public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
+    public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         //super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

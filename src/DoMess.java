@@ -1,4 +1,8 @@
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.io.IOException;
+
 public class DoMess extends Task {
     protected boolean isFin;
     private boolean[][] waterStains = new boolean[(NTT.SCREEN_WIDTH/2)/30][(810-270)/30];
@@ -8,7 +12,7 @@ public class DoMess extends Task {
     public boolean getIsFin(){
         return isFin;
     }
-    public void paint(Graphics g2d, SideMenu menu) {
+    public void paint(Graphics g2d, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         int k = 10;
         if (isTask){
             if (!isFin){

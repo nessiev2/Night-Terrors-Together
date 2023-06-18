@@ -1,10 +1,14 @@
 import javax.imageio.ImageIO;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class DoBadReaction extends Task{
+    private boolean ts = true;
+
     private int x = 500, y = 515, xSpacing = 350, ySpacing = 300, w = 30, h = 50, ticks = 0;
     private int doneX1, doneY1, doneX2, doneY2;
     private int stainX1, stainY1, stainX2, stainY2;
@@ -81,7 +85,7 @@ public class DoBadReaction extends Task{
     public void changeLeave(boolean bool){
         leave = bool;
     }
-    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu, int currentClassroom) {
+    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu, int currentClassroom) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         int i = 15, j = 25;
 
         g2d.setColor(Color.yellow);
@@ -139,7 +143,11 @@ public class DoBadReaction extends Task{
             g2d.setColor(Color.black);
             g2d.drawString("task complete!", 625, 700);
             taskFinished();
-            menu.updateTaskCompletion(1);
+
+            if (ts) {
+                menu.updateTaskCompletion(1);
+                ts = false;
+            }
         } else {
             if (isTask) {
                 g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));

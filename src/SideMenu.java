@@ -1,8 +1,12 @@
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Random;
 
 public class SideMenu {
     NTT c;
+    Sound sound;
     int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8};
     boolean[] bArray = new boolean[9];
     String[] sArray = {"SET FIRE TO TRASH CANS", "MIX CHEMICALS!", "DISSECT FROGS", "HACK MAIN COMPUTER", "CREATE SLIPPING HAZARD", "MESS UP CHALKBOARD", "SPRINT", "STEAL MATH TESTS" , "SMASH VENDING MACHINES"};
@@ -12,8 +16,9 @@ public class SideMenu {
     int x = 1835, y = 20, width = 50, height = 50, openX = NTT.SCREEN_WIDTH/2 - 400, openY = 20, openWidth = 800, openHeight = 800;
     boolean isOpen;
     boolean hasGenerated;
-    public SideMenu(NTT c) {
+    public SideMenu(NTT c, Sound sound) {
         this.c = c;
+        this.sound = sound;
         initializeSideMenu();
     }
 
@@ -43,9 +48,10 @@ public class SideMenu {
         generateTasks();
     }
 
-    public void updateTaskCompletion(int n) {
+    public void updateTaskCompletion(int n) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         //System.out.println("update task completion for int " + n);
         finTasks[n] = true;
+        sound.playTaskCompleteSoundEffect();
         //System.out.println("fintasks [n]: " + finTasks[n]);
     }
 

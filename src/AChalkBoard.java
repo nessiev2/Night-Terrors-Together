@@ -1,4 +1,7 @@
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.io.IOException;
 
 public class AChalkBoard extends Thing {
     private static final int BOARD_WIDTH = NTT.SCREEN_WIDTH/2, BOARD_HEIGHT = (NTT.SCREEN_WIDTH/4) - 230;
@@ -37,7 +40,7 @@ public class AChalkBoard extends Thing {
         scribble = true;
     }
 
-    public void paint (Graphics2D g2d, SideMenu menu){
+    public void paint (Graphics2D g2d, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         int i = 10;
         //interactive "glow"
         if (playerIsClose && interactive) {
