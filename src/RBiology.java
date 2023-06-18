@@ -1,12 +1,15 @@
+import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
 public class RBiology {
     private boolean ts = true;
-
+    private BufferedImage biodesk;
     private DoArson[] arson4 = new DoArson[3];
     private DoArson arsont1, arsont2, arsont3;
     private ATrashCan[] trashCans = new ATrashCan[3];
@@ -61,10 +64,14 @@ public class RBiology {
             }
         }
 
-        desks[4] = new ADesk(100, 520, 150, 400);
-        desks[5] = new ADesk(400, 520, 150, 400);
+        desks[4] = new ADesk(100, 520, 150, 400, true);
+        desks[5] = new ADesk(400, 520, 150, 400, true);
 
         initializeBio(false, false, false);
+
+        try {
+            biodesk = ImageIO.read(new File("res\\biodesk.png"));
+        } catch (IOException e) { System.out.println("frog no image"); }
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
@@ -77,9 +84,12 @@ public class RBiology {
             if (d.getDeskType() == 0){
                 d.paintDesk0(g2d);
             } else {
+                g2d.setColor(new Color(1, 1, 1, 0));
                 d.paint(g2d);
             }
         }
+        g2d.drawImage(biodesk, 100, 520, null);
+        g2d.drawImage(biodesk, 400, 520, null);
 
         for (ATrashCan tc: trashCans){
             tc.paint(g2d, p1, p2, b1);

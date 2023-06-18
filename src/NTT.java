@@ -18,11 +18,9 @@ import java.util.Random;
     * office
     * physics
 * DESKS to PAINT
-    * bio
-    * math
-    * compsci
-    * caf
     * chem
+* chalkboards
+* computer monitor
 */
 
 public class NTT extends JPanel {
