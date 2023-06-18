@@ -10,11 +10,12 @@ public class DoBadReaction extends Task{
     private int stainX1, stainY1, stainX2, stainY2;
     private boolean leave = false;
     private static final int RADIUS = 170;
-    private BufferedImage img0, img1, img2, img3, img4, imghehe;
+    private BufferedImage img0, img1, img2, img3, img4, imghehe, burning;
     private boolean green, pink, cyan, yellow, closeGreen, closePink, closeCyan, closeYellow, flag = false;
     public DoBadReaction(boolean isTask){
         super(isTask);
         try {
+            burning = ImageIO.read(new File("res\\reactionfire.png"));
             img0 = ImageIO.read(new File("res\\soot.png"));
             img0 = ImageIO.read(new File("res\\flask.png"));
             img1 = ImageIO.read(new File("res\\flaskgreen.png"));
@@ -123,10 +124,10 @@ public class DoBadReaction extends Task{
             if (ticks <= 200 && !leave){
                 g2d.setColor(new Color(255, 0, 0));
                 if (!p1.getIsCaught()){
-                    g2d.fillRect(doneX1, doneY1, 100, 100);
+                    g2d.drawImage(burning, doneX1, doneY1 - p2.getHeight()/2, null);
                 }
                 if (!p2.getIsCaught()){
-                    g2d.fillRect(doneX2, doneY2, 100, 100);
+                    g2d.drawImage(burning, doneX2, doneY2 - p2.getHeight()/2, null);
                 }
             }
 
