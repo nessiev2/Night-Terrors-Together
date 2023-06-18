@@ -120,10 +120,10 @@ public class SideMenu {
 //        }
         g2d.setColor(Color.white);
         if (!isOpen){
-            g2d.drawImage(minClosed, x, y, null);
+            g2d.drawImage(minOpen, x, y, null);
 //            g2d.fillRect(x, y, width, height);
         } else {
-            g2d.drawImage(minOpen, x, y, null);
+            g2d.drawImage(minClosed, x, y, null);
             g2d.drawImage(bigOpen, openX, openY, 1000, 1000, null);
 
             int shiftY = 200, shiftX = 30, spacing = 120, moreYSpacing = 80;
@@ -178,7 +178,15 @@ public class SideMenu {
                     //System.out.println("task " + i + " is fin, did draw X");
                     g2d.setFont(new Font("TimesRoman", Font.BOLD, 50));
                     g2d.setColor(Color.red);
-                    g2d.drawString("X", openX + 33 + shiftX, openY + 200 + i*spacing);
+                    if (i == 0){
+                        g2d.drawString("X", openX + 33 + shiftX, openY + 200 + i*spacing + shiftY);
+                    } else if (i == 1){
+                        g2d.drawString("X", openX + 33 + shiftX, openY + 200 + i*spacing + shiftY + 30);
+                    } else if (i == 2){
+                        g2d.drawString("X", openX + 33 + shiftX, openY + 200 + i*spacing + shiftY + 80);
+                    } else {
+                        g2d.drawString("X", openX + 33 + shiftX, openY + 200 + i*spacing + shiftY + 110);
+                    }
                 }
             }
         }

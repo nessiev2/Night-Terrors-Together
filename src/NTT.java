@@ -24,13 +24,6 @@ import java.util.Random;
     * compsci
     * caf
     * chem
-* play sound when teacher jump scare u
-* always spawn teacher in the frame
-* add music/sound
-* animations???
-* screen gets red and tinted the closer the teacher is
-* graphics
-    * load rest of graphics
 */
 
 public class NTT extends JPanel {
