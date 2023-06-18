@@ -20,11 +20,17 @@ public class DoHack extends Task{
     }
 
     public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) {
+        System.out.println("isTask: " + isTask);
+
         int i = 10;
-        this.isPlayerClose(p1, p2);
+        if (isTask){
+            isPlayerClose(p1, p2);
+        } else {
+            playerIsClose = false;
+        }
 
         if (!finished){
-            if (playerIsClose) {// && isTask) {
+            if (playerIsClose && isTask) {// && isTask) {
                 g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
                 g2d.setColor(Color.red);
                 g2d.drawString("hold interact to smash", x, y-50);
@@ -37,13 +43,15 @@ public class DoHack extends Task{
             g2d.fillRect(x, y, width, height);
 
         } else {
-            g2d.setColor(new Color(255, 0, 0));
-            g2d.fillRect(x, y, width, height);
-            menu.updateTaskCompletion(3);
+            if (isTask){
+                g2d.setColor(new Color(255, 0, 0));
+                g2d.fillRect(x, y, width, height);
+                menu.updateTaskCompletion(3);
 
-            g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
-            g2d.setColor(Color.red);
-            g2d.drawString("task complete!", x, y-25);
+                g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
+                g2d.setColor(Color.red);
+                g2d.drawString("task complete!", x, y-25);
+            }
         }
     }
 }

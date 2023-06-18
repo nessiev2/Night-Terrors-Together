@@ -517,16 +517,19 @@ public class NTT extends JPanel {
 //                }
 //            }
         }
+//        for (int i = 0; i < 9; i++){
+//            System.out.print("trash" + i + ": " + trashRoom[i] + "|   ");
+//        }
+//        System.out.println("");
+//
+//        for (int i = 0; i < 9; i++){
+//            System.out.print("board" + i + ": " + chalkRoom[i] + "|   ");
+//        }
+//        System.out.println("");
 
         for (int i = 0; i < 9; i++){
-            System.out.print("trash" + i + ": " + trashRoom[i] + "|   ");
+            System.out.print("bArray " + i + ": " + bArray[i] + "|           ");
         }
-        System.out.println("");
-
-        for (int i = 0; i < 9; i++){
-            System.out.print("board" + i + ": " + chalkRoom[i] + "|   ");
-        }
-        System.out.println("");
 
         /*
         RANDOM - "SET FIRE TO TRASH CANS",      0 DONE

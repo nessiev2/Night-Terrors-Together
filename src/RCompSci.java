@@ -33,7 +33,7 @@ public class RCompSci {
     }
 
     public RCompSci() {
-        initializeCompSci(false, false, false);
+        initializeCompSci(false, false,false);
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
