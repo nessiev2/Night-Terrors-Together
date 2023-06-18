@@ -1,12 +1,15 @@
+import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
 public class RMath {
     private boolean ts = true;
-
+    private BufferedImage mathdesk;
     private DoArson[] arson7 = new DoArson[3];
     private DoArson arsont1, arsont2, arsont3;
     private ATrashCan[] trashCans = new ATrashCan[3];
@@ -63,9 +66,14 @@ public class RMath {
                 counter++;
             }
         }
-        desks[6] = new ADesk(600, 300, 400, 150);
+        desks[6] = new ADesk(600, 300, 400, 150, true);
 
         initializeMath(false, false, false);
+
+
+        try {
+            mathdesk = ImageIO.read(new File("res\\mathdesk.png"));
+        } catch (IOException e) { System.out.println("frog no image"); }
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
@@ -79,9 +87,12 @@ public class RMath {
             if (d.getDeskType() == 0){
                 d.paintDesk0(g2d);
             } else {
+                g2d.setColor(new Color(1, 1,1, 0));
                 d.paint(g2d);
             }
         }
+
+        g2d.drawImage(mathdesk, 600, 300, null);
 
         for (ATrashCan tc: trashCans){
             tc.paint(g2d, p1, p2, b1);

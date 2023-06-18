@@ -1,18 +1,21 @@
+import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
 public class RChemistry {
     private boolean ts = true;
-
+    private BufferedImage chemtable;
     private DoArson[] arson6 = new DoArson[3];
     private DoArson arsont1, arsont2, arsont3;
     private ATrashCan[] trashCans = new ATrashCan[3];
     private AChalkBoard cb;
     private AWall w1 = new AWall(0, 0);
-    private ADesk[] desks = {new ADesk(400, 500), new ADesk(800, 500), new ADesk(400, 800), new ADesk(800, 800), new ADesk(1200, 500, 500, 150), new ADesk(1200, 500, 500, 150)};
+    private ADesk[] desks = {new ADesk(400, 500), new ADesk(800, 500), new ADesk(400, 800), new ADesk(800, 800), new ADesk(1200, 500, 500, 150, true)};
     private DoBadReaction badReaction6;
     boolean b1;
     public ADesk[] getDesks(){
@@ -53,6 +56,9 @@ public class RChemistry {
 
     public RChemistry() {
         initializeChem(false, false, false);
+        try {
+            chemtable = ImageIO.read(new File("res\\chemtable.png"));
+        } catch (IOException e) { System.out.println("chem table no image"); }
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu, int currentClassroom) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
@@ -67,9 +73,11 @@ public class RChemistry {
             if (d.getDeskType() == 0){
                 d.paintDesk0(g2d);
             } else {
+                g2d.setColor(new Color(0, 0, 0, 0));
                 d.paint(g2d);
             }
         }
+        g2d.drawImage(chemtable, 1200, 500, null);
 
         for (ATrashCan tc: trashCans){
             tc.paint(g2d, p1, p2, b1);

@@ -1,19 +1,22 @@
+import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
 public class RCompSci {
     private boolean ts = true;
-
+    private BufferedImage vertDesk, horzDesk1, horzDesk2;
     private DoArson[] arson8 = new DoArson[3];
     private DoArson arsont1, arsont2, arsont3;
     private DoHack doHack8;
     private ATrashCan[] trashCans = new ATrashCan[3];
     private AChalkBoard cb;
     private AWall w1 = new AWall(0, 0);
-    private ADesk[] desks = {new ADesk(400, 500, 200, 100), new ADesk(700, 500, 200, 100), new ADesk(1000, 500, 200, 100), new ADesk(1300, 500, 200, 100), new ADesk(400, 500, 100, 300), new ADesk(1400, 500, 100, 300), new ADesk(750, 800, 400, 200)};
+    private ADesk[] desks = {new ADesk(400, 500, 200, 100, true), new ADesk(700, 500, 200, 100, true), new ADesk(1000, 500, 200, 100,true), new ADesk(1300, 500, 200, 100, true), new ADesk(400, 500, 100, 300, true), new ADesk(1400, 500, 100, 300, true), new ADesk(750, 800, 400, 200, true)};
     private ADesk[] decorComputers = {new ADesk(410, 650, 50, 80, true), new ADesk(500, 510, 80, 50, true), new ADesk(760, 510, 80, 50, true), new ADesk(1060, 510, 80, 50, true), new ADesk(1320, 510, 80, 50, true), new ADesk(1440, 650, 50, 80, true)};
     boolean b1;
 
@@ -54,6 +57,12 @@ public class RCompSci {
 
     public RCompSci() {
         initializeCompSci(false, false,false);
+        try {
+            vertDesk = ImageIO.read(new File("res\\compscivert.png"));
+            horzDesk1 = ImageIO.read(new File("res\\compscihorz1.png"));
+            horzDesk2 = ImageIO.read(new File("res\\compscihorz2.png"));
+        } catch (IOException e) { System.out.println("desks no image"); }
+
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
@@ -63,8 +72,16 @@ public class RCompSci {
         g2d.setColor(Color.BLACK);
 
         for (ADesk d:desks) {
+            g2d.setColor(new Color(1,1,1, 0));
             d.paint(g2d);
         }
+        g2d.drawImage(horzDesk1, 400, 500, null);
+        g2d.drawImage(horzDesk1, 700, 500, null);
+        g2d.drawImage(horzDesk1, 1000, 500, null);
+        g2d.drawImage(horzDesk1, 1300, 500, null);
+        g2d.drawImage(vertDesk, 400, 500, null);
+        g2d.drawImage(vertDesk, 1400, 500, null);
+        g2d.drawImage(horzDesk2, 750, 800, null);
 
         g2d.setColor(new Color(49, 49, 49));
         for (ADesk c:decorComputers){

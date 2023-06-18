@@ -1,7 +1,11 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class DoVendingMachine extends Task {
-
+    private BufferedImage vendInteract, vendOpen, vendBusted;
     private int x, y, width = 150, height = 200;
     private boolean playerIsClose;
     private final int RADIUS = 65;
@@ -20,6 +24,11 @@ public class DoVendingMachine extends Task {
         this.x = x;
         this.y = y;
         initializeVM();
+        try {
+            vendInteract = ImageIO.read(new File("res\\vendinteract.png"));
+            vendOpen = ImageIO.read(new File("res\\vendopen.png"));
+            vendBusted = ImageIO.read(new File("res\\vendbusted.png"));
+        } catch (IOException e) { System.out.println("frog no image"); }
     }
 
     public void finishVending() {
@@ -46,16 +55,15 @@ public class DoVendingMachine extends Task {
         if (!finished){
             if (playerIsClose && isTask) {
                 // lights up yellow
-                g2d.setColor(Color.yellow);
-                g2d.fillRect(x-i, y-i, width+2*i, height+2*i);
+                g2d.drawImage(vendInteract, x-i, y-i, null);
             }
             // draws vending machine
-            g2d.setColor(new Color(47, 47, 47));
-            g2d.fillRect(x, y, width, height);
+            g2d.drawImage(vendOpen, x, y, null);
         } else {
             if (p1.croom == 2 && isTask) {
-                g2d.setColor(new Color(255, 0, 0));
-                g2d.fillRect(x, y, width, height);
+                g2d.drawImage(vendBusted, x, y, null);
+//                g2d.setColor(new Color(255, 0, 0));
+//                g2d.fillRect(x, y, width, height);
             }
         }
     }
