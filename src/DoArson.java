@@ -26,13 +26,19 @@ public class DoArson extends Task {
         int i = 10;
 
         // draws the glow around the trash can
+        boolean b = true;
         for (int j = 0; j < 3; j++){
             g2d.setColor(Color.red);
 
             if (isOnFire && isTask) {
                 //g2d.fillRect(trash.getX()+2*i, trash.getY()+2*i, trash.getWidth()-4*i, trash.getHeight()-4*i);
                 g2d.drawImage(img, trash.getX()+2*i, trash.getY()+i, trash.getWidth()-2*i, trash.getHeight()-2*i, null);
+            } else {
+                b = false;
             }
+        }
+        if (b) {
+            menu.updateTaskCompletion(0);
         }
     }
 
