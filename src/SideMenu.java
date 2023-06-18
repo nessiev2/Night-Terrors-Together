@@ -2,13 +2,14 @@ import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
 public class SideMenu {
     private NTT c;
-    private Image bigOpen, minOpen, minClosed;
+    private BufferedImage bigOpen, minOpen, minClosed;
     private Sound sound;
     private int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8};
     private boolean[] bArray = new boolean[9];
@@ -16,7 +17,7 @@ public class SideMenu {
     private String[] roomArray = {"look out for the interactive trash cans", "in Chemistry", "in Biology", "where else", "in Gym", "look out for the interactive chalkboard", "in English", "in Math" , "in Caf"};
     private boolean[] finTasks;
 
-    private int x = 1835, y = 20, width = 50, height = 50, openX = NTT.SCREEN_WIDTH/2 - 400, openY = 20, openWidth = 800, openHeight = 800;
+    private int x = 1835, y = 20, width = 50, height = 50, openX = NTT.SCREEN_WIDTH/2 - 500, openY = 20, openWidth = 800, openHeight = 800;
     private boolean isOpen;
     private boolean hasGenerated;
     public SideMenu(NTT c, Sound sound) {
@@ -123,29 +124,29 @@ public class SideMenu {
 //            g2d.fillRect(x, y, width, height);
         } else {
             g2d.drawImage(minOpen, x, y, null);
-            g2d.drawImage(bigOpen, openX, openY, null);
+            g2d.drawImage(bigOpen, openX, openY, 1000, 1000, null);
 
             //            g2d.fillRect(openX, openY, openWidth, openHeight);
             g2d.setColor(Color.black);
-            g2d.drawString("TASKS:", openX + openWidth - 500, openY + 30 + 125);
+            g2d.drawString("TASKS:", openX + openWidth - 500 - 100, openY + 30 + 200);
 
             for (int i = 0; i < 4; i++)  {
                 // the checkboxes
                 g2d.setColor(Color.black);
-                g2d.setFont(new Font("TimesRoman", Font.BOLD, 35));
-                g2d.drawRect(openX + 25, openY + 155 + i*100 + 125, 50, 50);
+                g2d.setFont(new Font("TimesRoman", Font.BOLD, 40));
+                g2d.drawRect(openX + 25, openY + 155 + i*150 + 100, 50, 50);
 
-                g2d.drawString(sArray[array[i]], openX + 100, openY + 200 + 125 + i*100);
+                g2d.drawString(sArray[array[i]], openX + 100, openY + 200 + 100 + i*150);
 
                 g2d.setFont(new Font("TimesRoman", Font.ITALIC, 25));
-                g2d.drawString(roomArray[array[i]], openX + 100, openY + 230 + 125 + i*100);
+                g2d.drawString(roomArray[array[i]], openX + 100, openY + 230 + 100 + i*150);
 
 
                 if (finTasks[array[i]]) {
                     //System.out.println("task " + i + " is fin, did draw X");
                     g2d.setFont(new Font("TimesRoman", Font.BOLD, 50));
                     g2d.setColor(Color.red);
-                    g2d.drawString("X", openX + 33, openY + 200 + i*100);
+                    g2d.drawString("X", openX + 33, openY + 200 + 100 + i*150);
                 }
             }
         }
