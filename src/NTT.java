@@ -292,10 +292,12 @@ public class NTT extends JPanel {
             if (currentClassroom == tCurrentClassroom) {
                 //p1.checkPlayerCaught(teacher);
                 //p2.checkPlayerCaught(teacher);
-                if (p1.checkPlayerCaught(teacher))
+                if (p1.checkPlayerCaught(teacher)) {
                     sound.playGotCaughtSoundEffect();
-                if (p2.checkPlayerCaught(teacher))
+                }
+                if (p2.checkPlayerCaught(teacher)) {
                     sound.playGotCaughtSoundEffect();
+                }
             }
 
             if (currentClassroom == 1 && (p1.getIsCaught() || p2.getIsCaught())){

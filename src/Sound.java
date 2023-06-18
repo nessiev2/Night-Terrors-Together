@@ -45,9 +45,22 @@ public class Sound {
         status = "play";
     }
 
+    public void soundMaintenance() {
+
+    }
+
     public void playGotCaughtSoundEffect() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         //t.start();
         gotCaughtSoundEffect.start();
+
+//        boolean b = true;
+//        while (b) {
+//            if (!gotCaughtSoundEffect.isRunning()) {
+//            //if (!gotCaughtSoundEffect.isActive()) {
+//                restart(gotCaughtSoundEffect);
+//                b = false;
+//            }
+//        }
 
 //        while (t.getElapsedTime() <= 1000) {
 //            t.stop();
@@ -57,13 +70,23 @@ public class Sound {
         //restart(gotCaughtSoundEffect, audioInputStreamGotCaught, "res\\RobloxOof.wav");
     }
 
-    public void restart(Clip clip) {
-        boolean b = true;
-        while (b) {
+    // Method to restart the audio
+    public void restart(Clip clip) throws IOException, LineUnavailableException,UnsupportedAudioFileException {
+        clip.stop();
+        clip.close();
+        //resetAudioStream();
         currentFrame = 0L;
         clip.setMicrosecondPosition(0);
-
+        //this.play();
     }
+
+//    public void restart(Clip clip) {
+//        boolean b = true;
+//        while (b) {
+//        currentFrame = 0L;
+//        clip.setMicrosecondPosition(0);
+//
+//    }
 
 
 //    public void restart(Clip clip) {
