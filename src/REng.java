@@ -75,7 +75,11 @@ public class REng {
 
         // IRENE IS MAKING A CLASSROOM DESK TRIAL
         for (ADesk d:desks) {
-            d.paint(g2d);
+            if (d.getDeskType() == 0){
+                d.paintDesk0(g2d);
+            } else {
+                d.paint(g2d);
+            }
         }
 
         for (ATrashCan tc: trashCans){

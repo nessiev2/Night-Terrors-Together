@@ -64,7 +64,11 @@ public class RChemistry {
         badReaction6.doTask(p1, p2);
 
         for (ADesk d:desks) {
-            d.paint(g2d);
+            if (d.getDeskType() == 0){
+                d.paintDesk0(g2d);
+            } else {
+                d.paint(g2d);
+            }
         }
 
         for (ATrashCan tc: trashCans){

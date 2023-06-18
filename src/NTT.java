@@ -9,17 +9,6 @@ import java.util.Random;
 
 /*
 * ENCAPSULATE CODE
-    * ROOMS:
-        * bio - CLEAR
-        * caf - CLEAR
-        * chem - CLEAR
-        * comp sci - CLEAR
-        * eng - CLEAR
-        * gym - CLAERE
-        * math - CLEAE
-        * office - CLEAR
-        * physics - CEAR
-    * other files
 * make trash cans not generate on desk
     * biology - CLEAR
     * chem
@@ -28,6 +17,13 @@ import java.util.Random;
     * math
     * office
     * physics
+* DESKS to PAINT
+    * bio
+    * office
+    * math
+    * compsci
+    * caf
+    * chem
 * play sound when teacher jump scare u
 * always spawn teacher in the frame
 * add music/sound

@@ -74,7 +74,11 @@ public class RBiology {
         g2d.setColor(Color.BLACK);
 
         for (ADesk d:desks) {
-            d.paint(g2d);
+            if (d.getDeskType() == 0){
+                d.paintDesk0(g2d);
+            } else {
+                d.paint(g2d);
+            }
         }
 
         for (ATrashCan tc: trashCans){

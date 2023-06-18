@@ -128,9 +128,9 @@ public class SideMenu {
 
             int shiftY = 200, shiftX = 30, spacing = 120, moreYSpacing = 80;
 
-            g2d.setColor(Color.black);
-            g2d.setFont(new Font("TimesRoman", Font.BOLD, 60));
-            g2d.drawString("TASKS:", openX + openWidth - 500, openY + 30 + 300);
+//            g2d.setColor(Color.black);
+//            g2d.setFont(new Font("TimesRoman", Font.BOLD, 60));
+//            g2d.drawString("TASKS:", openX + openWidth - 500, openY + 30 + 300);
 
             for (int i = 0; i < 4; i++)  {
                 g2d.setColor(Color.black);
