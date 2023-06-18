@@ -10,6 +10,7 @@ BUGS
 * make sure teacher can't spawn on you
 
 * buggy walking in gym
+
 * ENCAPSULATE CODE.
 
 GOLD PLATING
@@ -28,7 +29,7 @@ public class NTT extends JPanel {
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
     boolean gameOver = false, pauseGame = false, tutOpen = true;
     int currentClassroom = 5, tCurrentClassroom = 1, clickClack = 0;
-    int tobX = 1300, botY = 840, topY = 70, rightX = SCREEN_WIDTH-150, leftX = 0, sideY = SCREEN_HEIGHT/2-100;
+    int tobX = 1300, botY = 840, topY = 70, rightX = SCREEN_WIDTH-150, leftX = 0, sideY = SCREEN_HEIGHT/2-100/*440*/;
     boolean flag = false;
     CountDown cd = new CountDown();
     Transition transition1 = new Transition();
@@ -115,7 +116,7 @@ public class NTT extends JPanel {
                             tut.changePlayTut(true);
                             tutOpen = true;
 
-                            System.out.println("i paused");
+                            //System.out.println("i paused");
                             //cd.CDReset();
                             if (!pauseGame) {
                                 cd.startPause();
@@ -124,7 +125,7 @@ public class NTT extends JPanel {
                         }
                     } else { // tut is open
                         if (first) {
-                            System.out.println("i paused BEG");
+                            //System.out.println("i paused BEG");
                             first = false;
                             cd.startPause();
                             pauseGame = true;
@@ -134,7 +135,7 @@ public class NTT extends JPanel {
                             tut.changePlayTut(false);
                             tut.initializeTut();
 
-                            System.out.println("i UNpaused");
+                            //System.out.println("i UNpaused");
                             if (pauseGame) {
                                 cd.stopPause();
                                 pauseGame = false;
@@ -149,7 +150,7 @@ public class NTT extends JPanel {
                                 tut.changePlayTut(false);
                                 tut.initializeTut();
 
-                                System.out.println("i UNpaused");
+                                //System.out.println("i UNpaused");
                                 if (pauseGame) {
                                     cd.stopPause();
                                     pauseGame = false;
@@ -237,27 +238,47 @@ public class NTT extends JPanel {
             if (clickClack >= 50 && tCurrentClassroom != currentClassroom){
                 int[] tmp = {1, 2, 3, 4, 6, 7, 8, 9};
 
-                //hardcoding hehe
-                if (currentClassroom == 1){
-                    t.spawnTeacherAtDoor(p1, p2, "", "1", "2", "");
-                } else if (currentClassroom == 2){
-                    t.spawnTeacherAtDoor(p1, p2, "", "1", "2", "3");
-                } else if (currentClassroom == 3){
-                    t.spawnTeacherAtDoor(p1, p2, "", "", "2", "3");
-                } else if (currentClassroom == 4){
-                    t.spawnTeacherAtDoor(p1, p2, "0", "1", "2","");
-                }
-                else if (currentClassroom == 6){
-                    t.spawnTeacherAtDoor(p1, p2, "0", "", "2", "3");
-                } else if (currentClassroom == 7){
-                    t.spawnTeacherAtDoor(p1, p2, "0", "1", "", "");
-                } else if (currentClassroom == 8){
-                    t.spawnTeacherAtDoor(p1, p2, "0", "1", "", "3");
-                } else if (currentClassroom == 9){
-                    t.spawnTeacherAtDoor(p1, p2, "0", "", "", "3");
+                tCurrentClassroom = tmp[r.nextInt(8)];
+
+                //System.out.println("TRoom: " + tCurrentClassroom);
+
+                // hehe
+                if (currentClassroom == tCurrentClassroom){
+                    if (tCurrentClassroom == 1){
+                        if(!t.spawnTeacherAtDoor(p1, p2, "", "1", "2", "")){
+                            t.spawnTeacherRandom(p1, p2);
+                        }
+                    } else if (tCurrentClassroom == 2){
+                        if (!t.spawnTeacherAtDoor(p1, p2, "", "1", "2", "3")){
+                            t.spawnTeacherRandom(p1, p2);
+                        }
+                    } else if (tCurrentClassroom == 3){
+                        if (!t.spawnTeacherAtDoor(p1, p2, "", "", "2", "3")){
+                            t.spawnTeacherRandom(p1, p2);
+                        }
+                    } else if (tCurrentClassroom == 4){
+                        if (!t.spawnTeacherAtDoor(p1, p2, "0", "1", "2","")){
+                            t.spawnTeacherRandom(p1, p2);
+                        }
+                    } else if (tCurrentClassroom == 6){
+                        if (!t.spawnTeacherAtDoor(p1, p2, "0", "", "2", "3")){
+                            t.spawnTeacherRandom(p1, p2);
+                        }
+                    } else if (tCurrentClassroom == 7){
+                        if (!t.spawnTeacherAtDoor(p1, p2, "0", "1", "", "")){
+                            t.spawnTeacherRandom(p1, p2);
+                        }
+                    } else if (tCurrentClassroom == 8){
+                        if (!t.spawnTeacherAtDoor(p1, p2, "0", "1", "", "3")){
+                            t.spawnTeacherRandom(p1, p2);
+                        }
+                    } else if (tCurrentClassroom == 9){
+                        if (!t.spawnTeacherAtDoor(p1, p2, "0", "", "", "3")){
+                            t.spawnTeacherRandom(p1, p2);
+                        }
+                    }
                 }
 
-                tCurrentClassroom = tmp[r.nextInt(8)];
                 clickClack = 0;
             }
 
@@ -401,7 +422,7 @@ public class NTT extends JPanel {
                         if (!chem.badReaction6.finished){
                             chem.badReaction6.changeLeave(false);
                         }
-                        System.out.println(chem.badReaction6.getLeave());
+                        //System.out.println(chem.badReaction6.getLeave());
                         chem.paint(g, p1, p2, transition1, sideMenu, currentClassroom);
                         chemToPhys.paint(g2d);
                         chemToGym.paint(g2d);

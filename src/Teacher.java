@@ -12,9 +12,10 @@ public class Teacher extends Thing {
     private boolean right = false, left = false, up = false, down = false, interact = false, standing = false;
     private int speed = 1;
     private boolean bothCaught = false;
+    private static final int RADIUS = 400;
     private boolean isFacingLeft = false;
     // this bool represents if u can spawn at this door or NOT
-    boolean d0 = true, d1 = true, d2 = true, d3 = true;
+    boolean d0, d1, d2, d3;
     // public void changeFaceDirection(boolean b) { isFacingLeft = b; }
 
     public void spawnTeacherRandom(Player p1, Player p2) {
@@ -43,7 +44,12 @@ public class Teacher extends Thing {
 
     }
 
-    public void spawnTeacherAtDoor(Player p1, Player p2, String door0, String door1, String door2, String door3) {
+    public boolean spawnTeacherAtDoor(Player p1, Player p2, String door0, String door1, String door2, String door3) {
+        d0 = true;
+        d1 = true;
+        d2 = true;
+        d3 = true;
+
         String heh = "";
         heh += door0;
         heh += door1;
@@ -53,70 +59,93 @@ public class Teacher extends Thing {
         Random r = new Random();
 
         distanceToDoor(p1, p2);
+
         char tmp = heh.charAt(r.nextInt(heh.length()));
 
-        boolean temp = true;
-        while (temp) {
-            if (tmp == '0') {
-                if (d0) {
-                    resetX(1300);
-                    resetY(70);
-                    temp = false;
-                } else {
-                    tmp = '1';
-                }
-            } else if (tmp == '1') {
-                if (d1) {
-                    resetX(1770);
-                    resetY(440);
-                    temp = false;
-                } else {
-                    tmp = '2';
-                }
-            } else if (tmp == '2') {
-                if (d2) {
-                    resetX(1300);
-                    resetX(840);
-                    temp = false;
-                } else {
-                    tmp = '3';
-                }
-            } else { // tmp = '3';
-                if (d3) {
-                    resetX(0);
-                    resetY(440);
-                    temp = false;
-                } else {
-                    tmp = '0';
-                }
+        System.out.println(heh.length());
+
+//        System.out.println("Door options: " + heh);
+//        System.out.println("chose door " + tmp);
+
+        boolean temp = false;
+
+        if (tmp == '0') {
+            if (d0) {
+                resetX(1300);
+                resetY(70);
+                temp = true;
+                //System.out.println("at Door 0 (top)");
+            } else {
+                //System.out.println("door 0 blocked, returing " + temp);
+            }
+        } else if (tmp == '1') {
+            if (d1) {
+                resetX(1770);
+                resetY(440);
+                temp = true;
+                //System.out.println("at Door 1 (right)");
+            } else {
+                //System.out.println("door 1 blocked, returing " + temp);
+            }
+        } else if (tmp == '2') {
+            if (d2) {
+                resetX(1300);
+                resetY(840);
+                temp = true;
+                //System.out.println("at Door 2 (bot)");
+            } else {
+                //System.out.println("door 2 blocked, returing " + temp);
+            }
+        } else if (tmp == '3'){ // tmp = '3';
+            if (d3) {
+                resetX(0);
+                resetY(440);
+                temp = true;
+                //System.out.println("at Door 3 (left)");
+            } else {
+                //System.out.println("door 3 blocked, returing " + temp);
             }
         }
+        // true means successfully spawned, false is cannot spawn
+        return temp;
     }
 
     private void distanceToDoor(Player p1, Player p2) {
         // door 1
-        double dist1 = Math.sqrt(Math.pow(1300-p1.getX(), 2) + Math.pow(70-p1.getY(), 2));
-        double dist2 = Math.sqrt(Math.pow(1300-p2.getX(), 2) + Math.pow(70-p2.getY(), 2));
+        double dist0p1 = Math.sqrt(Math.pow(1300-p1.getX(), 2) + Math.pow(70-p1.getY(), 2));
+        double dist0p2 = Math.sqrt(Math.pow(1300-p2.getX(), 2) + Math.pow(70-p2.getY(), 2));
         // door 2
-        double dist3 = Math.sqrt(Math.pow(1770-p1.getX(), 2) + Math.pow(440-p1.getY(), 2));
-        double dist4 = Math.sqrt(Math.pow(1770-p2.getX(), 2) + Math.pow(440-p2.getY(), 2));
+        double dist1p1 = Math.sqrt(Math.pow(1770-p1.getX(), 2) + Math.pow(440-p1.getY(), 2));
+        double dist1p2 = Math.sqrt(Math.pow(1770-p2.getX(), 2) + Math.pow(440-p2.getY(), 2));
         // door 3
-        double dist5 = Math.sqrt(Math.pow(1300-p1.getX(), 2) + Math.pow(840-p1.getY(), 2));
-        double dist6 = Math.sqrt(Math.pow(1300-p2.getX(), 2) + Math.pow(840-p2.getY(), 2));
+        double dist2p1 = Math.sqrt(Math.pow(1300-p1.getX(), 2) + Math.pow(840-p1.getY(), 2));
+        double dist2p2 = Math.sqrt(Math.pow(1300-p2.getX(), 2) + Math.pow(840-p2.getY(), 2));
         // door 4
-        double dist7 = Math.sqrt(Math.pow(0-p1.getX(), 2) + Math.pow(440-p1.getY(), 2));
-        double dist8 = Math.sqrt(Math.pow(0-p2.getX(), 2) + Math.pow(440-p2.getY(), 2));
+        double dist3p1 = Math.sqrt(Math.pow(0-p1.getX(), 2) + Math.pow(440-p1.getY(), 2));
+        double dist3p2 = Math.sqrt(Math.pow(0-p2.getX(), 2) + Math.pow(440-p2.getY(), 2));
 
-        if (dist1 <= 100 || dist2 <= 100) {
+        System.out.println("p1 to top door0: " + dist0p1);
+        System.out.println("p2 to top door0: " + dist0p2);
+
+        System.out.println("p1 to top door1: " + dist1p1);
+        System.out.println("p2 to top door1: " + dist1p2);
+
+        System.out.println("p1 to top door2: " + dist2p1);
+        System.out.println("p2 to top door2: " + dist2p2);
+
+        System.out.println("p1 to top door3: " + dist3p1);
+        System.out.println("p2 to top door3: " + dist3p2);
+
+        if (dist0p1 <= RADIUS || dist0p2 <= RADIUS) {
             d0 = false;
         }
-        if (dist3 <= 100 || dist4 <= 100) {
+        if (dist1p1 <= RADIUS || dist1p1 <= RADIUS) {
             d1 = false;
         }
-        if (dist5 <= 100 || dist6 <= 100) {
+        if (dist2p1 <= RADIUS || dist2p2 <= RADIUS) {
             d2 = false;
         }
-        if (dist7 <= 100 || dist8 <= 100) {
+        if (dist3p1 <= RADIUS || dist3p2 <= RADIUS ) {
             d3 = false;
         }
     }

@@ -35,7 +35,7 @@ public class DoMess extends Task {
 
             if (isFin) {
                 g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
-                g2d.setColor(Color.black);
+                g2d.setColor(Color.white);
                 g2d.drawString("task complete!", 15+(1920/4)+100, 270-25);
 
                 this.taskFinished();

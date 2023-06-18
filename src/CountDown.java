@@ -34,8 +34,8 @@ public class CountDown {
         currentTime = System.currentTimeMillis();
         elapsedTime = System.currentTimeMillis() - startTime;
         pausedTime += (pause2 - pause1);
-        System.out.println("pause1 " + pause1);
-        System.out.println("pause2 " + pause2);
+        //System.out.println("pause1 " + pause1);
+        //System.out.println("pause2 " + pause2);
 
         pause1 = 0;
         pause2 = 0;
