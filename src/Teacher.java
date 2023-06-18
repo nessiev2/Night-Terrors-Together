@@ -13,9 +13,11 @@ public class Teacher extends Thing {
     private int speed = 1;
     private boolean bothCaught = false;
     private boolean isFacingLeft = false;
+    // this bool represents if u can spawn at this door or NOT
+    boolean d0 = true, d1 = true, d2 = true, d3 = true;
     // public void changeFaceDirection(boolean b) { isFacingLeft = b; }
 
-    public void spawnTeacher(Player p1, Player p2) {
+    public void spawnTeacherRandom(Player p1, Player p2) {
         Random r = new Random();
         int tmp1 = r.nextInt(2), tmp2 = r.nextInt(2);
         if (tmp1 == 0){
@@ -50,20 +52,72 @@ public class Teacher extends Thing {
 
         Random r = new Random();
 
+        distanceToDoor(p1, p2);
         char tmp = heh.charAt(r.nextInt(heh.length()));
 
-        if (tmp == '0'){
-            resetX(1300);
-            resetY(70);
-        } else if (tmp == '1') {
-            resetX(1770);
-            resetY(440);
-        } else if (tmp == '2'){
-            resetX(1300);
-            resetX(840);
-        } else {
-            resetX(0);
-            resetY(440);
+        boolean temp = true;
+        while (temp) {
+            if (tmp == '0') {
+                if (d0) {
+                    resetX(1300);
+                    resetY(70);
+                    temp = false;
+                } else {
+                    tmp = '1';
+                }
+            } else if (tmp == '1') {
+                if (d1) {
+                    resetX(1770);
+                    resetY(440);
+                    temp = false;
+                } else {
+                    tmp = '2';
+                }
+            } else if (tmp == '2') {
+                if (d2) {
+                    resetX(1300);
+                    resetX(840);
+                    temp = false;
+                } else {
+                    tmp = '3';
+                }
+            } else { // tmp = '3';
+                if (d3) {
+                    resetX(0);
+                    resetY(440);
+                    temp = false;
+                } else {
+                    tmp = '0';
+                }
+            }
+        }
+    }
+
+    private void distanceToDoor(Player p1, Player p2) {
+        // door 1
+        double dist1 = Math.sqrt(Math.pow(1300-p1.getX(), 2) + Math.pow(70-p1.getY(), 2));
+        double dist2 = Math.sqrt(Math.pow(1300-p2.getX(), 2) + Math.pow(70-p2.getY(), 2));
+        // door 2
+        double dist3 = Math.sqrt(Math.pow(1770-p1.getX(), 2) + Math.pow(440-p1.getY(), 2));
+        double dist4 = Math.sqrt(Math.pow(1770-p2.getX(), 2) + Math.pow(440-p2.getY(), 2));
+        // door 3
+        double dist5 = Math.sqrt(Math.pow(1300-p1.getX(), 2) + Math.pow(840-p1.getY(), 2));
+        double dist6 = Math.sqrt(Math.pow(1300-p2.getX(), 2) + Math.pow(840-p2.getY(), 2));
+        // door 4
+        double dist7 = Math.sqrt(Math.pow(0-p1.getX(), 2) + Math.pow(440-p1.getY(), 2));
+        double dist8 = Math.sqrt(Math.pow(0-p2.getX(), 2) + Math.pow(440-p2.getY(), 2));
+
+        if (dist1 <= 100 || dist2 <= 100) {
+            d0 = false;
+        }
+        if (dist3 <= 100 || dist4 <= 100) {
+            d1 = false;
+        }
+        if (dist5 <= 100 || dist6 <= 100) {
+            d2 = false;
+        }
+        if (dist7 <= 100 || dist8 <= 100) {
+            d3 = false;
         }
     }
 
@@ -76,6 +130,7 @@ public class Teacher extends Thing {
         resetY(500);
         bothCaught = false;
     }
+
     public Teacher() {
         super(0, 0, 120, 180);
         try {
