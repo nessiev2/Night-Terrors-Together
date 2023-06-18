@@ -6,10 +6,8 @@ import java.util.Random;
 
 /*
 BUGS
-* only able to do tasks if part of side menu
 * make sure teacher does not spawn away after you leave a room so you cant bypass the teacher
 * ENCAPSULATE CODE.
-* pause game when tut is open
 
 GOLD PLATING
 * always spawn teacher in the frame
@@ -25,7 +23,7 @@ public class NTT extends JPanel {
     Minimap minimap = new Minimap();
     Tutorial tut = new Tutorial();
     final static int SCREEN_WIDTH = 1920, SCREEN_HEIGHT = 1080;
-    boolean gameOver = false, pauseGame = false, tutOpen = false;
+    boolean gameOver = false, pauseGame = false, tutOpen = true;
     int currentClassroom = 5, tCurrentClassroom = 1, clickClack = 0;
     int tobX = 1300, botY = 840, topY = 70, rightX = SCREEN_WIDTH-150, leftX = 0, sideY = SCREEN_HEIGHT/2-100;
     boolean flag = false;
@@ -117,6 +115,14 @@ public class NTT extends JPanel {
                             pauseGame = true;
                         }
                     } else {
+                        if (e.getKeyCode() == KeyEvent.VK_T){
+                            tutOpen = false;
+                            tut.changePlayTut(false);
+                            tut.initializeTut();
+
+                            cd.stopPause();
+                            pauseGame = false;
+                        }
                         if (e.getKeyCode() == KeyEvent.VK_SPACE){
                             if (tut.getSlide() < 7){
                                 tut.nextSlide();
@@ -490,15 +496,6 @@ public class NTT extends JPanel {
             int[] tmpArr = {3, 5, 6, 7, 8};
             int randVal = tmpArr[rand.nextInt(tmpArr.length)];
             trashRoom[randVal] = true;
-//            chalkRoom[0] = true;//            trashRoom[0] = true;
-//            while (trashRoom[0] || trashRoom[1] || trashRoom[2] || trashRoom[4]) { // if any of them are true (office, caf, gym, phys)
-//                for (int i = 0; i < trashRoom.length; i++) {
-//                    int randomIndexToSwap = rand.nextInt(trashRoom.length);
-//                    boolean temp = trashRoom[randomIndexToSwap];
-//                    trashRoom[randomIndexToSwap] = trashRoom[i];
-//                    trashRoom[i] = temp;
-//                }
-//            }
         }
 
         // CHOOSING 1 CHALKBOARD ROOM
@@ -508,25 +505,7 @@ public class NTT extends JPanel {
             int[] tmpArr = {1, 2, 3, 5, 6, 7, 8};
             int randVal = tmpArr[rand.nextInt(tmpArr.length)];
             chalkRoom[randVal] = true;
-//            chalkRoom[0] = true;
-//            while (chalkRoom[0] || chalkRoom[4]) {          // if office or physics is chosen
-//                for (int i = 0; i < chalkRoom.length; i++) {
-//                    int randomIndexToSwap = rand.nextInt(chalkRoom.length);
-//                    boolean temp = chalkRoom[randomIndexToSwap];
-//                    chalkRoom[randomIndexToSwap] = chalkRoom[i];
-//                    chalkRoom[i] = temp;
-//                }
-//            }
         }
-//        for (int i = 0; i < 9; i++){
-//            System.out.print("trash" + i + ": " + trashRoom[i] + "|   ");
-//        }
-//        System.out.println("");
-//
-//        for (int i = 0; i < 9; i++){
-//            System.out.print("board" + i + ": " + chalkRoom[i] + "|   ");
-//        }
-//        System.out.println("");
 
         for (int i = 0; i < 9; i++){
             System.out.print("bArray " + i + ": " + bArray[i] + "|           ");

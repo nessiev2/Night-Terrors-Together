@@ -20,7 +20,6 @@ public class DoHack extends Task{
     }
 
     public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) {
-        System.out.println("isTask: " + isTask);
 
         int i = 10;
         if (isTask){
