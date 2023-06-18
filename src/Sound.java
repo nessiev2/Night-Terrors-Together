@@ -9,15 +9,14 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Sound {
     // to store current position
-    Long currentFrame;
-    Clip backgroundMusic;
-    Clip gotCaughtSoundEffect;
-    Clip taskCompleteSoundEffect;
+    private Clip backgroundMusic;
+    private Clip gotCaughtSoundEffect;
+    private Clip taskCompleteSoundEffect;
 
     // current status of clip
-    String status;
+    private String status;
 
-    AudioInputStream audioInputStreamBackgroundMusic, audioInputStreamGotCaught, audioInputStreamTaskComplete;
+    private AudioInputStream audioInputStreamBackgroundMusic, audioInputStreamGotCaught, audioInputStreamTaskComplete;
     //static String filePath = "res\\KevinMacLeodSneakySnitch.wav";
 
     // constructor to initialize streams and clip

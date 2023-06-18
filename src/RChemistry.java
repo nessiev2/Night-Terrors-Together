@@ -5,14 +5,29 @@ import java.io.IOException;
 import java.util.Random;
 
 public class RChemistry {
-    DoArson[] arson6 = new DoArson[3];
-    DoArson arsont1, arsont2, arsont3;
-    ATrashCan[] trashCans = new ATrashCan[3];
-    AChalkBoard cb;
-    AWall w1 = new AWall(0, 0);
-    ADesk[] desks = {new ADesk(400, 500), new ADesk(800, 500), new ADesk(400, 800), new ADesk(800, 800), new ADesk(1200, 500, 500, 150), new ADesk(1200, 500, 500, 150)};
-    DoBadReaction badReaction6;
+    private DoArson[] arson6 = new DoArson[3];
+    private DoArson arsont1, arsont2, arsont3;
+    private ATrashCan[] trashCans = new ATrashCan[3];
+    private AChalkBoard cb;
+    private AWall w1 = new AWall(0, 0);
+    private ADesk[] desks = {new ADesk(400, 500), new ADesk(800, 500), new ADesk(400, 800), new ADesk(800, 800), new ADesk(1200, 500, 500, 150), new ADesk(1200, 500, 500, 150)};
+    private DoBadReaction badReaction6;
     boolean b1;
+    public ADesk[] getDesks(){
+        return desks;
+    }
+    public DoBadReaction getBadReaction6(){
+        return badReaction6;
+    }
+    public DoArson[] getArson(){
+        return arson6;
+    }
+    public ATrashCan[] getTrashCans(){
+        return trashCans;
+    }
+    public AChalkBoard getCb(){
+        return cb;
+    }
 
     public void initializeChem(boolean b, boolean b1, boolean b2){
         Random r = new Random();
