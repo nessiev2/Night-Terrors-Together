@@ -9,10 +9,10 @@ public class CountDown {
 
     private long secondsDisplay;
     private long elapsedMinutes;
-    private long pausedTime;
+    private static long pausedTime;
 
-    private long pause1 = 0;
-    private long pause2 = 0;
+    private static long pause1 = 0;
+    private static long pause2 = 0;
 
     public CountDown() {
         startTime = System.currentTimeMillis();
@@ -20,6 +20,9 @@ public class CountDown {
 
     public static void CDReset()  {
         startTime = System.currentTimeMillis();
+        pause1 = 0;
+        pause2 = 0;
+        pausedTime = 0;
     }
 
     public void startPause() { pause1 = System.currentTimeMillis(); }
@@ -31,6 +34,9 @@ public class CountDown {
         currentTime = System.currentTimeMillis();
         elapsedTime = System.currentTimeMillis() - startTime;
         pausedTime += (pause2 - pause1);
+        System.out.println("pause1 " + pause1);
+        System.out.println("pause2 " + pause2);
+
         pause1 = 0;
         pause2 = 0;
         backwardsTime = 60000*10 + 1000 + pausedTime - elapsedTime;

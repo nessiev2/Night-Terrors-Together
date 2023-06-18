@@ -78,6 +78,7 @@ public class NTT extends JPanel {
     DoMess doMess3 = new DoMess(true);
     SideMenu sideMenu = new SideMenu(this);
     boolean win = false;
+    boolean first = true;
 
     public void changeCurrentClassroom(int i) {
         currentClassroom = i;
@@ -112,17 +113,31 @@ public class NTT extends JPanel {
                             tut.changePlayTut(true);
                             tutOpen = true;
 
+                            System.out.println("i paused");
+                            //cd.CDReset();
+                            if (!pauseGame) {
+                                cd.startPause();
+                                pauseGame = true;
+                            }
+                        }
+                    } else { // tut is open
+                        if (first) {
+                            System.out.println("i paused BEG");
+                            first = false;
                             cd.startPause();
                             pauseGame = true;
                         }
-                    } else {
                         if (e.getKeyCode() == KeyEvent.VK_T){
                             tutOpen = false;
                             tut.changePlayTut(false);
                             tut.initializeTut();
 
-                            cd.stopPause();
-                            pauseGame = false;
+                            System.out.println("i UNpaused");
+                            if (pauseGame) {
+                                cd.stopPause();
+                                pauseGame = false;
+                            }
+                            //cd.CDReset();
                         }
                         if (e.getKeyCode() == KeyEvent.VK_SPACE){
                             if (tut.getSlide() < 7){
@@ -132,18 +147,23 @@ public class NTT extends JPanel {
                                 tut.changePlayTut(false);
                                 tut.initializeTut();
 
-                                cd.stopPause();
-                                pauseGame = false;
+                                System.out.println("i UNpaused");
+                                if (pauseGame) {
+                                    cd.stopPause();
+                                    pauseGame = false;
+                                }
+                                //cd.CDReset();
                             }
                         }
                     }
                 }
 
                 // PAUSE GAME
-                if (!pauseGame && e.getKeyCode() == KeyEvent.VK_ESCAPE && !sideMenu.getIsOpen()) {
+
+                if ((!pauseGame && e.getKeyCode() == KeyEvent.VK_ESCAPE && !sideMenu.getIsOpen())) {
                     cd.startPause();
                     pauseGame = true;
-                } else if (pauseGame && e.getKeyCode() == KeyEvent.VK_ESCAPE && !sideMenu.getIsOpen()) {
+                } else if ((pauseGame && e.getKeyCode() == KeyEvent.VK_ESCAPE && !sideMenu.getIsOpen())) {
                     cd.stopPause();
                     pauseGame = false;
                 }
@@ -552,6 +572,7 @@ public class NTT extends JPanel {
         compSci.initializeCompSci(chalkRoom[7], trashRoom[7],   bArray[3]);
         eng.initializeEng(chalkRoom[8], trashRoom[8],           bArray[6]);
 
+        first = true;
         CountDown.CDReset();
     }
 
