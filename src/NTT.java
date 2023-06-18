@@ -7,8 +7,9 @@ import java.util.Random;
 /*
 BUGS
 * make sure teacher does not spawn away after you leave a room so you cant bypass the teacher
-* ENCAPSULATE CODE.
+* time is really bugged
 * dobadreaction => make fire disappear after leaving room
+* ENCAPSULATE CODE.
 
 GOLD PLATING
 * always spawn teacher in the frame
@@ -150,11 +151,11 @@ public class NTT extends JPanel {
 
 
                 // opening side menu
-                if (!mainMenu.getIsMenuOpen() && !sideMenu.getIsOpen() && e.getKeyCode() == KeyEvent.VK_M && !pauseGame) {
+                if (!tutOpen && !mainMenu.getIsMenuOpen() && !sideMenu.getIsOpen() && e.getKeyCode() == KeyEvent.VK_M) {
                     //cd.startPause();
                     //pauseGame = true;
                     sideMenu.updateIsOpen(true);
-                } else if (!mainMenu.getIsMenuOpen() && sideMenu.getIsOpen() && e.getKeyCode() == KeyEvent.VK_M && !pauseGame) {
+                } else if (!mainMenu.getIsMenuOpen() && sideMenu.getIsOpen() && e.getKeyCode() == KeyEvent.VK_M) {
                     //cd.startPause();
                     //pauseGame = true;
                     sideMenu.updateIsOpen(false);
@@ -208,7 +209,7 @@ public class NTT extends JPanel {
 
         Random r = new Random();
 
-        if (!pauseGame) {
+        if (!pauseGame && !tutOpen) {
             clickClack++;
 
             // TEACHER SPAWNS IN A CLASSROOM

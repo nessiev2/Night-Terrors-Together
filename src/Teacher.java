@@ -47,7 +47,7 @@ public class Teacher extends Thing {
         heh += door1;
         heh += door2;
         heh += door3;
-        
+
         Random r = new Random();
 
         char tmp = heh.charAt(r.nextInt(heh.length()));

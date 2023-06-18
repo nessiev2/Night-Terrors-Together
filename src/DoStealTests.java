@@ -28,7 +28,7 @@ public class DoStealTests extends Task{
         }
 
         if (!isTaskComplete && isPlayerClose(x, y, p1, p2) && isTask){
-            g2d.drawString("interact to pick up", x+75, y);
+            g2d.drawString("interact to steal", x+75, y);
             g2d.drawString("the math tests", x+75, y+25);
 
             g2d.setColor(Color.yellow);

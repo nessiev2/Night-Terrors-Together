@@ -88,9 +88,9 @@ public class DoSprint extends Task{
                 //System.out.println("do sprint COMPLETE");
             } else {
                 g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
-                g2d.setColor(Color.red);
+                g2d.setColor(Color.black);
                 g2d.drawString("find the yellow circle on the ground", 600, 350);
-                g2d.drawString("and zoom to complete the task", 600, 350+25);
+                g2d.drawString("and both players sprint to complete the task", 600, 350+25);
             }
         }
     }

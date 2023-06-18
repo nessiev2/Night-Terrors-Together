@@ -52,8 +52,8 @@ public class DoDissection extends Task{
         int i = 10;
         if (checkWin()){
             g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
-            g2d.setColor(Color.red);
-            g2d.drawString("task complete!", 250, 500);
+            g2d.setColor(Color.black);
+            g2d.drawString("task complete!", 250, 500 + 500);
             taskFinished();
             menu.updateTaskCompletion(2);
         }
@@ -172,7 +172,7 @@ public class DoDissection extends Task{
     public void instructions(Graphics g2d){
         g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
         g2d.setColor(Color.black);
-        g2d.drawString("interact with all frogs", 225, 475);
-        g2d.drawString("to dissect them", 225, 475+25);
+        g2d.drawString("interact with all frogs", 225, 475 + 500);
+        g2d.drawString("to dissect them", 225, 475+25+500);
     }
 }

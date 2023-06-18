@@ -55,7 +55,7 @@ public class RCaf {
         if (b2) {
             DoVendingMachine VM = vendMachines[0];
             g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
-            g2d.setColor(Color.red);
+            g2d.setColor(Color.black);
             if (vendMachines[0].getVendComplete() && vendMachines[1].getVendComplete()) {
                 menu.updateTaskCompletion(8);
                 g2d.drawString("task complete!", VM.getX(), VM.getY() - 25);
