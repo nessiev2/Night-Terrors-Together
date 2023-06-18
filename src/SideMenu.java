@@ -124,6 +124,7 @@ public class SideMenu {
 
                 if (finTasks[array[i]]) {
                     //System.out.println("task " + i + " is fin, did draw X");
+                    g2d.setFont(new Font("TimesRoman", Font.BOLD, 50));
                     g2d.setColor(Color.red);
                     g2d.drawString("X", openX + 33, openY + 200 + i*100);
                 }
