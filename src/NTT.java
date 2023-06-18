@@ -8,9 +8,7 @@ import java.util.Random;
 BUGS
 * make sure teacher does not spawn away after you leave a room so you cant bypass the teacher
 * ENCAPSULATE CODE.
-* dobadreaction => make fire disappear after leaving room in
-* dobadreaction => if a player dies but task gets completed, it draws the fire for captured player where it would be (in jaiL)
-* dobadreaction => draw soot nicely
+* dobadreaction => make fire disappear after leaving room
 
 GOLD PLATING
 * always spawn teacher in the frame
@@ -217,7 +215,26 @@ public class NTT extends JPanel {
             if (clickClack >= 50 && tCurrentClassroom != currentClassroom){
                 int[] tmp = {1, 2, 3, 4, 6, 7, 8, 9};
 
-                t.spawnTeacher(p1, p2);
+                //hardcoding hehe
+                if (tCurrentClassroom == 1){
+                    t.spawnTeacherAtDoor(p1, p2, "", "1", "2", "");
+                } else if (tCurrentClassroom == 2){
+                    t.spawnTeacherAtDoor(p1, p2, "", "1", "2", "3");
+                } else if (tCurrentClassroom == 3){
+                    t.spawnTeacherAtDoor(p1, p2, "", "", "2", "3");
+                } else if (tCurrentClassroom == 4){
+                    t.spawnTeacherAtDoor(p1, p2, "0", "1", "2","");
+                }
+                else if (tCurrentClassroom == 6){
+                    t.spawnTeacherAtDoor(p1, p2, "0", "", "2", "3");
+                } else if (tCurrentClassroom == 7){
+                    t.spawnTeacherAtDoor(p1, p2, "0", "1", "", "");
+                } else if (tCurrentClassroom == 8){
+                    t.spawnTeacherAtDoor(p1, p2, "0", "1", "", "3");
+                } else if (tCurrentClassroom == 9){
+                    t.spawnTeacherAtDoor(p1, p2, "0", "", "", "3");
+                }
+
                 tCurrentClassroom = tmp[r.nextInt(8)];
                 clickClack = 0;
             }
@@ -357,7 +374,8 @@ public class NTT extends JPanel {
                         break;
 
                     case 6:
-                        chem.paint(g, p1, p2, transition1, sideMenu);
+                        chem.badReaction6.checkLeave(currentClassroom);
+                        chem.paint(g, p1, p2, transition1, sideMenu, currentClassroom);
                         chemToPhys.paint(g2d);
                         chemToGym.paint(g2d);
                         chemToEng.paint(g2d);

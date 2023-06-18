@@ -42,8 +42,6 @@ public class DoVendingMachine extends Task{
         int i = 10;
         isPlayerClose(p1, p2);
 
-        System.out.println("IMPORTANT VEND MSG: " + isTask);
-
         if (!finished){
             if (playerIsClose && isTask) {
                 // lights up yellow

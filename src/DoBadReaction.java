@@ -8,6 +8,7 @@ public class DoBadReaction extends Task{
     private int x = 500, y = 515, xSpacing = 350, ySpacing = 300, w = 30, h = 50, ticks = 0;
     private int doneX1, doneY1, doneX2, doneY2;
     private int stainX1, stainY1, stainX2, stainY2;
+    private boolean leave = false;
     private static final int RADIUS = 170;
     private BufferedImage img0, img1, img2, img3, img4, imghehe, soot;
     private boolean green, pink, cyan, yellow, closeGreen, closePink, closeCyan, closeYellow, flag = false;
@@ -72,7 +73,13 @@ public class DoBadReaction extends Task{
         }
     }
 
-    public void paint(Graphics g2d, SideMenu menu) {
+    public void checkLeave(int currentClassroom){
+        if (currentClassroom != 6){
+            leave = true;
+        }
+    }
+
+    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu, int currentClassroom) {
         int i = 15, j = 25;
 
         g2d.setColor(Color.yellow);
@@ -112,18 +119,19 @@ public class DoBadReaction extends Task{
 
         if (getFinished()){
             ticks++;
-            if (ticks <= 120){
+            if (ticks <= 120 && !leave){
                 g2d.setColor(new Color(255, 0, 0));
-                g2d.fillRect(doneX1, doneY1, 100, 100);
-                g2d.fillRect(doneX2, doneY2, 100, 100);
+                if (!p1.getIsCaught()){
+                    g2d.fillRect(doneX1, doneY1, 100, 100);
+                }
+                if (!p2.getIsCaught()){
+                    g2d.fillRect(doneX2, doneY2, 100, 100);
+                }
             }
 
-            g2d.setColor(new Color(0, 0, 0, 195));
-            g2d.fillRect(stainX1, stainY1, 100, 100);
-            g2d.fillRect(stainX2, stainY2, 100, 100);
-
-//            g2d.drawImage(soot, stainX1, stainY1, null);
-//            g2d.drawImage(soot, stainX2, stainY2, null);
+            g2d.setColor(new Color(0, 0, 0, 100));
+            paintStain(g2d, p1, stainX1, stainY1);
+            paintStain(g2d, p2, stainX2, stainY2);
 
             g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
             g2d.setColor(Color.black);
@@ -137,6 +145,17 @@ public class DoBadReaction extends Task{
                 g2d.drawString("interact with all chemicals", 500, 700);
                 g2d.drawString("to create an explosion", 500, 700 + 25);
             }
+        }
+    }
+
+    private void paintStain(Graphics g2d, Player p2, int stainX2, int stainY2) {
+        if (!p2.getIsCaught()){
+            g2d.fillRect(stainX2, stainY2-10, 60, 60);
+            g2d.fillRect(stainX2 - 30, stainY2 + 50, 80, 50);
+            g2d.fillRect(stainX2 + 20, stainY2 + 100, 30, 40);
+            g2d.fillRect(stainX2 + 80, stainY2, 40, 40);
+            g2d.fillRect(stainX2 + 40, stainY2 + 80, 60, 40);
+            g2d.fillRect(stainX2 + 120, stainY2 + 120, 20, 20);
         }
     }
 

@@ -41,6 +41,32 @@ public class Teacher extends Thing {
 
     }
 
+    public void spawnTeacherAtDoor(Player p1, Player p2, String door0, String door1, String door2, String door3) {
+        String heh = "";
+        heh += door0;
+        heh += door1;
+        heh += door2;
+        heh += door3;
+        
+        Random r = new Random();
+
+        char tmp = heh.charAt(r.nextInt(heh.length()));
+
+        if (tmp == '0'){
+            resetX(1300);
+            resetY(70);
+        } else if (tmp == '1') {
+            resetX(1770);
+            resetY(440);
+        } else if (tmp == '2'){
+            resetX(1300);
+            resetX(840);
+        } else {
+            resetX(0);
+            resetY(440);
+        }
+    }
+
     public boolean getBothCaught(){
         return bothCaught;
     }
