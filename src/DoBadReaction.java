@@ -10,7 +10,7 @@ public class DoBadReaction extends Task{
     private int stainX1, stainY1, stainX2, stainY2;
     private boolean leave = false;
     private static final int RADIUS = 170;
-    private BufferedImage img0, img1, img2, img3, img4, imghehe, soot;
+    private BufferedImage img0, img1, img2, img3, img4, imghehe;
     private boolean green, pink, cyan, yellow, closeGreen, closePink, closeCyan, closeYellow, flag = false;
     public DoBadReaction(boolean isTask){
         super(isTask);
@@ -73,12 +73,13 @@ public class DoBadReaction extends Task{
         }
     }
 
-    public void checkLeave(int currentClassroom){
-        if (currentClassroom != 6){
-            leave = true;
-        }
+    public boolean getLeave(){
+        return leave;
     }
 
+    public void changeLeave(boolean bool){
+        leave = bool;
+    }
     public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu, int currentClassroom) {
         int i = 15, j = 25;
 
@@ -119,7 +120,7 @@ public class DoBadReaction extends Task{
 
         if (getFinished()){
             ticks++;
-            if (ticks <= 120 && !leave){
+            if (ticks <= 200 && !leave){
                 g2d.setColor(new Color(255, 0, 0));
                 if (!p1.getIsCaught()){
                     g2d.fillRect(doneX1, doneY1, 100, 100);

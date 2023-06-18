@@ -77,16 +77,16 @@ public class RPhysics {
         g2d.setColor(Color.white);
         g2d.drawString("this is the only room you're safe in.", 500, 50);
 
-        if (menu.isScribbleTask()){
-//        g2d.drawString("which chalkboard are you destined to scribble on?", 500, 150);
-//        g2d.drawString("find out by looking for the glowing chalkboard", 500, 150+25);
-        g2d.drawString("- look out for the glowing chalkboard", 500, 150+25);
-
-        }
-        if (menu.isArsonTask()){
-//        g2d.drawString("which room's trash cans were you prophesied to draw on?", 500, 225);
-//        g2d.drawString("find out by looking for the room with glowing trash cans", 500, 225+25);
-        g2d.drawString("- look out for the glowing trash cans", 500, 225);
-        }
+//        if (menu.isScribbleTask()){
+////        g2d.drawString("which chalkboard are you destined to scribble on?", 500, 150);
+////        g2d.drawString("find out by looking for the glowing chalkboard", 500, 150+25);
+//        g2d.drawString("- look out for the glowing chalkboard", 500, 150+25);
+//
+//        }
+//        if (menu.isArsonTask()){
+////        g2d.drawString("which room's trash cans were you prophesied to draw on?", 500, 225);
+////        g2d.drawString("find out by looking for the room with glowing trash cans", 500, 225+25);
+//        g2d.drawString("- look out for the glowing trash cans", 500, 225);
+//        }
     }
 }

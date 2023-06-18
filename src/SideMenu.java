@@ -5,7 +5,8 @@ public class SideMenu {
     NTT c;
     int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8};
     boolean[] bArray = new boolean[9];
-    String[] sArray = {"SET FIRE TO TRASH CANS", "CHEMICALS", "DISSECTION", "HACK COMPUTER SCIENCE", "SPILL WATER", "CHALKBOARD SCRIBBLE", "SPRINT", "STEAL MATH TESTS" , "SMASH CAF VENDING MACHINES"};
+    String[] sArray = {"SET FIRE TO TRASH CANS", "MIX CHEMICALS!", "DISSECT FROGS", "HACK MAIN COMPUTER", "CREATE SLIPPING HAZARD", "MESS UP CHALKBOARD", "SPRINT", "STEAL MATH TESTS" , "SMASH VENDING MACHINES"};
+    String[] roomArray = {"look out for the interactive trash cans", "in Chemistry", "in Biology", "where else", "in Gym", "look out for the interactive chalkboard", "in English", "in Math" , "in Caf"};
     boolean[] finTasks;
 
     int x = 1835, y = 20, width = 50, height = 50, openX = NTT.SCREEN_WIDTH/2 - 400, openY = 20, openWidth = 800, openHeight = 800;
@@ -113,8 +114,13 @@ public class SideMenu {
             for (int i = 0; i < 4; i++)  {
                 // the checkboxes
                 g2d.setColor(Color.black);
+                g2d.setFont(new Font("TimesRoman", Font.BOLD, 50));
                 g2d.drawRect(openX + 25, openY + 155 + i*100, 50, 50);
                 g2d.drawString(sArray[array[i]], openX + 100, openY + 200 + i*100);
+
+                g2d.setFont(new Font("TimesRoman", Font.ITALIC, 25));
+                g2d.drawString(roomArray[array[i]], openX + 100, openY + 230 + i*100);
+
 
                 if (finTasks[array[i]]) {
                     //System.out.println("task " + i + " is fin, did draw X");

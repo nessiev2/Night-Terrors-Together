@@ -7,8 +7,9 @@ import java.util.Random;
 /*
 BUGS
 * make sure teacher does not spawn away after you leave a room so you cant bypass the teacher
-* time is really bugged
-* dobadreaction => make fire disappear after leaving room
+* make sure teacher can't spawn on you
+
+* buggy walking in gym
 * ENCAPSULATE CODE.
 
 GOLD PLATING
@@ -34,27 +35,27 @@ public class NTT extends JPanel {
 
     //DOORS
     ADoor bioToOffice = new ADoor(tobX, topY, "Office");
-    ADoor officeToBio = new ADoor(tobX, botY, "Bio");
-    ADoor physToChem = new ADoor(rightX, sideY, "Chem");
-    ADoor chemToPhys = new ADoor(leftX, sideY, "Phys");
-    ADoor physToBio = new ADoor(leftX, sideY, "Bio");
-    ADoor bioToPhys = new ADoor(rightX, sideY, "Phys");
+    ADoor officeToBio = new ADoor(tobX, botY, "Biology");
+    ADoor physToChem = new ADoor(rightX, sideY, "Chemistry");
+    ADoor chemToPhys = new ADoor(leftX, sideY, "Physics");
+    ADoor physToBio = new ADoor(leftX, sideY, "Biology");
+    ADoor bioToPhys = new ADoor(rightX, sideY, "Physics");
     ADoor physToCaf = new ADoor(tobX, topY, "Caf");
-    ADoor cafToPhys = new ADoor(tobX, botY, "Phys");
+    ADoor cafToPhys = new ADoor(tobX, botY, "Physics");
     ADoor gymToCaf = new ADoor(leftX, sideY, "Caf");
     ADoor cafToGym = new ADoor(rightX, sideY, "Gym");
     ADoor gymToChem = new ADoor(tobX, botY, "Chem");
     ADoor chemToGym = new ADoor(tobX, topY, "Gym");
-    ADoor mathToBio = new ADoor(tobX, topY, "Bio");
+    ADoor mathToBio = new ADoor(tobX, topY, "Biology");
     ADoor bioToMath = new ADoor(tobX, botY, "Math");
     ADoor compSciToMath = new ADoor(leftX, sideY, "Math");
-    ADoor mathToCompSci = new ADoor(rightX, sideY, "CompSci");
-    ADoor physToCompSci = new ADoor(tobX, botY, "CompSci");
-    ADoor compSciToPhys = new ADoor(tobX, topY, "Phys");
-    ADoor compSciToEng = new ADoor(rightX, sideY, "Eng");
-    ADoor engToCompSci = new ADoor(leftX, sideY, "CompSci");
-    ADoor engToChem = new ADoor(tobX, topY, "Chem");
-    ADoor chemToEng = new ADoor(tobX, botY, "Eng");
+    ADoor mathToCompSci = new ADoor(rightX, sideY, "Comp. Sci.");
+    ADoor physToCompSci = new ADoor(tobX, botY, "Comp. Sci.");
+    ADoor compSciToPhys = new ADoor(tobX, topY, "Physics");
+    ADoor compSciToEng = new ADoor(rightX, sideY, "English");
+    ADoor engToCompSci = new ADoor(leftX, sideY, "Comp. Sci.");
+    ADoor engToChem = new ADoor(tobX, topY, "Chemistry");
+    ADoor chemToEng = new ADoor(tobX, botY, "English");
     ADoor cafToOffice = new ADoor(leftX, sideY, "Office");
     ADoor officeToCaf = new ADoor(rightX, sideY, "Caf");
 
@@ -345,6 +346,7 @@ public class NTT extends JPanel {
                         break;
 
                     case 3:
+                        chem.badReaction6.changeLeave(true);
                         gym.paint(g, p1, p2, transition1, sideMenu);
                         gymToCaf.paint(g2d);
                         gymToChem.paint(g2d);
@@ -363,6 +365,7 @@ public class NTT extends JPanel {
                         break;
 
                     case 5:
+                        chem.badReaction6.changeLeave(true);
                         phys.paint(g, p1, p2, transition1, sideMenu);
                         physToChem.paint(g2d);
                         physToBio.paint(g2d);
@@ -375,7 +378,10 @@ public class NTT extends JPanel {
                         break;
 
                     case 6:
-                        chem.badReaction6.checkLeave(currentClassroom);
+                        if (!chem.badReaction6.finished){
+                            chem.badReaction6.changeLeave(false);
+                        }
+                        System.out.println(chem.badReaction6.getLeave());
                         chem.paint(g, p1, p2, transition1, sideMenu, currentClassroom);
                         chemToPhys.paint(g2d);
                         chemToGym.paint(g2d);
@@ -404,6 +410,7 @@ public class NTT extends JPanel {
                         break;
 
                     case 9:
+                        chem.badReaction6.changeLeave(true);
                         eng.paint(g, p1, p2, transition1, sideMenu);
                         engToChem.paint(g2d);
                         engToCompSci.paint(g2d);
