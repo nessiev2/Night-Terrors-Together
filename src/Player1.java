@@ -24,7 +24,10 @@ public class Player1 extends Player {
             down = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            changeIsSpillingWater(true);
+            if (currentRoom == 3){
+                changeIsSpillingWater(true);
+            }
+
             if (hack.isPlayerClose(this, this) && currentRoom == 8){
                 if (!hack.getFinished()){
                     ticks++;

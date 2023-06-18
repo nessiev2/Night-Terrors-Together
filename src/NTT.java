@@ -238,22 +238,22 @@ public class NTT extends JPanel {
                 int[] tmp = {1, 2, 3, 4, 6, 7, 8, 9};
 
                 //hardcoding hehe
-                if (tCurrentClassroom == 1){
+                if (currentClassroom == 1){
                     t.spawnTeacherAtDoor(p1, p2, "", "1", "2", "");
-                } else if (tCurrentClassroom == 2){
+                } else if (currentClassroom == 2){
                     t.spawnTeacherAtDoor(p1, p2, "", "1", "2", "3");
-                } else if (tCurrentClassroom == 3){
+                } else if (currentClassroom == 3){
                     t.spawnTeacherAtDoor(p1, p2, "", "", "2", "3");
-                } else if (tCurrentClassroom == 4){
+                } else if (currentClassroom == 4){
                     t.spawnTeacherAtDoor(p1, p2, "0", "1", "2","");
                 }
-                else if (tCurrentClassroom == 6){
+                else if (currentClassroom == 6){
                     t.spawnTeacherAtDoor(p1, p2, "0", "", "2", "3");
-                } else if (tCurrentClassroom == 7){
+                } else if (currentClassroom == 7){
                     t.spawnTeacherAtDoor(p1, p2, "0", "1", "", "");
-                } else if (tCurrentClassroom == 8){
+                } else if (currentClassroom == 8){
                     t.spawnTeacherAtDoor(p1, p2, "0", "1", "", "3");
-                } else if (tCurrentClassroom == 9){
+                } else if (currentClassroom == 9){
                     t.spawnTeacherAtDoor(p1, p2, "0", "", "", "3");
                 }
 

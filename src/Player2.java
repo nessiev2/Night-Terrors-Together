@@ -6,7 +6,7 @@ public class Player2 extends Player {
         super(2);
     }
 
-    public void keyPressed(KeyEvent e, DoHack hack, int currentClassroom, DoDissection dissection4) {
+    public void keyPressed(KeyEvent e, DoHack hack, int currentRoom, DoDissection dissection4) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             left = true;
             changeFaceDirection(true);
@@ -25,7 +25,9 @@ public class Player2 extends Player {
             interact = true;
         }
         if (e.getKeyCode() == KeyEvent.VK_Q) {
-            changeIsSpillingWater(true);
+            if (currentRoom == 3){
+                changeIsSpillingWater(true);
+            }
 
             if (hack.isPlayerClose(this, this)){
                 if (!hack.getFinished()){
@@ -37,7 +39,7 @@ public class Player2 extends Player {
                     changeIsHolding(false);
                 }
             }
-            if (currentClassroom == 4){
+            if (currentRoom == 4){
                 if (dissection4.getIsClose(0, this)){
                     dissection4.changeIsClose(0);
                 }
