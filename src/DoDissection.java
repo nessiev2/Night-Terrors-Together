@@ -3,7 +3,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.io.IOException;
 
-public class DoDissection extends Task{
+public class DoDissection extends Task {
+    private boolean ts = true;
+
     private int x = 450, y = 600, w = 30, h = 50;
     private final static int RADIUS = 130;
     private boolean[] isComplete = {false, false, false, false, false, false};
@@ -58,7 +60,10 @@ public class DoDissection extends Task{
             g2d.setColor(Color.black);
             g2d.drawString("task complete!", 250, 500 + 500);
             taskFinished();
-            menu.updateTaskCompletion(2);
+            if (ts) {
+                menu.updateTaskCompletion(2);
+                ts = false;
+            }
         }
         // drawing "glow"
         g2d.setColor(Color.yellow);

@@ -4,6 +4,8 @@ import java.awt.*;
 import java.io.IOException;
 
 public class AChalkBoard extends Thing {
+    private boolean ts = true;
+
     private static final int BOARD_WIDTH = NTT.SCREEN_WIDTH/2, BOARD_HEIGHT = (NTT.SCREEN_WIDTH/4) - 230;
     private final int RADIUS = 50;
     private boolean scribble, playerIsClose, interactive;
@@ -56,7 +58,10 @@ public class AChalkBoard extends Thing {
         g2d.drawString(classroom, getX()+200, getY()+100);
 
         if (scribble && interactive) {
-            menu.updateTaskCompletion(5);
+            if (ts) {
+                menu.updateTaskCompletion(5);
+                ts = false;
+            }
             skribl.paint(g2d);
         }
     }

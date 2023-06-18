@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.Random;
 
 public class DoSprint extends Task{
+    private boolean ts = true;
+
     Random r = new Random();
     int x, y, i = 0, j = 0, radius = 100;
     boolean flag1 = false, flag2 = false, isComplete = false;
@@ -68,7 +70,7 @@ public class DoSprint extends Task{
         double dist1 = Math.sqrt(Math.pow(p1.getX()-x, 2) + Math.pow(p1.getY()-y, 2));
         double dist2 = Math.sqrt(Math.pow(p2.getX()-x, 2) + Math.pow(p2.getY()-y, 2));
 
-        if (isTask){
+        if (isTask) {
             if ((dist1 <= radius || dist2 <= radius) && !isComplete){
                 g2d.setColor(Color.yellow);
                 g2d.fillOval(x, y, radius/2, radius/2);
@@ -87,7 +89,10 @@ public class DoSprint extends Task{
                 g2d.setColor(Color.red);
                 g2d.drawString("task complete!", 650, 350);
                 isComplete = true;
-                menu.updateTaskCompletion(6);
+                if (ts) {
+                    menu.updateTaskCompletion(6);
+                    ts = false;
+                }
                 //System.out.println("do sprint COMPLETE");
             } else {
                 g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));

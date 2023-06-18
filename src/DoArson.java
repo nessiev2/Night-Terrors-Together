@@ -7,10 +7,15 @@ import java.io.IOException;
 
 public class DoArson extends Task {
     private boolean ts = true;
+    private int count = 0;
+    private boolean isFin = false;
     private Image img;
     private final int RADIUS = 200;
     private boolean isOnFire;
     ATrashCan trash;
+    public boolean getIsFin(){
+        return isFin;
+    }
     public boolean getOnFire(){
         return isOnFire;
     }
@@ -29,21 +34,21 @@ public class DoArson extends Task {
         int i = 10;
 
         // draws the glow around the trash can
-        boolean b = true;
         for (int j = 0; j < 3; j++){
             g2d.setColor(Color.red);
 
             if (isOnFire && isTask) {
+                isFin = true;
                 //g2d.fillRect(trash.getX()+2*i, trash.getY()+2*i, trash.getWidth()-4*i, trash.getHeight()-4*i);
                 g2d.drawImage(img, trash.getX()+2*i, trash.getY()+i, trash.getWidth()-2*i, trash.getHeight()-2*i, null);
-            } else {
-                b = false;
             }
         }
-        if (b && ts) {
-            menu.updateTaskCompletion(0);
-            ts = false;
-        }
+
+//        if (checkIsFin() && ts) {
+//        //if (b && ts) {
+//            menu.updateTaskCompletion(0);
+//            ts = false;
+//        }
     }
 
     public boolean isPlayerClose(Player p) {
@@ -56,11 +61,4 @@ public class DoArson extends Task {
             return false;
         }
     }
-
-    //    public void doTask(Player p1, Player p2, SideMenu menu) {
-//        if (isTask) {
-////            this.taskFinished();
-////            menu.updateTaskCompletion(0);
-//        }
-//    }
 }

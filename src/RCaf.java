@@ -4,6 +4,8 @@ import java.awt.*;
 import java.io.IOException;
 
 public class RCaf {
+    private boolean ts = true;
+
     DoVendingMachine vendMachine1;
     DoVendingMachine vendMachine2;
 
@@ -60,7 +62,10 @@ public class RCaf {
             g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
             g2d.setColor(Color.black);
             if (vendMachines[0].getVendComplete() && vendMachines[1].getVendComplete()) {
-                menu.updateTaskCompletion(8);
+                if (ts) {
+                    menu.updateTaskCompletion(8);
+                    ts = false;
+                }
                 g2d.drawString("task complete!", VM.getX(), VM.getY() - 25);
             } else {
                 g2d.drawString("interact to smash", VM.getX(), VM.getY() - 50);

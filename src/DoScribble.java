@@ -19,8 +19,6 @@ public class DoScribble extends Thing {
             scribbleArray[i] = c;
             xs[i] = r.nextInt((maxX - minX) + 1) + minX;
             ys[i] = r.nextInt((maxY - minY) + 1) + minY;
-
-
         }
     }
 

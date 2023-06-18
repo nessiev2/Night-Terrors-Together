@@ -4,6 +4,8 @@ import java.awt.*;
 import java.io.IOException;
 
 public class DoStealTests extends Task{
+    private boolean ts = true;
+
     private int x = 700, y = 200, w = 50, h = 100, stack = 10;
     private final static int RADIUS = 100, THICKNESS = 10, COUNT = 10;
     private boolean isTaskComplete = false;
@@ -26,7 +28,10 @@ public class DoStealTests extends Task{
         if (stack == 0){
             isTaskComplete = true;
             g2d.drawString("task complete!", x+75, y);
-            menu.updateTaskCompletion(7);
+            if (ts) {
+                menu.updateTaskCompletion(7);
+                ts = false;
+            }
             taskFinished();
         }
 

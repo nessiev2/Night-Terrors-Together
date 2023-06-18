@@ -68,6 +68,11 @@ public class RMath {
             arson.paint(g2d, p1, p2, menu);
         }
 
+        if (arsont1.getIsFin() && arsont2.getIsFin() && arsont3.getIsFin()){
+            menu.updateTaskCompletion(0);
+            //ts = false;
+        }
+
 //        arson7.doTask(p1, p2, menu);
 
         w1.paint(g2d); // wall

@@ -4,6 +4,8 @@ import java.awt.*;
 import java.io.IOException;
 
 public class DoHack extends Task{
+    private boolean ts = true;
+
     private int x = 890, y = 820, width = 120, height = 80;
     private boolean playerIsClose = false;
     private final int RADIUS = 65;
@@ -48,7 +50,10 @@ public class DoHack extends Task{
             if (isTask){
                 g2d.setColor(new Color(255, 0, 0));
                 g2d.fillRect(x, y, width, height);
-                menu.updateTaskCompletion(3);
+                if (ts) {
+                    menu.updateTaskCompletion(3);
+                    ts = false;
+                }
 
                 g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
                 g2d.setColor(Color.red);

@@ -58,6 +58,11 @@ public class RChemistry {
             arson.paint(g2d, p1, p2, menu);
         }
 
+        if (arsont1.getIsFin() && arsont2.getIsFin() && arsont3.getIsFin()){
+            menu.updateTaskCompletion(0);
+            //ts = false;
+        }
+
         w1.paint(g2d); // wall
 
         cb.isPlayerClose(p1, p2);

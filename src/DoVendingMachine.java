@@ -1,6 +1,7 @@
 import java.awt.*;
 
-public class DoVendingMachine extends Task{
+public class DoVendingMachine extends Task {
+
     private int x, y, width = 150, height = 200;
     private boolean playerIsClose;
     private final int RADIUS = 65;
