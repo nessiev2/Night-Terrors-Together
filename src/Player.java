@@ -20,6 +20,10 @@ public abstract class Player {
     public void changeIsHolding(boolean b) { isHolding = b; }
     public void changeIsSpillingWater(boolean b) { isSpillingWater = b; }
 
+    boolean PCaughtSound = true;
+    public boolean getPCaughtSound() { return PCaughtSound; }
+    public void changePCaughtSound(boolean b) { PCaughtSound = b; }
+
     protected int croom = 5;
     public void updateCRoom(int i) { croom = i; }
 
@@ -182,5 +186,6 @@ public abstract class Player {
             }
         return true;
     }
+
 
 }

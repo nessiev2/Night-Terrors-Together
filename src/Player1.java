@@ -4,6 +4,7 @@ public class Player1 extends Player {
 
     Timer t = new Timer();
     private int ticks = 0;
+
     public Player1() {
         super(1);
     }
@@ -97,6 +98,7 @@ public class Player1 extends Player {
             if (p2.getIsCaught() && pp.isPlayerClose(this, this) && currentRoom == 1) {
                 p2.changeIsCaught(false);
                 p2.spawnPlayer(getX(), getY());
+                p2.changePCaughtSound(true);
             }
 
             for (DoVendingMachine VM:vend) {

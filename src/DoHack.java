@@ -1,4 +1,7 @@
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.io.IOException;
 
 public class DoHack extends Task{
     private int x = 890, y = 820, width = 120, height = 80;
@@ -19,7 +22,7 @@ public class DoHack extends Task{
         return false;
     }
 
-    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) {
+    public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
 
         int i = 10;
         if (isTask){

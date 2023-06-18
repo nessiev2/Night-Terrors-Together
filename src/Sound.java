@@ -8,17 +8,16 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Sound {
-    Timer t = new Timer();
-
     // to store current position
     Long currentFrame;
     Clip backgroundMusic;
     Clip gotCaughtSoundEffect;
+    Clip taskCompleteSoundEffect;
 
     // current status of clip
     String status;
 
-    AudioInputStream audioInputStreamBackgroundMusic, audioInputStreamGotCaught;
+    AudioInputStream audioInputStreamBackgroundMusic, audioInputStreamGotCaught, audioInputStreamTaskComplete;
     //static String filePath = "res\\KevinMacLeodSneakySnitch.wav";
 
     // constructor to initialize streams and clip
@@ -26,14 +25,17 @@ public class Sound {
         // create AudioInputStream object
         audioInputStreamBackgroundMusic = AudioSystem.getAudioInputStream(new File("res\\KevinMacLeodSneakySnitch.wav").getAbsoluteFile());
         audioInputStreamGotCaught = AudioSystem.getAudioInputStream(new File("res\\RobloxOof.wav").getAbsoluteFile());
+        audioInputStreamTaskComplete = AudioSystem.getAudioInputStream(new File("res\\SparklesSoundEffect.wav").getAbsoluteFile());
 
         // create clip reference
         backgroundMusic = AudioSystem.getClip();
         gotCaughtSoundEffect = AudioSystem.getClip();
+        taskCompleteSoundEffect = AudioSystem.getClip();
 
         // open audioInputStream to the clip
         backgroundMusic.open(audioInputStreamBackgroundMusic);
         gotCaughtSoundEffect.open(audioInputStreamGotCaught);
+        taskCompleteSoundEffect.open(audioInputStreamTaskComplete);
 
         backgroundMusic.loop(Clip.LOOP_CONTINUOUSLY);
         //gotCaughtSoundEffect.loop(Clip.LOOP_CONTINUOUSLY);
@@ -46,63 +48,19 @@ public class Sound {
     }
 
     public void soundMaintenance() {
-
+        if (!gotCaughtSoundEffect.isActive()) {
+            gotCaughtSoundEffect.setMicrosecondPosition(0);
+        }
+        if (!taskCompleteSoundEffect.isActive()) {
+            taskCompleteSoundEffect.setMicrosecondPosition(0);
+        }
     }
 
     public void playGotCaughtSoundEffect() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        //t.start();
         gotCaughtSoundEffect.start();
-
-//        boolean b = true;
-//        while (b) {
-//            if (!gotCaughtSoundEffect.isRunning()) {
-//            //if (!gotCaughtSoundEffect.isActive()) {
-//                restart(gotCaughtSoundEffect);
-//                b = false;
-//            }
-//        }
-
-//        while (t.getElapsedTime() <= 1000) {
-//            t.stop();
-//            if (t.getElapsedTime() <= 1000)
-//                restart(gotCaughtSoundEffect);
-//        }
-        //restart(gotCaughtSoundEffect, audioInputStreamGotCaught, "res\\RobloxOof.wav");
     }
 
-    // Method to restart the audio
-    public void restart(Clip clip) throws IOException, LineUnavailableException,UnsupportedAudioFileException {
-        clip.stop();
-        clip.close();
-        //resetAudioStream();
-        currentFrame = 0L;
-        clip.setMicrosecondPosition(0);
-        //this.play();
+    public void playTaskCompleteSoundEffect() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        taskCompleteSoundEffect.start();
     }
-
-//    public void restart(Clip clip) {
-//        boolean b = true;
-//        while (b) {
-//        currentFrame = 0L;
-//        clip.setMicrosecondPosition(0);
-//
-//    }
-
-
-//    public void restart(Clip clip) {
-//        currentFrame = 0L;
-//        clip.setMicrosecondPosition(0);
-//    }
-
-    // Method to restart the audio
-//    public void restart(Clip clip, AudioInputStream ais, String file) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
-//        clip.stop();
-//        clip.close();
-//        ais = AudioSystem.getAudioInputStream(new File(file).getAbsoluteFile());
-//        clip.open(ais);
-//        currentFrame = 0L;
-//        clip.setMicrosecondPosition(0);
-//    }
-
-
 }

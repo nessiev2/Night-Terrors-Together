@@ -96,6 +96,7 @@ public class Player2 extends Player {
             if (p1.getIsCaught() && pp.isPlayerClose(this, this) && currentRoom == 1) {
                 p1.changeIsCaught(false);
                 p1.spawnPlayer(getX(), getY());
+                p1.changePCaughtSound(true);
             }
             if (hack.isPlayerClose(this, this) && currentRoom == 8){
                 hack.taskFinished();
