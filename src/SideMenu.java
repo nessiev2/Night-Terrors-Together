@@ -17,10 +17,10 @@ public class SideMenu {
     }
 
     public boolean[] which4Tasks() {
-        for (int i = 0; i < 9; i++)  {
-            System.out.print(bArray[i] + " ");
-        }
-        System.out.println("");
+//        for (int i = 0; i < 9; i++)  {
+//            System.out.print(bArray[i] + " ");
+//        }
+//        System.out.println("");
         return bArray;
     }
 
@@ -28,6 +28,7 @@ public class SideMenu {
         finTasks = new boolean[9];
         isOpen = false;
         hasGenerated = false;
+        generateTasks();
     }
 
     public void updateTaskCompletion(int n) {
@@ -38,6 +39,7 @@ public class SideMenu {
 
     public boolean checkIfWinCondition() {
         for (int i = 0; i < 4; i++)  {
+            //System.out.println(finTasks[array[i]]);
             //finTasks[array[i]] = true;
             if (!finTasks[array[i]]) // if it's not ALL TRUE -> bad
                 return false;
@@ -55,6 +57,7 @@ public class SideMenu {
         //Collections.shuffle(Collections.singletonList(array), new Random());
         Random rand = new Random();
 
+        // array of 0-8 is shuffled, first four indices of array are tasks for current game
         for (int i = 0; i < array.length; i++) {
             int randomIndexToSwap = rand.nextInt(array.length);
             int temp = array[randomIndexToSwap];
@@ -62,29 +65,30 @@ public class SideMenu {
             array[i] = temp;
         }
 
+        //System.out.println("array[i] \n----------------------------------------\"");
         for (int i = 0; i < 4; i++)  {
-            bArray[array[i]] = true;
-            System.out.println(array[i]);
+            bArray[array[i]] = true;                // change boolean array such that the chosen tasks (first four indices in array) are set as true, other values are false
+            //System.out.println(array[i]);
         }
+        //System.out.println("----------------------------------------\"");
 
-        for (int i = 0; i < 9; i++)  {
-            System.out.print(bArray[i] + " ");
-        }
+//        System.out.println("bArray \n----------------------------------------");
+//        for (int i = 0; i < 9; i++)  {
+//            System.out.print(bArray[i] + " ");
+//        }
+//        System.out.println("\n----------------------------------------");
     }
 
     public void updateIsOpen(boolean isOpen){
         this.isOpen = isOpen;
     }
 
-
     public void paint (Graphics2D g2d, DoMess mess){
-        if (!hasGenerated) {
-            //System.out.println("i have generated 4 unique tasks");
-            generateTasks();
-            hasGenerated = true;
-        }
+//        if (!hasGenerated) {
+//            generateTasks();
+//            hasGenerated = true;
+//        }
         g2d.setColor(Color.white);
-
         if (!isOpen){
             g2d.fillRect(x, y, width, height);
         } else {

@@ -108,7 +108,6 @@ public class NTT extends JPanel {
 
                 // TUTORIAL
                 if (!mainMenu.getIsMenuOpen() && !gameOver){
-                    System.out.println("slideNum: " + tut.getSlide());
                     if (!tutOpen) {
                         if (e.getKeyCode() == KeyEvent.VK_T){
                             tut.changePlayTut(true);
@@ -469,10 +468,12 @@ public class NTT extends JPanel {
 
         // 4 TASKS
         boolean[] bArray = sideMenu.which4Tasks();
-        for (int i = 0; i < 9; i++)  {
-            System.out.print(bArray[i] + " ");
-        }
-        System.out.println("");
+        sideMenu.initializeSideMenu();
+
+//        for (int i = 0; i < 9; i++)  {
+//            System.out.print(i + ": " + bArray[i] + " ");
+//        }
+//        System.out.println("");
 
         // possible room that chalkboard is in
         boolean[] chalkRoom = {false, false, false, false, false, false, false, false, false};
@@ -483,43 +484,49 @@ public class NTT extends JPanel {
         if (bArray[0]) {
             System.out.println("choosing trash can");
             Random rand = new Random();
-            trashRoom[0] = true;
-            while (trashRoom[0] || trashRoom[1] || trashRoom[2] || trashRoom[4]) { // if any of them are true (office, caf, gym, phys)
-                for (int i = 0; i < trashRoom.length; i++) {
-                    int randomIndexToSwap = rand.nextInt(trashRoom.length);
-                    boolean temp = trashRoom[randomIndexToSwap];
-                    trashRoom[randomIndexToSwap] = trashRoom[i];
-                    trashRoom[i] = temp;
-                }
-            }
-            for (int i = 0; i < trashRoom.length; i++){
-                if (trashRoom[i]){
-                    System.out.println(i + " is the trashcan room");
-                }
-            }
+            int[] tmpArr = {3, 5, 6, 7, 8};
+            int randVal = tmpArr[rand.nextInt(tmpArr.length)];
+            trashRoom[randVal] = true;
+//            chalkRoom[0] = true;//            trashRoom[0] = true;
+//            while (trashRoom[0] || trashRoom[1] || trashRoom[2] || trashRoom[4]) { // if any of them are true (office, caf, gym, phys)
+//                for (int i = 0; i < trashRoom.length; i++) {
+//                    int randomIndexToSwap = rand.nextInt(trashRoom.length);
+//                    boolean temp = trashRoom[randomIndexToSwap];
+//                    trashRoom[randomIndexToSwap] = trashRoom[i];
+//                    trashRoom[i] = temp;
+//                }
+//            }
         }
 
         // CHOOSING 1 CHALKBOARD ROOM
         if (bArray[5]) {
             System.out.println("choosing chalkboard");
             Random rand = new Random();
-            chalkRoom[0] = true;
-            while (chalkRoom[0] || chalkRoom[4]) {          // if office or physics is chosen
-                for (int i = 0; i < chalkRoom.length; i++) {
-                    int randomIndexToSwap = rand.nextInt(chalkRoom.length);
-                    boolean temp = chalkRoom[randomIndexToSwap];
-                    chalkRoom[randomIndexToSwap] = chalkRoom[i];
-                    chalkRoom[i] = temp;
-                }
-            }
-            for (int i = 0; i < chalkRoom.length; i++){
-                if (chalkRoom[i]){
-                    System.out.println(i + " is the chalkboard room");
-                }
-            }
+            int[] tmpArr = {1, 2, 3, 5, 6, 7, 8};
+            int randVal = tmpArr[rand.nextInt(tmpArr.length)];
+            chalkRoom[randVal] = true;
+//            chalkRoom[0] = true;
+//            while (chalkRoom[0] || chalkRoom[4]) {          // if office or physics is chosen
+//                for (int i = 0; i < chalkRoom.length; i++) {
+//                    int randomIndexToSwap = rand.nextInt(chalkRoom.length);
+//                    boolean temp = chalkRoom[randomIndexToSwap];
+//                    chalkRoom[randomIndexToSwap] = chalkRoom[i];
+//                    chalkRoom[i] = temp;
+//                }
+//            }
         }
 
-/*
+        for (int i = 0; i < 9; i++){
+            System.out.print("trash" + i + ": " + trashRoom[i] + "|   ");
+        }
+        System.out.println("");
+
+        for (int i = 0; i < 9; i++){
+            System.out.print("board" + i + ": " + chalkRoom[i] + "|   ");
+        }
+        System.out.println("");
+
+        /*
         RANDOM - "SET FIRE TO TRASH CANS",      0
         2 - "CHEMICALS",                        1 CHECK
         0 - "DISSECTION",                       2 CHECK
@@ -531,18 +538,16 @@ public class NTT extends JPanel {
         1 - "SMASH CAF VENDING MACHINES"};      8 CHECK
 */
 
-        office.initializeOffice(chalkRoom[0], trashRoom[0]);
-        caf.initializeCaf(chalkRoom[1], trashRoom[1],           bArray[8]);
-        gym.initializeGym(chalkRoom[2], trashRoom[2],           bArray[4]);
+        office.initializeOffice(false, false);
+        caf.initializeCaf(chalkRoom[1], false                 /*, bArray[8]*/);
+        gym.initializeGym(chalkRoom[2], false,              bArray[4]);
         //System.out.println("gym - " + bArray[4]);
         bio.initializeBio(chalkRoom[3], trashRoom[3],           bArray[2]);
-        phys.initializePhysics(chalkRoom[4], trashRoom[4]);
+        phys.initializePhysics(false, false);
         chem.initializeChem(chalkRoom[5], trashRoom[5],         bArray[1]);
         mathematics.initializeMath(chalkRoom[6], trashRoom[6],  bArray[7]);
         compSci.initializeCompSci(chalkRoom[7], trashRoom[7],   bArray[3]);
         eng.initializeEng(chalkRoom[8], trashRoom[8],           bArray[6]);
-
-        sideMenu.initializeSideMenu();
 
         CountDown.CDReset();
     }

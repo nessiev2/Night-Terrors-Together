@@ -56,18 +56,13 @@ public class DoDissection extends Task{
             g2d.drawString("task complete!", 250, 500);
             taskFinished();
             menu.updateTaskCompletion(2);
-        } else {
-            g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
-            g2d.setColor(Color.red);
-            g2d.drawString("interact with all frogs", 225, 475);
-            g2d.drawString("to dissect them", 225, 475+25);
         }
-
         // drawing "glow"
         g2d.setColor(Color.yellow);
 
         if (isPlayerClose(x, y, p1, p2) && !interacted[0]) {
             g2d.fillRect(x - i, y - i, w + 2 * i, h + 2 * i);
+
         }
         if (isPlayerClose(x, y + 100, p1, p2) && !interacted[1]) {
             g2d.fillRect(x - i, y + 100 - i, w + 2 * i, h + 2 * i);
@@ -98,47 +93,50 @@ public class DoDissection extends Task{
         g2d.fillRect(x - 270, y + 100, w, h);
         g2d.fillRect(x - 270, y + 2 * 100, w, h);
 
-            // changing state of interacted
-            if (isPlayerClose(x, y, p1, p2) && interacted[0]){
-                isComplete[0] = true;
-            }
-            if (isPlayerClose(x, y + 100, p1, p2) && interacted[1]){
-                isComplete[1] = true;
-            }
-            if (isPlayerClose(x, y + 2 * 100, p1, p2) && interacted[2]){
-                isComplete[2] = true;
-            }
+        if (isPlayerClose(x, y, p1, p2) || isPlayerClose(x, y + 100, p1, p2) && isPlayerClose(x, y + 2 * 100, p1, p2) || isPlayerClose(x - 270, y, p1, p2) || isPlayerClose(x - 270, y + 100, p1, p2) || isPlayerClose(x - 270, y + 2 * 100, p1, p2)){
+            instructions(g2d);
+        }
 
-            if (isPlayerClose(x - 270, y, p1, p2) && interacted[3]){
-                isComplete[3] = true;
-            }
-            if (isPlayerClose(x - 270, y + 100, p1, p2) && interacted[4]){
-                isComplete[4] = true;
-            }
-            if (isPlayerClose(x - 270, y + 2 * 100, p1, p2) && interacted[5]){
-                isComplete[5] = true;
-            }
+        // changing state of interacted
+        if (isPlayerClose(x, y, p1, p2) && interacted[0]){
+            isComplete[0] = true;
+        }
+        if (isPlayerClose(x, y + 100, p1, p2) && interacted[1]){
+            isComplete[1] = true;
+        }
+        if (isPlayerClose(x, y + 2 * 100, p1, p2) && interacted[2]){
+            isComplete[2] = true;
+        }
+        if (isPlayerClose(x - 270, y, p1, p2) && interacted[3]){
+            isComplete[3] = true;
+        }
+        if (isPlayerClose(x - 270, y + 100, p1, p2) && interacted[4]){
+            isComplete[4] = true;
+        }
+        if (isPlayerClose(x - 270, y + 2 * 100, p1, p2) && interacted[5]){
+            isComplete[5] = true;
+        }
 
-            g2d.setColor(Color.red);
+        g2d.setColor(Color.red);
 
-            if (isComplete[0]){
-                g2d.fillRect(x, y, w, h);
-            }
-            if (isComplete[1]){
-                g2d.fillRect(x, y + 100, w, h);
-            }
-            if (isComplete[2]){
-                g2d.fillRect(x, y + 2 * 100, w, h);
-            }
-            if (isComplete[3]){
-                g2d.fillRect(x - 270, y, w, h);
-            }
-            if (isComplete[4]){
-                g2d.fillRect(x - 270, y + 100, w, h);
-            }
-            if (isComplete[5]){
-                g2d.fillRect(x - 270, y + 2 * 100, w, h);
-            }
+        if (isComplete[0]){
+            g2d.fillRect(x, y, w, h);
+        }
+        if (isComplete[1]){
+            g2d.fillRect(x, y + 100, w, h);
+        }
+        if (isComplete[2]){
+            g2d.fillRect(x, y + 2 * 100, w, h);
+        }
+        if (isComplete[3]){
+            g2d.fillRect(x - 270, y, w, h);
+        }
+        if (isComplete[4]){
+            g2d.fillRect(x - 270, y + 100, w, h);
+        }
+        if (isComplete[5]){
+            g2d.fillRect(x - 270, y + 2 * 100, w, h);
+        }
 
     }
 
@@ -148,7 +146,6 @@ public class DoDissection extends Task{
                 return false;
             }
         }
-
         return true;
     }
 
@@ -162,5 +159,12 @@ public class DoDissection extends Task{
         } else {
             return false;
         }
+    }
+
+    public void instructions(Graphics g2d){
+        g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
+        g2d.setColor(Color.black);
+        g2d.drawString("interact with all frogs", 225, 475);
+        g2d.drawString("to dissect them", 225, 475+25);
     }
 }

@@ -13,7 +13,7 @@ public class RCaf {
     AWall w1 = new AWall(0, 0);
     boolean b1;
 
-    public void initializeCaf(boolean b, boolean b1, boolean b2){
+    public void initializeCaf(boolean b, boolean b1){
         this.b1 = b1;
         //arson2 = new DoArson(true, trashCans[0]);
         DoVendingMachine vendMachine1 = new DoVendingMachine(800, 600, true);
@@ -23,7 +23,7 @@ public class RCaf {
         cb = new AChalkBoard(500, 10, "CAFETERIA", b);
     }
     public RCaf() {
-        initializeCaf(false, false, false);
+        initializeCaf(false, false);
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
