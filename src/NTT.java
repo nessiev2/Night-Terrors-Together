@@ -470,10 +470,11 @@ public class NTT extends JPanel {
         boolean[] bArray = sideMenu.which4Tasks();
         sideMenu.initializeSideMenu();
 
-//        for (int i = 0; i < 9; i++)  {
-//            System.out.print(i + ": " + bArray[i] + " ");
-//        }
-//        System.out.println("");
+        System.out.println("BARRAY");
+        for (int i = 0; i < 9; i++)  {
+            System.out.print(i + ": " + bArray[i] + " ");
+        }
+        System.out.println("");
 
         // possible room that chalkboard is in
         boolean[] chalkRoom = {false, false, false, false, false, false, false, false, false};
@@ -539,8 +540,8 @@ public class NTT extends JPanel {
 */
 
         office.initializeOffice(false, false);
-        caf.initializeCaf(chalkRoom[1], false                 /*, bArray[8]*/);
-        gym.initializeGym(chalkRoom[2], false,              bArray[4]);
+        caf.initializeCaf(chalkRoom[1], false,               bArray[8]);
+        gym.initializeGym(chalkRoom[2], false,               bArray[4]);
         //System.out.println("gym - " + bArray[4]);
         bio.initializeBio(chalkRoom[3], trashRoom[3],           bArray[2]);
         phys.initializePhysics(false, false);

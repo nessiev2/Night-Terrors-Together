@@ -12,18 +12,20 @@ public class RCaf {
     ADesk[] desks = {new ADesk(300, 300+25, 400, 150, true), new ADesk(800, 300+25, 400, 150, true), new ADesk(1300, 300+25, 400, 150, true), new ADesk(300, 600+25, 400, 150, true), new ADesk(1300, 600+25, 400, 150, true)};
     AWall w1 = new AWall(0, 0);
     boolean b1;
+    boolean b2;
 
-    public void initializeCaf(boolean b, boolean b1){
+    public void initializeCaf(boolean b, boolean b1, boolean b2){
         this.b1 = b1;
+        this.b2 = b2;
         //arson2 = new DoArson(true, trashCans[0]);
-        DoVendingMachine vendMachine1 = new DoVendingMachine(800, 600, true);
-        DoVendingMachine vendMachine2 = new DoVendingMachine(1000, 600, true);
+        DoVendingMachine vendMachine1 = new DoVendingMachine(800, 600, b2);
+        DoVendingMachine vendMachine2 = new DoVendingMachine(1000, 600, b2);
         vendMachines[0] = vendMachine1;
         vendMachines[1] = vendMachine2;
         cb = new AChalkBoard(500, 10, "CAFETERIA", b);
     }
     public RCaf() {
-        initializeCaf(false, false);
+        initializeCaf(false, false, false);
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) {
@@ -44,21 +46,23 @@ public class RCaf {
         w1.paint(g2d); // wall
         for (DoVendingMachine VM:vendMachines) {
             VM.paint(g2d, p1, p2);
-            if (VM.getVendComplete()) {
+            if (VM.getVendComplete() && b2) {
                 VM.taskFinished();
                 //menu.updateTaskCompletion(8);
             }
         }
 
-        DoVendingMachine VM = vendMachines[0];
-        g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
-        g2d.setColor(Color.red);
-        if (vendMachines[0].getVendComplete() && vendMachines[1].getVendComplete() ) {
-            menu.updateTaskCompletion(8);
-            g2d.drawString("task complete!", VM.getX(), VM.getY()-25);
-        } else {
-            g2d.drawString("interact to smash", VM.getX(), VM.getY()-50);
-            g2d.drawString("these vending machines", VM.getX(), VM.getY()-25);
+        if (b2) {
+            DoVendingMachine VM = vendMachines[0];
+            g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
+            g2d.setColor(Color.red);
+            if (vendMachines[0].getVendComplete() && vendMachines[1].getVendComplete()) {
+                menu.updateTaskCompletion(8);
+                g2d.drawString("task complete!", VM.getX(), VM.getY() - 25);
+            } else {
+                g2d.drawString("interact to smash", VM.getX(), VM.getY() - 50);
+                g2d.drawString("these vending machines", VM.getX(), VM.getY() - 25);
+            }
         }
 
 
