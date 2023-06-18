@@ -17,9 +17,7 @@ import java.util.Random;
     * math
     * office
     * physics
-* DESKS to PAINT
-    * chem
-* chalkboards
+
 * computer monitor
 */
 
