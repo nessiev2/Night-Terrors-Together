@@ -12,11 +12,12 @@ public class Sound {
     private Clip backgroundMusic;
     private Clip gotCaughtSoundEffect;
     private Clip taskCompleteSoundEffect;
+    private Clip teacherJumpscareSoundEffect;
 
     // current status of clip
     private String status;
 
-    private AudioInputStream audioInputStreamBackgroundMusic, audioInputStreamGotCaught, audioInputStreamTaskComplete;
+    private AudioInputStream audioInputStreamBackgroundMusic, audioInputStreamGotCaught, audioInputStreamTaskComplete, audioInputStreamTeacherJumpscare;
     //static String filePath = "res\\KevinMacLeodSneakySnitch.wav";
 
     // constructor to initialize streams and clip
@@ -25,16 +26,19 @@ public class Sound {
         audioInputStreamBackgroundMusic = AudioSystem.getAudioInputStream(new File("res\\KevinMacLeodSneakySnitch.wav").getAbsoluteFile());
         audioInputStreamGotCaught = AudioSystem.getAudioInputStream(new File("res\\RobloxOof.wav").getAbsoluteFile());
         audioInputStreamTaskComplete = AudioSystem.getAudioInputStream(new File("res\\SparklesSoundEffect.wav").getAbsoluteFile());
+        audioInputStreamTeacherJumpscare = AudioSystem.getAudioInputStream(new File("res\\JoyiIreneScreamDanganronpa.wav").getAbsoluteFile());
 
         // create clip reference
         backgroundMusic = AudioSystem.getClip();
         gotCaughtSoundEffect = AudioSystem.getClip();
         taskCompleteSoundEffect = AudioSystem.getClip();
+        teacherJumpscareSoundEffect = AudioSystem.getClip();
 
         // open audioInputStream to the clip
         backgroundMusic.open(audioInputStreamBackgroundMusic);
         gotCaughtSoundEffect.open(audioInputStreamGotCaught);
         taskCompleteSoundEffect.open(audioInputStreamTaskComplete);
+        teacherJumpscareSoundEffect.open(audioInputStreamTeacherJumpscare);
 
         backgroundMusic.loop(Clip.LOOP_CONTINUOUSLY);
         //gotCaughtSoundEffect.loop(Clip.LOOP_CONTINUOUSLY);
@@ -53,6 +57,9 @@ public class Sound {
         if (!taskCompleteSoundEffect.isActive()) {
             taskCompleteSoundEffect.setMicrosecondPosition(0);
         }
+        if (!teacherJumpscareSoundEffect.isActive()) {
+            teacherJumpscareSoundEffect.setMicrosecondPosition(0);
+        }
     }
 
     public void playGotCaughtSoundEffect() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
@@ -61,5 +68,9 @@ public class Sound {
 
     public void playTaskCompleteSoundEffect() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         taskCompleteSoundEffect.start();
+    }
+
+    public void playTeacherJumpscareSoundEffect() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        teacherJumpscareSoundEffect.start();
     }
 }
