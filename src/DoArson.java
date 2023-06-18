@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class DoArson extends Task {
-    private Image img = null;
+    private Image img;
     private final int RADIUS = 200;
     private boolean isOnFire;
     ATrashCan trash;

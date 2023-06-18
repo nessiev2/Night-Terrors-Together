@@ -23,7 +23,18 @@ public class SideMenu {
 //        System.out.println("");
         return bArray;
     }
-
+    public boolean isScribbleTask(){
+        if (bArray[5]){
+            return true;
+        }
+        return false;
+    }
+    public boolean isArsonTask(){
+        if (bArray[0]){
+            return true;
+        }
+        return false;
+    }
     public void initializeSideMenu(){
         finTasks = new boolean[9];
         isOpen = false;

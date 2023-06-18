@@ -8,6 +8,9 @@ import java.util.Random;
 BUGS
 * make sure teacher does not spawn away after you leave a room so you cant bypass the teacher
 * ENCAPSULATE CODE.
+* dobadreaction => make fire disappear after leaving room in
+* dobadreaction => if a player dies but task gets completed, it draws the fire for captured player where it would be (in jaiL)
+* dobadreaction => draw soot nicely
 
 GOLD PLATING
 * always spawn teacher in the frame
@@ -507,9 +510,6 @@ public class NTT extends JPanel {
             chalkRoom[randVal] = true;
         }
 
-        for (int i = 0; i < 9; i++){
-            System.out.print("bArray " + i + ": " + bArray[i] + "|           ");
-        }
 
         /*
         RANDOM - "SET FIRE TO TRASH CANS",      0 DONE

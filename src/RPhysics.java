@@ -74,12 +74,17 @@ public class RPhysics {
         // REAL tasks
 
         g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
-        g2d.setColor(Color.red);
-        g2d.drawString("which chalkboard are you destined to scribble on?", 500, 150);
-        g2d.drawString("find out by looking for the glowing chalkboard", 500, 150+25);
+        g2d.setColor(Color.white);
+        if (menu.isScribbleTask()){
+//        g2d.drawString("which chalkboard are you destined to scribble on?", 500, 150);
+//        g2d.drawString("find out by looking for the glowing chalkboard", 500, 150+25);
+        g2d.drawString("look out for the glowing chalkboard", 500, 150+25);
 
-        g2d.drawString("which room's trash cans were you prophesied to draw on?", 500, 225);
-        g2d.drawString("find out by looking for the room with glowing trash cans", 500, 225+25);
-
+        }
+        if (menu.isArsonTask()){
+//        g2d.drawString("which room's trash cans were you prophesied to draw on?", 500, 225);
+//        g2d.drawString("find out by looking for the room with glowing trash cans", 500, 225+25);
+        g2d.drawString("look out for the glowing trash cans!!", 500, 225+25);
+        }
     }
 }

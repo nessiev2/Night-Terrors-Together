@@ -55,13 +55,12 @@ public class RChemistry {
             arson.paint(g2d, p1, p2, menu);
         }
 
-        badReaction6.paint(g2d, menu);
-
         w1.paint(g2d); // wall
 
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d, menu); // chalkboard
 
+        badReaction6.paint(g2d, menu);
     }
 
 

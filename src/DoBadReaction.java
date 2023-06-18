@@ -9,11 +9,12 @@ public class DoBadReaction extends Task{
     private int doneX1, doneY1, doneX2, doneY2;
     private int stainX1, stainY1, stainX2, stainY2;
     private static final int RADIUS = 170;
-    private BufferedImage img0, img1, img2, img3, img4, imghehe;
+    private BufferedImage img0, img1, img2, img3, img4, imghehe, soot;
     private boolean green, pink, cyan, yellow, closeGreen, closePink, closeCyan, closeYellow, flag = false;
     public DoBadReaction(boolean isTask){
         super(isTask);
         try {
+            img0 = ImageIO.read(new File("res\\soot.png"));
             img0 = ImageIO.read(new File("res\\flask.png"));
             img1 = ImageIO.read(new File("res\\flaskgreen.png"));
             img2 = ImageIO.read(new File("res\\flaskpink.png"));
@@ -77,19 +78,15 @@ public class DoBadReaction extends Task{
         g2d.setColor(Color.yellow);
         if (closeGreen && !green){
             g2d.drawImage(imghehe, x-i, y-j, null);
-//            g2d.fillOval(x-i, y-i, w+2*i, h+2*i);
         }
         if (closePink && !pink){
             g2d.drawImage(imghehe, x + xSpacing -i, y-j, null);
-//            g2d.fillOval(x + xSpacing - i, y-i, w+2*i, h+2*i);
         }
         if (closeCyan && !cyan){
             g2d.drawImage(imghehe, x + xSpacing - i, y + ySpacing - j, null);
-//            g2d.fillOval(x  + xSpacing -i, y + ySpacing -i, w+2*i, h+2*i);
         }
         if (closeYellow && !yellow){
             g2d.drawImage(imghehe, x-i, y + ySpacing - j, null);
-//            g2d.fillOval(x-i, y + ySpacing-i, w+2*i, h+2*i);
         }
 
         g2d.drawImage(img0, x, y, null);
@@ -97,33 +94,20 @@ public class DoBadReaction extends Task{
         g2d.drawImage(img0, x + xSpacing, y + ySpacing, null);
         g2d.drawImage(img0, x, y + ySpacing, null);
 
-//        g2d.fillOval(x, y, w, h);
-//        g2d.fillOval(x + xSpacing, y, w, h);
-//        g2d.fillOval(x + xSpacing, y + ySpacing, w, h);
-//        g2d.fillOval(x, y + ySpacing, w, h);
-
         if (!green){
             g2d.drawImage(img1, x, y, null);
-//          g2d.setColor(new Color(5, 255, 0));
-//          g2d.fillOval(x, y, w, h);
         }
 
         if (!pink){
             g2d.drawImage(img2, x + xSpacing, y, null);
-//            g2d.setColor(new Color(255, 0, 204));
-//            g2d.fillOval(x + xSpacing, y, w, h);
         }
 
         if (!cyan){
             g2d.drawImage(img3, x + xSpacing, y + ySpacing, null);
-//            g2d.setColor(new Color(0, 255, 241));
-//            g2d.fillOval(x + xSpacing, y + ySpacing, w, h);
         }
 
         if (!yellow){
             g2d.drawImage(img4, x, y + ySpacing, null);
-//            g2d.setColor(new Color(255, 138, 0));
-//            g2d.fillOval(x, y + ySpacing, w, h);
         }
 
         if (getFinished()){
@@ -138,15 +122,18 @@ public class DoBadReaction extends Task{
             g2d.fillRect(stainX1, stainY1, 100, 100);
             g2d.fillRect(stainX2, stainY2, 100, 100);
 
+//            g2d.drawImage(soot, stainX1, stainY1, null);
+//            g2d.drawImage(soot, stainX2, stainY2, null);
+
             g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
-            g2d.setColor(Color.red);
+            g2d.setColor(Color.black);
             g2d.drawString("task complete!", 625, 700);
             taskFinished();
             menu.updateTaskCompletion(1);
         } else {
             if (isTask) {
                 g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
-                g2d.setColor(Color.red);
+                g2d.setColor(Color.black);
                 g2d.drawString("interact with all chemicals", 500, 700);
                 g2d.drawString("to create an explosion", 500, 700 + 25);
             }
