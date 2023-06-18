@@ -8,7 +8,8 @@ import java.util.Random;
 public class Teacher extends Thing {
     private BufferedImage img = null;
     private Image gif = null;
-    private boolean right = false, left = false, up = false, down = false, interact = false;
+    private int prevX, prevY;
+    private boolean right = false, left = false, up = false, down = false, interact = false, standing = false;
     private int speed = 1;
     private boolean bothCaught = false;
     private boolean isFacingLeft = false;
@@ -61,6 +62,12 @@ public class Teacher extends Thing {
     public void move(NTT c, Player p1, Player p2, int x1, int y1, int x2, int y2) {
         int tmp = distance(p1, p2, x1, y1, x2, y2);
 
+        if (prevX == getX() && prevY == getY()){
+            standing = true;
+        } else {
+            standing = false;
+        }
+
         if (tmp == 1) {
             if (x1 > getX()) {
                 changeX(speed);
@@ -103,6 +110,9 @@ public class Teacher extends Thing {
             }
         }
 
+        prevX = getX();
+        prevY = getY();
+
     }
 
     private int distance(Player p1, Player p2, int x1, int y1, int x2, int y2) {
@@ -117,13 +127,24 @@ public class Teacher extends Thing {
     }
 
     public void paint(Graphics2D g2d) {
-        if (isFacingLeft) {
-            //g2d.drawImage(img, getX(), getY(), width, height, null);
-            g2d.drawImage(gif, getX() + getWidth(), getY(), -getWidth(), getHeight(), null);
-        } else {
-            //g2d.drawImage(img, getX() + getWidth(), getY(), -width, height, null);
-            g2d.drawImage(gif, getX(), getY(), getWidth(), getHeight(), null);
+        if (!standing){
+            if (isFacingLeft) {
+                //g2d.drawImage(img, getX(), getY(), width, height, null);
+                g2d.drawImage(gif, getX() + getWidth(), getY(), -getWidth(), getHeight(), null);
+            } else {
+                //g2d.drawImage(img, getX() + getWidth(), getY(), -width, height, null);
+                g2d.drawImage(gif, getX(), getY(), getWidth(), getHeight(), null);
+            }
+        } else{
+            if (isFacingLeft) {
+                //g2d.drawImage(img, getX(), getY(), width, height, null);
+                g2d.drawImage(img, getX() + getWidth(), getY(), -getWidth(), getHeight(), null);
+            } else {
+                //g2d.drawImage(img, getX() + getWidth(), getY(), -width, height, null);
+                g2d.drawImage(img, getX(), getY(), getWidth(), getHeight(), null);
+            }
         }
+
     }
 
 }
