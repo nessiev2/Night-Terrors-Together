@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class DoArson extends Task {
-    private boolean ts = true;
     private int count = 0;
     private boolean isFin = false;
     private Image img;

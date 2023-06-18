@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.Random;
 
 public class RMath {
+    private boolean ts = true;
+
     private DoArson[] arson7 = new DoArson[3];
     private DoArson arsont1, arsont2, arsont3;
     private ATrashCan[] trashCans = new ATrashCan[3];
@@ -87,7 +89,7 @@ public class RMath {
 
         if (arsont1.getIsFin() && arsont2.getIsFin() && arsont3.getIsFin()){
             menu.updateTaskCompletion(0);
-            //ts = false;
+            ts = false;
         }
 
 //        arson7.doTask(p1, p2, menu);

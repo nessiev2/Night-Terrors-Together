@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.Random;
 
 public class RBiology {
+    private boolean ts = true;
+
     private DoArson[] arson4 = new DoArson[3];
     private DoArson arsont1, arsont2, arsont3;
     private ATrashCan[] trashCans = new ATrashCan[3];
@@ -82,6 +84,12 @@ public class RBiology {
         for (DoArson arson: arson4){
             arson.paint(g2d, p1, p2, menu);
         }
+
+        if (arsont1.getIsFin() && arsont2.getIsFin() && arsont3.getIsFin()){
+            menu.updateTaskCompletion(0);
+            ts = false;
+        }
+
 
         w1.paint(g2d); // wall
 
