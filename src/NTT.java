@@ -1,7 +1,10 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
+import java.io.IOException;
 import java.util.Random;
 
 /*
@@ -33,6 +36,8 @@ public class NTT extends JPanel {
     boolean flag = false;
     CountDown cd = new CountDown();
     Transition transition1 = new Transition();
+
+    Sound sound = new Sound();
 
     //DOORS
     ADoor bioToOffice = new ADoor(tobX, topY, "Office");
@@ -86,7 +91,7 @@ public class NTT extends JPanel {
     public void changeCurrentClassroom(int i) {
         currentClassroom = i;
     }
-    public NTT() {
+    public NTT() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         tut.changePlayTut(true);
         p1.spawnPlayer(SCREEN_WIDTH/2-p1.getWidth(), 660);
         p2.spawnPlayer(SCREEN_WIDTH/2-2*p1.getWidth(), 660);
@@ -221,7 +226,9 @@ public class NTT extends JPanel {
         setFocusable(true);
     }
 
-    private void move(NTT c) {
+    private void move(NTT c) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        sound.playBackgroundMusic();
+
         if (eng.sprint.getFlag1()){
             eng.sprint.sprintTicks(p1);
         }
@@ -283,8 +290,12 @@ public class NTT extends JPanel {
             }
 
             if (currentClassroom == tCurrentClassroom) {
-                p1.checkPlayerCaught(teacher);
-                p2.checkPlayerCaught(teacher);
+                //p1.checkPlayerCaught(teacher);
+                //p2.checkPlayerCaught(teacher);
+                if (p1.checkPlayerCaught(teacher))
+                    sound.playGotCaughtSoundEffect();
+                if (p2.checkPlayerCaught(teacher))
+                    sound.playGotCaughtSoundEffect();
             }
 
             if (currentClassroom == 1 && (p1.getIsCaught() || p2.getIsCaught())){
@@ -528,7 +539,6 @@ public class NTT extends JPanel {
                 p1.spawnPlayer(0, 0);
                 p2.spawnPlayer(0, 0);
             }
-
         }
     }
 
@@ -605,7 +615,7 @@ public class NTT extends JPanel {
         CountDown.CDReset();
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
         JFrame frame = new JFrame("NIGHT TERRORS TOGETHER!");
 
         NTT c = new NTT();
