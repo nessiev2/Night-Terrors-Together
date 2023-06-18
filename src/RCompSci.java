@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.Random;
 
 public class RCompSci {
+    private boolean ts = true;
+
     private DoArson[] arson8 = new DoArson[3];
     private DoArson arsont1, arsont2, arsont3;
     private DoHack doHack8;
@@ -79,7 +81,7 @@ public class RCompSci {
 
         if (arsont1.getIsFin() && arsont2.getIsFin() && arsont3.getIsFin()){
             menu.updateTaskCompletion(0);
-            //ts = false;
+            ts = false;
         }
 
         w1.paint(g2d); // wall
