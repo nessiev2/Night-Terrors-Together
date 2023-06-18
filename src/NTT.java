@@ -267,34 +267,42 @@ public class NTT extends JPanel {
                     if (tCurrentClassroom == 1){
                         if(!t.spawnTeacherAtDoor(p1, p2, "", "1", "2", "")){
                             t.spawnTeacherRandom(p1, p2);
+                            sound.playTeacherJumpscareSoundEffect();
                         }
                     } else if (tCurrentClassroom == 2){
                         if (!t.spawnTeacherAtDoor(p1, p2, "", "1", "2", "3")){
                             t.spawnTeacherRandom(p1, p2);
+                            sound.playTeacherJumpscareSoundEffect();
                         }
                     } else if (tCurrentClassroom == 3){
                         if (!t.spawnTeacherAtDoor(p1, p2, "", "", "2", "3")){
                             t.spawnTeacherRandom(p1, p2);
+                            sound.playTeacherJumpscareSoundEffect();
                         }
                     } else if (tCurrentClassroom == 4){
                         if (!t.spawnTeacherAtDoor(p1, p2, "0", "1", "2","")){
                             t.spawnTeacherRandom(p1, p2);
+                            sound.playTeacherJumpscareSoundEffect();
                         }
                     } else if (tCurrentClassroom == 6){
                         if (!t.spawnTeacherAtDoor(p1, p2, "0", "", "2", "3")){
                             t.spawnTeacherRandom(p1, p2);
+                            sound.playTeacherJumpscareSoundEffect();
                         }
                     } else if (tCurrentClassroom == 7){
                         if (!t.spawnTeacherAtDoor(p1, p2, "0", "1", "", "")){
                             t.spawnTeacherRandom(p1, p2);
+                            sound.playTeacherJumpscareSoundEffect();
                         }
                     } else if (tCurrentClassroom == 8){
                         if (!t.spawnTeacherAtDoor(p1, p2, "0", "1", "", "3")){
                             t.spawnTeacherRandom(p1, p2);
+                            sound.playTeacherJumpscareSoundEffect();
                         }
                     } else if (tCurrentClassroom == 9){
                         if (!t.spawnTeacherAtDoor(p1, p2, "0", "", "", "3")){
                             t.spawnTeacherRandom(p1, p2);
+                            sound.playTeacherJumpscareSoundEffect();
                         }
                     }
                 }
