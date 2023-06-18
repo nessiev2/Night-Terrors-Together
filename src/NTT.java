@@ -19,7 +19,6 @@ import java.util.Random;
     * physics
 * DESKS to PAINT
     * bio
-    * office
     * math
     * compsci
     * caf

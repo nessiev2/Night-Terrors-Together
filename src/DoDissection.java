@@ -1,17 +1,25 @@
+import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 public class DoDissection extends Task {
     private boolean ts = true;
-
+    private BufferedImage alive, dead, froginteract;
     private int x = 450, y = 600, w = 30, h = 50;
     private final static int RADIUS = 130;
     private boolean[] isComplete = {false, false, false, false, false, false};
     private boolean[] interacted = {false, false, false, false, false, false};
     public DoDissection(boolean isTask){
         super(isTask);
+        try {
+            alive = ImageIO.read(new File("res\\frogalive.png"));
+            dead = ImageIO.read(new File("res\\frogdead.png"));
+            froginteract = ImageIO.read(new File("res\\froginteract.png"));
+        } catch (IOException e) { System.out.println("frog no image"); }
     }
     public boolean getIsClose(int i, Player p){
         if (i == 0){
@@ -70,40 +78,52 @@ public class DoDissection extends Task {
 
         if (isTask){
             if (isPlayerClose(x, y, p1, p2) && !interacted[0]) {
-                g2d.fillRect(x - i, y - i, w + 2 * i, h + 2 * i);
+                g2d.drawImage(froginteract, x-2*i, y-2*i, null);
+//                g2d.fillRect(x - i, y - i, w + 2 * i, h + 2 * i);
             }
 
             if (isPlayerClose(x, y + 100, p1, p2) && !interacted[1]) {
-                g2d.fillRect(x - i, y + 100 - i, w + 2 * i, h + 2 * i);
+                g2d.drawImage(froginteract, x-2*i, y+100-2*i, null);
+//                g2d.fillRect(x - i, y + 100 - i, w + 2 * i, h + 2 * i);
             }
 
             if (isPlayerClose(x, y + 2 * 100, p1, p2) && !interacted[2]) {
-                g2d.fillRect(x - i, y + 2 * 100 - i, w + 2 * i, h + 2 * i);
+                g2d.drawImage(froginteract, x-2*i, y+2*100-2*i, null);
+//                g2d.fillRect(x - i, y + 2 * 100 - i, w + 2 * i, h + 2 * i);
             }
 
             if (isPlayerClose(x - 270, y, p1, p2) && !interacted[3]) {
-                g2d.fillRect(x - 270 - i, y - i, w + 2 * i, h + 2 * i);
+                g2d.drawImage(froginteract, x-270-2*i, y-2*i, null);
+//                g2d.fillRect(x - 270 - i, y - i, w + 2 * i, h + 2 * i);
             }
 
             if (isPlayerClose(x - 270, y + 100, p1, p2) && !interacted[4]) {
-                g2d.fillRect(x - 270 - i, y + 100 - i, w + 2 * i, h + 2 * i);
+                g2d.drawImage(froginteract, x-270-2*i, y+100-2*i, null);
+//                g2d.fillRect(x - 270 - i, y + 100 - i, w + 2 * i, h + 2 * i);
             }
 
             if (isPlayerClose(x - 270, y + 2 * 100, p1, p2) && !interacted[5]) {
-                g2d.fillRect(x - 270 - i, y + 2 * 100 - i, w + 2 * i, h + 2 * i);
+                g2d.drawImage(froginteract, x-270-2*i, y+2*100-2*i, null);
+//                g2d.fillRect(x - 270 - i, y + 2 * 100 - i, w + 2 * i, h + 2 * i);
             }
         }
 
-        g2d.setColor(Color.green);
-        // right column
-        g2d.fillRect(x, y, w, h);
-        g2d.fillRect(x, y + 100, w, h);
-        g2d.fillRect(x, y + 2 * 100, w, h);
+        g2d.drawImage(alive, x-i, y-i, null);
+        g2d.drawImage(alive, x-i, y+100-i, null);
+        g2d.drawImage(alive, x-i, y+2*100-i, null);
+        g2d.drawImage(alive, x-270-i, y-i, null);
+        g2d.drawImage(alive, x-270-i, y+100-i, null);
+        g2d.drawImage(alive, x-270-i, y+2*100-i, null);
 
-        // left column
-        g2d.fillRect(x - 270, y, w, h);
-        g2d.fillRect(x - 270, y + 100, w, h);
-        g2d.fillRect(x - 270, y + 2 * 100, w, h);
+//        // right column
+//        g2d.fillRect(x, y, w, h);
+//        g2d.fillRect(x, y + 100, w, h);
+//        g2d.fillRect(x, y + 2 * 100, w, h);
+//
+//        // left column
+//        g2d.fillRect(x - 270, y, w, h);
+//        g2d.fillRect(x - 270, y + 100, w, h);
+//        g2d.fillRect(x - 270, y + 2 * 100, w, h);
 
         if (isPlayerClose(x, y, p1, p2) || isPlayerClose(x, y + 100, p1, p2) && isPlayerClose(x, y + 2 * 100, p1, p2) || isPlayerClose(x - 270, y, p1, p2) || isPlayerClose(x - 270, y + 100, p1, p2) || isPlayerClose(x - 270, y + 2 * 100, p1, p2)){
             if (isTask && !checkWin()){
@@ -135,22 +155,22 @@ public class DoDissection extends Task {
             g2d.setColor(Color.red);
 
             if (isComplete[0]){
-                g2d.fillRect(x, y, w, h);
+                g2d.drawImage(dead, x-i, y-i, null);
             }
             if (isComplete[1]){
-                g2d.fillRect(x, y + 100, w, h);
+                g2d.drawImage(dead, x-i, y+100-i, null);
             }
             if (isComplete[2]){
-                g2d.fillRect(x, y + 2 * 100, w, h);
+                g2d.drawImage(dead, x-i, y+2*100-i, null);
             }
             if (isComplete[3]){
-                g2d.fillRect(x - 270, y, w, h);
+                g2d.drawImage(dead, x-270-i, y-i, null);
             }
             if (isComplete[4]){
-                g2d.fillRect(x - 270, y + 100, w, h);
+                g2d.drawImage(dead, x-270-i, y+100-i, null);
             }
             if (isComplete[5]){
-                g2d.fillRect(x - 270, y + 2 * 100, w, h);
+                g2d.drawImage(dead, x-270-i, y+2*100-i, null);
             }
         }
 

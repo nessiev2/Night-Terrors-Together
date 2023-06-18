@@ -1,15 +1,19 @@
+import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
 public class ROffice {
     private DoArson[] arson1;
+    private BufferedImage desk1, desk2;
     private ATrashCan[] trashCans = new ATrashCan[1];
     //DoArson arson1 = new DoArson(false, trashCans);
     private AChalkBoard cb = new AChalkBoard(900, 10, "OFFICE", false);
-    private ADesk[] desks = {new ADesk(0, 500, 500, 250), new ADesk(500, 300, 150, 250+200)};
+    private ADesk[] desks = {new ADesk(0, 500, 500, 250, true), new ADesk(500, 300, 150, 250+200, true)};
     private AWall w1 = new AWall(0, 0);
     private APressurePlate pp = new APressurePlate(200, 300);
     private boolean b1;
@@ -39,7 +43,10 @@ public class ROffice {
     }
     public ROffice(){
         initializeOffice(false, false);
-    }
+        try {
+            desk1 = ImageIO.read(new File("res\\officedesk1.png"));
+            desk2 = ImageIO.read(new File("res\\officedesk2.png"));
+        } catch (IOException e) { System.out.println("desks no image"); }    }
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         //super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
@@ -50,9 +57,12 @@ public class ROffice {
             tc.paint(g2d, p1, p2, b1);
         }
 
+        g2d.setColor(new Color(1, 1,1, 0));
         for (ADesk d:desks) {
             d.paint(g2d);
         }
+        g2d.drawImage(desk1, 0, 500, 510, 250, null);
+        g2d.drawImage(desk2, 500, 300, null);
 
         w1.paint(g2d); // wall
 
