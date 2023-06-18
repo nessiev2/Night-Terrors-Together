@@ -1,4 +1,7 @@
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 
 public class Player1 extends Player {
 
@@ -62,7 +65,7 @@ public class Player1 extends Player {
         }
     }
 
-    public void keyReleased(Player p2, int currentRoom, KeyEvent e, DoArson arson1[], ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess, DoHack hack, DoVendingMachine[] vend, DoBadReaction badReaction, DoStealTests stealTests, DoDissection dissect) {
+    public void keyReleased(Player p2, int currentRoom, KeyEvent e, DoArson arson1[], ATrashCan[] trashCans, AChalkBoard cb, APressurePlate pp, DoMess mess, DoHack hack, DoVendingMachine[] vend, DoBadReaction badReaction, DoStealTests stealTests, DoDissection dissect) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             left = false;
         }

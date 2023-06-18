@@ -100,6 +100,9 @@ public class NTT extends JPanel {
         currentClassroom = i;
     }
     public NTT() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        p1.regSound(sound);
+        p2.regSound(sound);
+
         tut.changePlayTut(true);
         p1.spawnPlayer(SCREEN_WIDTH/2-p1.getWidth(), 660);
         p2.spawnPlayer(SCREEN_WIDTH/2-2*p1.getWidth(), 660);
@@ -197,32 +200,176 @@ public class NTT extends JPanel {
                 }
 
                 if (currentClassroom == 1) {
-                    p1.keyReleased(p2, currentClassroom, e, office.getArson(), office.getTrashCans(), office.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
-                    p2.keyReleased(p1, currentClassroom, e, office.getArson(), office.getTrashCans(), office.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    try {
+                        p1.keyReleased(p2, currentClassroom, e, office.getArson(), office.getTrashCans(), office.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    try {
+                        p2.keyReleased(p1, currentClassroom, e, office.getArson(), office.getTrashCans(), office.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 } else if (currentClassroom == 2){
-                    p1.keyReleased(p2, currentClassroom, e, caf.getArson(), caf.getTrashCans(), caf.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
-                    p2.keyReleased(p1, currentClassroom, e, caf.getArson(), caf.getTrashCans(), caf.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    try {
+                        p1.keyReleased(p2, currentClassroom, e, caf.getArson(), caf.getTrashCans(), caf.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    try {
+                        p2.keyReleased(p1, currentClassroom, e, caf.getArson(), caf.getTrashCans(), caf.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 } else if (currentClassroom == 3){
-                    p1.keyReleased(p2, currentClassroom, e, gym.getArson(), gym.getTrashCans(), gym.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
-                    p2.keyReleased(p1, currentClassroom, e, gym.getArson(), gym.getTrashCans(), gym.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    try {
+                        p1.keyReleased(p2, currentClassroom, e, gym.getArson(), gym.getTrashCans(), gym.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    try {
+                        p2.keyReleased(p1, currentClassroom, e, gym.getArson(), gym.getTrashCans(), gym.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 } else if (currentClassroom == 4) {
-                    p1.keyReleased(p2, currentClassroom, e, bio.getArson(), bio.getTrashCans(), bio.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
-                    p2.keyReleased(p1, currentClassroom, e, bio.getArson(), bio.getTrashCans(), bio.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    try {
+                        p1.keyReleased(p2, currentClassroom, e, bio.getArson(), bio.getTrashCans(), bio.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    try {
+                        p2.keyReleased(p1, currentClassroom, e, bio.getArson(), bio.getTrashCans(), bio.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 } else if (currentClassroom == 5) {
-                    p1.keyReleased(p2, currentClassroom, e, phys.getArson(), phys.getTrashCans(), phys.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
-                    p2.keyReleased(p1, currentClassroom, e, phys.getArson(), phys.getTrashCans(), phys.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    try {
+                        p1.keyReleased(p2, currentClassroom, e, phys.getArson(), phys.getTrashCans(), phys.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    try {
+                        p2.keyReleased(p1, currentClassroom, e, phys.getArson(), phys.getTrashCans(), phys.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 } else if (currentClassroom == 6) {
-                    p1.keyReleased(p2, currentClassroom, e, chem.getArson(), chem.getTrashCans(), chem.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
-                    p2.keyReleased(p1, currentClassroom, e, chem.getArson(), chem.getTrashCans(), chem.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    try {
+                        p1.keyReleased(p2, currentClassroom, e, chem.getArson(), chem.getTrashCans(), chem.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    try {
+                        p2.keyReleased(p1, currentClassroom, e, chem.getArson(), chem.getTrashCans(), chem.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 } else if (currentClassroom == 7){
-                    p1.keyReleased(p2, currentClassroom, e, mathematics.getArson(), mathematics.getTrashCans(), mathematics.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
-                    p2.keyReleased(p1, currentClassroom, e, mathematics.getArson(), mathematics.getTrashCans(), mathematics.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    try {
+                        p1.keyReleased(p2, currentClassroom, e, mathematics.getArson(), mathematics.getTrashCans(), mathematics.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    try {
+                        p2.keyReleased(p1, currentClassroom, e, mathematics.getArson(), mathematics.getTrashCans(), mathematics.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 } else if (currentClassroom == 8){
-                    p1.keyReleased(p2, currentClassroom, e, compSci.getArson(), compSci.getTrashCans(), compSci.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
-                    p2.keyReleased(p1, currentClassroom, e, compSci.getArson(), compSci.getTrashCans(), compSci.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    try {
+                        p1.keyReleased(p2, currentClassroom, e, compSci.getArson(), compSci.getTrashCans(), compSci.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    try {
+                        p2.keyReleased(p1, currentClassroom, e, compSci.getArson(), compSci.getTrashCans(), compSci.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 } else if (currentClassroom == 9){
-                    p1.keyReleased(p2, currentClassroom, e, eng.getArson(), eng.getTrashCans(), eng.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
-                    p2.keyReleased(p1, currentClassroom, e, eng.getArson(), eng.getTrashCans(), eng.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    try {
+                        p1.keyReleased(p2, currentClassroom, e, eng.getArson(), eng.getTrashCans(), eng.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    try {
+                        p2.keyReleased(p1, currentClassroom, e, eng.getArson(), eng.getTrashCans(), eng.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    } catch (UnsupportedAudioFileException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (LineUnavailableException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
             }
             @Override
