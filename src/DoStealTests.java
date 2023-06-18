@@ -7,8 +7,9 @@ public class DoStealTests extends Task{
     public int getStack(){
         return stack;
     }
+
     public void decrementStack(Player p1, Player p2){
-        if (isPlayerClose(x, y, p1, p2)){
+        if (isPlayerClose(x, y, p1, p2) && isTask){
             stack--;
         }
     }
@@ -26,7 +27,7 @@ public class DoStealTests extends Task{
             taskFinished();
         }
 
-        if (!isTaskComplete && isPlayerClose(x, y, p1, p2)){
+        if (!isTaskComplete && isPlayerClose(x, y, p1, p2) && isTask){
             g2d.drawString("interact to pick up", x+75, y);
             g2d.drawString("the math tests", x+75, y+25);
 

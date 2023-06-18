@@ -56,7 +56,6 @@ public class SideMenu {
     public void generateTasks() {
         //Collections.shuffle(Collections.singletonList(array), new Random());
         Random rand = new Random();
-
         // array of 0-8 is shuffled, first four indices of array are tasks for current game
         for (int i = 0; i < array.length; i++) {
             int randomIndexToSwap = rand.nextInt(array.length);
@@ -66,6 +65,10 @@ public class SideMenu {
         }
 
         //System.out.println("array[i] \n----------------------------------------\"");
+        for (int i = 0; i < 9; i++) {
+            bArray[i] = false;
+        }
+
         for (int i = 0; i < 4; i++)  {
             bArray[array[i]] = true;                // change boolean array such that the chosen tasks (first four indices in array) are set as true, other values are false
             //System.out.println(array[i]);

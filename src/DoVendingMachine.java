@@ -42,9 +42,10 @@ public class DoVendingMachine extends Task{
         int i = 10;
         isPlayerClose(p1, p2);
 
+        System.out.println("IMPORTANT VEND MSG: " + isTask);
+
         if (!finished){
             if (playerIsClose && isTask) {
-
                 // lights up yellow
                 g2d.setColor(Color.yellow);
                 g2d.fillRect(x-i, y-i, width+2*i, height+2*i);
@@ -53,7 +54,7 @@ public class DoVendingMachine extends Task{
             g2d.setColor(new Color(47, 47, 47));
             g2d.fillRect(x, y, width, height);
         } else {
-            if (p1.croom == 2) {
+            if (p1.croom == 2 && isTask) {
                 g2d.setColor(new Color(255, 0, 0));
                 g2d.fillRect(x, y, width, height);
             }
