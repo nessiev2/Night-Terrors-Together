@@ -62,12 +62,6 @@ public class Teacher extends Thing {
     public void move(NTT c, Player p1, Player p2, int x1, int y1, int x2, int y2) {
         int tmp = distance(p1, p2, x1, y1, x2, y2);
 
-        if (prevX == getX() && prevY == getY()){
-            standing = true;
-        } else {
-            standing = false;
-        }
-
         if (tmp == 1) {
             if (x1 > getX()) {
                 changeX(speed);
