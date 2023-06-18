@@ -1,19 +1,33 @@
 import java.awt.*;
 
 public class RCaf {
-    DoVendingMachine vendMachine1;
-    DoVendingMachine vendMachine2;
+    private DoVendingMachine vendMachine1;
+    private DoVendingMachine vendMachine2;
 
-    DoVendingMachine[] vendMachines = new DoVendingMachine[2];
+    private DoVendingMachine[] vendMachines = new DoVendingMachine[2];
 
-    DoArson[] arson2;
-    ATrashCan[] trashCans = {};
-    AChalkBoard cb;
-    ADesk[] desks = {new ADesk(300, 300+25, 400, 150, true), new ADesk(800, 300+25, 400, 150, true), new ADesk(1300, 300+25, 400, 150, true), new ADesk(300, 600+25, 400, 150, true), new ADesk(1300, 600+25, 400, 150, true)};
-    AWall w1 = new AWall(0, 0);
-    boolean b1;
-    boolean b2;
-
+    private DoArson[] arson2;
+    private ATrashCan[] trashCans = {};
+    private AChalkBoard cb;
+    private ADesk[] desks = {new ADesk(300, 300+25, 400, 150, true), new ADesk(800, 300+25, 400, 150, true), new ADesk(1300, 300+25, 400, 150, true), new ADesk(300, 600+25, 400, 150, true), new ADesk(1300, 600+25, 400, 150, true)};
+    private AWall w1 = new AWall(0, 0);
+    private boolean b1;
+    private boolean b2;
+    public ADesk[] getDesks(){
+        return desks;
+    }
+    public DoVendingMachine[] getVendMachines(){
+        return vendMachines;
+    }
+    public DoArson[] getArson(){
+        return arson2;
+    }
+    public ATrashCan[] getTrashCans(){
+        return trashCans;
+    }
+    public AChalkBoard getCb(){
+        return cb;
+    }
     public void initializeCaf(boolean b, boolean b1, boolean b2){
         this.b1 = b1;
         this.b2 = b2;
@@ -40,7 +54,11 @@ public class RCaf {
 
         g2d.setColor(new Color(160, 146, 146));
         for (ADesk d:desks) {
-            d.paint(g2d);
+            if (d.getDeskType() == 0){
+                d.paintDesk0(g2d);
+            } else {
+                d.paint(g2d);
+            }
         }
 
         w1.paint(g2d); // wall

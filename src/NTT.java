@@ -8,15 +8,16 @@ import java.io.IOException;
 import java.util.Random;
 
 /*
-BUGS
-* make sure teacher does not spawn away after you leave a room so you cant bypass the teacher
-* make sure teacher can't spawn on you
-
-* buggy walking in gym
-
 * ENCAPSULATE CODE.
-
-GOLD PLATING
+* make trash cans not generate on desk
+    * biology - CLEAR
+    * chem
+    * comp sci
+    * eng
+    * math
+    * office
+    * physics
+* play sound when teacher jump scare u
 * always spawn teacher in the frame
 * add music/sound
 * animations???
@@ -189,32 +190,32 @@ public class NTT extends JPanel {
                 }
 
                 if (currentClassroom == 1) {
-                    p1.keyReleased(p2, currentClassroom, e, office.arson1, office.trashCans, office.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, office.arson1, office.trashCans, office.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, office.arson1, office.trashCans, office.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p2.keyReleased(p1, currentClassroom, e, office.arson1, office.trashCans, office.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
                 } else if (currentClassroom == 2){
-                    p1.keyReleased(p2, currentClassroom, e, caf.arson2, caf.trashCans, caf.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, caf.arson2, caf.trashCans, caf.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, caf.getArson(), caf.getTrashCans(), caf.getCb(), office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p2.keyReleased(p1, currentClassroom, e, caf.getArson(), caf.getTrashCans(), caf.getCb(), office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
                 } else if (currentClassroom == 3){
-                    p1.keyReleased(p2, currentClassroom, e, gym.arson3, gym.trashCans, gym.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, gym.arson3, gym.trashCans, gym.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, gym.arson3, gym.trashCans, gym.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p2.keyReleased(p1, currentClassroom, e, gym.arson3, gym.trashCans, gym.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
                 } else if (currentClassroom == 4) {
-                    p1.keyReleased(p2, currentClassroom, e, bio.arson4, bio.trashCans, bio.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, bio.arson4, bio.trashCans, bio.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, bio.arson4, bio.trashCans, bio.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p2.keyReleased(p1, currentClassroom, e, bio.arson4, bio.trashCans, bio.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
                 } else if (currentClassroom == 5) {
-                    p1.keyReleased(p2, currentClassroom, e, phys.arson5, phys.trashCans, phys.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, phys.arson5, phys.trashCans, phys.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, phys.arson5, phys.trashCans, phys.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p2.keyReleased(p1, currentClassroom, e, phys.arson5, phys.trashCans, phys.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
                 } else if (currentClassroom == 6) {
-                    p1.keyReleased(p2, currentClassroom, e, chem.arson6, chem.trashCans, chem.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, chem.arson6, chem.trashCans, chem.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, chem.arson6, chem.trashCans, chem.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p2.keyReleased(p1, currentClassroom, e, chem.arson6, chem.trashCans, chem.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
                 } else if (currentClassroom == 7){
-                    p1.keyReleased(p2, currentClassroom, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p2.keyReleased(p1, currentClassroom, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
                 } else if (currentClassroom == 8){
-                    p1.keyReleased(p2, currentClassroom, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p2.keyReleased(p1, currentClassroom, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
                 } else if (currentClassroom == 9){
-                    p1.keyReleased(p2, currentClassroom, e, eng.arson9, eng.trashCans, eng.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, eng.arson9, eng.trashCans, eng.cb, office.pp, doMess3, compSci.doHack8, caf.vendMachines, chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, eng.arson9, eng.trashCans, eng.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p2.keyReleased(p1, currentClassroom, e, eng.arson9, eng.trashCans, eng.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
                 }
             }
             @Override
@@ -314,8 +315,8 @@ public class NTT extends JPanel {
                     p2.move(office.desks);
                     break;
                 case 2:
-                    p1.move(caf.desks);
-                    p2.move(caf.desks);
+                    p1.move(caf.getDesks());
+                    p2.move(caf.getDesks());
                     break;
                 case 3:
                     p1.move(gym.desks);

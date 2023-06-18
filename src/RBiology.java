@@ -72,6 +72,7 @@ public class RBiology {
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d, menu); // chalkboard
 
+//        g2d.setColor(Color.black);
 //        g2d.fillRect(400, 290, 1000, 130);   // top
 //        g2d.fillRect(0, 270, 270, 150);     // left
 //        g2d.fillRect(1450, 300, 220, 450);  // right
