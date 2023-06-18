@@ -5,14 +5,27 @@ import java.io.IOException;
 import java.util.Random;
 
 public class RPhysics {
-    DoArson[] arson5 = new DoArson[3];
-    DoArson arsont1, arsont2, arsont3;
-    ATrashCan[] trashCans = new ATrashCan[3];
-    AChalkBoard cb;
-    AWall w1 = new AWall(0, 0);
-    ADesk[] desks = new ADesk[6];
+    private DoArson[] arson5 = new DoArson[3];
+    private DoArson arsont1, arsont2, arsont3;
+    private ATrashCan[] trashCans = new ATrashCan[3];
+    private AChalkBoard cb;
+    private AWall w1 = new AWall(0, 0);
+    private ADesk[] desks = new ADesk[6];
 
-    boolean b1;
+    private boolean b1;
+
+    public ADesk[] getDesks(){
+        return desks;
+    }
+    public DoArson[] getArson(){
+        return arson5;
+    }
+    public ATrashCan[] getTrashCans(){
+        return trashCans;
+    }
+    public AChalkBoard getCb(){
+        return cb;
+    }
 
     public void initializePhysics(boolean b, boolean b1){
         Random r = new Random();

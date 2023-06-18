@@ -4,7 +4,7 @@ import java.awt.*;
 import java.io.IOException;
 
 public class DoMess extends Task {
-    protected boolean isFin;
+    private boolean isFin;
     private boolean[][] waterStains = new boolean[(NTT.SCREEN_WIDTH/2)/30][(810-270)/30];
     public DoMess(boolean isTask){
         super(isTask);

@@ -2,7 +2,7 @@ import java.awt.event.KeyEvent;
 
 public class Player1 extends Player {
 
-    Timer t = new Timer();
+    private Timer t = new Timer();
     private int ticks = 0;
 
     public Player1() {

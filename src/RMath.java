@@ -5,14 +5,31 @@ import java.io.IOException;
 import java.util.Random;
 
 public class RMath {
-    DoArson[] arson7 = new DoArson[3];
-    DoArson arsont1, arsont2, arsont3;
-    ATrashCan[] trashCans = new ATrashCan[3];
-    AChalkBoard cb;
-    AWall w1 = new AWall(0, 0);
-    ADesk[] desks = new ADesk[7];
-    DoStealTests burnTests7;
-    boolean b1;
+    private DoArson[] arson7 = new DoArson[3];
+    private DoArson arsont1, arsont2, arsont3;
+    private ATrashCan[] trashCans = new ATrashCan[3];
+    private AChalkBoard cb;
+    private AWall w1 = new AWall(0, 0);
+    private ADesk[] desks = new ADesk[7];
+    private DoStealTests burnTests7;
+    private boolean b1;
+
+    public ADesk[] getDesks(){
+        return desks;
+    }
+    public DoStealTests getDoStealTests(){
+        return burnTests7;
+    }
+    public DoArson[] getArson(){
+        return arson7;
+    }
+    public ATrashCan[] getTrashCans(){
+        return trashCans;
+    }
+    public AChalkBoard getCb(){
+        return cb;
+    }
+
 
     public void initializeMath(boolean b, boolean b1, boolean b2){
         Random r = new Random();

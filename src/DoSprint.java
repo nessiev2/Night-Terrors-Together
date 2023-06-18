@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.util.Random;
 
 public class DoSprint extends Task{
-    Random r = new Random();
-    int x, y, i = 0, j = 0, radius = 100;
-    boolean flag1 = false, flag2 = false, isComplete = false;
-    int[] randX = {r.nextInt(1431) + 270, r.nextInt(271), r.nextInt(221) + 1420}, randY = {r.nextInt(91) + 290, r.nextInt(221) + 660, r.nextInt(221) + 660};
+    private Random r = new Random();
+    private int x, y, i = 0, j = 0, radius = 100;
+    private boolean flag1 = false, flag2 = false, isComplete = false;
+    private int[] randX = {r.nextInt(1431) + 270, r.nextInt(271), r.nextInt(221) + 1420}, randY = {r.nextInt(91) + 290, r.nextInt(221) + 660, r.nextInt(221) + 660};
 
     public boolean getFlag1(){
         return flag1;

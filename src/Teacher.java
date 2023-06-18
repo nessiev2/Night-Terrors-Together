@@ -15,7 +15,7 @@ public class Teacher extends Thing {
     private static final int RADIUS = 400;
     private boolean isFacingLeft = false;
     // this bool represents if u can spawn at this door or NOT
-    boolean d0, d1, d2, d3;
+    private boolean d0, d1, d2, d3;
     // public void changeFaceDirection(boolean b) { isFacingLeft = b; }
 
     public void spawnTeacherRandom(Player p1, Player p2) {

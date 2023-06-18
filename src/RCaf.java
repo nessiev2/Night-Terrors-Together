@@ -86,7 +86,6 @@ public class RCaf {
             }
         }
 
-
         cb.isPlayerClose(p1, p2);
         cb.paint(g2d, menu); // chalkboard
     }

@@ -8,7 +8,18 @@ import java.io.IOException;
 import java.util.Random;
 
 /*
-* ENCAPSULATE CODE.
+* ENCAPSULATE CODE
+    * ROOMS:
+        * bio - CLEAR
+        * caf - CLEAR
+        * chem - CLEAR
+        * comp sci - CLEAR
+        * eng - CLEAR
+        * gym - CLAERE
+        * math - CLEAE
+        * office - CLEAR
+        * physics - CEAR
+    * other files
 * make trash cans not generate on desk
     * biology - CLEAR
     * chem
@@ -190,38 +201,38 @@ public class NTT extends JPanel {
                 }
 
                 if (currentClassroom == 1) {
-                    p1.keyReleased(p2, currentClassroom, e, office.arson1, office.trashCans, office.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, office.arson1, office.trashCans, office.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, office.getArson(), office.getTrashCans(), office.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    p2.keyReleased(p1, currentClassroom, e, office.getArson(), office.getTrashCans(), office.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
                 } else if (currentClassroom == 2){
-                    p1.keyReleased(p2, currentClassroom, e, caf.getArson(), caf.getTrashCans(), caf.getCb(), office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, caf.getArson(), caf.getTrashCans(), caf.getCb(), office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, caf.getArson(), caf.getTrashCans(), caf.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    p2.keyReleased(p1, currentClassroom, e, caf.getArson(), caf.getTrashCans(), caf.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
                 } else if (currentClassroom == 3){
-                    p1.keyReleased(p2, currentClassroom, e, gym.arson3, gym.trashCans, gym.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, gym.arson3, gym.trashCans, gym.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, gym.getArson(), gym.getTrashCans(), gym.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    p2.keyReleased(p1, currentClassroom, e, gym.getArson(), gym.getTrashCans(), gym.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
                 } else if (currentClassroom == 4) {
-                    p1.keyReleased(p2, currentClassroom, e, bio.arson4, bio.trashCans, bio.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, bio.arson4, bio.trashCans, bio.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, bio.getArson(), bio.getTrashCans(), bio.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    p2.keyReleased(p1, currentClassroom, e, bio.getArson(), bio.getTrashCans(), bio.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
                 } else if (currentClassroom == 5) {
-                    p1.keyReleased(p2, currentClassroom, e, phys.arson5, phys.trashCans, phys.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, phys.arson5, phys.trashCans, phys.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, phys.getArson(), phys.getTrashCans(), phys.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    p2.keyReleased(p1, currentClassroom, e, phys.getArson(), phys.getTrashCans(), phys.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
                 } else if (currentClassroom == 6) {
-                    p1.keyReleased(p2, currentClassroom, e, chem.arson6, chem.trashCans, chem.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, chem.arson6, chem.trashCans, chem.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, chem.getArson(), chem.getTrashCans(), chem.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    p2.keyReleased(p1, currentClassroom, e, chem.getArson(), chem.getTrashCans(), chem.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
                 } else if (currentClassroom == 7){
-                    p1.keyReleased(p2, currentClassroom, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, mathematics.arson7, mathematics.trashCans, mathematics.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, mathematics.getArson(), mathematics.getTrashCans(), mathematics.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    p2.keyReleased(p1, currentClassroom, e, mathematics.getArson(), mathematics.getTrashCans(), mathematics.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
                 } else if (currentClassroom == 8){
-                    p1.keyReleased(p2, currentClassroom, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, compSci.arson8, compSci.trashCans, compSci.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, compSci.getArson(), compSci.getTrashCans(), compSci.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    p2.keyReleased(p1, currentClassroom, e, compSci.getArson(), compSci.getTrashCans(), compSci.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
                 } else if (currentClassroom == 9){
-                    p1.keyReleased(p2, currentClassroom, e, eng.arson9, eng.trashCans, eng.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
-                    p2.keyReleased(p1, currentClassroom, e, eng.arson9, eng.trashCans, eng.cb, office.pp, doMess3, compSci.doHack8, caf.getVendMachines(), chem.badReaction6, mathematics.burnTests7, bio.dissection4);
+                    p1.keyReleased(p2, currentClassroom, e, eng.getArson(), eng.getTrashCans(), eng.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
+                    p2.keyReleased(p1, currentClassroom, e, eng.getArson(), eng.getTrashCans(), eng.getCb(), office.getAPressurePlate(), doMess3, compSci.getDoHack8(), caf.getVendMachines(), chem.getBadReaction6(), mathematics.getDoStealTests(), bio.getDissection4());
                 }
             }
             @Override
             public void keyPressed(KeyEvent e) {
-                p1.keyPressed(e, compSci.doHack8, currentClassroom, bio.dissection4);
-                p2.keyPressed(e, compSci.doHack8, currentClassroom, bio.dissection4);
+                p1.keyPressed(e, compSci.getDoHack8(), currentClassroom, bio.getDissection4());
+                p2.keyPressed(e, compSci.getDoHack8(), currentClassroom, bio.getDissection4());
             }
         });
         setFocusable(true);
@@ -231,11 +242,11 @@ public class NTT extends JPanel {
         sound.playBackgroundMusic();
         sound.soundMaintenance();
 
-        if (eng.sprint.getFlag1()){
-            eng.sprint.sprintTicks(p1);
+        if (eng.getDoSprint().getFlag1()){
+            eng.getDoSprint().sprintTicks(p1);
         }
-        if (eng.sprint.getFlag2()){
-            eng.sprint.sprintTicks(p2);
+        if (eng.getDoSprint().getFlag2()){
+            eng.getDoSprint().sprintTicks(p2);
         }
 
         Random r = new Random();
@@ -314,40 +325,40 @@ public class NTT extends JPanel {
 
             switch (currentClassroom) {
                 case 1:
-                    p1.move(office.desks);
-                    p2.move(office.desks);
+                    p1.move(office.getDesks());
+                    p2.move(office.getDesks());
                     break;
                 case 2:
                     p1.move(caf.getDesks());
                     p2.move(caf.getDesks());
                     break;
                 case 3:
-                    p1.move(gym.desks);
-                    p2.move(gym.desks);
+                    p1.move(gym.getDesks());
+                    p2.move(gym.getDesks());
                     break;
                 case 4:
-                    p1.move(bio.desks);
-                    p2.move(bio.desks);
+                    p1.move(bio.getDesks());
+                    p2.move(bio.getDesks());
                     break;
                 case 5:
-                    p1.move(phys.desks);
-                    p2.move(phys.desks);
+                    p1.move(phys.getDesks());
+                    p2.move(phys.getDesks());
                     break;
                 case 6:
-                    p1.move(chem.desks);
-                    p2.move(chem.desks);
+                    p1.move(chem.getDesks());
+                    p2.move(chem.getDesks());
                     break;
                 case 7:
-                    p1.move(mathematics.desks);
-                    p2.move(mathematics.desks);
+                    p1.move(mathematics.getDesks());
+                    p2.move(mathematics.getDesks());
                     break;
                 case 8:
-                    p1.move(compSci.desks);
-                    p2.move(compSci.desks);
+                    p1.move(compSci.getDesks());
+                    p2.move(compSci.getDesks());
                     break;
                 case 9:
-                    p1.move(eng.desks);
-                    p2.move(eng.desks);
+                    p1.move(eng.getDesks());
+                    p2.move(eng.getDesks());
                     break;
             }
 
@@ -420,7 +431,7 @@ public class NTT extends JPanel {
                         break;
 
                     case 3:
-                        chem.badReaction6.changeLeave(true);
+                        chem.getBadReaction6().changeLeave(true);
                         try {
                             gym.paint(g, p1, p2, transition1, sideMenu);
                         } catch (UnsupportedAudioFileException e) {
@@ -455,7 +466,7 @@ public class NTT extends JPanel {
                         break;
 
                     case 5:
-                        chem.badReaction6.changeLeave(true);
+                        chem.getBadReaction6().changeLeave(true);
                         try {
                             phys.paint(g, p1, p2, transition1, sideMenu);
                         } catch (UnsupportedAudioFileException e) {
@@ -476,8 +487,8 @@ public class NTT extends JPanel {
                         break;
 
                     case 6:
-                        if (!chem.badReaction6.finished){
-                            chem.badReaction6.changeLeave(false);
+                        if (!chem.getBadReaction6().finished){
+                            chem.getBadReaction6().changeLeave(false);
                         }
                         //System.out.println(chem.badReaction6.getLeave());
                         try {
@@ -532,7 +543,7 @@ public class NTT extends JPanel {
                         break;
 
                     case 9:
-                        chem.badReaction6.changeLeave(true);
+                        chem.getBadReaction6().changeLeave(true);
                         try {
                             eng.paint(g, p1, p2, transition1, sideMenu);
                         } catch (UnsupportedAudioFileException e) {
@@ -621,7 +632,7 @@ public class NTT extends JPanel {
     }
 
     public void reset(NTT c){
-        c.eng.sprint.resetNormalSpeed(c.p1, c.p2);
+        c.eng.getDoSprint().resetNormalSpeed(c.p1, c.p2);
 
         c.flag = false;
         c.gameOver = false;

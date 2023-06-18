@@ -8,7 +8,7 @@ public class ADesk extends Thing {
     private int width;
     private int height;
     private int deskType;
-    boolean diffColour = false;
+    private boolean diffColour = false;
     public int getDeskType(){
         return deskType;
     }

@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class GameOver {
-    int x = 1835, y = 20, width = 50, height = 50, openX = NTT.SCREEN_WIDTH/2 - 400, openY = 20, openWidth = 800, openHeight = 800;
+    private int x = 1835, y = 20, width = 50, height = 50, openX = NTT.SCREEN_WIDTH/2 - 400, openY = 20, openWidth = 800, openHeight = 800;
     private BufferedImage img;
 
     public GameOver() {

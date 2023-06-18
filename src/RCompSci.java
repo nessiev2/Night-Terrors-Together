@@ -5,14 +5,14 @@ import java.io.IOException;
 import java.util.Random;
 
 public class RCompSci {
-    DoArson[] arson8 = new DoArson[3];
-    DoArson arsont1, arsont2, arsont3;
-    DoHack doHack8;
-    ATrashCan[] trashCans = new ATrashCan[3];
-    AChalkBoard cb;
-    AWall w1 = new AWall(0, 0);
-    ADesk[] desks = {new ADesk(400, 500, 200, 100), new ADesk(700, 500, 200, 100), new ADesk(1000, 500, 200, 100), new ADesk(1300, 500, 200, 100), new ADesk(400, 500, 100, 300), new ADesk(1400, 500, 100, 300), new ADesk(750, 800, 400, 200)};
-    ADesk[] decorComputers = {new ADesk(410, 650, 50, 80, true), new ADesk(500, 510, 80, 50, true), new ADesk(760, 510, 80, 50, true), new ADesk(1060, 510, 80, 50, true), new ADesk(1320, 510, 80, 50, true), new ADesk(1440, 650, 50, 80, true)};
+    private DoArson[] arson8 = new DoArson[3];
+    private DoArson arsont1, arsont2, arsont3;
+    private DoHack doHack8;
+    private ATrashCan[] trashCans = new ATrashCan[3];
+    private AChalkBoard cb;
+    private AWall w1 = new AWall(0, 0);
+    private ADesk[] desks = {new ADesk(400, 500, 200, 100), new ADesk(700, 500, 200, 100), new ADesk(1000, 500, 200, 100), new ADesk(1300, 500, 200, 100), new ADesk(400, 500, 100, 300), new ADesk(1400, 500, 100, 300), new ADesk(750, 800, 400, 200)};
+    private ADesk[] decorComputers = {new ADesk(410, 650, 50, 80, true), new ADesk(500, 510, 80, 50, true), new ADesk(760, 510, 80, 50, true), new ADesk(1060, 510, 80, 50, true), new ADesk(1320, 510, 80, 50, true), new ADesk(1440, 650, 50, 80, true)};
     boolean b1;
 
     public void initializeCompSci(boolean b, boolean b1, boolean b2){
@@ -33,6 +33,21 @@ public class RCompSci {
 
         doHack8 = new DoHack(b2);
         cb = new AChalkBoard(300, 10, "COMPUTER SCIENCE :P", b);
+    }
+    public ADesk[] getDesks(){
+        return desks;
+    }
+    public DoHack getDoHack8(){
+        return doHack8;
+    }
+    public DoArson[] getArson(){
+        return arson8;
+    }
+    public ATrashCan[] getTrashCans(){
+        return trashCans;
+    }
+    public AChalkBoard getCb(){
+        return cb;
     }
 
     public RCompSci() {

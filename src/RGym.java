@@ -4,13 +4,29 @@ import java.awt.*;
 import java.io.IOException;
 
 public class RGym {
-    DoArson[] arson3;
-    DoMess mess3;
-    ATrashCan[] trashCans = {};
-    AChalkBoard cb;
-    ADesk[] desks = {};
-    AWall w1 = new AWall(0, 0);
-    boolean b1;
+    private DoArson[] arson3;
+    private DoMess mess3;
+    private ATrashCan[] trashCans = {};
+    private AChalkBoard cb;
+    private ADesk[] desks = {};
+    private AWall w1 = new AWall(0, 0);
+    private boolean b1;
+
+    public ADesk[] getDesks(){
+        return desks;
+    }
+    public DoMess getDoMess(){
+        return mess3;
+    }
+    public DoArson[] getArson(){
+        return arson3;
+    }
+    public ATrashCan[] getTrashCans(){
+        return trashCans;
+    }
+    public AChalkBoard getCb(){
+        return cb;
+    }
 
     public void initializeGym(boolean b, boolean b1, boolean b2){
         this.b1 = b1;

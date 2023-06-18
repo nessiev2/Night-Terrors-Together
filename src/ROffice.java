@@ -5,14 +5,30 @@ import java.io.IOException;
 import java.util.Random;
 
 public class ROffice {
-    DoArson[] arson1;
-    ATrashCan[] trashCans = new ATrashCan[1];
+    private DoArson[] arson1;
+    private ATrashCan[] trashCans = new ATrashCan[1];
     //DoArson arson1 = new DoArson(false, trashCans);
-    AChalkBoard cb = new AChalkBoard(900, 10, "OFFICE", false);
-    ADesk[] desks = {new ADesk(0, 500, 500, 250), new ADesk(500, 300, 150, 250+200)};
-    AWall w1 = new AWall(0, 0);
-    APressurePlate pp = new APressurePlate(200, 300);
-    boolean b1;
+    private AChalkBoard cb = new AChalkBoard(900, 10, "OFFICE", false);
+    private ADesk[] desks = {new ADesk(0, 500, 500, 250), new ADesk(500, 300, 150, 250+200)};
+    private AWall w1 = new AWall(0, 0);
+    private APressurePlate pp = new APressurePlate(200, 300);
+    private boolean b1;
+
+    public ADesk[] getDesks(){
+        return desks;
+    }
+    public APressurePlate getAPressurePlate(){
+        return pp;
+    }
+    public DoArson[] getArson(){
+        return arson1;
+    }
+    public ATrashCan[] getTrashCans(){
+        return trashCans;
+    }
+    public AChalkBoard getCb(){
+        return cb;
+    }
 
     public void initializeOffice(boolean b, boolean b1){
         Random r = new Random();
