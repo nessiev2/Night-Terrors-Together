@@ -18,6 +18,7 @@ public class DoBadReaction extends Task{
     private boolean green, pink, cyan, yellow, closeGreen, closePink, closeCyan, closeYellow, flag = false;
     public DoBadReaction(boolean isTask){
         super(isTask);
+        ts = true;
         try {
             burning = ImageIO.read(new File("res\\reactionfire.png"));
             img0 = ImageIO.read(new File("res\\soot.png"));

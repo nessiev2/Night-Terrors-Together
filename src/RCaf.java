@@ -9,6 +9,7 @@ import java.util.Random;
 
 public class RCaf {
     private boolean ts = true;
+
     private BufferedImage cafdesk1, cafdesk2;
     private DoVendingMachine vendMachine1;
     private DoVendingMachine vendMachine2;
@@ -37,6 +38,7 @@ public class RCaf {
         return cb;
     }
     public void initializeCaf(boolean b, boolean b1, boolean b2){
+        ts = true;
         Random r = new Random();
 
         this.b1 = b1;

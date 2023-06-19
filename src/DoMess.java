@@ -10,6 +10,7 @@ public class DoMess extends Task {
     private boolean[][] waterStains = new boolean[(NTT.SCREEN_WIDTH/2)/30][(810-270)/30];
     public DoMess(boolean isTask){
         super(isTask);
+        ts = true;
     }
     public boolean getIsFin(){
         return isFin;

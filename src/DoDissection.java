@@ -8,6 +8,7 @@ import java.io.IOException;
 
 public class DoDissection extends Task {
     private boolean ts = true;
+
     private BufferedImage alive, dead, froginteract;
     private int x = 450, y = 600, w = 30, h = 50;
     private final static int RADIUS = 130;
@@ -15,6 +16,7 @@ public class DoDissection extends Task {
     private boolean[] interacted = {false, false, false, false, false, false};
     public DoDissection(boolean isTask){
         super(isTask);
+        ts = true;
         try {
             alive = ImageIO.read(new File("res\\frogalive.png"));
             dead = ImageIO.read(new File("res\\frogdead.png"));

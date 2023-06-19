@@ -517,6 +517,7 @@ public class NTT extends JPanel {
             mainMenu.paintMainMenu(g2d);
         } else if (win) {
             System.out.println("game over u win");
+            pauseGame = true;
             gameOverScreen.paintGameOverYouWin(g2d);
         } else if (gameOver) {
             gameOverScreen.paintGameOver(g2d);
@@ -762,6 +763,7 @@ public class NTT extends JPanel {
     }
 
     public void reset(NTT c){
+        c.pauseGame = false;
         c.eng.getDoSprint().resetNormalSpeed(c.p1, c.p2);
 
         c.flag = false;
