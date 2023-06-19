@@ -807,6 +807,7 @@ public class NTT extends JPanel {
             Random rand = new Random();
             int[] tmpArr = {3, 5, 6, 7, 8};
             int randVal = tmpArr[rand.nextInt(tmpArr.length)];
+            System.out.println("TRASH CAN ROOM: " + randVal);
             trashRoom[randVal] = true;
         }
 
