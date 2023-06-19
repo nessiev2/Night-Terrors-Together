@@ -521,6 +521,15 @@ public class NTT extends JPanel {
             gameOverScreen.paintGameOverYouWin(g2d);
         } else if (gameOver) {
             gameOverScreen.paintGameOver(g2d);
+            try {
+                sound.playGameOverSoundEffect();
+            } catch (UnsupportedAudioFileException e) {
+                throw new RuntimeException(e);
+            } catch (LineUnavailableException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         } else {
             if (t.getBothCaught()){
                 gameOver = true;
@@ -763,6 +772,8 @@ public class NTT extends JPanel {
     }
 
     public void reset(NTT c){
+        c.sound.stopSound();
+
         c.pauseGame = false;
         c.eng.getDoSprint().resetNormalSpeed(c.p1, c.p2);
 
@@ -796,6 +807,7 @@ public class NTT extends JPanel {
             Random rand = new Random();
             int[] tmpArr = {3, 5, 6, 7, 8};
             int randVal = tmpArr[rand.nextInt(tmpArr.length)];
+            System.out.println("TRASH CAN ROOM: " + randVal);
             trashRoom[randVal] = true;
         }
 

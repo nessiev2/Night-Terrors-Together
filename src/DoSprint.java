@@ -98,9 +98,9 @@ public class DoSprint extends Task{
                 //System.out.println("do sprint COMPLETE");
             }
             g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
-            g2d.setColor(Color.black);
 
             if (isComplete){
+                g2d.setColor(Color.white);
                 g2d.drawString("task complete!", 650, 200);
             } else {
                 g2d.setColor(Color.white);
