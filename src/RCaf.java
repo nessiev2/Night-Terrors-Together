@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class RCaf {
     private boolean ts = true;
-    
+
     private BufferedImage cafdesk1, cafdesk2, cafdesk3;
     private DoVendingMachine vendMachine1;
     private DoVendingMachine vendMachine2;

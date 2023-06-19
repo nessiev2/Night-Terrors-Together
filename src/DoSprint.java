@@ -101,7 +101,7 @@ public class DoSprint extends Task{
             g2d.setColor(Color.black);
 
             if (isComplete){
-                g2d.drawString("task complete!", 650, 350);
+                g2d.drawString("task complete!", 650, 200);
             } else {
                 g2d.setColor(Color.white);
                 g2d.drawString("find the yellow circle on the ground", 400, 200);

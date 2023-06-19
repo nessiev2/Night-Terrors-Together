@@ -803,8 +803,9 @@ public class NTT extends JPanel {
         if (bArray[5]) {
             System.out.println("choosing chalkboard");
             Random rand = new Random();
-            int[] tmpArr = {1, 2, 3, 5, 6, 7, 8};
+            int[] tmpArr = {2, 3, 5, 6, 7, 8};
             int randVal = tmpArr[rand.nextInt(tmpArr.length)];
+            System.out.println("CHALKBOARD ROOM: " + randVal);
             chalkRoom[randVal] = true;
         }
 

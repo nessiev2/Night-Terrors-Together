@@ -69,6 +69,7 @@ public abstract class Player {
         return playerN;
     }
     public void initializePlayer() {
+        PCaughtSound = true;
         isCaught = false;
         isSpillingWater = false;
         if (playerN == 1){
