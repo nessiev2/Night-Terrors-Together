@@ -20,7 +20,9 @@ public class DoStealTests extends Task{
     }
     public DoStealTests(boolean isTask){
         super(isTask);
+        ts = true;
     }
+
     public void paint(Graphics g2d, Player p1, Player p2, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         int i = 10;
 

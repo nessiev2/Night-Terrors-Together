@@ -9,6 +9,7 @@ import java.util.Random;
 
 public class RBiology {
     private boolean ts = true;
+
     private BufferedImage biodesk;
     private DoArson[] arson4 = new DoArson[3];
     private DoArson arsont1, arsont2, arsont3;
@@ -35,6 +36,7 @@ public class RBiology {
     }
 
     public void initializeBio(boolean b, boolean b1, boolean b2){
+        ts = true;
         Random r = new Random();
         this.b1 = b1;
 
@@ -99,7 +101,7 @@ public class RBiology {
             arson.paint(g2d, p1, p2, menu);
         }
 
-        if (arsont1.getIsFin() && arsont2.getIsFin() && arsont3.getIsFin()){
+        if (ts && arsont1.getIsFin() && arsont2.getIsFin() && arsont3.getIsFin()){
             menu.updateTaskCompletion(0);
             ts = false;
         }

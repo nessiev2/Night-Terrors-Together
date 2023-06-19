@@ -8,6 +8,7 @@ import java.io.IOException;
 
 public class DoHack extends Task{
     private boolean ts = true;
+
     private BufferedImage monitor, monitorInteract, monitorBusted;
     private int x = 890, y = 820, width = 120, height = 80;
     private boolean playerIsClose = false;
@@ -15,6 +16,7 @@ public class DoHack extends Task{
 
     public DoHack(boolean isTask){
         super(isTask);
+        ts = true;
         try {
             monitorInteract = ImageIO.read(new File("res\\hackmonitorI.png"));
             monitorBusted = ImageIO.read(new File("res\\hackmonitorB.png"));

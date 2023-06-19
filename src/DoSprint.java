@@ -19,11 +19,13 @@ public class DoSprint extends Task{
         return flag2;
     }
     public void initializeSprint(){
+        ts = true;
         System.out.println("reset sprint");
         x = 0;
         y = 0;
         i = 0;
         j = 0;
+
 
         flag1 = false;
         flag2 = false;

@@ -21,6 +21,7 @@ public class RCompSci {
     boolean b1;
 
     public void initializeCompSci(boolean b, boolean b1, boolean b2){
+        ts = true;
         Random r = new Random();
         this.b1 = b1;
 
@@ -105,7 +106,7 @@ public class RCompSci {
             arson.paint(g2d, p1, p2, menu);
         }
 
-        if (arsont1.getIsFin() && arsont2.getIsFin() && arsont3.getIsFin()){
+        if (ts && arsont1.getIsFin() && arsont2.getIsFin() && arsont3.getIsFin()){
             menu.updateTaskCompletion(0);
             ts = false;
         }
