@@ -16,7 +16,6 @@ public class Teacher extends Thing {
     private boolean isFacingLeft = false;
     // this bool represents if u can spawn at this door or NOT
     private boolean d0, d1, d2, d3;
-    // public void changeFaceDirection(boolean b) { isFacingLeft = b; }
 
     public void spawnTeacherRandom(Player p1, Player p2) {
         Random r = new Random();
@@ -62,11 +61,6 @@ public class Teacher extends Thing {
 
         char tmp = heh.charAt(r.nextInt(heh.length()));
 
-        //System.out.println(heh.length());
-
-//        System.out.println("Door options: " + heh);
-//        System.out.println("chose door " + tmp);
-
         boolean temp = false;
 
         if (tmp == '0') {
@@ -74,36 +68,24 @@ public class Teacher extends Thing {
                 resetX(1300);
                 resetY(70);
                 temp = true;
-                //System.out.println("at Door 0 (top)");
-            } else {
-                //System.out.println("door 0 blocked, returing " + temp);
             }
         } else if (tmp == '1') {
             if (d1) {
                 resetX(1770);
                 resetY(440);
                 temp = true;
-                //System.out.println("at Door 1 (right)");
-            } else {
-                //System.out.println("door 1 blocked, returing " + temp);
             }
         } else if (tmp == '2') {
             if (d2) {
                 resetX(1300);
                 resetY(840);
                 temp = true;
-                //System.out.println("at Door 2 (bot)");
-            } else {
-                //System.out.println("door 2 blocked, returing " + temp);
             }
         } else if (tmp == '3'){ // tmp = '3';
             if (d3) {
                 resetX(0);
                 resetY(440);
                 temp = true;
-                //System.out.println("at Door 3 (left)");
-            } else {
-                //System.out.println("door 3 blocked, returing " + temp);
             }
         }
         // true means successfully spawned, false is cannot spawn
@@ -123,18 +105,6 @@ public class Teacher extends Thing {
         // door 4
         double dist3p1 = Math.sqrt(Math.pow(0-p1.getX(), 2) + Math.pow(440-p1.getY(), 2));
         double dist3p2 = Math.sqrt(Math.pow(0-p2.getX(), 2) + Math.pow(440-p2.getY(), 2));
-
-//        System.out.println("p1 to top door0: " + dist0p1);
-//        System.out.println("p2 to top door0: " + dist0p2);
-//
-//        System.out.println("p1 to top door1: " + dist1p1);
-//        System.out.println("p2 to top door1: " + dist1p2);
-//
-//        System.out.println("p1 to top door2: " + dist2p1);
-//        System.out.println("p2 to top door2: " + dist2p2);
-//
-//        System.out.println("p1 to top door3: " + dist3p1);
-//        System.out.println("p2 to top door3: " + dist3p2);
 
         if (dist0p1 <= RADIUS || dist0p2 <= RADIUS) {
             d0 = false;
@@ -220,18 +190,14 @@ public class Teacher extends Thing {
     public void paint(Graphics2D g2d) {
         if (!standing){
             if (isFacingLeft) {
-                //g2d.drawImage(img, getX(), getY(), width, height, null);
                 g2d.drawImage(gif, getX() + getWidth(), getY(), -getWidth(), getHeight(), null);
             } else {
-                //g2d.drawImage(img, getX() + getWidth(), getY(), -width, height, null);
                 g2d.drawImage(gif, getX(), getY(), getWidth(), getHeight(), null);
             }
         } else{
             if (isFacingLeft) {
-                //g2d.drawImage(img, getX(), getY(), width, height, null);
                 g2d.drawImage(img, getX() + getWidth(), getY(), -getWidth(), getHeight(), null);
             } else {
-                //g2d.drawImage(img, getX() + getWidth(), getY(), -width, height, null);
                 g2d.drawImage(img, getX(), getY(), getWidth(), getHeight(), null);
             }
         }

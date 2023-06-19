@@ -43,7 +43,7 @@ public class RCaf {
 
         this.b1 = b1;
         this.b2 = b2;
-        //arson2 = new DoArson(true, trashCans[0]);
+
         DoVendingMachine vendMachine1 = new DoVendingMachine(800, 600, b2);
         DoVendingMachine vendMachine2 = new DoVendingMachine(1000, 600, b2);
         vendMachines[0] = vendMachine1;
@@ -63,7 +63,6 @@ public class RCaf {
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        //super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.BLACK);

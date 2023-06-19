@@ -21,7 +21,6 @@ public class APressurePlate extends Thing {
     }
 
     public void paint(Graphics g2d) {
-        int i = 10;
         if (playerIsClose) {
             g2d.drawImage(imginteract, getX(), getY(), null);
         }

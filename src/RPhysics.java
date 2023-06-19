@@ -66,7 +66,6 @@ public class RPhysics {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.BLACK);
 
-        // IRENE IS MAKING A CLASSROOM DESK TRIAL
         for (ADesk d:desks) {
             if (d.getDeskType() == 0){
                 d.paintDesk0(g2d);
@@ -78,8 +77,6 @@ public class RPhysics {
         for (ATrashCan tc: trashCans){
             tc.paint(g2d, p1, p2, b1);
         }
-
-        //.out.println(arson5[0].getOnFire());
 
         for (DoArson arson: arson5){
             arson.paint(g2d, p1, p2, menu);
@@ -96,17 +93,5 @@ public class RPhysics {
         g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
         g2d.setColor(Color.white);
         g2d.drawString("the only room you're safe in:", 500, 50);
-
-//        if (menu.isScribbleTask()){
-////        g2d.drawString("which chalkboard are you destined to scribble on?", 500, 150);
-////        g2d.drawString("find out by looking for the glowing chalkboard", 500, 150+25);
-//        g2d.drawString("- look out for the glowing chalkboard", 500, 150+25);
-//
-//        }
-//        if (menu.isArsonTask()){
-////        g2d.drawString("which room's trash cans were you prophesied to draw on?", 500, 225);
-////        g2d.drawString("find out by looking for the room with glowing trash cans", 500, 225+25);
-//        g2d.drawString("- look out for the glowing trash cans", 500, 225);
-//        }
     }
 }

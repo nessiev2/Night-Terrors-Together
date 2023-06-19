@@ -24,15 +24,9 @@ public class ATrashCan extends Thing {
         int i = 10;
         if (isPlayerClose && isTask){
             g2d.drawImage(imginteract, getX(), getY(), null);
-//            g2d.setColor(Color.yellow);
-//            g2d.fillOval(getX()-2*i, getY()-2*i, getWidth()+4*i, getHeight()+4*i);
         }
 
         g2d.drawImage(img, getX(), getY(), null);
-//        g2d.setColor(Color.black);
-//        g2d.fillOval(getX(), getY(), width, height);
-//        g2d.setColor(Color.darkGray);
-//        g2d.fillOval(getX()+i, getY()+i, width-2*i, height-2*i);
     }
 
     public void isPlayerClose(Player p1, Player p2) {

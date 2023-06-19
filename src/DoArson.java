@@ -38,16 +38,9 @@ public class DoArson extends Task {
 
             if (isOnFire && isTask) {
                 isFin = true;
-                //g2d.fillRect(trash.getX()+2*i, trash.getY()+2*i, trash.getWidth()-4*i, trash.getHeight()-4*i);
                 g2d.drawImage(img, trash.getX()+2*i, trash.getY()+i, trash.getWidth()-2*i, trash.getHeight()-2*i, null);
             }
         }
-
-//        if (checkIsFin() && ts) {
-//        //if (b && ts) {
-//            menu.updateTaskCompletion(0);
-//            ts = false;
-//        }
     }
 
     public boolean isPlayerClose(Player p) {

@@ -30,9 +30,7 @@ public class RGym {
 
     public void initializeGym(boolean b, boolean b1, boolean b2){
         this.b1 = b1;
-        //arson3 = new DoArson(true, trashCans[0]);
         mess3 = new DoMess(b2);
-        System.out.println("b2 is " + b2);
         cb = new AChalkBoard(500, 10, "GYM", b);
     }
     public RGym(){
@@ -40,7 +38,6 @@ public class RGym {
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        //super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.BLACK);

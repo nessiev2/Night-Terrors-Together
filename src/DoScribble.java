@@ -49,15 +49,6 @@ public class DoScribble extends Thing {
                 g2d.drawString(scribbleArray[j], xs[j], ys[j]);
             }
         }
-
-//        g2d.setColor(Color.red);
-//        g2d.fillRect(minX, minY, 20, 20);
-//        g2d.setColor(Color.yellow);
-//        g2d.fillRect(maxX, minY, 20, 20);
-//        g2d.setColor(Color.green);
-//        g2d.fillRect(minX, maxY, 20, 20);
-//        g2d.setColor(Color.blue);
-//        g2d.fillRect(maxX, maxY, 20, 20);
     }
 
 }

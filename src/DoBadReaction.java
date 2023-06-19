@@ -78,11 +78,6 @@ public class DoBadReaction extends Task{
             }
         }
     }
-
-    public boolean getLeave(){
-        return leave;
-    }
-
     public void changeLeave(boolean bool){
         leave = bool;
     }

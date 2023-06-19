@@ -110,8 +110,7 @@ public class NTT extends JPanel {
                             tut.changePlayTut(true);
                             tutOpen = true;
 
-                            //System.out.println("i paused");
-                            //cd.CDReset();
+
                             if (!pauseGame) {
                                 cd.startPause();
                                 pauseGame = true;
@@ -119,7 +118,6 @@ public class NTT extends JPanel {
                         }
                     } else { // tut is open
                         if (first) {
-                            //System.out.println("i paused BEG");
                             first = false;
                             cd.startPause();
                             pauseGame = true;
@@ -129,12 +127,10 @@ public class NTT extends JPanel {
                             tut.changePlayTut(false);
                             tut.initializeTut();
 
-                            //System.out.println("i UNpaused");
                             if (pauseGame) {
                                 cd.stopPause();
                                 pauseGame = false;
                             }
-                            //cd.CDReset();
                         }
                         if (e.getKeyCode() == KeyEvent.VK_SPACE){
                             if (tut.getSlide() < 7){
@@ -144,12 +140,10 @@ public class NTT extends JPanel {
                                 tut.changePlayTut(false);
                                 tut.initializeTut();
 
-                                //System.out.println("i UNpaused");
                                 if (pauseGame) {
                                     cd.stopPause();
                                     pauseGame = false;
                                 }
-                                //cd.CDReset();
                             }
                         }
                     }
@@ -381,8 +375,6 @@ public class NTT extends JPanel {
 
                 tCurrentClassroom = tmp[r.nextInt(8)];
 
-                //System.out.println("TRoom: " + tCurrentClassroom);
-
                 // hehe
                 if (currentClassroom == tCurrentClassroom){
                     if (tCurrentClassroom == 1){
@@ -516,7 +508,6 @@ public class NTT extends JPanel {
         if (mainMenu.getIsMenuOpen()) {
             mainMenu.paintMainMenu(g2d);
         } else if (win) {
-            System.out.println("game over u win");
             pauseGame = true;
             gameOverScreen.paintGameOverYouWin(g2d);
         } else if (gameOver) {
@@ -630,7 +621,6 @@ public class NTT extends JPanel {
                         if (!chem.getBadReaction6().finished){
                             chem.getBadReaction6().changeLeave(false);
                         }
-                        //System.out.println(chem.badReaction6.getLeave());
                         try {
                             chem.paint(g, p1, p2, transition1, sideMenu, currentClassroom);
                         } catch (UnsupportedAudioFileException e) {
@@ -790,11 +780,6 @@ public class NTT extends JPanel {
         boolean[] bArray = sideMenu.which4Tasks();
         sideMenu.initializeSideMenu();
 
-        System.out.println("BARRAY");
-        for (int i = 0; i < 9; i++)  {
-            System.out.print(i + ": " + bArray[i] + " ");
-        }
-        System.out.println("");
 
         // possible room that chalkboard is in
         boolean[] chalkRoom = {false, false, false, false, false, false, false, false, false};
@@ -803,21 +788,17 @@ public class NTT extends JPanel {
 
         // CHOOSING 1 TRASH CAN ROOM
         if (bArray[0]) {
-            System.out.println("choosing trash can");
             Random rand = new Random();
             int[] tmpArr = {3, 5, 6, 7, 8};
             int randVal = tmpArr[rand.nextInt(tmpArr.length)];
-            System.out.println("TRASH CAN ROOM: " + randVal);
             trashRoom[randVal] = true;
         }
 
         // CHOOSING 1 CHALKBOARD ROOM
         if (bArray[5]) {
-            System.out.println("choosing chalkboard");
             Random rand = new Random();
             int[] tmpArr = {2, 3, 5, 6, 7, 8};
             int randVal = tmpArr[rand.nextInt(tmpArr.length)];
-            System.out.println("CHALKBOARD ROOM: " + randVal);
             chalkRoom[randVal] = true;
         }
 
@@ -837,7 +818,6 @@ public class NTT extends JPanel {
         office.initializeOffice(false, false);
         caf.initializeCaf(chalkRoom[1], false,               bArray[8]);
         gym.initializeGym(chalkRoom[2], false,               bArray[4]);
-        //System.out.println("gym - " + bArray[4]);
         bio.initializeBio(chalkRoom[3], trashRoom[3],           bArray[2]);
         phys.initializePhysics(false, false);
         chem.initializeChem(chalkRoom[5], trashRoom[5],         bArray[1]);

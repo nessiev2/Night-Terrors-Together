@@ -22,36 +22,27 @@ public abstract class Player {
     private boolean isHolding;
     public boolean getIsHolding() {return isHolding; }
     public void changeIsHolding(boolean b) { isHolding = b; }
-    public void changeIsSpillingWater(boolean b) { isSpillingWater = b; }
-
     private boolean PCaughtSound = true;
-    public boolean getPCaughtSound() { return PCaughtSound; }
-    public void changePCaughtSound(boolean b) { PCaughtSound = b; }
-
-    protected int croom = 5;
-    public void updateCRoom(int i) { croom = i; }
-
     private int playerN;
     private boolean isFacingLeft = false;
-
-    public void changeFaceDirection(boolean b) { isFacingLeft = b; }
     private boolean isCaught = false;
+    protected int croom = 5;
 
+    public void changeIsSpillingWater(boolean b) { isSpillingWater = b; }
+    public boolean getPCaughtSound() { return PCaughtSound; }
+    public void changePCaughtSound(boolean b) { PCaughtSound = b; }
+    public void updateCRoom(int i) { croom = i; }
+    public void changeFaceDirection(boolean b) { isFacingLeft = b; }
     public int getX() {
         return x;
     }
-
     public int getY() { return y; }
     public int getCenterX() {
         return centerX;
     }
-
     public int getCenterY() { return centerY; }
-
     public int getWidth() { return width; }
-
     public int getHeight() { return height; }
-
     public boolean getIsCaught() { return isCaught; }
     public boolean getIsSpillingWater() {
         return isSpillingWater;

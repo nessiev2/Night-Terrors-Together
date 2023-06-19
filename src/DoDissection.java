@@ -117,16 +117,6 @@ public class DoDissection extends Task {
         g2d.drawImage(alive, x-270-i, y+100-i, null);
         g2d.drawImage(alive, x-270-i, y+2*100-i, null);
 
-//        // right column
-//        g2d.fillRect(x, y, w, h);
-//        g2d.fillRect(x, y + 100, w, h);
-//        g2d.fillRect(x, y + 2 * 100, w, h);
-//
-//        // left column
-//        g2d.fillRect(x - 270, y, w, h);
-//        g2d.fillRect(x - 270, y + 100, w, h);
-//        g2d.fillRect(x - 270, y + 2 * 100, w, h);
-
         if (isPlayerClose(x, y, p1, p2) || isPlayerClose(x, y + 100, p1, p2) && isPlayerClose(x, y + 2 * 100, p1, p2) || isPlayerClose(x - 270, y, p1, p2) || isPlayerClose(x - 270, y + 100, p1, p2) || isPlayerClose(x - 270, y + 2 * 100, p1, p2)){
             if (isTask && !checkWin()){
                 instructions(g2d);

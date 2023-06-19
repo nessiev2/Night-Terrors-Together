@@ -38,7 +38,6 @@ public class Player2 extends Player {
                 }
                 if (ticks >= 20) {
                     hack.taskFinished();
-                    System.out.println("HACK SUCCESS");
                     changeIsHolding(false);
                 }
             }

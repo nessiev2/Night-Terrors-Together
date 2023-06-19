@@ -23,7 +23,6 @@ public class Minimap {
         } else {
             xa -= 1;
         }
-        //System.out.println("xa " + xa + " ya " + ya);
         g2d.setColor(Color.pink);
         g2d.fillOval(x+xa*20, y+ya*20, 20, 20);
     }
@@ -36,7 +35,6 @@ public class Minimap {
         } else {
             xa -= 1;
         }
-        //System.out.println("xa " + xa + " ya " + ya);
         g2d.setColor(Color.blue);
         g2d.fillOval(x+xa*20, y+ya*20, 20, 20);
     }

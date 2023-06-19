@@ -11,7 +11,6 @@ public class ROffice {
     private DoArson[] arson1;
     private BufferedImage desk1, desk2, jail;
     private ATrashCan[] trashCans = new ATrashCan[1];
-    //DoArson arson1 = new DoArson(false, trashCans);
     private AChalkBoard cb = new AChalkBoard(900, 10, "OFFICE", false);
     private ADesk[] desks = {new ADesk(0, 500, 500, 250, true), new ADesk(500, 300, 150, 250+200, true)};
     private AWall w1 = new AWall(0, 0);
@@ -37,8 +36,6 @@ public class ROffice {
     public void initializeOffice(boolean b, boolean b1){
         Random r = new Random();
         this.b1 = b1;
-        // trashCans[0] = new ATrashCan(r.nextInt(400) + 270,r.nextInt(91) + 290); // top wall
-        // trashCans[1] = new ATrashCan(r.nextInt(980) + 715,r.nextInt(91) + 290); // top wall
         trashCans[0] = new ATrashCan(r.nextInt(221) + 1420,r.nextInt(221) + 660); //right wall
     }
     public ROffice(){
@@ -49,7 +46,6 @@ public class ROffice {
             desk2 = ImageIO.read(new File("res\\officedesk2.png"));
         } catch (IOException e) { System.out.println("desks no image"); }    }
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        //super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.BLACK);
@@ -73,8 +69,6 @@ public class ROffice {
         pp.isPlayerClose(p1, p2);
         pp.paint(g2d);
 
-//        g2d.setColor(new Color(205, 255, 255));
-//        g2d.fillRect(30, 20, 360, 230);
         g2d.drawImage(jail, 30, 20, null);
 
         paintBars(g2d);

@@ -32,10 +32,6 @@ public class SideMenu {
     }
 
     public boolean[] which4Tasks() {
-//        for (int i = 0; i < 9; i++)  {
-//            System.out.print(bArray[i] + " ");
-//        }
-//        System.out.println("");
         return bArray;
     }
     public boolean isScribbleTask(){
@@ -58,21 +54,15 @@ public class SideMenu {
     }
 
     public void updateTaskCompletion(int n) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        //System.out.println("update task completion for int " + n);
         finTasks[n] = true;
         sound.playTaskCompleteSoundEffect();
-        //System.out.println("fintasks [n]: " + finTasks[n]);
     }
 
     public boolean checkIfWinCondition() {
         for (int i = 0; i < 4; i++)  {
-            //System.out.println(finTasks[array[i]]);
-            //finTasks[array[i]] = true;
             if (!finTasks[array[i]]) // if it's not ALL TRUE -> bad
                 return false;
-            //System.out.println("i am running");
         }
-        //.out.println("ALL TASKS COMEPLTE");
         return true; // ALL TASKS COMPLETE
     }
 
@@ -91,22 +81,13 @@ public class SideMenu {
             array[i] = temp;
         }
 
-        //System.out.println("array[i] \n----------------------------------------\"");
         for (int i = 0; i < 9; i++) {
             bArray[i] = false;
         }
 
         for (int i = 0; i < 4; i++)  {
             bArray[array[i]] = true;                // change boolean array such that the chosen tasks (first four indices in array) are set as true, other values are false
-            //System.out.println(array[i]);
         }
-        //System.out.println("----------------------------------------\"");
-
-//        System.out.println("bArray \n----------------------------------------");
-//        for (int i = 0; i < 9; i++)  {
-//            System.out.print(bArray[i] + " ");
-//        }
-//        System.out.println("\n----------------------------------------");
     }
 
     public void updateIsOpen(boolean isOpen){
@@ -114,23 +95,14 @@ public class SideMenu {
     }
 
     public void paint (Graphics2D g2d, DoMess mess){
-//        if (!hasGenerated) {
-//            generateTasks();
-//            hasGenerated = true;
-//        }
         g2d.setColor(Color.white);
         if (!isOpen){
             g2d.drawImage(minOpen, x, y, null);
-//            g2d.fillRect(x, y, width, height);
         } else {
             g2d.drawImage(minClosed, x, y, null);
             g2d.drawImage(bigOpen, openX, openY, 1000, 1000, null);
 
             int shiftY = 200, shiftX = 30, spacing = 120, moreYSpacing = 80;
-
-//            g2d.setColor(Color.black);
-//            g2d.setFont(new Font("TimesRoman", Font.BOLD, 60));
-//            g2d.drawString("TASKS:", openX + openWidth - 500, openY + 30 + 300);
 
             for (int i = 0; i < 4; i++)  {
                 g2d.setColor(Color.black);
@@ -175,7 +147,6 @@ public class SideMenu {
                 }
 
                 if (finTasks[array[i]]) {
-                    //System.out.println("task " + i + " is fin, did draw X");
                     g2d.setFont(new Font("TimesRoman", Font.BOLD, 50));
                     g2d.setColor(Color.red);
                     if (i == 0){

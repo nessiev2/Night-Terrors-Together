@@ -5,7 +5,6 @@ import java.io.IOException;
 
 public class DoMess extends Task {
     private boolean ts = true;
-
     private boolean isFin;
     private boolean[][] waterStains = new boolean[(NTT.SCREEN_WIDTH/2)/30][(810-270)/30];
     public DoMess(boolean isTask){
@@ -16,7 +15,6 @@ public class DoMess extends Task {
         return isFin;
     }
     public void paint(Graphics g2d, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        int k = 10;
         if (isTask){
             if (!isFin){
                 g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
@@ -51,7 +49,6 @@ public class DoMess extends Task {
                     menu.updateTaskCompletion(4);
                     ts = false;
                 }
-                //isTask = true;
             }
 
             for (int i = 0; i < waterStains.length; i++) {

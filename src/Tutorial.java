@@ -17,9 +17,6 @@ public class Tutorial {
     public void changePlayTut(boolean x){
         playTut = x;
     }
-    public boolean getPlayTut(){
-        return playTut;
-    }
     public void initializeTut(){
         slideNum = 1;
     }
@@ -36,7 +33,6 @@ public class Tutorial {
     }
 
     public void paint(Graphics g2d){
-        //System.out.println(slideNum);
         if (playTut){
             if (slideNum == 1){
                 g2d.drawImage(img1, 0, 0, null);

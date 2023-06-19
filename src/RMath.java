@@ -78,12 +78,10 @@ public class RMath {
     }
 
     public void paint(Graphics g, Player p1, Player p2, Transition transition1, SideMenu menu) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        //super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.BLACK);
 
-        // IRENE IS MAKING A CLASSROOM DESK TRIAL
         for (ADesk d:desks) {
             if (d.getDeskType() == 0){
                 d.paintDesk0(g2d);
@@ -107,8 +105,6 @@ public class RMath {
             menu.updateTaskCompletion(0);
             ts = false;
         }
-
-//        arson7.doTask(p1, p2, menu);
 
         w1.paint(g2d); // wall
 

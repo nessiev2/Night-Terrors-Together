@@ -5,8 +5,6 @@ public class CountDown {
     private long elapsedTime;
     private long backwardsTime;
     private long elapsedSeconds;
-
-
     private long secondsDisplay;
     private long elapsedMinutes;
     private static long pausedTime;
@@ -34,13 +32,10 @@ public class CountDown {
         currentTime = System.currentTimeMillis();
         elapsedTime = System.currentTimeMillis() - startTime;
         pausedTime += (pause2 - pause1);
-        //System.out.println("pause1 " + pause1);
-        //System.out.println("pause2 " + pause2);
 
         pause1 = 0;
         pause2 = 0;
         backwardsTime = 3*60*1000 + 1000 + pausedTime - elapsedTime;
-        //backwardsTime = 120000 - elapsedTime;
 
         elapsedSeconds = backwardsTime / 1000;
         secondsDisplay = elapsedSeconds % 60;

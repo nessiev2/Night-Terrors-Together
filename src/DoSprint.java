@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class DoSprint extends Task{
     private boolean ts = true;
-
     private Random r = new Random();
     private int x, y, i = 0, j = 0, radius = 100;
     private boolean flag1 = false, flag2 = false, isComplete = false;
@@ -20,12 +19,10 @@ public class DoSprint extends Task{
     }
     public void initializeSprint(){
         ts = true;
-        System.out.println("reset sprint");
         x = 0;
         y = 0;
         i = 0;
         j = 0;
-
 
         flag1 = false;
         flag2 = false;

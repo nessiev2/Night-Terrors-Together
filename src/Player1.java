@@ -4,8 +4,6 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class Player1 extends Player {
-
-    private Timer t = new Timer();
     private int ticks = 0;
 
     public Player1() {
@@ -38,7 +36,6 @@ public class Player1 extends Player {
                 }
                 if (ticks >= 20) {
                     hack.taskFinished();
-                    System.out.println("HACK SUCCESS");
                     changeIsHolding(false);
                 }
             }
