@@ -101,8 +101,9 @@ public class DoSprint extends Task{
             if (isComplete){
                 g2d.drawString("task complete!", 650, 350);
             } else {
-                g2d.drawString("find the yellow circle on the ground", 600, 350);
-                g2d.drawString("and both players sprint to complete the task", 600, 350+25);
+                g2d.setColor(Color.white);
+                g2d.drawString("find the yellow circle on the ground", 400, 200);
+                g2d.drawString("and both players sprint to complete the task", 400, 200+25);
             }
         }
     }

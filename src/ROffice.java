@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class ROffice {
     private DoArson[] arson1;
-    private BufferedImage desk1, desk2;
+    private BufferedImage desk1, desk2, jail;
     private ATrashCan[] trashCans = new ATrashCan[1];
     //DoArson arson1 = new DoArson(false, trashCans);
     private AChalkBoard cb = new AChalkBoard(900, 10, "OFFICE", false);
@@ -44,6 +44,7 @@ public class ROffice {
     public ROffice(){
         initializeOffice(false, false);
         try {
+            jail = ImageIO.read(new File("res\\jail.png"));
             desk1 = ImageIO.read(new File("res\\officedesk1.png"));
             desk2 = ImageIO.read(new File("res\\officedesk2.png"));
         } catch (IOException e) { System.out.println("desks no image"); }    }
@@ -72,8 +73,9 @@ public class ROffice {
         pp.isPlayerClose(p1, p2);
         pp.paint(g2d);
 
-        g2d.setColor(new Color(205, 255, 255));
-        g2d.fillRect(30, 20, 360, 230);
+//        g2d.setColor(new Color(205, 255, 255));
+//        g2d.fillRect(30, 20, 360, 230);
+        g2d.drawImage(jail, 30, 20, null);
 
         paintBars(g2d);
     }

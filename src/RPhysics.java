@@ -95,7 +95,7 @@ public class RPhysics {
 
         g2d.setFont(new Font("TimesRoman", Font.BOLD, 25));
         g2d.setColor(Color.white);
-        g2d.drawString("this is the only room you're safe in.", 500, 50);
+        g2d.drawString("the only room you're safe in:", 500, 50);
 
 //        if (menu.isScribbleTask()){
 ////        g2d.drawString("which chalkboard are you destined to scribble on?", 500, 150);

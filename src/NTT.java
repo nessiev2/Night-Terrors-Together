@@ -9,16 +9,6 @@ import java.util.Random;
 
 /*
 * ENCAPSULATE CODE
-* make trash cans not generate on desk
-    * biology - CLEAR
-    * chem
-    * comp sci
-    * eng
-    * math
-    * office
-    * physics
-
-* computer monitor
 */
 
 public class NTT extends JPanel {
