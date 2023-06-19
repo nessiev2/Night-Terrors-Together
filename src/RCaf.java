@@ -9,14 +9,14 @@ import java.util.Random;
 
 public class RCaf {
     private boolean ts = true;
-    private BufferedImage cafdesk1, cafdesk2;
+    private BufferedImage cafdesk1, cafdesk2, cafdesk3;
     private DoVendingMachine vendMachine1;
     private DoVendingMachine vendMachine2;
     private DoVendingMachine[] vendMachines = new DoVendingMachine[2];
     private DoArson[] arson2;
     private ATrashCan[] trashCans = {};
     private AChalkBoard cb;
-    private boolean[] tables = new boolean[5];
+    private int[] tables = new int[5];
     private ADesk[] desks = {new ADesk(300, 300+25, 400, 150, true), new ADesk(800, 300+25, 400, 150, true), new ADesk(1300, 300+25, 400, 150, true), new ADesk(300, 600+25, 400, 150, true), new ADesk(1300, 600+25, 400, 150, true)};
     private AWall w1 = new AWall(0, 0);
     private boolean b1;
@@ -50,12 +50,10 @@ public class RCaf {
         try {
             cafdesk1 = ImageIO.read(new File("res\\cafdesk1.png"));
             cafdesk2 = ImageIO.read(new File("res\\cafdesk2.png"));
-        } catch (IOException e) { System.out.println("frog no image"); }
+            cafdesk3 = ImageIO.read(new File("res\\cafdesk3.png"));
+        } catch (IOException e) { System.out.println("caf no image"); }
         for (int i = 0; i < 5; i++){
-            tables[i] = r.nextBoolean();
-        }
-        for (boolean x: tables){
-            System.out.println(x);
+            tables[i] = r.nextInt(3);
         }
     }
     public RCaf() {
@@ -81,10 +79,12 @@ public class RCaf {
             for (int k = 325; k <= 625; k += 300){        // y
                 if (j == 800 && k == 625){
                 } else {
-                    if (tables[tmpCount]){
+                    if (tables[tmpCount] == 0){
                         g2d.drawImage(cafdesk1, j, k, null);
-                    } else {
+                    } else if (tables[tmpCount] == 1){
                         g2d.drawImage(cafdesk2, j, k, null);
+                    } else {
+                        g2d.drawImage(cafdesk3, j, k, null);
                     }
                     tmpCount++;
                 }
