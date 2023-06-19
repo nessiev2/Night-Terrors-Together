@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class RCompSci {
     private boolean ts = true;
-    private BufferedImage vertDesk, horzDesk1, horzDesk2;
+    private BufferedImage vertDesk, horzDesk1, horzDesk2, smallMonitorL,smallMonitorR, smallMonitorH;
     private DoArson[] arson8 = new DoArson[3];
     private DoArson arsont1, arsont2, arsont3;
     private DoHack doHack8;
@@ -61,6 +61,9 @@ public class RCompSci {
             vertDesk = ImageIO.read(new File("res\\compscivert.png"));
             horzDesk1 = ImageIO.read(new File("res\\compscihorz1.png"));
             horzDesk2 = ImageIO.read(new File("res\\compscihorz2.png"));
+            smallMonitorL = ImageIO.read(new File("res\\CSFL.png"));
+            smallMonitorR = ImageIO.read(new File("res\\CSFR.png"));
+            smallMonitorH = ImageIO.read(new File("res\\csdecor.png"));
         } catch (IOException e) { System.out.println("desks no image"); }
 
     }
@@ -83,10 +86,16 @@ public class RCompSci {
         g2d.drawImage(vertDesk, 1400, 500, null);
         g2d.drawImage(horzDesk2, 750, 800, null);
 
-        g2d.setColor(new Color(49, 49, 49));
-        for (ADesk c:decorComputers){
-            c.paint(g2d);
+        for (int j = 500; j <= 1320; j+= 260){
+            if (j == 500 || j == 760){
+                g2d.drawImage(smallMonitorH, j, 510, null);
+            } else {
+                g2d.drawImage(smallMonitorH, j + 40, 510, null);
+            }
         }
+        g2d.drawImage(smallMonitorR, 1440 , 650, null);
+        g2d.drawImage(smallMonitorL, 410, 650, null);
+
 
         for (ATrashCan tc: trashCans){
             tc.paint(g2d, p1, p2, b1);
