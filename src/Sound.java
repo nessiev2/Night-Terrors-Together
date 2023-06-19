@@ -9,16 +9,12 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Sound {
     // to store current position
-    private Clip backgroundMusic;
-    private Clip gotCaughtSoundEffect;
-    private Clip taskCompleteSoundEffect;
-    private Clip teacherJumpscareSoundEffect;
-    private Clip jailBreakSoundEffect;
+    private Clip backgroundMusic, gotCaughtSoundEffect, taskCompleteSoundEffect, teacherJumpscareSoundEffect, jailBreakSoundEffect, gameOverSoundEffect;
 
     // current status of clip
     private String status;
 
-    private AudioInputStream audioInputStreamBackgroundMusic, audioInputStreamGotCaught, audioInputStreamTaskComplete, audioInputStreamTeacherJumpscare, audioInputStreamJailBreak;
+    private AudioInputStream audioInputStreamBackgroundMusic, audioInputStreamGotCaught, audioInputStreamTaskComplete, audioInputStreamTeacherJumpscare, audioInputStreamJailBreak, audioInputStreamGameOver;
     //static String filePath = "res\\KevinMacLeodSneakySnitch.wav";
 
     // constructor to initialize streams and clip
@@ -29,6 +25,7 @@ public class Sound {
         audioInputStreamTaskComplete = AudioSystem.getAudioInputStream(new File("res\\SparklesSoundEffect.wav").getAbsoluteFile());
         audioInputStreamTeacherJumpscare = AudioSystem.getAudioInputStream(new File("res\\JoyiIreneScreamDanganronpa.wav").getAbsoluteFile());
         audioInputStreamJailBreak = AudioSystem.getAudioInputStream(new File("res\\Happy.wav").getAbsoluteFile());
+        audioInputStreamGameOver = AudioSystem.getAudioInputStream(new File("res\\DanganronpaPollutionNoise.wav").getAbsoluteFile());
 
         // create clip reference
         backgroundMusic = AudioSystem.getClip();
@@ -36,6 +33,7 @@ public class Sound {
         taskCompleteSoundEffect = AudioSystem.getClip();
         teacherJumpscareSoundEffect = AudioSystem.getClip();
         jailBreakSoundEffect = AudioSystem.getClip();
+        gameOverSoundEffect = AudioSystem.getClip();
 
         // open audioInputStream to the clip
         backgroundMusic.open(audioInputStreamBackgroundMusic);
@@ -43,6 +41,7 @@ public class Sound {
         taskCompleteSoundEffect.open(audioInputStreamTaskComplete);
         teacherJumpscareSoundEffect.open(audioInputStreamTeacherJumpscare);
         jailBreakSoundEffect.open(audioInputStreamJailBreak);
+        gameOverSoundEffect.open(audioInputStreamGameOver);
 
         backgroundMusic.loop(Clip.LOOP_CONTINUOUSLY);
         //gotCaughtSoundEffect.loop(Clip.LOOP_CONTINUOUSLY);
@@ -61,6 +60,19 @@ public class Sound {
         if (!jailBreakSoundEffect.isActive()) {
             jailBreakSoundEffect.setMicrosecondPosition(0);
         }
+        if (!gameOverSoundEffect.isActive()) {
+            gameOverSoundEffect.setMicrosecondPosition(0);
+        }
+    }
+
+    public void stopSound() {
+        gotCaughtSoundEffect.stop();
+        taskCompleteSoundEffect.stop();
+        teacherJumpscareSoundEffect.stop();
+        jailBreakSoundEffect.stop();
+        gameOverSoundEffect.stop();
+
+        soundMaintenance();
     }
 
     public void playBackgroundMusic() {
@@ -81,5 +93,9 @@ public class Sound {
 
     public void playJailBreakSoundEffect() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         jailBreakSoundEffect.start();
+    }
+
+    public void playGameOverSoundEffect() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        gameOverSoundEffect.start();
     }
 }
