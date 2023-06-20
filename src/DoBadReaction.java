@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class DoBadReaction extends Task{
     private boolean ts = true;
-
+    private Image gif = null;
     private int x = 500, y = 515, xSpacing = 350, ySpacing = 300, w = 30, h = 50, ticks = 0;
     private int doneX1, doneY1, doneX2, doneY2;
     private int stainX1, stainY1, stainX2, stainY2;
@@ -28,6 +28,7 @@ public class DoBadReaction extends Task{
             img3 = ImageIO.read(new File("res\\flaskcyan.png"));
             img4 = ImageIO.read(new File("res\\flaskyellow.png"));
             imghehe = ImageIO.read(new File("res\\flaskinteract.png"));
+            gif = Toolkit.getDefaultToolkit().createImage("res\\minecraftfiregif.gif");
         } catch (IOException e) { System.out.println("stuff not loading :C"); }
     }
     public void changeGreen(boolean z){

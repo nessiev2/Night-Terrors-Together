@@ -7,6 +7,7 @@ import java.io.IOException;
 
 public class DoArson extends Task {
     private int count = 0;
+    private Image gif = null;
     private boolean isFin = false;
     private Image img;
     private final int RADIUS = 200;
@@ -26,6 +27,7 @@ public class DoArson extends Task {
         this.trash = trash;
         try {
             img = ImageIO.read(new File("res\\arson.png"));
+            gif = Toolkit.getDefaultToolkit().createImage("res\\firegif.gif");
         } catch (IOException e) { System.out.println("arson no image"); }
     }
 
@@ -38,7 +40,7 @@ public class DoArson extends Task {
 
             if (isOnFire && isTask) {
                 isFin = true;
-                g2d.drawImage(img, trash.getX()+2*i, trash.getY()+i, trash.getWidth()-2*i, trash.getHeight()-2*i, null);
+                g2d.drawImage(gif, trash.getX()+2*i, trash.getY()+i, trash.getWidth()-2*i, trash.getHeight()-2*i, null);
             }
         }
     }

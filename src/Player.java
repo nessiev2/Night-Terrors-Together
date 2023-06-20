@@ -9,7 +9,6 @@ import java.io.IOException;
 
 public abstract class Player {
     Sound sound;
-
     private BufferedImage img;
     private Image gif = null;
     protected boolean right = false, left = false, up = false, down = false, interact = false, standing = true;
