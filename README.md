@@ -1,4 +1,4 @@
 ﻿# CSProject500
 # CSProject500
 
-hi!!!!!!!!!!!!!! this is our cs project. it's super slay!
+hi!!!!!!!!!!!!!! this is our final cs project :)
